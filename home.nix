@@ -23,7 +23,26 @@ in
 	   kate
 	   pavucontrol
 	   alacritty
+	   discord
+	   ranger
+	   wofi
+	   spotify
         ];
+
+	home.file = {
+          ".config/river/init".source = ./configfiles/riverconfig;
+	  ".config/river/init".executable = true;
+
+          ".config/kanshi/config".source = ./configfiles/kanshiconfig;
+
+	  ".config/wofi/config".source = ./configfiles/woficonfig;
+	  ".config/wofi/wofi.css".source = ./configfiles/wofi.css;
+
+	  ".config/alacritty/alacritty.yml".source = ./configfiles/alacritty.yml;
+	  ".config/alacritty/alacrittycolors.yml".source = ./configfiles/alacrittycolors.yml;
+
+	  ".config/mako/config".source = ./configfiles/makoconfig;
+	};
         
         programs.git = {
             enable = true;
@@ -31,9 +50,27 @@ in
             userEmail = "nor@acorneroftheweb.com";
         };
 
+	wayland.windowManager.sway = {
+    	  enable = true;
+    	    config = rec {
+    	      modifier = "Mod4";
+    	      terminal = "alacritty"; 
+    	      startup = [
+    	        # Launch Firefox on start
+    	        {command = "firefox";}
+    	    ];
+    	  };
+        };
     };
-
     programs.fish.enable = true;
     users.users.pingu.shell = pkgs.fish;
+
+    nixpkgs.overlays =
+      let
+        myOverlay = self: super: {
+          discord = super.discord.override { withOpenASAR = true; withVencord = true; };
+        };
+      in
+      [ myOverlay ];
 
 }

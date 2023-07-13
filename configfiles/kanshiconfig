@@ -1,0 +1,13 @@
+profile TV_Kumla {
+        output eDP-1 position 0,0
+        output "Samsung Electric Company SAMSUNG 0x00000700" position 1920,0 mode 3840x2160@60Hz scale 2
+}
+
+profile Monitor_Kumla {
+        output "Unknown Q32V4WG5 QHPM4HA001642" position 0,0 mode 2560x1440@75Hz
+        output eDP-1 position 320,1440
+}
+
+profile {
+        output eDP-1
+}

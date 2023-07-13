@@ -53,18 +53,37 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.sddm.enable = false;
+  services.xserver.desktopManager.plasma5.enable = false;
+  programs.sway.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+     default_session.command = ''
+      ${pkgs.greetd.tuigreet}/bin/tuigreet \
+        --time \
+        --asterisks \
+        --user-menu \
+        --cmd river
+    '';
+    };
+  };
+
+  environment.etc."greetd/environments".text = ''
+    river
+  '';
+
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "se";
-    xkbOptions = "ctrl:nocaps";
-    xkbVariant = "";
-  };
+  # services.xserver = {
+  #   layout = "se";
+  #   xkbOptions = "ctrl:nocaps";
+  #   xkbVariant = "";
+  # };
 
   # Configure console keymap
   console.keyMap = "sv-latin1";
@@ -104,9 +123,11 @@
 
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "pingu";
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  # services.xserver.displayManager = {
+  #       # autoLogin.enable = true;
+  #       # autoLogin.user = "pingu";
+  #       # defaultSession = "plasmawayland";
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,8 +137,35 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
+    wayland
+    # xdg-utils
+    # xdg-desktop-portal-wlr
+    river
+    rivercarro
+    mako
+    kanshi
+    bash
+    swaybg
   #  wget
   ];
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    fira-code
+    fira-code-symbols
+  ];
+
+  security.polkit.enable = true;
+
+  services.dbus.enable = true;
+  # xdg.portal = {
+  #   enable = true;
+  #   wlr.enable = true;
+  #   # gtk portal needed to make gtk apps happy
+  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
