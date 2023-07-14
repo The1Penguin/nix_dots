@@ -19,17 +19,24 @@ in
            neovim
            nextcloud-client
            fish
-	   firefox
-	   kate
-	   pavucontrol
-	   alacritty
-	   discord
-	   ranger
-	   wofi
-	   spotify
-	   exa
-	   bitwarden
-	   playerctl
+           firefox
+           kate
+           pavucontrol
+           alacritty
+           discord
+           ranger
+           wofi
+           spotify
+           exa
+           bitwarden
+           playerctl
+           brightnessctl
+           pulseaudio
+           libnotify
+           gcc
+           xfce.thunar
+           ranger
+           bat
         ];
 
 	home.file = {
@@ -40,6 +47,8 @@ in
 
 	  ".config/wofi/config".source = ./configfiles/woficonfig;
 	  ".config/wofi/wofi.css".source = ./configfiles/wofi.css;
+	  ".config/wofi/wofi.css".executable = true;
+
 
 	  ".config/alacritty/alacritty.yml".source = ./configfiles/alacritty.yml;
 	  ".config/alacritty/alacrittycolors.yml".source = ./configfiles/alacrittycolors.yml;
@@ -47,6 +56,8 @@ in
 	  ".config/mako/config".source = ./configfiles/makoconfig;
 
 	  ".config/fish/config.fish".source = ./configfiles/config.fish;
+
+	  ".config/nvim/init.lua".source = ./configfiles/nvimconfig;
 	};
         
         programs.git = {
@@ -66,27 +77,31 @@ in
     	    ];
     	  };
         };
+
+	programs.neovim.plugins = with pkgs.vimPlugins; [
+          lazy-nvim
+        ];
     };
 
     programs.fish.enable = true;
     programs.starship.enable = true;
     programs.starship.settings = {
-	format = "$directory";
-	right_format = "$hostname";
-	add_newline = false;
+        format = "$directory";
+        right_format = "$hostname";
+        add_newline = false;
 
-	hostname= {
-	  ssh_only = true;
-	  format = "[$hostname](bold yellow)";
-	};
+        hostname= {
+          ssh_only = true;
+          format = "[$hostname](bold yellow)";
+        };
 
-	directory = {
-	  truncation_length = 0;
-	  truncation_symbol = "…/";
-	  truncate_to_repo = false;
-	  read_only = " 🔒";
-	  style = "cyan";
-	};
+        directory = {
+          truncation_length = 0;
+          truncation_symbol = "…/";
+          truncate_to_repo = false;
+          read_only = " 🔒";
+          style = "cyan";
+        };
     };
     users.users.pingu.shell = pkgs.fish;
 
@@ -97,5 +112,4 @@ in
         };
       in
       [ myOverlay ];
-
 }

@@ -134,7 +134,7 @@
   users.users.pingu = {
     isNormalUser = true;
     description = "Nor Führ";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -163,6 +163,7 @@
     kanshi
     bash
     swaybg
+    xdg-utils
   #  wget
   ];
 
@@ -176,6 +177,8 @@
   ];
 
   environment.variables = { EDITOR = "vim"; };
+
+  programs.light.enable = true;
 
   security.polkit.enable = true;
   services.dbus.enable = true;
