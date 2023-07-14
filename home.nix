@@ -37,13 +37,74 @@ in
            xfce.thunar
            ranger
            bat
+           acpi
+           swaylock-effects
+           (pkgs.writeScriptBin "notify" ''
+                #!/usr/bin/env sh
+                TIME=$(date "+%H:%M")
+                battery_stat="$(acpi --battery)"
+                battery_greped_status="$(echo $battery_stat | grep -Pio 'Discharching|Charging' | awk '{print tolower($0)}')"
+                battery_percentage_v="$(echo $battery_stat | grep -Po '(\d+%)' | grep -Po '\d+')"
+
+
+                notify-send 'Status' "$(echo -e "Time: $TIME \nBattery: $battery_greped_status at $battery_percentage_v%")"
+                '')
+           (pkgs.writeScriptBin "wofi_powermenu_w" ''
+                #!/usr/bin/env sh
+
+                # options to be displayed
+                option0="logout"
+                option1="reboot"
+                option2="shutdown"
+
+                # options passed into variable
+                options="$option0\n$option1\n$option2"
+
+                chosen="$(echo -e "$options" | wofi -lines 3 --show=dmenu -p "power")"
+                case $chosen in
+                    $option0)
+                        riverctl exit;;
+                    $option1)
+                        systemctl reboot;;
+                    $option2)
+                        systemctl poweroff;;
+                esac
+                '')
+           (pkgs.writeScriptBin "mylock" ''
+                #!/usr/bin/env sh
+
+                swaylock \
+                      --screenshots \
+                      --clock \
+                      --datestr "%a, %d/%m/%y" \
+                      --indicator \
+                      --indicator-radius 100 \
+                      --indicator-thickness 7 \
+                      --effect-blur 7x5 \
+                      --effect-vignette 0.5:0.5 \
+                      --ring-color bb00cc \
+                      --key-hl-color 50fa7b \
+                      --line-color 00000000 \
+                      --inside-color 282a36 \
+                      --separator-color 50fa7b \
+                      --ring-color 00000000 \
+                      --text-color f8f8f8ff \
+                      --text-ver-color f8f8f8ff \
+                      --text-wrong-color f8f8ff \
+                      --inside-ver-color 282a36 \
+                      --inside-wrong-color 282a36 \
+                      --ring-ver-color 00000000 \
+                      --ring-wrong-color 00000000 \
+                      --line-ver-color 00000000 \
+                      --line-wrong-color 00000000
+                '')
         ];
 
 	home.file = {
-          ".config/river/init".source = ./configfiles/riverconfig;
+      ".config/river/init".source = ./configfiles/riverconfig;
 	  ".config/river/init".executable = true;
 
-          ".config/kanshi/config".source = ./configfiles/kanshiconfig;
+      ".config/kanshi/config".source = ./configfiles/kanshiconfig;
 
 	  ".config/wofi/config".source = ./configfiles/woficonfig;
 	  ".config/wofi/wofi.css".source = ./configfiles/wofi.css;
@@ -64,18 +125,6 @@ in
             enable = true;
             userName  = "pingu";
             userEmail = "nor@acorneroftheweb.com";
-        };
-
-	wayland.windowManager.sway = {
-    	  enable = true;
-    	    config = rec {
-    	      modifier = "Mod4";
-    	      terminal = "alacritty"; 
-    	      startup = [
-    	        # Launch Firefox on start
-    	        {command = "firefox";}
-    	    ];
-    	  };
         };
 
 	programs.neovim.plugins = with pkgs.vimPlugins; [

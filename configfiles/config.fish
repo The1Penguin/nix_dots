@@ -17,6 +17,8 @@ alias ls 'exa --icons --group-directories-first';
 alias ll 'exa -alF --icons --group-directories-first';
 alias b 'bluetoothctl';
 
+set -U fish_user_paths $fish_user_paths $HOME/.local/bin;
+
 export MANPAGER="bat -p"
 export PAGER="bat"
 
