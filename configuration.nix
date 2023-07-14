@@ -34,6 +34,14 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
+
+
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
@@ -75,6 +83,7 @@
 
   environment.etc."greetd/environments".text = ''
     river
+    fish
   '';
 
 
@@ -97,16 +106,26 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    wireplumber.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
+
+  environment.etc = {
+    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+      bluez_monitor.properties = {
+        ["bluez5.enable-a2dp"] = true,
+        ["bluez5.enable-sbc-xq"] = true,
+        ["bluez5.enable-msbc"] = true,
+        ["bluez5.enable-hw-volume"] = true,
+        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      }
+    '';
+  };
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -138,8 +157,6 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
     wayland
-    # xdg-utils
-    # xdg-desktop-portal-wlr
     river
     rivercarro
     mako
@@ -155,17 +172,20 @@
     noto-fonts-emoji
     fira-code
     fira-code-symbols
+    nerdfonts
   ];
 
-  security.polkit.enable = true;
+  environment.variables = { EDITOR = "vim"; };
 
+  security.polkit.enable = true;
   services.dbus.enable = true;
-  # xdg.portal = {
-  #   enable = true;
-  #   wlr.enable = true;
-  #   # gtk portal needed to make gtk apps happy
-  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  # };
+  services.dbus.implementation = "broker";
+  xdg.portal = {
+    enable = true;
+    # wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    # extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

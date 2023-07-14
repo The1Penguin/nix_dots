@@ -27,6 +27,9 @@ in
 	   ranger
 	   wofi
 	   spotify
+	   exa
+	   bitwarden
+	   playerctl
         ];
 
 	home.file = {
@@ -42,6 +45,8 @@ in
 	  ".config/alacritty/alacrittycolors.yml".source = ./configfiles/alacrittycolors.yml;
 
 	  ".config/mako/config".source = ./configfiles/makoconfig;
+
+	  ".config/fish/config.fish".source = ./configfiles/config.fish;
 	};
         
         programs.git = {
@@ -62,7 +67,27 @@ in
     	  };
         };
     };
+
     programs.fish.enable = true;
+    programs.starship.enable = true;
+    programs.starship.settings = {
+	format = "$directory";
+	right_format = "$hostname";
+	add_newline = false;
+
+	hostname= {
+	  ssh_only = true;
+	  format = "[$hostname](bold yellow)";
+	};
+
+	directory = {
+	  truncation_length = 0;
+	  truncation_symbol = "…/";
+	  truncate_to_repo = false;
+	  read_only = " 🔒";
+	  style = "cyan";
+	};
+    };
     users.users.pingu.shell = pkgs.fish;
 
     nixpkgs.overlays =

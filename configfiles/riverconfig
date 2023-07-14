@@ -154,7 +154,7 @@ riverctl map normal Super Tab spawn "~/.local/bin/notify"
 #riverctl map normal Super+Shift P spawn "grim -g '$(slurp)' ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 riverctl map normal None Print spawn "grimshot copy area"
 riverctl map normal Super P spawn "pavucontrol"
-riverctl map normal Super U spawn "bitwarden-desktop"
+riverctl map normal Super U spawn "bitwarden"
 # riverctl map normal Super V spawn "emacsclient --eval '(setenv \"DISPLAY\" \"$DISPLAY\")' --eval '(emacs-everywhere)'"
 
 # Set background and border color
@@ -164,7 +164,7 @@ riverctl border-color-unfocused 0x44475a
 riverctl xcursor-theme xcursor-breeze-neutral
 riverctl keyboard-layout -options ctrl:nocaps se
 exec swaybg -i ~/Pictures/Wallpaper/sakuraflower.png -m fill &
-exec nextcloud --background &
+# exec nextcloud --background &
 exec mako &
 exec kanshi &
 
