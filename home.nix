@@ -39,15 +39,19 @@ in
            bat
            acpi
            swaylock-effects
+           agda
+           cmake
+           gnumake
+           libtool
            (pkgs.writeScriptBin "notify" ''
                 #!/usr/bin/env sh
                 TIME=$(date "+%H:%M")
                 battery_stat="$(acpi --battery)"
-                battery_greped_status="$(echo $battery_stat | grep -Pio 'Discharching|Charging' | awk '{print tolower($0)}')"
+                battery_greped_status="$(echo $battery_stat | cut -d',' -f1 | cut -d':' -f2 | xargs | awk '{print tolower($0)}')"
                 battery_percentage_v="$(echo $battery_stat | grep -Po '(\d+%)' | grep -Po '\d+')"
 
 
-                notify-send 'Status' "$(echo -e "Time: $TIME \nBattery: $battery_greped_status at $battery_percentage_v%")"
+                notify-send 'Status' "$(echo -e "Time: $TIME \nBattery: $battery_percentage_v%, and $battery_greped_status")"
                 '')
            (pkgs.writeScriptBin "wofi_powermenu_w" ''
                 #!/usr/bin/env sh
@@ -119,6 +123,11 @@ in
 	  ".config/fish/config.fish".source = ./configfiles/config.fish;
 
 	  ".config/nvim/init.lua".source = ./configfiles/nvimconfig;
+
+      ".doom.d/" = {
+        source = ./dotemacs;
+        recursive = true;
+      };
 	};
         
         programs.git = {
@@ -127,9 +136,10 @@ in
             userEmail = "nor@acorneroftheweb.com";
         };
 
-	programs.neovim.plugins = with pkgs.vimPlugins; [
+        programs.neovim.plugins = with pkgs.vimPlugins; [
           lazy-nvim
         ];
+
     };
 
     programs.fish.enable = true;
@@ -153,7 +163,7 @@ in
         };
     };
     users.users.pingu.shell = pkgs.fish;
-
+    services.emacs.enable = false;
     nixpkgs.overlays =
       let
         myOverlay = self: super: {

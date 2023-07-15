@@ -18,6 +18,7 @@ alias ll 'exa -alF --icons --group-directories-first';
 alias b 'bluetoothctl';
 
 set -U fish_user_paths $fish_user_paths $HOME/.local/bin;
+set -U fish_user_paths $fish_user_paths $HOME/.config/emacs/bin/;
 
 export MANPAGER="bat -p"
 export PAGER="bat"

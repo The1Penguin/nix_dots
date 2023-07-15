@@ -1,0 +1,3 @@
+[submodule "dotemacs"]
+	path = dotemacs
+	url = git@github.com:The1Penguin/dotemacs.git
