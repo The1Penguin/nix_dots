@@ -43,6 +43,8 @@ in
            cmake
            gnumake
            libtool
+           sqlite
+           neofetch
            (pkgs.writeScriptBin "notify" ''
                 #!/usr/bin/env sh
                 TIME=$(date "+%H:%M")
@@ -104,31 +106,34 @@ in
                 '')
         ];
 
-	home.file = {
+home.file = {
       ".config/river/init".source = ./configfiles/riverconfig;
-	  ".config/river/init".executable = true;
+      ".config/river/init".executable = true;
 
       ".config/kanshi/config".source = ./configfiles/kanshiconfig;
 
-	  ".config/wofi/config".source = ./configfiles/woficonfig;
-	  ".config/wofi/wofi.css".source = ./configfiles/wofi.css;
-	  ".config/wofi/wofi.css".executable = true;
+      ".config/wofi/config".source = ./configfiles/woficonfig;
+      ".config/wofi/style.css".source = ./configfiles/wofi.css;
+      ".config/wofi/style.css".executable = true;
 
 
-	  ".config/alacritty/alacritty.yml".source = ./configfiles/alacritty.yml;
-	  ".config/alacritty/alacrittycolors.yml".source = ./configfiles/alacrittycolors.yml;
+      ".config/alacritty/alacritty.yml".source = ./configfiles/alacritty.yml;
+      ".config/alacritty/alacrittycolors.yml".source = ./configfiles/alacrittycolors.yml;
 
-	  ".config/mako/config".source = ./configfiles/makoconfig;
+      ".config/mako/config".source = ./configfiles/makoconfig;
 
-	  ".config/fish/config.fish".source = ./configfiles/config.fish;
+      ".config/fish/config.fish".source = ./configfiles/config.fish;
 
-	  ".config/nvim/init.lua".source = ./configfiles/nvimconfig;
+      ".config/nvim/init.lua".source = ./configfiles/nvimconfig;
 
       ".doom.d/" = {
         source = ./dotemacs;
         recursive = true;
       };
-	};
+
+      ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./configfiles/firefox.css;
+
+    };
         
         programs.git = {
             enable = true;
