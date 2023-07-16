@@ -45,6 +45,7 @@ in
         libtool
         sqlite
         neofetch
+        sway-contrib.grimshot
         (pkgs.writeScriptBin "notify" ''
             #!/usr/bin/env sh
             TIME=$(date "+%H:%M")
