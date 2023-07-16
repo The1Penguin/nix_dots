@@ -34,13 +34,21 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.settings = {
-    General = {
-      Enable = "Source,Sink,Media,Socket";
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        ControllerMode = "dual";
+        FastConnectable = "true";
+        Experimental = "true";
+      };
+      Policy = {
+        AutoEnable = "true";
+      };
     };
+    package = pkgs.bluezFull;
   };
-
+  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
@@ -117,11 +125,11 @@
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
       bluez_monitor.properties = {
-        ["bluez5.enable-a2dp"] = true,
         ["bluez5.enable-sbc-xq"] = true,
         ["bluez5.enable-msbc"] = true,
         ["bluez5.enable-hw-volume"] = true,
         ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+        ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd aptx_ll aptx_ll_duplex ]"
       }
     '';
   };
