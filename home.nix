@@ -13,12 +13,12 @@ in
   home-manager.users.pingu = {
     home.stateVersion = "23.05";
 
+    # Packages for my user
     home.packages = with pkgs; [
         htop
         emacs
         neovim
         nextcloud-client
-        fish
         firefox
         kate
         pavucontrol
@@ -46,6 +46,9 @@ in
         sqlite
         neofetch
         sway-contrib.grimshot
+    ] ++
+    # Own scripts
+    [
         (pkgs.writeScriptBin "notify" ''
             #!/usr/bin/env sh
             TIME=$(date "+%H:%M")
@@ -138,17 +141,21 @@ in
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./configfiles/firefox.css;
 
     };
-        
+
+    # Git options
     programs.git = {
         enable = true;
         userName  = "pingu";
         userEmail = "nor@acorneroftheweb.com";
     };
 
+    # Lazy way of using the plugins that I am used to until I transfer them
+    # to this config
     programs.neovim.plugins = with pkgs.vimPlugins; [
       lazy-nvim
     ];
 
+    # Enable cursor
     home.pointerCursor = {
       name = "Capitaine";
       package = pkgs.capitaine-cursors;
@@ -159,6 +166,7 @@ in
       };
     };
 
+    # Enable correct gtk themes and such
     gtk = {
       enable = true;
       theme = {
@@ -188,9 +196,10 @@ in
 
   };
 
-  programs.fish.enable = true;
-  programs.starship.enable = true;
-  programs.starship.settings = {
+  # Fancy terminals ^ㅂ^
+  programs.starship = {
+    enable = true;
+    settings = {
       format = "$directory";
       right_format = "$hostname";
       add_newline = false;
@@ -207,9 +216,15 @@ in
         read_only = " 🔒";
         style = "cyan";
       };
+    };
   };
+
+  # Set default shell to fish for me
+  programs.fish.enable = true;
   users.users.pingu.shell = pkgs.fish;
-  services.emacs.enable = true;
+  # services.emacs.enable = true;
+
+  # Use Vencord and OpenASAR on discord
   nixpkgs.overlays =
     let
       myOverlay = self: super: {
@@ -218,5 +233,11 @@ in
     in
     [ myOverlay ];
 
+  # Steamy stuffs
   programs.steam.enable = true;
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
 }

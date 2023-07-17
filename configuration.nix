@@ -24,18 +24,14 @@
   boot.initrd.luks.devices."luks-64878b92-146a-44ce-b3de-0dc1f3ccb697".device = "/dev/disk/by-uuid/64878b92-146a-44ce-b3de-0dc1f3ccb697";
   boot.initrd.luks.devices."luks-64878b92-146a-44ce-b3de-0dc1f3ccb697".keyFile = "/crypto_keyfile.bin";
 
-  networking.hostName = "scorpia"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Above is auto generated
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  # Host name and enabling networkmanager
+  networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
 
+  # Hardware things such as opengl and bluetooth
   hardware.opengl.enable = true;
-
   hardware.bluetooth = {
     enable = true;
     settings = {
@@ -50,14 +46,38 @@
     };
     package = pkgs.bluezFull;
   };
-  services.blueman.enable = true;
 
-  # Set your time zone.
+  # Enable sound settings
+  sound.enable = true;
+  security.rtkit.enable = true;
+  # Use pipe wire for most things
+  services.pipewire = {
+    enable = true;
+    wireplumber.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # Additional settings for bluez and wireplumber
+  environment.etc = {
+    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+      bluez_monitor.properties = {
+        ["bluez5.enable-sbc-xq"] = true,
+        ["bluez5.enable-msbc"] = true,
+        ["bluez5.enable-hw-volume"] = true,
+        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
+        ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd aptx_ll aptx_ll_duplex ]"
+      }
+    '';
+  };
+
+  # Printing stuffs
+  services.printing.enable = true;
+
+  # Locale settings
   time.timeZone = "Europe/Stockholm";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "sv_SE.UTF-8";
     LC_IDENTIFICATION = "sv_SE.UTF-8";
@@ -70,14 +90,41 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = false;
+  console.keyMap = "sv-latin1";
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = false;
-  services.xserver.desktopManager.plasma5.enable = false;
-  programs.sway.enable = true;
+  # Add custom keyboard layout
+  services.xserver.extraLayouts.sebrackets = {
+    description = "SE with better brackets added";
+    languages   = [ "swe" ];
+    symbolsFile = ./configfiles/selayout;
+  };
 
+  # Install systemwide packages
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wayland
+    river
+    rivercarro
+    mako
+    kanshi
+    bash
+    swaybg
+    xdg-utils
+  ];
+
+  # Fonts that can be used
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    fira-code
+    fira-code-symbols
+    nerdfonts
+  ];
+
+  # Login session thingy
   services.greetd = {
     enable = true;
     settings = {
@@ -91,140 +138,29 @@
     };
   };
 
-  environment.etc."greetd/environments".text = ''
-    river
-    fish
-  '';
-
-
-  # Configure keymap in X11
-  # services.xserver = {
-  #   layout = "se";
-  #   xkbOptions = "ctrl:nocaps";
-  #   xkbVariant = "";
-  # };
-  #
-
-  services.xserver.extraLayouts.sebrackets = {
-    description = "SE with better brackets added";
-    languages   = [ "swe" ];
-    symbolsFile = ./configfiles/selayout;
-  };
-
-  # Configure console keymap
-  console.keyMap = "sv-latin1";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    wireplumber.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
-
-  environment.etc = {
-    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-      bluez_monitor.properties = {
-        ["bluez5.enable-sbc-xq"] = true,
-        ["bluez5.enable-msbc"] = true,
-        ["bluez5.enable-hw-volume"] = true,
-        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-        ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd aptx_ll aptx_ll_duplex ]"
-      }
-    '';
-  };
-
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Enable me as a user
   users.users.pingu = {
     isNormalUser = true;
-    description = "Nor Führ";
+    description = "pingu";
     extraGroups = [ "networkmanager" "wheel" "video" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
-
-  # Enable automatic login for the user.
-  # services.xserver.displayManager = {
-  #       # autoLogin.enable = true;
-  #       # autoLogin.user = "pingu";
-  #       # defaultSession = "plasmawayland";
-  # };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git
-    wayland
-    river
-    rivercarro
-    mako
-    kanshi
-    bash
-    swaybg
-    xdg-utils
-  #  wget
-  ];
-
-  fonts.fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    fira-code
-    fira-code-symbols
-    nerdfonts
-  ];
-
+  # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
 
+  # Allow for brightness control
   programs.light.enable = true;
-
+  # stuff that just kinda works or is needed
   security.polkit.enable = true;
-  services.dbus.enable = true;
-  services.dbus.implementation = "broker";
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
+  };
   xdg.portal = {
     enable = true;
-    # wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
-    # extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    wlr.enable = true;
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  programs.dconf.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
