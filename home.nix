@@ -52,9 +52,12 @@ in
             battery_stat="$(acpi --battery)"
             battery_greped_status="$(echo $battery_stat | cut -d',' -f1 | cut -d':' -f2 | xargs | awk '{print tolower($0)}')"
             battery_percentage_v="$(echo $battery_stat | grep -Po '(\d+%)' | grep -Po '\d+')"
+            network="$(nmcli -t -f name connection show --active | sed 's/lo/not connected/' | head -n 1)"
 
 
-            notify-send 'Status' "$(echo -e "Time: $TIME \nBattery: $battery_percentage_v%, and $battery_greped_status")"
+            notify-send 'Status' "$(echo -e "Time: $TIME \n\
+            Network: $network \n\
+            Battery: $battery_percentage_v%, and $battery_greped_status")"
             '')
         (pkgs.writeScriptBin "wofi_powermenu_w" ''
             #!/usr/bin/env sh
@@ -192,7 +195,7 @@ in
       right_format = "$hostname";
       add_newline = false;
 
-      hostname= {
+      hostname = {
         ssh_only = true;
         format = "[$hostname](bold yellow)";
       };
@@ -206,7 +209,7 @@ in
       };
   };
   users.users.pingu.shell = pkgs.fish;
-  services.emacs.enable = false;
+  services.emacs.enable = true;
   nixpkgs.overlays =
     let
       myOverlay = self: super: {
@@ -215,4 +218,5 @@ in
     in
     [ myOverlay ];
 
+  programs.steam.enable = true;
 }
