@@ -101,6 +101,13 @@
   #   xkbOptions = "ctrl:nocaps";
   #   xkbVariant = "";
   # };
+  #
+
+  services.xserver.extraLayouts.sebrackets = {
+    description = "SE with better brackets added";
+    languages   = [ "swe" ];
+    symbolsFile = ./configfiles/selayout;
+  };
 
   # Configure console keymap
   console.keyMap = "sv-latin1";
