@@ -200,7 +200,7 @@ in
   programs.starship = {
     enable = true;
     settings = {
-      format = "$directory";
+      format = "$nix_shell$directory";
       right_format = "$hostname";
       add_newline = false;
 
@@ -215,6 +215,11 @@ in
         truncate_to_repo = false;
         read_only = " 🔒";
         style = "cyan";
+      };
+      nix_shell = {
+        symbol = " ";
+        format = "[$symbol$name]($style) ";
+        style = "bright-purple bold";
       };
     };
   };

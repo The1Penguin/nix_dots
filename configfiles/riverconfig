@@ -164,7 +164,7 @@ riverctl border-color-unfocused 0x44475a
 riverctl xcursor-theme capitaine-cursors 32
 riverctl keyboard-layout -options ctrl:nocaps sebrackets
 exec swaybg -i ~/Pictures/Wallpaper/sakuraflower.png -m fill &
-# exec nextcloud --background &
+exec nextcloud --background &
 exec mako &
 exec kanshi &
 
@@ -178,6 +178,7 @@ for pad in $(riverctl list-inputs | grep -i touchpad )
 do
   riverctl input $pad events enabled
   riverctl input $pad tap enabled
+  riverctl input $pad tap-button-map left-right-middle
 done
 
 # Set and exec into the default layout generator, rivercarro.
