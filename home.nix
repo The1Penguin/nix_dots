@@ -50,6 +50,7 @@ in
         jellyfin-media-player
         signal-desktop
         qview
+        any-nix-shell
         (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
     ] ++
     # Own scripts

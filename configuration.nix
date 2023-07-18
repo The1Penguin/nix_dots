@@ -151,6 +151,8 @@
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
 
+  nix.settings.experimental-features = "nix-command flakes";
+
   # Allow for brightness control
   programs.light.enable = true;
   # stuff that just kinda works or is needed

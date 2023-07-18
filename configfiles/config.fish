@@ -17,10 +17,6 @@ alias ls 'exa --icons --group-directories-first';
 alias ll 'exa -alF --icons --group-directories-first';
 alias b 'bluetoothctl';
 
-function get
-  nix-shell -p $argv --run fish
-end
-
 set -U fish_user_paths $fish_user_paths $HOME/.local/bin;
 set -U fish_user_paths $fish_user_paths $HOME/.config/emacs/bin/;
 
@@ -28,3 +24,5 @@ export MANPAGER="bat -p"
 export PAGER="bat"
 
 set -U fish_escape_delay_ms 300
+
+any-nix-shell fish | source
