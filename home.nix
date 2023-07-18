@@ -46,6 +46,11 @@ in
         sqlite
         neofetch
         sway-contrib.grimshot
+        mpv
+        jellyfin-media-player
+        signal-desktop
+        qview
+        (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
     ] ++
     # Own scripts
     [

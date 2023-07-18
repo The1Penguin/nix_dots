@@ -67,7 +67,7 @@
         ["bluez5.enable-msbc"] = true,
         ["bluez5.enable-hw-volume"] = true,
         ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-        ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd aptx_ll aptx_ll_duplex ]"
+        ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd aptx_ll aptx_ll_duplex faststream faststream_duplex ]"
       }
     '';
   };
@@ -101,6 +101,9 @@
 
   # Install systemwide packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1u"
+  ];
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -163,6 +166,11 @@
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.swaylock.text = ''
+    # PAM configuration file for the swaylock screen locker. By default, it includes
+    # the 'login' configuration file (see /etc/pam.d/login)
+    auth include login
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
