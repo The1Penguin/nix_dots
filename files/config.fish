@@ -25,4 +25,4 @@ export PAGER="bat"
 
 set -U fish_escape_delay_ms 300
 
-any-nix-shell fish | source
+direnv hook fish | source

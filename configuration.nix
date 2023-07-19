@@ -96,7 +96,7 @@
   services.xserver.extraLayouts.sebrackets = {
     description = "SE with better brackets added";
     languages   = [ "swe" ];
-    symbolsFile = ./configfiles/selayout;
+    symbolsFile = ./files/selayout;
   };
 
   # Install systemwide packages

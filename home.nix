@@ -50,7 +50,7 @@ in
         jellyfin-media-player
         signal-desktop
         qview
-        any-nix-shell
+        direnv
         (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
     ] ++
     # Own scripts
@@ -120,31 +120,31 @@ in
     ];
 
     home.file = {
-      ".config/river/init".source = ./configfiles/riverconfig;
+      ".config/river/init".source = ./files/riverconfig;
       ".config/river/init".executable = true;
 
-      ".config/kanshi/config".source = ./configfiles/kanshiconfig;
+      ".config/kanshi/config".source = ./files/kanshiconfig;
 
-      ".config/wofi/config".source = ./configfiles/woficonfig;
-      ".config/wofi/style.css".source = ./configfiles/wofi.css;
+      ".config/wofi/config".source = ./files/woficonfig;
+      ".config/wofi/style.css".source = ./files/wofi.css;
       ".config/wofi/style.css".executable = true;
 
 
-      ".config/alacritty/alacritty.yml".source = ./configfiles/alacritty.yml;
-      ".config/alacritty/alacrittycolors.yml".source = ./configfiles/alacrittycolors.yml;
+      ".config/alacritty/alacritty.yml".source = ./files/alacritty.yml;
+      ".config/alacritty/alacrittycolors.yml".source = ./files/alacrittycolors.yml;
 
-      ".config/mako/config".source = ./configfiles/makoconfig;
+      ".config/mako/config".source = ./files/makoconfig;
 
-      ".config/fish/config.fish".source = ./configfiles/config.fish;
+      ".config/fish/config.fish".source = ./files/config.fish;
 
-      ".config/nvim/init.lua".source = ./configfiles/nvimconfig;
+      ".config/nvim/init.lua".source = ./files/nvimconfig;
 
       ".doom.d/" = {
         source = ./dotemacs;
         recursive = true;
       };
 
-      ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./configfiles/firefox.css;
+      ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
 
     };
 
