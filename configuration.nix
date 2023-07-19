@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./home.nix
     ];
@@ -95,7 +96,7 @@
   # Add custom keyboard layout
   services.xserver.extraLayouts.sebrackets = {
     description = "SE with better brackets added";
-    languages   = [ "swe" ];
+    languages = [ "swe" ];
     symbolsFile = ./files/selayout;
   };
 
@@ -131,13 +132,13 @@
   services.greetd = {
     enable = true;
     settings = {
-     default_session.command = ''
-      ${pkgs.greetd.tuigreet}/bin/tuigreet \
-        --time \
-        --asterisks \
-        --user-menu \
-        --cmd river
-    '';
+      default_session.command = ''
+        ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --time \
+          --asterisks \
+          --user-menu \
+          --cmd river
+      '';
     };
   };
 

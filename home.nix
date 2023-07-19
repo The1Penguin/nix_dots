@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 let
-    home-manager = builtins.fetchTarball {
-        url = "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
-        sha256 = "0dfshsgj93ikfkcihf4c5z876h4dwjds998kvgv7sqbfv0z6a4bc";
-    };
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+    sha256 = "0dfshsgj93ikfkcihf4c5z876h4dwjds998kvgv7sqbfv0z6a4bc";
+  };
 in
 {
   imports = [
-      (import "${home-manager}/nixos")
+    (import "${home-manager}/nixos")
   ];
 
   home-manager.users.pingu = {
@@ -53,6 +53,7 @@ in
       direnv
       (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
       kotatogram-desktop
+      nixpkgs-fmt
     ] ++
     # Own scripts
     [
@@ -92,9 +93,9 @@ in
 
     # Git options
     programs.git = {
-        enable = true;
-        userName  = "pingu";
-        userEmail = "nor@acorneroftheweb.com";
+      enable = true;
+      userName = "pingu";
+      userEmail = "nor@acorneroftheweb.com";
     };
 
     # Lazy way of using the plugins that I am used to until I transfer them
@@ -133,12 +134,12 @@ in
       gtk3.extraConfig = {
         Settings = ''
           gtk-application-prefer-dark-theme=1
-          '';
+        '';
       };
       gtk4.extraConfig = {
         Settings = ''
           gtk-application-prefer-dark-theme=1
-          '';
+        '';
       };
     };
 
