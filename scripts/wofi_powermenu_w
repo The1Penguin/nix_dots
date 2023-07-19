@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# options to be displayed
+option0="logout"
+option1="reboot"
+option2="shutdown"
+
+# options passed into variable
+options="$option0\n$option1\n$option2"
+
+chosen="$(echo -e "$options" | wofi -lines 3 --show=dmenu -p "power")"
+case $chosen in
+    $option0)
+        riverctl exit;;
+    $option1)
+        systemctl reboot;;
+    $option2)
+        systemctl poweroff;;
+esac
