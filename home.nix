@@ -17,7 +17,6 @@ in
     home.packages = with pkgs; [
       htop
       emacs
-      neovim
       nextcloud-client
       firefox
       kate
@@ -54,6 +53,8 @@ in
       (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
       kotatogram-desktop
       nixpkgs-fmt
+      xivlauncher
+      zathura
     ] ++
     # Own scripts
     [
@@ -80,7 +81,7 @@ in
 
       ".config/fish/config.fish".source = ./files/config.fish;
 
-      ".config/nvim/init.lua".source = ./files/nvimconfig;
+      # ".config/nvim/init.lua".source = ./files/nvimconfig;
 
       ".doom.d/" = {
         source = ./dotemacs;
@@ -100,9 +101,31 @@ in
 
     # Lazy way of using the plugins that I am used to until I transfer them
     # to this config
-    programs.neovim.plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-    ];
+    programs.neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
+        dracula-nvim
+        FTerm-nvim
+        supertab
+        vim-startify
+        nvim-surround
+        vim-autoformat
+        vimtex
+        nvim-comment
+        nvim-treesitter.withAllGrammars
+        lazygit-nvim
+        vim-gitgutter
+        vim-fugitive
+        vim-css-color
+        vim-devicons
+        nvim-tree-lua
+        lualine-nvim
+        nvim-web-devicons
+      ];
+      extraConfig = (builtins.readFile ./files/nvimscript);
+      extraLuaConfig = (builtins.readFile ./files/nvimlua);
+      coc.enable = true;
+    };
 
     # Enable cursor
     home.pointerCursor = {

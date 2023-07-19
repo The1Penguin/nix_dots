@@ -1,0 +1,21 @@
+syntax enable
+colorscheme dracula
+hi Normal guibg=NONE ctermbg=NONE
+set spelllang=sv,en
+hi SpellBad cterm=underline "ctermfg=203 guifg=#ff5f5f
+hi SpellLocal cterm=underline "ctermfg=203 guifg=#ff5f5f
+hi SpellRare cterm=underline "ctermfg=203 guifg=#ff5f5f
+hi SpellCap cterm=underline "ctermfg=203 guifg=#ff5f5f
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+set noshowmode
+set statusline=
+set fillchars+=vert:\
+set tabstop=4           " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set expandtab       " tabs are spaces
+set autoindent          "always turn on indentation
+set breakindent         "Wrap lines at same indent level
+set shiftwidth=4        "Spaces to use for autoindenting
+set backspace=indent,eol,start " proper backspace behavior
+set linebreak
