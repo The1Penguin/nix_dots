@@ -55,6 +55,7 @@ in
       nixpkgs-fmt
       xivlauncher
       zathura
+      lazygit
     ] ++
     # Own scripts
     [
@@ -81,8 +82,6 @@ in
 
       ".config/fish/config.fish".source = ./files/config.fish;
 
-      # ".config/nvim/init.lua".source = ./files/nvimconfig;
-
       ".doom.d/" = {
         source = ./dotemacs;
         recursive = true;
@@ -99,8 +98,7 @@ in
       userEmail = "nor@acorneroftheweb.com";
     };
 
-    # Lazy way of using the plugins that I am used to until I transfer them
-    # to this config
+    # Neovim is now here
     programs.neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [
