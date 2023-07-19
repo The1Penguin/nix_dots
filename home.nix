@@ -52,6 +52,7 @@ in
         qview
         direnv
         (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
+        kotatogram-desktop
     ] ++
     # Own scripts
     [
