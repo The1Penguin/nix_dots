@@ -163,7 +163,7 @@ riverctl border-color-focused 0xff79c6
 riverctl border-color-unfocused 0x44475a
 riverctl xcursor-theme capitaine-cursors 32
 riverctl keyboard-layout -options ctrl:nocaps sebrackets
-exec swaybg -i ~/Pictures/Wallpaper/sakuraflower.png -m fill &
+exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &
 exec nextcloud --background &
 exec mako &
 exec kanshi &
