@@ -119,7 +119,6 @@
     xwayland
   ];
 
-  programs.fish.enable = true;
 
   # Steamy stuffs
   programs.steam.enable = true;
