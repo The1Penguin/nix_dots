@@ -1,14 +1,13 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
-  imports = [
-    <home-manager/nixos>
-  ];
 
-  home-manager.users.pingu = {
-    home.stateVersion = "23.05";
+  home = {
+    username = "pingu";
+    homeDirectory = "/home/pingu";
+    stateVersion = "23.05";
 
     # Packages for my user
-    home.packages = with pkgs; [
+    packages = with pkgs; [
       htop
       emacs
       nextcloud-client
@@ -50,6 +49,7 @@
       zathura
       lazygit
       xivlauncher
+      speedtest-rs
     ] ++
     # Own scripts
     [
@@ -58,7 +58,7 @@
       (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/mylock))
     ];
 
-    home.file = {
+    file = {
       ".config/river/init".source = ./files/riverconfig;
       ".config/river/init".executable = true;
 
@@ -74,53 +74,21 @@
 
       ".config/mako/config".source = ./files/makoconfig;
 
-      ".config/fish/config.fish".source = ./files/config.fish;
+      # ".config/fish/config.fish".source = ./files/config.fish;
 
-      ".doom.d/" = {
-        source = ./dotemacs;
-        recursive = true;
+      ".doom.d/".source = pkgs.fetchFromGitHub {
+        owner = "The1Penguin";
+        repo = "dotemacs";
+        rev = "1d00b0f11626352cfc27a3cb2c4b242f220aa411";
+        sha256 = "sha256-4fyzZP1DyzW3yVAUn3WQxZwJlrh3LiSt20C1sPB3cwM=";
       };
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
 
     };
 
-    # Git options
-    programs.git = {
-      enable = true;
-      userName = "pingu";
-      userEmail = "nor@acorneroftheweb.com";
-    };
-
-    # Neovim is now here
-    programs.neovim = {
-      enable = true;
-      plugins = with pkgs.vimPlugins; [
-        dracula-nvim
-        FTerm-nvim
-        supertab
-        vim-startify
-        nvim-surround
-        vim-autoformat
-        vimtex
-        nvim-comment
-        nvim-treesitter.withAllGrammars
-        lazygit-nvim
-        vim-gitgutter
-        vim-fugitive
-        vim-css-color
-        vim-devicons
-        nvim-tree-lua
-        lualine-nvim
-        nvim-web-devicons
-      ];
-      extraConfig = (builtins.readFile ./files/nvimscript);
-      extraLuaConfig = (builtins.readFile ./files/nvimlua);
-      coc.enable = true;
-    };
-
     # Enable cursor
-    home.pointerCursor = {
+    pointerCursor = {
       name = "Capitaine";
       package = pkgs.capitaine-cursors;
       size = 32;
@@ -129,35 +97,69 @@
         defaultCursor = "capitaine-cursors";
       };
     };
+  };
 
-    # Enable correct gtk themes and such
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Dracula";
-        package = pkgs.dracula-theme;
-      };
-      cursorTheme = {
-        name = "capitaine-cursors";
-        package = pkgs.capitaine-cursors;
-        size = 32;
-      };
-      iconTheme = {
-        name = "Zafiro-icons";
-        package = pkgs.zafiro-icons;
-      };
-      gtk3.extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme=1
-        '';
-      };
-      gtk4.extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme=1
-        '';
-      };
+  # Git options
+  programs.git = {
+    enable = true;
+    userName = "pingu";
+    userEmail = "nor@acorneroftheweb.com";
+  };
+
+  # Neovim is now here
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      dracula-nvim
+      FTerm-nvim
+      supertab
+      vim-startify
+      nvim-surround
+      vim-autoformat
+      vimtex
+      nvim-comment
+      nvim-treesitter.withAllGrammars
+      lazygit-nvim
+      vim-gitgutter
+      vim-fugitive
+      vim-css-color
+      vim-devicons
+      nvim-tree-lua
+      lualine-nvim
+      nvim-web-devicons
+    ];
+    extraConfig = (builtins.readFile ./files/nvimscript);
+    extraLuaConfig = (builtins.readFile ./files/nvimlua);
+    coc.enable = true;
+  };
+
+
+  # Enable correct gtk themes and such
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Dracula";
+      package = pkgs.dracula-theme;
     };
-
+    cursorTheme = {
+      name = "capitaine-cursors";
+      package = pkgs.capitaine-cursors;
+      size = 32;
+    };
+    iconTheme = {
+      name = "Zafiro-icons";
+      package = pkgs.zafiro-icons;
+    };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 
   # Fancy terminals ^ㅂ^
@@ -188,10 +190,29 @@
     };
   };
 
-  # Set default shell to fish for me
-  programs.fish.enable = true;
-  users.users.pingu.shell = pkgs.fish;
   # services.emacs.enable = true;
+
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ":q"    = "exit";
+      "q"     = "exit";
+      "vim"   =  "nvim";
+      "emacs" = "emacsclient -nw -c -a \"\"";
+      "ls"    = "exa --icons --group-directories-first";
+      "ll"    = "exa -alF --icons --group-directories-first";
+      "b"     = "bluetoothctl";
+    };
+
+    shellInit = ''
+      if command -q sk
+          skim_key_bindings
+      end
+      set fish_greeting
+      export MANPAGER="bat -p"
+      export PAGER="bat"
+    '';
+  };
 
   # Use Vencord and OpenASAR on discord
   nixpkgs.overlays =
@@ -202,11 +223,6 @@
     in
     [ myOverlay ];
 
-  # Steamy stuffs
-  programs.steam.enable = true;
+  programs.home-manager.enable = true;
 
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
 }

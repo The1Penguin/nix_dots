@@ -9,7 +9,6 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./home.nix
     ];
 
   # Bootloader.
@@ -120,6 +119,17 @@
     xwayland
   ];
 
+  programs.fish.enable = true;
+
+  # Steamy stuffs
+  programs.steam.enable = true;
+
+  # Mullvad vpn
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   # Fonts that can be used
   fonts.fonts = with pkgs; [
     noto-fonts
@@ -149,6 +159,7 @@
     isNormalUser = true;
     description = "pingu";
     extraGroups = [ "networkmanager" "wheel" "video" ];
+    shell = pkgs.fish;
   };
 
   # Setting vim as the defualt editor
