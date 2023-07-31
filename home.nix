@@ -211,6 +211,7 @@
       set fish_greeting
       export MANPAGER="bat -p"
       export PAGER="bat"
+      direnv hook fish | source
     '';
   };
 

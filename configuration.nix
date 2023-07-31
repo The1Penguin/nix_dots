@@ -158,8 +158,8 @@
     isNormalUser = true;
     description = "pingu";
     extraGroups = [ "networkmanager" "wheel" "video" ];
-    shell = pkgs.fish;
   };
+  programs.fish.enable = true;
 
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
