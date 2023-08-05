@@ -50,6 +50,7 @@
       lazygit
       xivlauncher
       speedtest-rs
+      any-nix-shell
     ] ++
     # Own scripts
     [
@@ -211,8 +212,12 @@
       set fish_greeting
       export MANPAGER="bat -p"
       export PAGER="bat"
+    '';
+    interactiveShellInit = ''
+      any-nix-shell fish | source
       direnv hook fish | source
     '';
+
   };
 
   # Use Vencord and OpenASAR on discord
