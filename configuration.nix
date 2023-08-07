@@ -45,7 +45,7 @@
         AutoEnable = "true";
       };
     };
-    package = pkgs.bluezFull;
+    package = pkgs.bluez5-experimental;
   };
 
   # Enable sound settings
@@ -58,19 +58,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-  };
-
-  # Additional settings for bluez and wireplumber
-  environment.etc = {
-    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-      bluez_monitor.properties = {
-        ["bluez5.enable-sbc-xq"] = true,
-        ["bluez5.enable-msbc"] = true,
-        ["bluez5.enable-hw-volume"] = true,
-        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-        ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd aptx_ll aptx_ll_duplex faststream faststream_duplex ]"
-      }
-    '';
   };
 
   # Printing stuffs
@@ -130,7 +117,7 @@
   };
 
   # Fonts that can be used
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -164,7 +151,11 @@
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
 
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+    keep-outputs = true;
+    keep-derivations = true;
+  };
 
   # Allow for brightness control
   programs.light.enable = true;
@@ -193,6 +184,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }

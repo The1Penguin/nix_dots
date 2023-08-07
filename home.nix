@@ -1,10 +1,14 @@
 { config, lib, pkgs, ... }:
+let
+  username = "pingu";
+  homeDir = "/home/${username}";
+in
 {
 
   home = {
-    username = "pingu";
-    homeDirectory = "/home/pingu";
-    stateVersion = "23.05";
+    username = username;
+    homeDirectory = homeDir;
+    stateVersion = "23.11";
 
     # Packages for my user
     packages = with pkgs; [
@@ -42,7 +46,6 @@
       jellyfin-media-player
       signal-desktop
       qview
-      direnv
       (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
       kotatogram-desktop
       nixpkgs-fmt
@@ -98,6 +101,20 @@
         defaultCursor = "capitaine-cursors";
       };
     };
+  };
+
+  # Default folders
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    desktop = "${homeDir}";
+    documents = "${homeDir}/doc";
+    download = "${homeDir}/dwn";
+    music = "${homeDir}/msc";
+    pictures = "${homeDir}/pic";
+    publicShare = "${homeDir}/srv";
+    templates = "${homeDir}/doc/templates";
+    videos = "${homeDir}/vid";
   };
 
   # Git options
@@ -196,13 +213,13 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      ":q"    = "exit";
-      "q"     = "exit";
-      "vim"   =  "nvim";
+      ":q" = "exit";
+      "q" = "exit";
+      "vim" = "nvim";
       "emacs" = "emacsclient -nw -c -a \"\"";
-      "ls"    = "exa --icons --group-directories-first";
-      "ll"    = "exa -alF --icons --group-directories-first";
-      "b"     = "bluetoothctl";
+      "ls" = "exa --icons --group-directories-first";
+      "ll" = "exa -alF --icons --group-directories-first";
+      "b" = "bluetoothctl";
     };
 
     shellInit = ''
@@ -213,12 +230,14 @@
       export MANPAGER="bat -p"
       export PAGER="bat"
     '';
+
     interactiveShellInit = ''
       any-nix-shell fish | source
-      direnv hook fish | source
     '';
 
   };
+
+  programs.direnv.enable = true;
 
   # Use Vencord and OpenASAR on discord
   nixpkgs.overlays =
