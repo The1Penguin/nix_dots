@@ -54,6 +54,8 @@ in
       xivlauncher
       speedtest-rs
       any-nix-shell
+      moonlight-qt
+      python3
     ] ++
     # Own scripts
     [
@@ -78,13 +80,11 @@ in
 
       ".config/mako/config".source = ./files/makoconfig;
 
-      # ".config/fish/config.fish".source = ./files/config.fish;
-
       ".doom.d/".source = pkgs.fetchFromGitHub {
         owner = "The1Penguin";
         repo = "dotemacs";
-        rev = "1d00b0f11626352cfc27a3cb2c4b242f220aa411";
-        sha256 = "sha256-4fyzZP1DyzW3yVAUn3WQxZwJlrh3LiSt20C1sPB3cwM=";
+        rev = "565c7074fde3125504be4b4247780307531d57d2";
+        sha256 = "sha256-WGD+whIO6hF5bCRmfnGzztAzi9pqb9tVK679hONzDcY=";
       };
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
