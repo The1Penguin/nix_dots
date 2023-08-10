@@ -30,6 +30,33 @@
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
 
+  services.nebula.networks.home = {
+    enable = true;
+    ca = "/etc/nebula/ca.crt";
+    cert = "/etc/nebula/host.crt";
+    key = "/etc/nebula/host.key";
+    staticHostMap = {
+      "192.168.100.1" = [ "acorneroftheweb.com:4242" ];
+    };
+    lighthouses = [ "192.168.100.1" ];
+    firewall = {
+      outbound = [
+        {
+          host = "any";
+          port = "any";
+          proto = "any";
+        }
+      ];
+      inbound = [
+        {
+          host = "any";
+          port = "any";
+          proto = "any";
+        }
+      ];
+    };
+  };
+
   # Hardware things such as opengl and bluetooth
   hardware.opengl.enable = true;
   hardware.bluetooth = {
