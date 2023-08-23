@@ -56,6 +56,8 @@ in
       any-nix-shell
       moonlight-qt
       python3
+      gamescope
+      lutris
     ] ++
     # Own scripts
     [
@@ -235,6 +237,17 @@ in
       any-nix-shell fish | source
     '';
 
+    plugins = [
+      {
+        name = "sudope";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "plugin-sudope";
+          rev = "83919a692bc1194aa322f3627c859fecace5f496";
+          sha256 = "sha256-pD4rNuqg6TG22L9m8425CO2iqcYm8JaAEXIVa0H/v/U=";
+        };
+      }
+    ];
   };
 
   programs.direnv.enable = true;

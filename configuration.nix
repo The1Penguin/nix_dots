@@ -31,7 +31,11 @@
   networking.networkmanager.enable = true;
 
   # Hardware things such as opengl and bluetooth
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
   hardware.bluetooth = {
     enable = true;
     settings = {
