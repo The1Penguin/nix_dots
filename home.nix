@@ -250,7 +250,10 @@ in
     ];
   };
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # Use Vencord and OpenASAR on discord
   nixpkgs.overlays =
