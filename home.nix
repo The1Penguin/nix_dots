@@ -13,7 +13,7 @@ in
     # Packages for my user
     packages = with pkgs; [
       htop
-      emacs
+      emacs29
       nextcloud-client
       firefox
       kate
@@ -58,6 +58,8 @@ in
       python3
       gamescope
       lutris
+      (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
+      ripgrep
     ] ++
     # Own scripts
     [
@@ -76,17 +78,16 @@ in
       ".config/wofi/style.css".source = ./files/wofi.css;
       ".config/wofi/style.css".executable = true;
 
-
       ".config/alacritty/alacritty.yml".source = ./files/alacritty.yml;
       ".config/alacritty/alacrittycolors.yml".source = ./files/alacrittycolors.yml;
 
       ".config/mako/config".source = ./files/makoconfig;
 
-      ".doom.d/".source = pkgs.fetchFromGitHub {
+      ".config/doom/".source = pkgs.fetchFromGitHub {
         owner = "The1Penguin";
         repo = "dotemacs";
-        rev = "565c7074fde3125504be4b4247780307531d57d2";
-        sha256 = "sha256-WGD+whIO6hF5bCRmfnGzztAzi9pqb9tVK679hONzDcY=";
+        rev = "c08b564fb324c6abd1c4a8e349e27e1361333260";
+        sha256 = "sha256-s6Tii1vF6sON8Dxj/CTlWT0EpSCw4U92xAtrYN5xovA=";
       };
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
