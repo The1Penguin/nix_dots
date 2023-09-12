@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, spicetify-nix, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
+  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 {
+
+  imports = [ spicetify-nix.homeManagerModule ];
 
   home = {
     username = username;
@@ -22,7 +25,6 @@ in
       discord
       ranger
       wofi
-      spotify
       eza
       bitwarden
       playerctl
@@ -252,6 +254,19 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.Comfy;
+    colorScheme = "mono";
+
+    enabledExtensions = with spicePkgs.extensions; [
+      keyboardShortcut
+      trashbin
+      fullAlbumDate
+      history
+    ];
   };
 
   # Use Vencord and OpenASAR on discord
