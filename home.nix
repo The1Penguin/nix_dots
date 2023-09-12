@@ -23,7 +23,7 @@ in
       ranger
       wofi
       spotify
-      exa
+      eza
       bitwarden
       playerctl
       brightnessctl
@@ -51,15 +51,13 @@ in
       nixpkgs-fmt
       zathura
       lazygit
-      xivlauncher
       speedtest-rs
       any-nix-shell
       moonlight-qt
       python3
-      gamescope
-      lutris
       (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
       ripgrep
+      texlive.combined.scheme-full
     ] ++
     # Own scripts
     [
@@ -86,8 +84,8 @@ in
       ".config/doom/".source = pkgs.fetchFromGitHub {
         owner = "The1Penguin";
         repo = "dotemacs";
-        rev = "c08b564fb324c6abd1c4a8e349e27e1361333260";
-        sha256 = "sha256-s6Tii1vF6sON8Dxj/CTlWT0EpSCw4U92xAtrYN5xovA=";
+        rev = "a8c7e1e4a50fbc4934c87a5318298905c88ebe6a";
+        sha256 = "sha256-fCK9guaOf9I4AcZdoXvhVrge5PFNPyLdIfBwozSWNF0=";
       };
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
@@ -220,8 +218,8 @@ in
       "q" = "exit";
       "vim" = "nvim";
       "emacs" = "emacsclient -nw -c -a \"\"";
-      "ls" = "exa --icons --group-directories-first";
-      "ll" = "exa -alF --icons --group-directories-first";
+      "ls" = "eza --icons --group-directories-first";
+      "ll" = "eza -alF --icons --group-directories-first";
       "b" = "bluetoothctl";
     };
 
