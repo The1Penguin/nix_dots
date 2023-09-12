@@ -35,7 +35,7 @@
       homeConfigurations = {
         pingu = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = {inherit spicetify-nix;};
+          extraSpecialArgs = { inherit spicetify-nix; };
           modules = [
             ./home.nix
           ];

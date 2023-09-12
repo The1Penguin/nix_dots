@@ -261,11 +261,18 @@ in
     theme = spicePkgs.themes.Comfy;
     colorScheme = "mono";
 
+    enabledCustomApps = with spicePkgs.apps; [
+      lyrics-plus
+    ];
+
     enabledExtensions = with spicePkgs.extensions; [
       keyboardShortcut
       trashbin
       fullAlbumDate
       history
+      powerBar
+      playlistIcons
+      fullAppDisplayMod
     ];
   };
 
