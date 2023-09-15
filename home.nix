@@ -60,6 +60,12 @@ in
       (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
       ripgrep
       texlive.combined.scheme-full
+      (lutris.override {
+        extraPkgs = lutrisPkgs: [
+          wineWowPackages.waylandFull
+          winetricks
+        ];
+      })
     ] ++
     # Own scripts
     [
