@@ -168,10 +168,19 @@
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
 
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    keep-outputs = true;
-    keep-derivations = true;
+  nix = {
+    settings = {
+      experimental-features = "nix-command flakes";
+      keep-outputs = true;
+      keep-derivations = true;
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      persistent = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
   };
 
   # Allow for brightness control

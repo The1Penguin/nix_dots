@@ -16,7 +16,7 @@ in
     # Packages for my user
     packages = with pkgs; [
       htop
-      emacs29
+      emacs29-gtk3
       nextcloud-client
       firefox
       kate
@@ -48,7 +48,7 @@ in
       jellyfin-media-player
       signal-desktop
       qview
-      (remmina.override { freerdp = (freerdp.override { openssl = pkgs.openssl_1_1; }); })
+      remmina
       kotatogram-desktop
       nixpkgs-fmt
       zathura
@@ -64,6 +64,7 @@ in
         extraPkgs = lutrisPkgs: [
           wineWowPackages.waylandFull
           winetricks
+          libnghttp2
         ];
       })
     ] ++
@@ -92,8 +93,8 @@ in
       ".config/doom/".source = pkgs.fetchFromGitHub {
         owner = "The1Penguin";
         repo = "dotemacs";
-        rev = "a8c7e1e4a50fbc4934c87a5318298905c88ebe6a";
-        sha256 = "sha256-fCK9guaOf9I4AcZdoXvhVrge5PFNPyLdIfBwozSWNF0=";
+        rev = "573fd9a5979f0fafd72e8e526ae9a16038140fd8";
+        sha256 = "sha256-/Xg32wPuVm6EXvYe68X+V/YVkwQ6I7h+dMttpkozgBQ=";
       };
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
