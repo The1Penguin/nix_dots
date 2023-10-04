@@ -93,8 +93,8 @@ in
       ".config/doom/".source = pkgs.fetchFromGitHub {
         owner = "The1Penguin";
         repo = "dotemacs";
-        rev = "573fd9a5979f0fafd72e8e526ae9a16038140fd8";
-        sha256 = "sha256-/Xg32wPuVm6EXvYe68X+V/YVkwQ6I7h+dMttpkozgBQ=";
+        rev = "cddb7909500d3e5172ac4064aeea05c2cdd07ca6";
+        sha256 = "sha256-X3wogx62ekOtIgs/Ht6a2iN9FZWEtmb7UFEvsO3V7ns=";
       };
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
