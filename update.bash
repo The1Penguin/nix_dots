@@ -2,5 +2,5 @@
 
 # sudo nixos-rebuild switch -I nixos-config=configuration.nix
 
-sudo nixos-rebuild switch --flake ./#scorpia
-home-manager switch --flake ./#pingu
+sudo nixos-rebuild switch --flake ./\#scorpia -L
+home-manager switch --flake ./\#pingu -L

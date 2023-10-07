@@ -67,6 +67,7 @@ in
           libnghttp2
         ];
       })
+      slack
     ] ++
     # Own scripts
     [

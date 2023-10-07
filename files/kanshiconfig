@@ -1,3 +1,8 @@
+profile Calle {
+        output "Samsung Electric Company LC34G55T H4ZT905266" position 160,0 mode 1600x1200@165Hz
+        output eDP-1 position 0,1200
+}
+
 profile TV_Kumla {
         output eDP-1 position 0,0
         output "Samsung Electric Company SAMSUNG 0x00000700" position 1920,0 mode 3840x2160@60Hz scale 2
