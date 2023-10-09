@@ -42,7 +42,6 @@ in
       gnumake
       libtool
       sqlite
-      neofetch
       sway-contrib.grimshot
       mpv
       jellyfin-media-player
@@ -128,40 +127,143 @@ in
     videos = "${homeDir}/vid";
   };
 
-  # Git options
-  programs.git = {
-    enable = true;
-    userName = "pingu";
-    userEmail = "nor@acorneroftheweb.com";
-  };
+  programs = {
+    # Git options
+    git = {
+      enable = true;
+      userName = "pingu";
+      userEmail = "nor@acorneroftheweb.com";
+    };
 
-  # Neovim is now here
-  programs.neovim = {
-    enable = true;
-    plugins = with pkgs.vimPlugins; [
-      dracula-nvim
-      FTerm-nvim
-      supertab
-      vim-startify
-      nvim-surround
-      vim-autoformat
-      vimtex
-      nvim-comment
-      nvim-treesitter.withAllGrammars
-      lazygit-nvim
-      vim-gitgutter
-      vim-fugitive
-      vim-css-color
-      vim-devicons
-      nvim-tree-lua
-      lualine-nvim
-      nvim-web-devicons
-    ];
-    extraConfig = (builtins.readFile ./files/nvimscript);
-    extraLuaConfig = (builtins.readFile ./files/nvimlua);
-    coc.enable = true;
-  };
+    # Neovim is now here
+    neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
+        dracula-nvim
+        FTerm-nvim
+        supertab
+        vim-startify
+        nvim-surround
+        vim-autoformat
+        vimtex
+        nvim-comment
+        nvim-treesitter.withAllGrammars
+        lazygit-nvim
+        vim-gitgutter
+        vim-fugitive
+        vim-css-color
+        vim-devicons
+        nvim-tree-lua
+        lualine-nvim
+        nvim-web-devicons
+      ];
+      extraConfig = (builtins.readFile ./files/nvimscript);
+      extraLuaConfig = (builtins.readFile ./files/nvimlua);
+      coc.enable = true;
+    };
 
+    # Fancy terminals ^ㅂ^
+    starship = {
+      enable = true;
+      settings = {
+        format = "$nix_shell$directory";
+        right_format = "$hostname";
+        add_newline = false;
+
+        hostname = {
+          ssh_only = true;
+          format = "[$hostname](bold yellow)";
+        };
+
+        directory = {
+          truncation_length = 0;
+          truncation_symbol = "…/";
+          truncate_to_repo = false;
+          read_only = " 🔒";
+          style = "cyan";
+        };
+        nix_shell = {
+          symbol = " ";
+          format = "[$symbol$name]($style) ";
+          style = "bright-purple bold";
+        };
+      };
+    };
+
+    fish = {
+      enable = true;
+      shellAliases = {
+        ":q" = "exit";
+        "q" = "exit";
+        "vim" = "nvim";
+        "emacs" = "emacsclient -nw -c -a \"\"";
+        "ls" = "eza --icons --group-directories-first";
+        "ll" = "eza -alF --icons --group-directories-first";
+        "b" = "bluetoothctl";
+      };
+
+      shellInit = ''
+        if command -q sk
+            skim_key_bindings
+        end
+        set fish_greeting
+        export MANPAGER="bat -p"
+        export PAGER="bat"
+      '';
+
+      interactiveShellInit = ''
+        any-nix-shell fish | source
+      '';
+
+      plugins = [
+        {
+          name = "sudope";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-sudope";
+            rev = "83919a692bc1194aa322f3627c859fecace5f496";
+            sha256 = "sha256-pD4rNuqg6TG22L9m8425CO2iqcYm8JaAEXIVa0H/v/U=";
+          };
+        }
+      ];
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    spicetify = {
+      enable = true;
+      theme = spicePkgs.themes.Comfy;
+      colorScheme = "mono";
+
+      enabledCustomApps = with spicePkgs.apps; [
+        lyrics-plus
+      ];
+
+      enabledExtensions = with spicePkgs.extensions; [
+        keyboardShortcut
+        trashbin
+        fullAlbumDate
+        history
+        powerBar
+        playlistIcons
+        fullAppDisplayMod
+      ];
+    };
+
+    hyfetch = {
+      enable = true;
+      settings = {
+        preset = "transgender";
+        mode = "rgb";
+        color_align = {
+          mode = "horizontal";
+        };
+      };
+    };
+  };
 
   # Enable correct gtk themes and such
   gtk = {
@@ -189,99 +291,6 @@ in
         gtk-application-prefer-dark-theme=1
       '';
     };
-  };
-
-  # Fancy terminals ^ㅂ^
-  programs.starship = {
-    enable = true;
-    settings = {
-      format = "$nix_shell$directory";
-      right_format = "$hostname";
-      add_newline = false;
-
-      hostname = {
-        ssh_only = true;
-        format = "[$hostname](bold yellow)";
-      };
-
-      directory = {
-        truncation_length = 0;
-        truncation_symbol = "…/";
-        truncate_to_repo = false;
-        read_only = " 🔒";
-        style = "cyan";
-      };
-      nix_shell = {
-        symbol = " ";
-        format = "[$symbol$name]($style) ";
-        style = "bright-purple bold";
-      };
-    };
-  };
-
-  # services.emacs.enable = true;
-
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      ":q" = "exit";
-      "q" = "exit";
-      "vim" = "nvim";
-      "emacs" = "emacsclient -nw -c -a \"\"";
-      "ls" = "eza --icons --group-directories-first";
-      "ll" = "eza -alF --icons --group-directories-first";
-      "b" = "bluetoothctl";
-    };
-
-    shellInit = ''
-      if command -q sk
-          skim_key_bindings
-      end
-      set fish_greeting
-      export MANPAGER="bat -p"
-      export PAGER="bat"
-    '';
-
-    interactiveShellInit = ''
-      any-nix-shell fish | source
-    '';
-
-    plugins = [
-      {
-        name = "sudope";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "plugin-sudope";
-          rev = "83919a692bc1194aa322f3627c859fecace5f496";
-          sha256 = "sha256-pD4rNuqg6TG22L9m8425CO2iqcYm8JaAEXIVa0H/v/U=";
-        };
-      }
-    ];
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.spicetify = {
-    enable = true;
-    theme = spicePkgs.themes.Comfy;
-    colorScheme = "mono";
-
-    enabledCustomApps = with spicePkgs.apps; [
-      lyrics-plus
-    ];
-
-    enabledExtensions = with spicePkgs.extensions; [
-      keyboardShortcut
-      trashbin
-      fullAlbumDate
-      history
-      powerBar
-      playlistIcons
-      fullAppDisplayMod
-    ];
   };
 
   # Use Vencord and OpenASAR on discord
