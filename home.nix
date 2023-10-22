@@ -3,6 +3,12 @@ let
   username = "pingu";
   homeDir = "/home/${username}";
   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  doom-dots = pkgs.fetchFromGitHub {
+    owner = "The1Penguin";
+    repo = "dotemacs";
+    rev = "75bb204798b364b5f398c4bd43330307ac584267";
+    sha256 = "sha256-MabBKxpAndgADwWNAIxKrSNZl9qCH97Ef2M9x4vZFNw=";
+  };
 in
 {
 
@@ -67,6 +73,7 @@ in
         ];
       })
       slack
+      rnote
     ] ++
     # Own scripts
     [
@@ -90,12 +97,7 @@ in
 
       ".config/mako/config".source = ./files/makoconfig;
 
-      ".config/doom/".source = pkgs.fetchFromGitHub {
-        owner = "The1Penguin";
-        repo = "dotemacs";
-        rev = "cddb7909500d3e5172ac4064aeea05c2cdd07ca6";
-        sha256 = "sha256-X3wogx62ekOtIgs/Ht6a2iN9FZWEtmb7UFEvsO3V7ns=";
-      };
+      ".config/doom/".source = doom-dots;
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
 
@@ -139,7 +141,7 @@ in
     neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [
-        dracula-nvim
+        catppuccin-nvim
         FTerm-nvim
         supertab
         vim-startify
@@ -235,8 +237,8 @@ in
 
     spicetify = {
       enable = true;
-      theme = spicePkgs.themes.Comfy;
-      colorScheme = "mono";
+      theme = spicePkgs.themes.catppuccin-latte;
+      colorScheme = "pink";
 
       enabledCustomApps = with spicePkgs.apps; [
         lyrics-plus
@@ -269,8 +271,13 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
+      name = "Catppuccin-Latte-Compact-Pink-Light";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "pink" ];
+        size = "compact";
+        tweaks = [ "rimless" ];
+        variant = "latte";
+      };
     };
     cursorTheme = {
       name = "capitaine-cursors";
@@ -283,14 +290,23 @@ in
     };
     gtk3.extraConfig = {
       Settings = ''
-        gtk-application-prefer-dark-theme=1
+        gtk-application-prefer-dark-theme=0
       '';
     };
     gtk4.extraConfig = {
       Settings = ''
-        gtk-application-prefer-dark-theme=1
+        gtk-application-prefer-dark-theme=0
       '';
     };
+  };
+
+  services.gammastep = {
+    enable = true;
+    # dawnTime =
+    # duskTime =
+    enableVerboseLogging = true;
+    longitude = 57.708870;
+    latitude = 11.974560;
   };
 
   # Use Vencord and OpenASAR on discord

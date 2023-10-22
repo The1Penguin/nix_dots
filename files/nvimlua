@@ -59,7 +59,7 @@ g.SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 require("lualine").setup{
     options = {
-        theme = "dracula",
+        theme = "auto",
         component_separators = {"", ""},
         section_separators = {"", ""}
     },

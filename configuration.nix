@@ -106,6 +106,8 @@
     symbolsFile = ./files/selayout;
   };
 
+  services.xserver.wacom.enable = true;
+
   # Install systemwide packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
@@ -123,6 +125,7 @@
     swaybg
     xdg-utils
     xwayland
+    cachix
   ];
 
 

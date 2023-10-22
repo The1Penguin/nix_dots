@@ -1,10 +1,10 @@
 layer=overlay
 markup=1
 anchor=top-right
-background-color=#282a36
-text-color=#f8f8f2
-border-color=#ff79c6
-progress-color=over #302D41
+background-color=#eff1f5
+text-color=#4c4f69
+border-color=#ea76cb
+progress-color=over #c6cad1
 width=450
 height=200
 max-icon-size=96
@@ -25,4 +25,4 @@ invisible=1
 
 
 [urgency=high]
-border-color=#F8BD96
+border-color=#DF8E1D

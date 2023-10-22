@@ -1,22 +1,22 @@
 window {
 margin: 0px;
-border: 2px solid #282a36;
+border: 2px solid #eff1f5;
 border-radius: 15px;
-background-color: #282a36;
+background-color: #eff1f5;
 font-family: Fira Code;
 font-size: 14px;
 }
 
 #input {
 margin: 15px;
-border: 1px solid #282a36;
+border: 1px solid #eff1f5;
 border-radius: 15px;
-color: #f8f8f8;
-background-color: #2a2e38;
+color: #4c4f69;
+background-color: #eff1f5;
 }
 
 #input image {
-	color: #f8f8f8;
+	color: #4c4f69;
 }
 
 #inner-box {
@@ -24,13 +24,13 @@ margin: 5px;
 border: none;
 padding-left: 10px;
 padding-right: 10px;
-background-color: #282a36;
+background-color: #eff1f5;
 }
 
 #outer-box {
 margin: 5px;
 border: none;
-background-color: #282a36;
+background-color: #eff1f5;
 }
 
 #scroll {
@@ -41,7 +41,7 @@ border: none;
 #text {
 margin: 5px;
 border: none;
-color: #f8f8f8;
+color: #4c4f69;
 }
 
 #entry {
@@ -50,13 +50,13 @@ color: #f8f8f8;
 }
 
 #entry:selected {
-	background-color: #ff79c6;
+	background-color: #ea76cb;
 	font-weight: normal;
 	border-radius: 15px;
 }
 
 #text:selected {
-	background-color: #ff79c6;
-	color: #282a36;
+	background-color: #ea76cb;
+	color: #4c4f69;
 	font-weight: normal;
 }
