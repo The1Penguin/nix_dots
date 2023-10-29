@@ -6,8 +6,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "75bb204798b364b5f398c4bd43330307ac584267";
-    sha256 = "sha256-MabBKxpAndgADwWNAIxKrSNZl9qCH97Ef2M9x4vZFNw=";
+    rev = "2fb29ceefe149744ce27ecd98684c6fb2cad2910";
+    sha256 = "sha256-UhxWRcFE5Wq8egpe3k55IcQSt7VPckOT2dapcezWRZo=";
   };
 in
 {
@@ -106,6 +106,13 @@ in
         rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
         sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
       } + "/Catppuccin-latte.tmTheme";
+
+      ".config/fish/themes/Catppuccin Latte.theme".source = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "fish";
+            rev = "91e6d6721362be05a5c62e235ed8517d90c567c9";
+            sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
+          } + "/themes/Catppuccin Latte.theme";
 
       ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
 
@@ -246,8 +253,8 @@ in
 
     spicetify = {
       enable = true;
-      theme = spicePkgs.themes.catppuccin-latte;
-      colorScheme = "pink";
+      theme = spicePkgs.themes.catppuccin;
+      colorScheme = "latte";
 
       enabledCustomApps = with spicePkgs.apps; [
         lyrics-plus

@@ -133,10 +133,10 @@
   programs.steam.enable = true;
 
   # Mullvad vpn
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
+  # services.mullvad-vpn = {
+  #   enable = true;
+  #   package = pkgs.mullvad-vpn;
+  # };
 
   # Fonts that can be used
   fonts.packages = with pkgs; [
