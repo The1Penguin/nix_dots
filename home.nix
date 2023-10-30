@@ -28,7 +28,10 @@ in
       kate
       pavucontrol
       alacritty
-      discord
+      (pkgs.discord.override {
+        withOpenASAR = true;
+        withVencord = false;
+      })
       ranger
       wofi
       eza
@@ -150,6 +153,13 @@ in
       enable = true;
       userName = "pingu";
       userEmail = "nor@acorneroftheweb.com";
+      difftastic = {
+        enable = true;
+        background = "light";
+      };
+      extraConfig = {
+        pull.rebase = true;
+      };
     };
 
     # Neovim is now here
@@ -324,15 +334,6 @@ in
     longitude = 57.708870;
     latitude = 11.974560;
   };
-
-  # Use Vencord and OpenASAR on discord
-  nixpkgs.overlays =
-    let
-      myOverlay = self: super: {
-        discord = super.discord.override { withOpenASAR = true; withVencord = true; };
-      };
-    in
-    [ myOverlay ];
 
   programs.home-manager.enable = true;
 
