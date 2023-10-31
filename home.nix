@@ -30,7 +30,7 @@ in
       alacritty
       (pkgs.discord.override {
         withOpenASAR = true;
-        withVencord = false;
+        withVencord = true;
       })
       ranger
       wofi
