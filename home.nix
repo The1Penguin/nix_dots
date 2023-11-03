@@ -6,8 +6,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "2fb29ceefe149744ce27ecd98684c6fb2cad2910";
-    sha256 = "sha256-UhxWRcFE5Wq8egpe3k55IcQSt7VPckOT2dapcezWRZo=";
+    rev = "18befcf8579ca205c7226471dc385dfc766e4fee";
+    sha256 = "sha256-9uS5WW7/j1l+i/4DPdmrxhuZQ9C1VGoSPDLIJidWa2o=";
   };
 in
 {
