@@ -117,7 +117,6 @@
     vim
     git
     wayland
-    river
     rivercarro
     mako
     kanshi
@@ -126,8 +125,10 @@
     xdg-utils
     xwayland
     cachix
+    where-is-my-sddm-theme
   ];
 
+  programs.river.enable = true;
 
   # Steamy stuffs
   programs.steam.enable = true;
@@ -149,16 +150,11 @@
   ];
 
   # Login session thingy
-  services.greetd = {
+  services.xserver = {
     enable = true;
-    settings = {
-      default_session.command = ''
-        ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd river
-      '';
+    displayManager.sddm = {
+      enable = true;
+      theme = "where_is_my_sddm_theme";
     };
   };
 
