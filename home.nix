@@ -78,6 +78,7 @@ in
       slack
       rnote
       catppuccin
+      unzip
     ] ++
     # Own scripts
     [
