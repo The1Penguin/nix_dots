@@ -24,6 +24,7 @@
     {
       nixosConfigurations = {
         scorpia = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           modules = [
             ./configuration.nix
           ];

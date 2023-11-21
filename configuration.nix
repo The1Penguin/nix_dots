@@ -109,10 +109,6 @@
   services.xserver.wacom.enable = true;
 
   # Install systemwide packages
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1u"
-  ];
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -129,9 +125,6 @@
   ];
 
   programs.river.enable = true;
-
-  # Steamy stuffs
-  programs.steam.enable = true;
 
   # Mullvad vpn
   services.mullvad-vpn = {

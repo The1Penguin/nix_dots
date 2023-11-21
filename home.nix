@@ -56,7 +56,7 @@ in
       jellyfin-media-player
       signal-desktop
       qview
-      remmina
+      krdc
       kotatogram-desktop
       nixpkgs-fmt
       zathura
@@ -79,6 +79,8 @@ in
       rnote
       catppuccin
       unzip
+      steam
+      steam-run
     ] ++
     # Own scripts
     [
