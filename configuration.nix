@@ -158,6 +158,7 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
   programs.fish.enable = true;
+  environment.pathsToLink = ["/share/fish"];
 
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
@@ -203,6 +204,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    config.common.default = "*";
   };
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
