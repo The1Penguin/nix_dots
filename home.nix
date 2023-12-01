@@ -17,7 +17,7 @@ in
   home = {
     username = username;
     homeDirectory = homeDir;
-    stateVersion = "23.11";
+    stateVersion = "23.05";
 
     # Packages for my user
     packages = with pkgs; [
