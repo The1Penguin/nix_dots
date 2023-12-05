@@ -155,8 +155,9 @@
   users.users.pingu = {
     isNormalUser = true;
     description = "pingu";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" ];
   };
+  programs.adb.enable = true;
   programs.fish.enable = true;
   environment.pathsToLink = ["/share/fish"];
 

@@ -81,6 +81,7 @@ in
       unzip
       steam
       steam-run
+      networkmanagerapplet
     ] ++
     # Own scripts
     [
