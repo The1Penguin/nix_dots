@@ -9,7 +9,7 @@ profile TV_Kumla {
 }
 
 profile Monitor_Kumla {
-        output "Unknown Q32V4WG5 QHPM4HA001642" position 0,0 mode 2560x1440@75Hz
+        output "AOC Q32V4WG5 QHPM4HA001642" position 0,0 mode 2560x1440@75Hz
         output eDP-1 position 320,1440
 }
 
