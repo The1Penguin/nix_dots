@@ -108,6 +108,8 @@
 
   services.xserver.wacom.enable = true;
 
+  services.joycond.enable = true;
+
   # Install systemwide packages
   environment.systemPackages = with pkgs; [
     vim

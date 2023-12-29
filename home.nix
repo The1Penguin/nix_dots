@@ -6,8 +6,9 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "18befcf8579ca205c7226471dc385dfc766e4fee";
-    sha256 = "sha256-9uS5WW7/j1l+i/4DPdmrxhuZQ9C1VGoSPDLIJidWa2o=";
+    rev = "4ee6754e7fdbe1ca74259497124100af51fb34b0";
+    hash = "sha256-hznMJzsnFmggEA+aqdUU4xH7YCrz5i5bZd/B+s3W5U0=";
+    fetchSubmodules = true;
   };
 in
 {
@@ -82,6 +83,8 @@ in
       steam
       steam-run
       networkmanagerapplet
+      fallout-ce
+      nurl
     ] ++
     # Own scripts
     [
@@ -105,7 +108,13 @@ in
 
       ".config/mako/config".source = ./files/makoconfig;
 
-      ".config/doom/".source = doom-dots;
+      ".config/doom/".source = pkgs.symlinkJoin {
+        name = "doom-config";
+        paths = [
+          doom-dots
+
+        ];
+      };
 
       ".config/bat/themes/Catppuccin-latte.tmTheme".source = pkgs.fetchFromGitHub {
         owner = "catppuccin";
