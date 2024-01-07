@@ -123,7 +123,6 @@
     xdg-utils
     xwayland
     cachix
-    where-is-my-sddm-theme
   ];
 
   programs.river.enable = true;
@@ -145,11 +144,16 @@
   ];
 
   # Login session thingy
-  services.xserver = {
+  services.greetd = {
     enable = true;
-    displayManager.sddm = {
-      enable = true;
-      theme = "where_is_my_sddm_theme";
+    settings = {
+      default_session.command = ''
+        ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --time \
+          --asterisks \
+          --user-menu \
+          --cmd river
+      '';
     };
   };
 
