@@ -103,7 +103,7 @@
   services.xserver.extraLayouts.sebrackets = {
     description = "SE with better brackets added";
     languages = [ "swe" ];
-    symbolsFile = ./files/selayout;
+    symbolsFile = ../files/selayout;
   };
 
   services.xserver.wacom.enable = true;
