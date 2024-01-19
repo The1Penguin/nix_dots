@@ -366,10 +366,11 @@ in
               foreground = "#EFF1F5";
               background = "#40A02B";
             };
-            footer_bar = {
-              foreground = "#EFF1F5";
-              background = "#6C6F85";
-            };
+          };
+
+          footer_bar = {
+            foreground = "#EFF1F5";
+            background = "#6C6F85";
           };
 
           hints = {
