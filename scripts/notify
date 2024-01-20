@@ -3,7 +3,7 @@ TIME=$(date "+%H:%M")
 battery_stat="$(acpi --battery | head -n 1)"
 battery_greped_status="$(echo $battery_stat| cut -d',' -f1 | cut -d':' -f2 | xargs | awk '{print tolower($0)}')"
 battery_percentage_v="$(echo $battery_stat| grep -Po '(\d+%)' | grep -Po '\d+')"
-network="$(nmcli -t -f name connection show --active | sed 's/lo/not connected/' | head -n 1)"
+network="$(nmcli -t -f name connection show --active | sed 's/^lo$/not connected/' | head -n 1)"
 
 
 notify-send 'Status' "$(echo -e "Time: $TIME \n\
