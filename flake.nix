@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, home-manager, spicetify-nix, ... }:
+  outputs = { nixpkgs, home-manager, spicetify-nix, nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -18,9 +19,10 @@
         config = {
           allowUnfree = true;
         };
+        overlays = [ nur.overlay ];
       };
       lib = nixpkgs;
-    in
+      in
     {
       nixosConfigurations = {
         scorpia = nixpkgs.lib.nixosSystem {
@@ -33,8 +35,11 @@
       homeConfigurations = {
         pingu = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit spicetify-nix; };
+          extraSpecialArgs = {
+            inherit spicetify-nix;
+          };
           modules = [
+            nur.hmModules.nur
             ./home.nix
           ];
         };

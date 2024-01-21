@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, ... }:
+{ config, lib, pkgs, spicetify-nix, nur, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -25,7 +25,7 @@ in
       htop
       emacs29-gtk3
       nextcloud-client
-      firefox
+      # firefox
       kate
       pavucontrol
       (pkgs.discord.override {
@@ -126,7 +126,8 @@ in
             sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
           } + "/themes/Catppuccin Latte.theme";
 
-      ".mozilla/firefox/debyy83g.default/chrome/userChrome.css".source = ./files/firefox.css;
+      # ".mozilla/firefox/profiles.ini".source = ./files/firefox.profile;
+      # ".mozilla/firefox/pingu/chrome/userChrome.css".source = ./files/firefox.css;
 
     };
 
@@ -427,6 +428,39 @@ in
             { index = 17; color = "#DC8A78"; }
           ];
         };
+      };
+    };
+
+    firefox = {
+      enable = true;
+      profiles.pingu = {
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          betterttv
+          bitwarden
+          bypass-paywalls-clean
+          consent-o-matic
+          # clickbait-remover-for-youtube
+          darkreader
+          duckduckgo-privacy-essentials
+          enhancer-for-youtube
+          firefox-color
+          foxyproxy-standard
+          # jiffy-reader
+          new-tab-override
+          # new-xkit
+          old-reddit-redirect
+          privacy-badger
+          reddit-enhancement-suite
+          refined-github
+          sidebery
+          sponsorblock
+          stylus
+          tampermonkey
+          ublock-origin
+          vimium
+        ];
+        isDefault = true;
+        userChrome = (builtins.readFile ./files/firefox.css);
       };
     };
   };
