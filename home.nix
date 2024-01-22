@@ -461,6 +461,10 @@ in
         ];
         isDefault = true;
         userChrome = (builtins.readFile ./files/firefox.css);
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.toolbars.bookmarks.visibility" = "never";
+        };
       };
     };
   };
