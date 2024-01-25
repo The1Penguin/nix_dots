@@ -57,6 +57,7 @@ in
       signal-desktop
       qview
       krdc
+      remmina
       kotatogram-desktop
       nixpkgs-fmt
       zathura

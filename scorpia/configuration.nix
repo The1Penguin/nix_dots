@@ -221,6 +221,7 @@
     # the 'login' configuration file (see /etc/pam.d/login)
     auth include login
   '';
+  programs.gnupg.agent.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
