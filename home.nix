@@ -6,8 +6,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "18befcf8579ca205c7226471dc385dfc766e4fee";
-    hash = "sha256-9uS5WW7/j1l+i/4DPdmrxhuZQ9C1VGoSPDLIJidWa2o=";
+    rev = "b420faf2915b6cf93a57ddfe9aacb093da4a052f";
+    hash = "sha256-1JKTPdiTyMRYxVregGGAbsP8cC763ntea8EP6Mz4pRc=";
     fetchSubmodules = true;
   };
 in
@@ -85,6 +85,7 @@ in
       networkmanagerapplet
       fallout-ce
       nurl
+      openmw
     ] ++
     # Own scripts
     [
@@ -267,6 +268,17 @@ in
       ];
     };
 
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      options = [ "--cmd cd" ];
+    };
+
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -437,7 +449,6 @@ in
       profiles.pingu = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           betterttv
-          bitwarden
           bypass-paywalls-clean
           consent-o-matic
           # clickbait-remover-for-youtube

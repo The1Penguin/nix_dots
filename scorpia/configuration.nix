@@ -11,8 +11,6 @@
       ./hardware-configuration.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -100,7 +98,7 @@
   console.keyMap = "sv-latin1";
 
   # Add custom keyboard layout
-  services.xserver.extraLayouts.sebrackets = {
+  services.xserver.xkb.extraLayouts.sebrackets = {
     description = "SE with better brackets added";
     languages = [ "swe" ];
     symbolsFile = ../files/selayout;
@@ -176,6 +174,7 @@
       keep-outputs = true;
       keep-derivations = true;
       auto-optimise-store = true;
+      trusted-users = [ "root" "pingu" ];
     };
     gc = {
       automatic = true;
