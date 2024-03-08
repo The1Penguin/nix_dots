@@ -40,7 +40,18 @@
       };
 
       homeConfigurations = {
-        pingu = home-manager.lib.homeManagerConfiguration {
+        "scorpia" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit spicetify-nix;
+            laptop = true;
+          };
+          modules = [
+            nur.hmModules.nur
+            ./home.nix
+          ];
+        };
+        "montana" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;

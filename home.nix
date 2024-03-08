@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, nur, ... }:
+{ config, lib, pkgs, spicetify-nix, nur, laptop, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -88,11 +88,11 @@ in
       openmw
     ] ++
     # Own scripts
-    [
+    ( lib.optionals laptop [
       (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/notify))
       (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ./scripts/wofi_powermenu_w))
       (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/mylock))
-    ];
+    ]);
 
     file = {
       ".config/river/init".source = ./files/riverconfig;
