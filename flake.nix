@@ -31,7 +31,14 @@
             ./scorpia/configuration.nix
           ];
         };
+        montana = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          modules = [
+            ./montana/configuration.nix
+          ];
+        };
       };
+
       homeConfigurations = {
         pingu = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
