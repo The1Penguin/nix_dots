@@ -88,6 +88,7 @@ in
       openmw
       rofi
       xivlauncher
+      betterlockscreen
     ] ++
     # Own scripts
     ( lib.optionals desktop [

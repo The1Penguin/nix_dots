@@ -106,6 +106,12 @@
     };
   };
 
+  services.openssh = {
+    enable = true;
+    ports = [ 69 ];
+    passwordAuthentication = false;
+  };
+
   services.xserver.wacom.enable = true;
 
   services.joycond.enable = true;
@@ -141,6 +147,7 @@
     isNormalUser = true;
     description = "pingu";
     extraGroups = [ "networkmanager" "wheel" "video" "adbusers" ];
+    shell = pkgs.fish;
   };
   programs.adb.enable = true;
   programs.fish.enable = true;
