@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+declare -A DIC
+DIC["alsa_output.pci-0000_1c_00.1.hdmi-stereo-extra1"]="speaker"
+DIC["alsa_output.pci-0000_1c_00.1.hdmi-stereo"]="speaker"
+DIC["alsa_output.pci-0000_1e_00.3.analog-stereo"]="headphones"
+DIC["bluez_output.88_C9_E8_90_8B_58.1"]="bt headphones"
+DIC["bluez_output.98_52_3D_C4_E0_C8.1"]="bt speaker"
+TIME=$(date "+%H:%M")
+DEFAULTSINK=$(pactl info @DEFAULT_SINK@ | grep "Default Sink:" | awk '{ print substr ($0, 15 ) }')
+
+
+notify-send 'Status' "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}")"

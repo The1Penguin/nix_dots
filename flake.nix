@@ -31,6 +31,12 @@
             ./scorpia/configuration.nix
           ];
         };
+        entrapta = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          modules = [
+            ./entrapta/configuration.nix
+          ];
+        };
         montana = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [
@@ -44,7 +50,20 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
+            desktop = false;
             laptop = true;
+          };
+          modules = [
+            nur.hmModules.nur
+            ./home.nix
+          ];
+        };
+        "entrapta" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit spicetify-nix;
+            desktop = true;
+            laptop = false;
           };
           modules = [
             nur.hmModules.nur
@@ -55,6 +74,8 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
+            desktop = false;
+            laptop = true;
           };
           modules = [
             nur.hmModules.nur

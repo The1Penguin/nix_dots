@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# options to be displayed
+option0="logout"
+option1="reboot"
+option2="shutdown"
+
+# options passed into variable
+options="$option0\n$option1\n$option2"
+
+chosen="$(echo -e "$options" | rofi -lines 3 -dmenu -p "power")"
+case $chosen in
+    $option0)
+        bspc quit;;
+    $option1)
+        systemctl reboot;;
+	$option2)
+        systemctl poweroff;;
+esac

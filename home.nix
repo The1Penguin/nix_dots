@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, nur, laptop, ... }:
+{ config, lib, pkgs, spicetify-nix, nur, desktop, laptop, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -86,17 +86,47 @@ in
       fallout-ce
       nurl
       openmw
+      rofi
+      xivlauncher
     ] ++
     # Own scripts
+    ( lib.optionals desktop [
+      (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/desktop/mylock))
+      (pkgs.writeScriptBin "change-source.sh" (builtins.readFile ./scripts/desktop/change-source.sh))
+      (pkgs.writeScriptBin "nick-source.sh" (builtins.readFile ./scripts/desktop/nick-source.sh))
+      (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/desktop/notify))
+      (pkgs.writeScriptBin "rofi_powermenu" (builtins.readFile ./scripts/desktop/rofi_powermenu))
+      (pkgs.writeScriptBin "wacom.sh" (builtins.readFile ./scripts/desktop/wacom.sh))
+    ]) ++
     ( lib.optionals laptop [
-      (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/notify))
-      (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ./scripts/wofi_powermenu_w))
-      (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/mylock))
+      (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/laptop/notify))
+      (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ./scripts/laptop/wofi_powermenu_w))
+      (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/laptop/mylock))
     ]);
 
     file = {
       ".config/river/init".source = ./files/riverconfig;
       ".config/river/init".executable = true;
+
+      ".config/bspwm/bspwmrc".source = ./files/bspwmrc;
+      ".config/bspwm/bspwmrc".executable = true;
+      
+      ".config/sxhkd/sxhkdrc".source = ./files/sxhkdrc;
+      ".config/sxhkd/sxhkdrc".executable = true;
+
+      # ".config/picom/picom.conf".source = ./files/picom.conf;
+      # ".config/picom/launch.sh".source = ./files/picomlaunch.sh;
+      # ".config/picom/launch.sh".executable = true;
+
+      ".config/rofi/config.rasi".source = ./files/config.rasi;
+      ".local/share/rofi/themes".source = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "rofi";
+        rev = "5350da41a11814f950c3354f090b90d4674a95ce";
+        hash = "sha256-DNorfyl3C4RBclF2KDgwvQQwixpTwSRu7fIvihPN8JY=";
+      } + "/basic/.local/share/rofi/themes";
+
+      ".config/dunst/dunstrc".source = ./files/dunstrc;
 
       ".config/kanshi/config".source = ./files/kanshiconfig;
 
@@ -126,7 +156,7 @@ in
             repo = "fish";
             rev = "91e6d6721362be05a5c62e235ed8517d90c567c9";
             sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
-          } + "/themes/Catppuccin Latte.theme";
+      } + "/themes/Catppuccin Latte.theme";
 
       # ".mozilla/firefox/profiles.ini".source = ./files/firefox.profile;
       # ".mozilla/firefox/pingu/chrome/userChrome.css".source = ./files/firefox.css;
@@ -522,6 +552,23 @@ in
     longitude = 57.708870;
     latitude = 11.974560;
   };
+
+  services.picom = lib.mkIf desktop {
+      enable = true;
+      backend = "glx";
+      # extraArgs = [ "--experimental-backends" "--xrender-sync-fence" ];
+      settings = {
+        corner.radius = 8;
+        round.borders = 1;
+        blur = {
+          background = true;
+          kern = "3x3box";
+          method = "dual_kawase";
+          strength = 3.4;
+        };
+        refresh.rate = 144;
+      };
+    };
 
   programs.home-manager.enable = true;
 
