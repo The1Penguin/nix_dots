@@ -8,7 +8,7 @@ xset -dpms s off
 #exec $HOME/.config/polybar/launch.sh &
 
 nextcloud --background &
-setxkbmap -layout sebrackets -option ctrl:nocaps
+# setxkbmap -layout sebrackets -option ctrl:nocaps
 # gammastep &
 
 export _JAVA_AWT_WM_NONREPARENTING=1

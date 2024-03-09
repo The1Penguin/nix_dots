@@ -165,7 +165,7 @@ in
 
     # Enable cursor
     pointerCursor = {
-      name = "Capitaine";
+      name = "capitaine-cursors";
       package = pkgs.capitaine-cursors;
       size = 32;
       x11 = {
@@ -541,6 +541,11 @@ in
       Settings = ''
         gtk-application-prefer-dark-theme=0
       '';
+    };
+    font = {
+      name = "Fira code";
+      package = pkgs.fira-code;
+      size = 12;
     };
   };
 

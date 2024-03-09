@@ -88,14 +88,22 @@
     enable = true;
     videoDrivers = [ "nvidia" ];
     displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "chili";
     windowManager.bspwm.enable = true;
-  };
-
-  # Add custom keyboard layout
-  services.xserver.xkb.extraLayouts.sebrackets = {
-    description = "SE with better brackets added";
-    languages = [ "swe" ];
-    symbolsFile = ../files/selayout;
+    # desktopManager.plasma6.enable = true;
+    libinput.mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0";
+    };
+    xkb = {
+      options = "ctrl:nocaps";
+      layout = "sebrackets";
+      extraLayouts.sebrackets = {
+        description = "SE with better brackets added";
+        languages = [ "swe" ];
+        symbolsFile = ../files/selayout;
+      };
+    };
   };
 
   services.xserver.wacom.enable = true;
@@ -113,6 +121,7 @@
     bash
     xdg-utils
     cachix
+    sddm-chili-theme 
   ];
 
   programs.river.enable = true;
