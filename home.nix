@@ -87,8 +87,14 @@ in
       nurl
       openmw
       rofi
-      xivlauncher
       betterlockscreen
+      gamemode
+      (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
+        postPatch = previousAttrs.postPatch + ''
+          substituteInPlace src/XIVLauncher.Core/Components/SettingsPage/Tabs/SettingsTabWine.cs \
+            --replace 'libgamemodeauto.so.0' '${pkgs.gamemode.lib}/lib/libgamemodeauto.so.0'
+        '';
+      }))
     ] ++
     # Own scripts
     ( lib.optionals desktop [
@@ -562,7 +568,6 @@ in
   services.picom = lib.mkIf desktop {
       enable = true;
       backend = "glx";
-      # extraArgs = [ "--experimental-backends" "--xrender-sync-fence" ];
       settings = {
         corner.radius = 8;
         round.borders = 1;

@@ -109,7 +109,7 @@
   services.openssh = {
     enable = true;
     ports = [ 69 ];
-    passwordAuthentication = false;
+    settings.PasswordAuthentication = false;
   };
 
   services.xserver.wacom.enable = true;

@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
 sxhkd &
 dunst &
-# exec $HOME/.config/picom/launch.sh &
 xsetroot -cursor_name left_ptr &
 feh --bg-fill ~/pic/Wallpaper/sakuraflower.png
 xset -dpms s off
-#exec $HOME/.config/polybar/launch.sh &
-
 nextcloud --background &
-# setxkbmap -layout sebrackets -option ctrl:nocaps
-# gammastep &
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D
