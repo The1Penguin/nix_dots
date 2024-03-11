@@ -70,10 +70,18 @@ in
       ripgrep
       texlive.combined.scheme-full
       (lutris.override {
+        extraLibraries =  pkgs: [
+          libnghttp2
+          pcre
+        ];
         extraPkgs = lutrisPkgs: [
+          wine64
           wineWowPackages.waylandFull
           winetricks
-          libnghttp2
+          wget
+          p7zip
+          protontricks
+          gnome.zenity
         ];
       })
       slack
@@ -96,6 +104,7 @@ in
         '';
       }))
       prismlauncher
+      flameshot
     ] ++
     # Own scripts
     (lib.optionals desktop [
