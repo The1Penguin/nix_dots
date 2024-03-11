@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "firewire_ohci" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
@@ -14,18 +15,19 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/145db8fb-d71a-43d9-adc4-8ce5bb798d2b";
+    {
+      device = "/dev/disk/by-uuid/145db8fb-d71a-43d9-adc4-8ce5bb798d2b";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BD08-89EE";
+    {
+      device = "/dev/disk/by-uuid/BD08-89EE";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/46ea9561-d955-4c23-b78e-e6b7557e8046"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/46ea9561-d955-4c23-b78e-e6b7557e8046"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -36,5 +38,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.firmware = with pkgs; [firmwareLinuxNonfree];
+  hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
 }

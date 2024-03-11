@@ -3,9 +3,20 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
+let
+  rev = "c4388cf3d034d05b10560eaf9be31882453ca244"; # revision from https://github.com/keylase/nvidia-patch to use
+  hash = "sha256-ua6LpbV3ymR22hAT2AZenoMXDqr3DUJ1wtBi/Psypow="; # sha256sum for https://github.com/keylase/nvidia-patch at the specified revision
+
+  # create patch functions for the specified revision
+  nvidia-patch = pkgs.nvidia-patch rev hash;
+
+  # nvidia package to patch
+  nvpatch = config.boot.kernelPackages.nvidiaPackages.stable;
+in
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -14,28 +25,31 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/49238b20-98bc-4a77-8c9c-ed37cd158017";
+    {
+      device = "/dev/disk/by-uuid/49238b20-98bc-4a77-8c9c-ed37cd158017";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D9B9-2D8E";
+    {
+      device = "/dev/disk/by-uuid/D9B9-2D8E";
       fsType = "vfat";
     };
 
   fileSystems."/mnt/hdd" =
-    { device = "/dev/disk/by-uuid/b4253f44-e2e0-43ee-8ae7-d6a98914a95e";
+    {
+      device = "/dev/disk/by-uuid/b4253f44-e2e0-43ee-8ae7-d6a98914a95e";
       fsType = "btrfs";
     };
 
   fileSystems."/mnt/ssd" =
-    { device = "/dev/disk/by-uuid/2eb721e2-df16-4d6f-8dcc-eb72d4ff6411";
+    {
+      device = "/dev/disk/by-uuid/2eb721e2-df16-4d6f-8dcc-eb72d4ff6411";
       fsType = "btrfs";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/20bc7229-54bd-4aad-8675-4e80bf9f0570"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/20bc7229-54bd-4aad-8675-4e80bf9f0570"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -46,12 +60,13 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.firmware = with pkgs; [firmwareLinuxNonfree];
+  hardware.firmware = with pkgs; [ firmwareLinuxNonfree ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    forceFullCompositionPipeline = true;
+    package = nvidia-patch.patch-nvenc (nvidia-patch.patch-fbc nvpatch);
   };
 }

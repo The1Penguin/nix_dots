@@ -95,9 +95,10 @@ in
             --replace 'libgamemodeauto.so.0' '${pkgs.gamemode.lib}/lib/libgamemodeauto.so.0'
         '';
       }))
+      prismlauncher
     ] ++
     # Own scripts
-    ( lib.optionals desktop [
+    (lib.optionals desktop [
       (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/desktop/mylock))
       (pkgs.writeScriptBin "change-source.sh" (builtins.readFile ./scripts/desktop/change-source.sh))
       (pkgs.writeScriptBin "nick-source.sh" (builtins.readFile ./scripts/desktop/nick-source.sh))
@@ -105,7 +106,7 @@ in
       (pkgs.writeScriptBin "rofi_powermenu" (builtins.readFile ./scripts/desktop/rofi_powermenu))
       (pkgs.writeScriptBin "wacom.sh" (builtins.readFile ./scripts/desktop/wacom.sh))
     ]) ++
-    ( lib.optionals laptop [
+    (lib.optionals laptop [
       (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/laptop/notify))
       (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ./scripts/laptop/wofi_powermenu_w))
       (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/laptop/mylock))
@@ -117,7 +118,7 @@ in
 
       ".config/bspwm/bspwmrc".source = ./files/bspwmrc;
       ".config/bspwm/bspwmrc".executable = true;
-      
+
       ".config/sxhkd/sxhkdrc".source = ./files/sxhkdrc;
       ".config/sxhkd/sxhkdrc".executable = true;
 
@@ -126,12 +127,13 @@ in
       # ".config/picom/launch.sh".executable = true;
 
       ".config/rofi/config.rasi".source = ./files/config.rasi;
-      ".local/share/rofi/themes".source = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "rofi";
-        rev = "5350da41a11814f950c3354f090b90d4674a95ce";
-        hash = "sha256-DNorfyl3C4RBclF2KDgwvQQwixpTwSRu7fIvihPN8JY=";
-      } + "/basic/.local/share/rofi/themes";
+      ".local/share/rofi/themes".source = pkgs.fetchFromGitHub
+        {
+          owner = "catppuccin";
+          repo = "rofi";
+          rev = "5350da41a11814f950c3354f090b90d4674a95ce";
+          hash = "sha256-DNorfyl3C4RBclF2KDgwvQQwixpTwSRu7fIvihPN8JY=";
+        } + "/basic/.local/share/rofi/themes";
 
       ".config/dunst/dunstrc".source = ./files/dunstrc;
 
@@ -151,19 +153,21 @@ in
         ];
       };
 
-      ".config/bat/themes/Catppuccin-latte.tmTheme".source = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "bat";
-        rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-        sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-      } + "/Catppuccin-latte.tmTheme";
+      ".config/bat/themes/Catppuccin-latte.tmTheme".source = pkgs.fetchFromGitHub
+        {
+          owner = "catppuccin";
+          repo = "bat";
+          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
+          sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
+        } + "/Catppuccin-latte.tmTheme";
 
-      ".config/fish/themes/Catppuccin Latte.theme".source = pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "fish";
-            rev = "91e6d6721362be05a5c62e235ed8517d90c567c9";
-            sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
-      } + "/themes/Catppuccin Latte.theme";
+      ".config/fish/themes/Catppuccin Latte.theme".source = pkgs.fetchFromGitHub
+        {
+          owner = "catppuccin";
+          repo = "fish";
+          rev = "91e6d6721362be05a5c62e235ed8517d90c567c9";
+          sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
+        } + "/themes/Catppuccin Latte.theme";
 
       # ".mozilla/firefox/profiles.ini".source = ./files/firefox.profile;
       # ".mozilla/firefox/pingu/chrome/userChrome.css".source = ./files/firefox.css;
@@ -372,19 +376,19 @@ in
         font = {
           normal = {
             family = "Fira Code";
-            style  = "Regular";
+            style = "Regular";
           };
           bold = {
             family = "Fira Code";
-            style  = "Bold";
+            style = "Bold";
           };
           italic = {
             family = "Fira Code";
-            style  = "Italic";
+            style = "Italic";
           };
           bold_italic = {
             family = "Fira Code";
-            style  = "Bold Italic";
+            style = "Bold Italic";
           };
           size = 14.0;
         };
@@ -395,17 +399,17 @@ in
 
         colors = {
           primary = {
-            background        = "#EFF1F5";
-            foreground        = "#4C4F69";
-            dim_foreground    = "#4C4F69";
+            background = "#EFF1F5";
+            foreground = "#4C4F69";
+            dim_foreground = "#4C4F69";
             bright_foreground = "#4C4F69";
           };
           cursor = {
-            text   = "#EFF1F5";
+            text = "#EFF1F5";
             cursor = "#DC8A78";
           };
           vi_mode_cursor = {
-            text   = "#EFF1F5";
+            text = "#EFF1F5";
             cursor = "#7287FD";
           };
           search = {
@@ -436,41 +440,41 @@ in
           };
 
           selection = {
-            text       = "#EFF1F5";
+            text = "#EFF1F5";
             background = "#DC8A78";
           };
 
           normal = {
-            black   = "#5C5F77";
-            red     = "#D20F39";
-            green   = "#40A02B";
-            yellow  = "#DF8E1D";
-            blue    = "#1E66F5";
+            black = "#5C5F77";
+            red = "#D20F39";
+            green = "#40A02B";
+            yellow = "#DF8E1D";
+            blue = "#1E66F5";
             magenta = "#EA76CB";
-            cyan    = "#179299";
-            white   = "#ACB0BE";
+            cyan = "#179299";
+            white = "#ACB0BE";
           };
 
           bright = {
-            black   = "#6C6F85";
-            red     = "#D20F39";
-            green   = "#40A02B";
-            yellow  = "#DF8E1D";
-            blue    = "#1E66F5";
+            black = "#6C6F85";
+            red = "#D20F39";
+            green = "#40A02B";
+            yellow = "#DF8E1D";
+            blue = "#1E66F5";
             magenta = "#EA76CB";
-            cyan    = "#179299";
-            white   = "#BCC0CC";
+            cyan = "#179299";
+            white = "#BCC0CC";
           };
 
           dim = {
-            black   = "#5C5F77";
-            red     = "#D20F39";
-            green   = "#40A02B";
-            yellow  = "#DF8E1D";
-            blue    = "#1E66F5";
+            black = "#5C5F77";
+            red = "#D20F39";
+            green = "#40A02B";
+            yellow = "#DF8E1D";
+            blue = "#1E66F5";
             magenta = "#EA76CB";
-            cyan    = "#179299";
-            white   = "#ACB0BE";
+            cyan = "#179299";
+            white = "#ACB0BE";
           };
 
           indexed_colors = [
@@ -515,6 +519,18 @@ in
           "browser.toolbars.bookmarks.visibility" = "never";
         };
       };
+    };
+
+
+    obs-studio = lib.mkIf desktop {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-tuna
+        obs-vaapi
+        obs-nvfbc
+        obs-webkitgtk
+        obs-vkcapture
+      ];
     };
   };
 
@@ -566,20 +582,20 @@ in
   };
 
   services.picom = lib.mkIf desktop {
-      enable = true;
-      backend = "glx";
-      settings = {
-        corner.radius = 8;
-        round.borders = 1;
-        blur = {
-          background = true;
-          kern = "3x3box";
-          method = "dual_kawase";
-          strength = 3.4;
-        };
-        refresh.rate = 144;
+    enable = true;
+    backend = "glx";
+    settings = {
+      corner.radius = 8;
+      round.borders = 1;
+      blur = {
+        background = true;
+        kern = "3x3box";
+        method = "dual_kawase";
+        strength = 3.4;
       };
+      refresh.rate = 144;
     };
+  };
 
   programs.home-manager.enable = true;
 

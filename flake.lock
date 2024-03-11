@@ -85,11 +85,33 @@
         "type": "github"
       }
     },
+    "nvidia-patch": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1706626542,
+        "narHash": "sha256-+hi1D1qkRheu15AO1EBkK4+4Fwkf82I7RwoA2WgWTnw=",
+        "owner": "icewind1991",
+        "repo": "nvidia-patch-nixos",
+        "rev": "f8c827b25313c62b43664d8c6070cf5af63142ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "icewind1991",
+        "repo": "nvidia-patch-nixos",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "nvidia-patch": "nvidia-patch",
         "spicetify-nix": "spicetify-nix"
       }
     },
@@ -124,6 +146,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     }

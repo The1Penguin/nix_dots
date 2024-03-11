@@ -163,7 +163,7 @@
   };
   programs.adb.enable = true;
   programs.fish.enable = true;
-  environment.pathsToLink = ["/share/fish"];
+  environment.pathsToLink = [ "/share/fish" ];
 
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };

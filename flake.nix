@@ -9,9 +9,13 @@
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nur.url = "github:nix-community/NUR";
+    nvidia-patch = {
+      url = "github:icewind1991/nvidia-patch-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, spicetify-nix, nur, ... }:
+  outputs = { nixpkgs, home-manager, spicetify-nix, nur, nvidia-patch, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -19,10 +23,10 @@
         config = {
           allowUnfree = true;
         };
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlay nvidia-patch.overlay ];
       };
       lib = nixpkgs;
-      in
+    in
     {
       nixosConfigurations = {
         scorpia = nixpkgs.lib.nixosSystem {

@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -127,7 +128,7 @@
     bash
     xdg-utils
     cachix
-    sddm-chili-theme 
+    sddm-chili-theme
   ];
 
   programs.river.enable = true;
@@ -151,7 +152,7 @@
   };
   programs.adb.enable = true;
   programs.fish.enable = true;
-  environment.pathsToLink = ["/share/fish"];
+  environment.pathsToLink = [ "/share/fish" ];
 
   # Setting vim as the defualt editor
   environment.variables = { EDITOR = "vim"; };
