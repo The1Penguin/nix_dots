@@ -105,6 +105,31 @@
         symbolsFile = ../files/selayout;
       };
     };
+    monitorSection = ''
+      # HorizSync source: edid, VertRefresh source: edid
+      VendorName     "Unknown"
+      ModelName      "Acer XF240H"
+      HorizSync       180.0 - 180.0
+      VertRefresh     48.0 - 146.0
+      Option         "DPMS"
+    '';
+    deviceSection = ''
+      Driver         "nvidia"
+      VendorName     "NVIDIA Corporation"
+      BoardName      "NVIDIA GeForce GTX 1070 Ti"
+    '';
+    screenSection = ''
+    DefaultDepth    24
+    Option         "Stereo" "0"
+    Option         "nvidiaXineramaInfoOrder" "DFP-4"
+    Option         "metamodes" "DP-0: 1920x1080_144 +1920+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-2: 1920x1080_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+    Option         "SLI" "Off"
+    Option         "MultiGPU" "Off"
+    Option         "BaseMosaic" "off"
+    SubSection     "Display"
+        Depth       24
+    EndSubSection
+    '';
   };
 
   services.openssh = {

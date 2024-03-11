@@ -66,7 +66,6 @@ in
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    forceFullCompositionPipeline = true;
     package = nvidia-patch.patch-nvenc (nvidia-patch.patch-fbc nvpatch);
   };
 }
