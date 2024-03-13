@@ -25,7 +25,6 @@ in
       htop
       emacs29-gtk3
       nextcloud-client
-      # firefox
       kate
       pavucontrol
       (pkgs.discord.override {
@@ -33,25 +32,20 @@ in
         withVencord = true;
       })
       ranger
-      wofi
       eza
       bitwarden
       playerctl
-      brightnessctl
       pulseaudio
       libnotify
       gcc
       xfce.thunar
       ranger
       bat
-      acpi
-      swaylock-effects
       agda
       cmake
       gnumake
       libtool
       sqlite
-      sway-contrib.grimshot
       mpv
       jellyfin-media-player
       signal-desktop
@@ -64,7 +58,6 @@ in
       lazygit
       speedtest-rs
       any-nix-shell
-      moonlight-qt
       python3
       (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
       ripgrep
@@ -93,6 +86,9 @@ in
       networkmanagerapplet
       fallout-ce
       nurl
+      killall
+    ] ++
+    (lib.optionals desktop [
       openmw
       rofi
       betterlockscreen
@@ -105,7 +101,14 @@ in
       }))
       prismlauncher
       flameshot
-    ] ++
+    ]) ++
+    (lib.optionals laptop [
+      wofi
+      brightnessctl
+      acpi
+      swaylock-effects
+      sway-contrib.grimshot
+    ]) ++
     # Own scripts
     (lib.optionals desktop [
       (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/desktop/mylock))
