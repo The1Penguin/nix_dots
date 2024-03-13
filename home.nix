@@ -2,7 +2,6 @@
 let
   username = "pingu";
   homeDir = "/home/${username}";
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
@@ -13,14 +12,19 @@ let
 in
 {
 
-  imports = [ spicetify-nix.homeManagerModule ];
+  imports = [
+    ./software/alacritty.nix
+    ./software/firefox.nix
+    ./software/fish.nix
+    ./software/spotify.nix
+    ./software/neovim.nix
+  ];
 
   home = {
     username = username;
     homeDirectory = homeDir;
     stateVersion = "23.05";
 
-    # Packages for my user
     packages = with pkgs; [
       htop
       emacs29-gtk3
@@ -63,7 +67,7 @@ in
       ripgrep
       texlive.combined.scheme-full
       (lutris.override {
-        extraLibraries =  pkgs: [
+        extraLibraries = pkgs: [
           libnghttp2
           pcre
         ];
@@ -134,10 +138,6 @@ in
       ".config/sxhkd/sxhkdrc".source = ./files/sxhkdrc;
       ".config/sxhkd/sxhkdrc".executable = true;
 
-      # ".config/picom/picom.conf".source = ./files/picom.conf;
-      # ".config/picom/launch.sh".source = ./files/picomlaunch.sh;
-      # ".config/picom/launch.sh".executable = true;
-
       ".config/rofi/config.rasi".source = ./files/config.rasi;
       ".local/share/rofi/themes".source = pkgs.fetchFromGitHub
         {
@@ -181,12 +181,8 @@ in
           sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
         } + "/themes/Catppuccin Latte.theme";
 
-      # ".mozilla/firefox/profiles.ini".source = ./files/firefox.profile;
-      # ".mozilla/firefox/pingu/chrome/userChrome.css".source = ./files/firefox.css;
-
     };
 
-    # Enable cursor
     pointerCursor = {
       name = "capitaine-cursors";
       package = pkgs.capitaine-cursors;
@@ -198,7 +194,6 @@ in
     };
   };
 
-  # Default folders
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
@@ -213,7 +208,6 @@ in
   };
 
   programs = {
-    # Git options
     git = {
       enable = true;
       userName = "pingu";
@@ -227,34 +221,6 @@ in
       };
     };
 
-    # Neovim is now here
-    neovim = {
-      enable = true;
-      plugins = with pkgs.vimPlugins; [
-        catppuccin-nvim
-        FTerm-nvim
-        supertab
-        vim-startify
-        nvim-surround
-        vim-autoformat
-        vimtex
-        nvim-comment
-        nvim-treesitter.withAllGrammars
-        lazygit-nvim
-        vim-gitgutter
-        vim-fugitive
-        vim-css-color
-        vim-devicons
-        nvim-tree-lua
-        lualine-nvim
-        nvim-web-devicons
-      ];
-      extraConfig = (builtins.readFile ./files/nvimscript);
-      extraLuaConfig = (builtins.readFile ./files/nvimlua);
-      coc.enable = true;
-    };
-
-    # Fancy terminals ^ㅂ^
     starship = {
       enable = true;
       settings = {
@@ -282,45 +248,6 @@ in
       };
     };
 
-    fish = {
-      enable = true;
-      shellAliases = {
-        ":q" = "exit";
-        "q" = "exit";
-        "vim" = "nvim";
-        "emacs" = "emacsclient -nw -c -a \"\"";
-        "ls" = "eza --icons --group-directories-first";
-        "ll" = "eza -alF --icons --group-directories-first";
-        "b" = "bluetoothctl";
-      };
-
-      shellInit = ''
-        if command -q sk
-            skim_key_bindings
-        end
-        set fish_greeting
-        export MANPAGER="bat -p"
-        export PAGER="bat"
-        export BAT_THEME="Catppuccin-latte"
-      '';
-
-      interactiveShellInit = ''
-        any-nix-shell fish | source
-      '';
-
-      plugins = [
-        {
-          name = "sudope";
-          src = pkgs.fetchFromGitHub {
-            owner = "oh-my-fish";
-            repo = "plugin-sudope";
-            rev = "83919a692bc1194aa322f3627c859fecace5f496";
-            sha256 = "sha256-pD4rNuqg6TG22L9m8425CO2iqcYm8JaAEXIVa0H/v/U=";
-          };
-        }
-      ];
-    };
-
     zoxide = {
       enable = true;
       enableFishIntegration = true;
@@ -337,26 +264,6 @@ in
       nix-direnv.enable = true;
     };
 
-    spicetify = {
-      enable = true;
-      theme = spicePkgs.themes.catppuccin;
-      colorScheme = "latte";
-
-      enabledCustomApps = with spicePkgs.apps; [
-        lyrics-plus
-      ];
-
-      enabledExtensions = with spicePkgs.extensions; [
-        keyboardShortcut
-        trashbin
-        fullAlbumDate
-        history
-        powerBar
-        playlistIcons
-        fullAppDisplayMod
-      ];
-    };
-
     hyfetch = {
       enable = true;
       settings = {
@@ -367,172 +274,6 @@ in
         };
       };
     };
-
-    alacritty = {
-      enable = true;
-      settings = {
-        window = {
-          padding = {
-            x = 5;
-            y = 3;
-          };
-          title = "Alacritty";
-          dynamic_title = false;
-          opacity = 0.93;
-        };
-
-        scrolling = {
-          multiplier = 1;
-        };
-
-        font = {
-          normal = {
-            family = "Fira Code";
-            style = "Regular";
-          };
-          bold = {
-            family = "Fira Code";
-            style = "Bold";
-          };
-          italic = {
-            family = "Fira Code";
-            style = "Italic";
-          };
-          bold_italic = {
-            family = "Fira Code";
-            style = "Bold Italic";
-          };
-          size = 14.0;
-        };
-
-        shell = {
-          program = "fish";
-        };
-
-        colors = {
-          primary = {
-            background = "#EFF1F5";
-            foreground = "#4C4F69";
-            dim_foreground = "#4C4F69";
-            bright_foreground = "#4C4F69";
-          };
-          cursor = {
-            text = "#EFF1F5";
-            cursor = "#DC8A78";
-          };
-          vi_mode_cursor = {
-            text = "#EFF1F5";
-            cursor = "#7287FD";
-          };
-          search = {
-            matches = {
-              foreground = "#EFF1F5";
-              background = "#6C6F85";
-            };
-            focused_match = {
-              foreground = "#EFF1F5";
-              background = "#40A02B";
-            };
-          };
-
-          footer_bar = {
-            foreground = "#EFF1F5";
-            background = "#6C6F85";
-          };
-
-          hints = {
-            start = {
-              foreground = "#EFF1F5";
-              background = "#DF8E1D";
-            };
-            end = {
-              foreground = "#EFF1F5";
-              background = "#6C6F85";
-            };
-          };
-
-          selection = {
-            text = "#EFF1F5";
-            background = "#DC8A78";
-          };
-
-          normal = {
-            black = "#5C5F77";
-            red = "#D20F39";
-            green = "#40A02B";
-            yellow = "#DF8E1D";
-            blue = "#1E66F5";
-            magenta = "#EA76CB";
-            cyan = "#179299";
-            white = "#ACB0BE";
-          };
-
-          bright = {
-            black = "#6C6F85";
-            red = "#D20F39";
-            green = "#40A02B";
-            yellow = "#DF8E1D";
-            blue = "#1E66F5";
-            magenta = "#EA76CB";
-            cyan = "#179299";
-            white = "#BCC0CC";
-          };
-
-          dim = {
-            black = "#5C5F77";
-            red = "#D20F39";
-            green = "#40A02B";
-            yellow = "#DF8E1D";
-            blue = "#1E66F5";
-            magenta = "#EA76CB";
-            cyan = "#179299";
-            white = "#ACB0BE";
-          };
-
-          indexed_colors = [
-            { index = 16; color = "#FE640B"; }
-            { index = 17; color = "#DC8A78"; }
-          ];
-        };
-      };
-    };
-
-    firefox = {
-      enable = true;
-      profiles.pingu = {
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          betterttv
-          bypass-paywalls-clean
-          consent-o-matic
-          # clickbait-remover-for-youtube
-          darkreader
-          duckduckgo-privacy-essentials
-          enhancer-for-youtube
-          firefox-color
-          foxyproxy-standard
-          # jiffy-reader
-          new-tab-override
-          # new-xkit
-          old-reddit-redirect
-          privacy-badger
-          reddit-enhancement-suite
-          refined-github
-          sidebery
-          sponsorblock
-          stylus
-          tampermonkey
-          ublock-origin
-          vimium
-        ];
-        isDefault = true;
-        userChrome = (builtins.readFile ./files/firefox.css);
-        settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.toolbars.bookmarks.visibility" = "never";
-        };
-      };
-    };
-
 
     obs-studio = lib.mkIf desktop {
       enable = true;
@@ -546,7 +287,6 @@ in
     };
   };
 
-  # Enable correct gtk themes and such
   gtk = {
     enable = true;
     theme = {
@@ -586,8 +326,6 @@ in
 
   services.gammastep = {
     enable = true;
-    # dawnTime =
-    # duskTime =
     enableVerboseLogging = true;
     longitude = 57.708870;
     latitude = 11.974560;
