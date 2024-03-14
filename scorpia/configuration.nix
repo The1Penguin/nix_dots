@@ -61,13 +61,6 @@
     };
   };
 
-  users.users.pingu = {
-    isNormalUser = true;
-    description = "pingu";
-    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" ];
-  };
-  programs.adb.enable = true;
-
   # Allow for brightness control
   programs.light.enable = true;
 

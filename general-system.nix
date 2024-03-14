@@ -151,4 +151,11 @@
   '';
   programs.gnupg.agent.enable = true;
 
+  users.users.pingu = {
+    isNormalUser = true;
+    description = "pingu";
+    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" ];
+    shell = pkgs.fish;
+  };
+  programs.adb.enable = true;
 }
