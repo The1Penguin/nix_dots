@@ -105,6 +105,7 @@ in
       }))
       prismlauncher
       flameshot
+      rofi-bluetooth
     ]) ++
     (lib.optionals laptop [
       wofi

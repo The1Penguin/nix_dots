@@ -55,6 +55,9 @@ Print
 super + shift + Tab
     exec rofi_powermenu
 
+super + a
+    exec rofi-bluetooth
+
 super + Tab
     exec notify
 
