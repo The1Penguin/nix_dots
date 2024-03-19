@@ -27,6 +27,7 @@
         tampermonkey
         ublock-origin
         vimium
+        dearrow
       ];
       isDefault = true;
       userChrome = (builtins.readFile ../files/firefox.css);
