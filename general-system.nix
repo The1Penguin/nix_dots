@@ -158,4 +158,10 @@
     shell = pkgs.fish;
   };
   programs.adb.enable = true;
+
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
 }
