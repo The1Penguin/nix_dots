@@ -9,13 +9,9 @@
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nur.url = "github:nix-community/NUR";
-    nvidia-patch = {
-      url = "github:icewind1991/nvidia-patch-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { nixpkgs, home-manager, spicetify-nix, nur, nvidia-patch, ... }:
+  outputs = { nixpkgs, home-manager, spicetify-nix, nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,7 +19,33 @@
         config = {
           allowUnfree = true;
         };
-        overlays = [ nur.overlay nvidia-patch.overlay ];
+        overlays = [
+          nur.overlay
+          (final: prev: {
+            pythonPackagesExtensions =
+              prev.pythonPackagesExtensions
+              ++ [
+                (
+                  python-final: python-prev: {
+                    catppuccin = python-prev.catppuccin.overridePythonAttrs (oldAttrs: rec {
+                      version = "1.3.2";
+                      src = prev.fetchFromGitHub {
+                        owner = "catppuccin";
+                        repo = "python";
+                        rev = "refs/tags/v${version}";
+                        hash = "sha256-spPZdQ+x3isyeBXZ/J2QE6zNhyHRfyRQGiHreuXzzik=";
+                      };
+
+                      # can be removed next version
+                      disabledTestPaths = [
+                        "tests/test_flavour.py" # would download a json to check correctness of flavours
+                      ];
+                    });
+                  }
+                )
+              ];
+          })
+        ];
       };
       lib = nixpkgs;
     in

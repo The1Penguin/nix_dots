@@ -3,16 +3,6 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  rev = "c4388cf3d034d05b10560eaf9be31882453ca244"; # revision from https://github.com/keylase/nvidia-patch to use
-  hash = "sha256-ua6LpbV3ymR22hAT2AZenoMXDqr3DUJ1wtBi/Psypow="; # sha256sum for https://github.com/keylase/nvidia-patch at the specified revision
-
-  # create patch functions for the specified revision
-  nvidia-patch = pkgs.nvidia-patch rev hash;
-
-  # nvidia package to patch
-  nvpatch = config.boot.kernelPackages.nvidiaPackages.stable;
-in
 {
   imports =
     [
@@ -66,6 +56,6 @@ in
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    package = nvidia-patch.patch-nvenc (nvidia-patch.patch-fbc nvpatch);
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }
