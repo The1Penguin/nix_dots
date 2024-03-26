@@ -182,6 +182,7 @@ in
           sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
         } + "/themes/Catppuccin Latte.theme";
 
+      ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
     };
 
     pointerCursor = {
