@@ -24,7 +24,7 @@
     '';
 
     interactiveShellInit = ''
-      any-nix-shell fish | source
+      any-nix-shell fish --info-right | source
     '';
 
     plugins = [

@@ -9,9 +9,13 @@
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nur.url = "github:nix-community/NUR";
+    any-nix-shell = {
+      url = "github:The1Penguin/any-nix-shell/nix_develop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, spicetify-nix, nur, ... }:
+  outputs = { nixpkgs, home-manager, spicetify-nix, nur, any-nix-shell, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -52,6 +56,7 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
+            inherit any-nix-shell;
             desktop = false;
             laptop = true;
           };
@@ -64,6 +69,7 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
+            inherit any-nix-shell;
             desktop = true;
             laptop = false;
           };
@@ -76,6 +82,7 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
+            inherit any-nix-shell;
             desktop = false;
             laptop = true;
           };

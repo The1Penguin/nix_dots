@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, nur, desktop, laptop, ... }:
+{ config, lib, pkgs, spicetify-nix, nur, any-nix-shell, desktop, laptop, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -61,7 +61,7 @@ in
       zathura
       lazygit
       speedtest-rs
-      any-nix-shell
+      # any-nix-shell
       python3
       (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
       ripgrep
@@ -92,6 +92,7 @@ in
       nurl
       killall
       pkgs.nur.repos.lunik1.feishin-appimage
+      any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
     ] ++
     (lib.optionals desktop [
       openmw
