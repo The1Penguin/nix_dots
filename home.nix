@@ -225,49 +225,6 @@ in
       };
     };
 
-    starship = {
-      enable = true;
-      settings = {
-        format = "$nix_shell$directory";
-        right_format = "$hostname";
-        add_newline = false;
-
-        hostname = {
-          ssh_only = true;
-          format = "[$hostname](bold yellow)";
-        };
-
-        directory = {
-          truncation_length = 0;
-          truncation_symbol = "…/";
-          truncate_to_repo = false;
-          read_only = " 🔒";
-          style = "cyan";
-        };
-        nix_shell = {
-          symbol = " ";
-          format = "[$symbol$name]($style) ";
-          style = "bright-purple bold";
-        };
-      };
-    };
-
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-      options = [ "--cmd cd" ];
-    };
-
-    fzf = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
     hyfetch = {
       enable = true;
       settings = {
