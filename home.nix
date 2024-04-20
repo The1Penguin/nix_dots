@@ -320,7 +320,7 @@ in
         Install.WantedBy = [ "graphical-session.target" ];
       };
     };
-    services = {
+    services = lib.mkIf desktop{
       battery-check = {
         Unit.Description = "Warn at low battery levels";
         Service = let batMon = pkgs.writeShellScript "batMon" ''
