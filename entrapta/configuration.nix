@@ -44,8 +44,8 @@
     screenSection = ''
       DefaultDepth    24
       Option         "Stereo" "0"
-      Option         "nvidiaXineramaInfoOrder" "DFP-4"
-      Option         "metamodes" "DP-0: 1920x1080_144 +1920+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-2: 1920x1080_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+      Option         "nvidiaXineramaInfoOrder" "DP-4"
+      Option         "metamodes" "DP-0: 1920x1080_144 +1920+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-4: 1920x1080_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
       Option         "SLI" "Off"
       Option         "MultiGPU" "Off"
       Option         "BaseMosaic" "off"

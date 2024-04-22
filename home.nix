@@ -243,7 +243,6 @@ in
         obs-tuna
         obs-vaapi
         obs-nvfbc
-        obs-webkitgtk
         obs-vkcapture
       ];
     };
