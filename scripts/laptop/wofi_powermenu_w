@@ -4,11 +4,12 @@
 option0="logout"
 option1="reboot"
 option2="shutdown"
+option3="lock"
 
 # options passed into variable
-options="$option0\n$option1\n$option2"
+options="$option0\n$option1\n$option2\n$option3"
 
-chosen="$(echo -e "$options" | wofi -lines 3 --show=dmenu -p "power")"
+chosen="$(echo -e "$options" | wofi -lines 4 --show=dmenu -p "power")"
 case $chosen in
     $option0)
         riverctl exit;;
@@ -16,4 +17,6 @@ case $chosen in
         systemctl reboot;;
     $option2)
         systemctl poweroff;;
+    $option3)
+        mylock & systemctl hibernate;;
 esac
