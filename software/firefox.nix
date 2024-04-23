@@ -6,7 +6,7 @@
     profiles.pingu = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         betterttv
-        bypass-paywalls-clean
+        # bypass-paywalls-clean
         consent-o-matic
         # clickbait-remover-for-youtube
         darkreader

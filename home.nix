@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "9c8c70ed8e672faf186b1c7b3a170ec746b6cfaa";
-    hash = "sha256-ctmr4ce8dGnckwKfaA8riti7kgW2O3zqRZpOQ6aTbwI=";
+    rev = "b420faf2915b6cf93a57ddfe9aacb093da4a052f";
+    hash = "sha256-1JKTPdiTyMRYxVregGGAbsP8cC763ntea8EP6Mz4pRc=";
     fetchSubmodules = true;
   };
 in
@@ -91,9 +91,8 @@ in
       fallout-ce
       nurl
       killall
-      pkgs.nur.repos.lunik1.feishin-appimage
+      feishin
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
-      emacs-lsp-booster
     ] ++
     (lib.optionals desktop [
       openmw
