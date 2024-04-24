@@ -169,6 +169,7 @@ exec mako &
 exec kanshi &
 exec gammastep -m wayland &
 
+riverctl rule-add -app-id firefox ssd
 # Set keyboard repeat rate
 riverctl set-repeat 40 300
 
