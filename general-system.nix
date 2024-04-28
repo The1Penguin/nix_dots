@@ -61,6 +61,11 @@
       languages = [ "swe" ];
       symbolsFile = ./files/selayout;
     };
+    extraLayouts.svorak = {
+      description = "Svorak";
+      languages = [ "swe" ];
+      symbolsFile = ./files/svorak;
+    };
   };
 
   services.xserver.wacom.enable = true;
