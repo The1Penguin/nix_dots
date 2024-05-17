@@ -3,8 +3,6 @@ xkb_symbols "svdvorak" {
    include "latin(type2)"
    include "se(se)"
 
-   name[Group1]="Swedish (Svdvorak)";
-
    key <AD01> { [ aring, Aring, braceleft ] };
    key <AD02> { [ comma, semicolon, bracketleft ] };
    key <AD03> { [ period, colon, bracketright ] };

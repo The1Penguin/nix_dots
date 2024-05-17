@@ -1,0 +1,41 @@
+partial alphanumeric_keys
+xkb_symbols "swolemak" {
+    include "latin(type2)"
+    include "se(basic)"
+
+// 1 2 3 4 5 6 7 8 9 0 + '
+//  q w f p b j l u y ö å ~
+//   a r s t g m n e i o ä '
+//  z x c d v < k h , . -
+
+    key <AD01> { [ q, Q, braceleft ] };
+    key <AD02> { [ w, W, bracketleft ] };
+    key <AD03> { [ f, F, braceright ] };
+    key <AD04> { [ p, P, bracketright ] };
+    key <AD05> { [ b, B ] };
+    key <AD06> { [ j, J ] };
+    key <AD07> { [ l, L ] };
+    key <AD08> { [ u, U ] };
+    key <AD09> { [ y, Y ] };
+    key <AD10> { [odiaeresis, Odiaeresis ] };
+
+    key <AC01> { [ a, A, parenleft ] };
+    key <AC02> { [ r, R, parenright ] };
+    key <AC03> { [ s, S ] };
+    key <AC04> { [ t, T ] };
+    key <AC06> { [ m, M ] };
+    key <AC07> { [ n, N ] };
+    key <AC08> { [ e, E ] };
+    key <AC09> { [ i, I ] };
+    key <AC10> { [ o, O, oe, OE ] };
+
+    key <LSGT> { [ z, Z ] };
+    key <AB01> { [ x, X ] };
+    key <AB02> { [ c, C ] };
+    key <AB03> { [ d, D ] };
+    key <AB05> { [ less, greater, bar, brokenbar ] };
+    key <AB06> { [ k, K ] };
+    key <AB07> { [ h, H ] };
+
+    include "level3(ralt_switch)"
+};
