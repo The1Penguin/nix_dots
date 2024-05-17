@@ -18,16 +18,20 @@
   networking.hostName = "entrapta"; # Define your hostname.
   networking.networkmanager.enable = true;
 
+  services.libinput.mouse = {
+    accelProfile = "flat";
+    accelSpeed = "0";
+  };
+
+  services. displayManager.sddm = {
+    enable = true;
+    theme = "chili";
+  };
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
-    displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "chili";
     windowManager.bspwm.enable = true;
-    libinput.mouse = {
-      accelProfile = "flat";
-      accelSpeed = "0";
-    };
     monitorSection = ''
       # HorizSync source: edid, VertRefresh source: edid
       VendorName     "Unknown"

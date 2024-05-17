@@ -307,7 +307,7 @@ in
     };
   };
 
-  systemd.user= {
+  systemd.user = {
     timers = {
       battery-check = {
         Unit.Description = "Warn at low battery levels";
@@ -319,32 +319,35 @@ in
         Install.WantedBy = [ "graphical-session.target" ];
       };
     };
-    services = lib.mkIf desktop{
+    services = lib.mkIf desktop {
       battery-check = {
         Unit.Description = "Warn at low battery levels";
-        Service = let batMon = pkgs.writeShellScript "batMon" ''
-          PATH="$PATH:${pkgs.lib.makeBinPath [
-            pkgs.acpi
-            pkgs.libnotify
-            pkgs.gnugrep
-            pkgs.gawk
-            pkgs.systemd
-          ]}"
-          acpi -b | grep "Battery 0" | awk -F'[,:%]' '{print $2, $3}' | {
-            read -r status capacity
-            battery_stat="$(acpi --battery | head -n 1)"
-            if [ "$status" = Discharging -a "$capacity" -le 2 ]; then
-              notify-send "Battery Critical: $battery_percentage\n Hibernating"
-              sleep 5
-              systemctl hibernate
-            elif [ "$status" = Discharging -a "$capacity" -le 5 ]; then
-              notify-send "Battery Critical: $battery_percentage"
-            fi
-          }
-        '';
-        in {
-          ExecStart = "${batMon}";
-        };
+        Service =
+          let
+            batMon = pkgs.writeShellScript "batMon" ''
+              PATH="$PATH:${pkgs.lib.makeBinPath [
+                pkgs.acpi
+                pkgs.libnotify
+                pkgs.gnugrep
+                pkgs.gawk
+                pkgs.systemd
+              ]}"
+              acpi -b | grep "Battery 0" | awk -F'[,:%]' '{print $2, $3}' | {
+                read -r status capacity
+                battery_stat="$(acpi --battery | head -n 1)"
+                if [ "$status" = Discharging -a "$capacity" -le 2 ]; then
+                  notify-send "Battery Critical: $battery_percentage\n Hibernating"
+                  sleep 5
+                  systemctl hibernate
+                elif [ "$status" = Discharging -a "$capacity" -le 5 ]; then
+                  notify-send "Battery Critical: $battery_percentage"
+                fi
+              }
+            '';
+          in
+          {
+            ExecStart = "${batMon}";
+          };
       };
     };
   };
