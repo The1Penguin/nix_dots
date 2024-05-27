@@ -3,6 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    lix = {
+      url = "git+https://git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +24,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, spicetify-nix, nur, any-nix-shell, ... }:
+  outputs = { nixpkgs, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,18 +44,21 @@
           inherit pkgs;
           modules = [
             ./scorpia/configuration.nix
+            lix-module.nixosModules.default
           ];
         };
         entrapta = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [
             ./entrapta/configuration.nix
+            lix-module.nixosModules.default
           ];
         };
         montana = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [
             ./montana/configuration.nix
+            lix-module.nixosModules.default
           ];
         };
       };
@@ -63,6 +75,7 @@
           modules = [
             nur.hmModules.nur
             ./home.nix
+            lix-module.nixosModules.default
           ];
         };
         "entrapta" = home-manager.lib.homeManagerConfiguration {
@@ -76,6 +89,7 @@
           modules = [
             nur.hmModules.nur
             ./home.nix
+            lix-module.nixosModules.default
           ];
         };
         "montana" = home-manager.lib.homeManagerConfiguration {
@@ -89,6 +103,7 @@
           modules = [
             nur.hmModules.nur
             ./home.nix
+            lix-module.nixosModules.default
           ];
         };
       };

@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "b420faf2915b6cf93a57ddfe9aacb093da4a052f";
-    hash = "sha256-1JKTPdiTyMRYxVregGGAbsP8cC763ntea8EP6Mz4pRc=";
+    rev = "92a6e5fc1e943f22aad53afbe009103315d8495e";
+    hash = "sha256-ld6tQXYVgjfI2FtD/XdsVeujTJEnHRBMFjnL0fMMFqg=";
     fetchSubmodules = true;
   };
 in
@@ -27,7 +27,7 @@ in
 
     packages = with pkgs; [
       htop
-      emacs29-gtk3
+      emacs-gtk
       nextcloud-client
       kate
       pavucontrol
@@ -93,6 +93,7 @@ in
       killall
       feishin
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
+      fluffychat
     ] ++
     (lib.optionals desktop [
       openmw
