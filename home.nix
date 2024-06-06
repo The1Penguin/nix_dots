@@ -94,6 +94,7 @@ in
       feishin
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       fluffychat
+      cockatrice
     ] ++
     (lib.optionals desktop [
       openmw
