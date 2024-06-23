@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+cd ~/.xlcore &&
+cp -r ffxivConfig ~/.nextcloud/ffxivBackup/.xlcore/ &&
+cp -r installedPlugins ~/.nextcloud/ffxivBackup/.xlcore/ &&
+cp -r pluginConfigs ~/.nextcloud/ffxivBackup/.xlcore/ &&
+cp -r dalamudConfig.json ~/.nextcloud/ffxivBackup/.xlcore/ &&
+echo "Files saved in ~/.nextcloud/ffxivBackup/.xlcore/"
