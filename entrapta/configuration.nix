@@ -23,7 +23,7 @@
     accelSpeed = "0";
   };
 
-  services. displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     theme = "chili";
   };
