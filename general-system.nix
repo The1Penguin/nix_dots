@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-
+let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 {
 
   time.timeZone = "Europe/Stockholm";
@@ -124,6 +124,7 @@
     fira-code
     fira-code-symbols
     nerdfonts
+    dokidokimono
   ];
 
   programs.fish.enable = true;

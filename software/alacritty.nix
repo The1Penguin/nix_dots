@@ -20,22 +20,22 @@
 
       font = {
         normal = {
-          family = "Fira Code";
+          family = "Doki Doki Mono";
           style = "Regular";
         };
         bold = {
-          family = "Fira Code";
+          family = "Doki Doki Mono";
           style = "Bold";
         };
         italic = {
-          family = "Fira Code";
+          family = "Doki Doki Mono";
           style = "Italic";
         };
         bold_italic = {
-          family = "Fira Code";
+          family = "Doki Doki Mono";
           style = "Bold Italic";
         };
-        size = 14.0;
+        size = 16.0;
       };
 
       shell = {
