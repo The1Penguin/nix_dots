@@ -16,5 +16,5 @@ configuration{
 
 @theme "catppuccin-latte"
 * {
-    font: "Doki Doki Mono 16";
+    font: "DokiDokiMono Nerd Font 16";
 }

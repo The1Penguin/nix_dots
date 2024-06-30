@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "afe21d1b32686faea03b36cc34bf387f8a569cf5";
-    hash = "sha256-u50XtXKhUlet6eNYPuv66whaunZyEGsFwMk8XiAgYkg=";
+    rev = "7703a4763479500bb0d8b5a3da4de460b5979e32";
+    hash = "sha256-5tBnpp9SJ26j5gpWxJEXPIXuRgrY1q+I5YNAl19EEog=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -283,7 +283,7 @@ in
       '';
     };
     font = {
-      name = "Doki Doki Mono";
+      name = "DokiDokiMono Nerd Font";
       package = dokidokimono;
       size = 12;
     };

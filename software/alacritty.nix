@@ -20,19 +20,19 @@
 
       font = {
         normal = {
-          family = "Doki Doki Mono";
+          family = "DokiDokiMono Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "Doki Doki Mono";
+          family = "DokiDokiMono Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "Doki Doki Mono";
+          family = "DokiDokiMono Nerd Font";
           style = "Italic";
         };
         bold_italic = {
-          family = "Doki Doki Mono";
+          family = "DokiDokiMono Nerd Font";
           style = "Bold Italic";
         };
         size = 16.0;

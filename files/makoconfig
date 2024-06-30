@@ -15,10 +15,10 @@ border-size=2
 border-radius=15
 default-timeout=10000
 group-by=summary
-format=<span font="Doki Doki Mono weight=325 Italic" size="15000">%s</span>\n<span font="Doki Doki Mono weight=325" size="15000">%b</span>
+format=<span font="DokiDokiMono Nerd Font weight=325 Italic" size="15000">%s</span>\n<span font="DokiDokiMono Nerd Font weight=325" size="15000">%b</span>
 
 [grouped]
-format=<span font="Doki Doki Mono weight=325 Italic" size="15000">%s</span>\n<span font="Doki Doki Mono weight=325" size="15000">%b</span>
+format=<span font="DokiDokiMono Nerd Font weight=325 Italic" size="15000">%s</span>\n<span font="DokiDokiMono Nerd Font weight=325" size="15000">%b</span>
 
 [mode=do-not-disturb]
 invisible=1
