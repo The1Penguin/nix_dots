@@ -54,13 +54,6 @@
             lix-module.nixosModules.default
           ];
         };
-        montana = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          modules = [
-            ./montana/configuration.nix
-            lix-module.nixosModules.default
-          ];
-        };
       };
 
       homeConfigurations = {
@@ -92,13 +85,13 @@
             lix-module.nixosModules.default
           ];
         };
-        "montana" = home-manager.lib.homeManagerConfiguration {
+        "hordak" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
             inherit any-nix-shell;
             desktop = false;
-            laptop = true;
+            laptop = false;
           };
           modules = [
             nur.hmModules.nur
