@@ -85,20 +85,6 @@
             lix-module.nixosModules.default
           ];
         };
-        "hordak" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit spicetify-nix;
-            inherit any-nix-shell;
-            desktop = false;
-            laptop = false;
-          };
-          modules = [
-            nur.hmModules.nur
-            ./home.nix
-            lix-module.nixosModules.default
-          ];
-        };
       };
     };
 }
