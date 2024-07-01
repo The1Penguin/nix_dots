@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-2405.url = "github:nixos/nixpkgs/nixos-24.05";
     lix = {
       url = "git+https://git.lix.systems/lix-project/lix?ref=refs/tags/2.90.0-rc1";
       flake = false;
@@ -24,9 +25,15 @@
     };
   };
 
-  outputs = { nixpkgs, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, ... }:
+  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, ... }:
     let
       system = "x86_64-linux";
+      overlay-2405 = final: prev: {
+        stable = import nixpkgs-2405 {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
       pkgs = import nixpkgs {
         inherit system;
         config = {
@@ -34,6 +41,7 @@
         };
         overlays = [
           nur.overlay
+          overlay-2405
         ];
       };
       lib = nixpkgs;

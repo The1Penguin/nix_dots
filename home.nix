@@ -102,7 +102,7 @@ in
       rofi
       betterlockscreen
       gamemode
-      (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
+      (stable.xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
         postPatch = previousAttrs.postPatch + ''
           substituteInPlace src/XIVLauncher.Core/Components/SettingsPage/Tabs/SettingsTabWine.cs \
             --replace 'libgamemodeauto.so.0' '${pkgs.gamemode.lib}/lib/libgamemodeauto.so.0'
