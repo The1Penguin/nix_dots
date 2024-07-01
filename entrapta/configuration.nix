@@ -62,7 +62,10 @@
   services.openssh = {
     enable = true;
     ports = [ 69 ];
-    settings.PasswordAuthentication = false;
+    settings = {
+        PasswordAuthentication = false;
+        LoginGraceTime = 0;
+    };
   };
 
   environment.systemPackages = with pkgs; [
