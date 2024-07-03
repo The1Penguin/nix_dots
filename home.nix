@@ -346,6 +346,8 @@ in
                   systemctl hibernate
                 elif [ "$status" = Discharging -a "$capacity" -le 5 ]; then
                   notify-send "Battery Critical: $battery_percentage"
+                elif [ "$status" = Discharging -a "$capacity" -le 20 ]; then
+                  notify-send "Battery Low: $battery_percentage"
                 fi
               }
             '';
