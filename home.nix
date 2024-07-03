@@ -312,7 +312,7 @@ in
     };
   };
 
-  systemd.user = {
+  systemd.user = lib.mkIf laptop {
     timers = {
       battery-check = {
         Unit.Description = "Warn at low battery levels";
@@ -324,7 +324,7 @@ in
         Install.WantedBy = [ "graphical-session.target" ];
       };
     };
-    services = lib.mkIf desktop {
+    services = {
       battery-check = {
         Unit.Description = "Warn at low battery levels";
         Service =
