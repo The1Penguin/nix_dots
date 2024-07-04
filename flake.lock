@@ -22,6 +22,21 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1719915848,
+        "narHash": "sha256-zq+CMkdT8A9z74HonwspXp8HsX4OvP4uaVdD98AO6as=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "9345073d27d91ab66c1b6ab65df322906992aa59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -219,6 +234,7 @@
     "root": {
       "inputs": {
         "any-nix-shell": "any-nix-shell",
+        "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "lix": "lix",
         "lix-module": "lix-module",

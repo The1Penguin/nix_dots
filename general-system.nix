@@ -180,4 +180,10 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     setSocketVariable = true;
   };
 
+  catppuccin = {
+    enable = true;
+    flavor = "latte";
+    accent = "pink";
+  };
+
 }

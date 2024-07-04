@@ -25,7 +25,11 @@
 
   services.displayManager.sddm = {
     enable = true;
-    theme = "chili";
+    package = pkgs.kdePackages.sddm;
+    catppuccin = {
+        background = ./sakuraflower.png;
+        font = "DokiDokiMono Nerd Font";
+    };
   };
 
   services.xserver = {
@@ -72,7 +76,6 @@
     dunst
     feh
     picom
-    sddm-chili-theme
   ];
 
   hardware.enableAllFirmware = true;

@@ -1,5 +1,4 @@
 syntax enable
-colorscheme catppuccin-latte
 hi Normal guibg=NONE ctermbg=NONE
 set spelllang=sv,en
 hi SpellBad cterm=underline "ctermfg=203 guifg=#ff5f5f

@@ -21,7 +21,6 @@
         set fish_greeting
         export MANPAGER="bat -p"
         export PAGER="bat"
-        export BAT_THEME="Catppuccin-latte"
       '';
 
       interactiveShellInit = ''

@@ -23,9 +23,13 @@
       url = "github:The1Penguin/any-nix-shell/nix_develop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, ... }:
+  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, ... }:
     let
       system = "x86_64-linux";
       overlay-2405 = final: prev: {
@@ -53,6 +57,7 @@
           modules = [
             ./scorpia/configuration.nix
             lix-module.nixosModules.default
+            catppuccin.nixosModules.catppuccin
           ];
         };
         entrapta = nixpkgs.lib.nixosSystem {
@@ -60,6 +65,7 @@
           modules = [
             ./entrapta/configuration.nix
             lix-module.nixosModules.default
+            catppuccin.nixosModules.catppuccin
           ];
         };
       };
@@ -77,6 +83,7 @@
             nur.hmModules.nur
             ./home.nix
             lix-module.nixosModules.default
+            catppuccin.homeManagerModules.catppuccin
           ];
         };
         "entrapta" = home-manager.lib.homeManagerConfiguration {
@@ -91,6 +98,7 @@
             nur.hmModules.nur
             ./home.nix
             lix-module.nixosModules.default
+            catppuccin.homeManagerModules.catppuccin
           ];
         };
       };

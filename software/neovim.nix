@@ -4,7 +4,6 @@
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
-      catppuccin-nvim
       FTerm-nvim
       supertab
       vim-startify

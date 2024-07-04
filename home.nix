@@ -45,13 +45,11 @@ in
       gcc
       xfce.thunar
       ranger
-      bat
       agda
       cmake
       gnumake
       libtool
       sqlite
-      mpv
       jellyfin-media-player
       signal-desktop
       qview
@@ -59,8 +57,6 @@ in
       remmina
       kotatogram-desktop
       nixpkgs-fmt
-      zathura
-      lazygit
       speedtest-rs
       # any-nix-shell
       python3
@@ -84,7 +80,6 @@ in
       })
       slack
       rnote
-      catppuccin
       unzip
       steam
       steam-run
@@ -173,22 +168,6 @@ in
         ];
       };
 
-      ".config/bat/themes/Catppuccin-latte.tmTheme".source = pkgs.fetchFromGitHub
-        {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        } + "/Catppuccin-latte.tmTheme";
-
-      ".config/fish/themes/Catppuccin Latte.theme".source = pkgs.fetchFromGitHub
-        {
-          owner = "catppuccin";
-          repo = "fish";
-          rev = "91e6d6721362be05a5c62e235ed8517d90c567c9";
-          sha256 = "sha256-l9V7YMfJWhKDL65dNbxaddhaM6GJ0CFZ6z+4R6MJwBA=";
-        } + "/themes/Catppuccin Latte.theme";
-
       ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
     };
 
@@ -250,18 +229,21 @@ in
         obs-vkcapture
       ];
     };
+
+    bat.enable = true;
+
+    lazygit.enable = true;
+
+    zathura.enable = true;
+
+    mpv.enable = true;
   };
 
   gtk = {
     enable = true;
-    theme = {
-      name = "Catppuccin-Latte-Compact-Pink-Light";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "latte";
-      };
+    catppuccin = {
+      size = "compact";
+      tweaks = [ "rimless" ];
     };
     cursorTheme = {
       name = "capitaine-cursors";
@@ -357,6 +339,12 @@ in
           };
       };
     };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "latte";
+    accent = "pink";
   };
 
   news.display = "silent";
