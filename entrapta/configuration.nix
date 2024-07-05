@@ -58,16 +58,10 @@
     enable = true;
     ports = [ 69 ];
     settings = {
-        PasswordAuthentication = false;
-        LoginGraceTime = 0;
+      PasswordAuthentication = false;
+      LoginGraceTime = 0;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    dunst
-    feh
-    picom
-  ];
 
   hardware.enableAllFirmware = true;
 

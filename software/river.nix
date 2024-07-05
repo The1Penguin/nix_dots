@@ -11,7 +11,7 @@
     rivercarro
     swaybg
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/laptop/notify))
-    (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile  ./../scripts/laptop/wofi_powermenu_w))
+    (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ../scripts/laptop/wofi_powermenu_w))
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/laptop/mylock))
   ];
 

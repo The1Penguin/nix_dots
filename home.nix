@@ -21,6 +21,8 @@ in
     ./software/neovim.nix
   ] ++ (lib.optionals laptop [
     ./software/river.nix
+  ]) ++ (lib.optionals desktop [
+    ./software/bspwm.nix
   ]);
 
   home = {
@@ -96,8 +98,6 @@ in
     ] ++
     (lib.optionals desktop [
       openmw
-      rofi
-      betterlockscreen
       gamemode
       (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
         postPatch = previousAttrs.postPatch + ''
@@ -108,26 +108,9 @@ in
       (pkgs.writeScriptBin "ffxiv-backup" (builtins.readFile ./scripts/desktop/ffxiv-backup))
       (pkgs.writeScriptBin "ffxiv-update" (builtins.readFile ./scripts/desktop/ffxiv-update))
       prismlauncher
-      flameshot
-      rofi-bluetooth
-    ]) ++
-    # Own scripts
-    (lib.optionals desktop [
-      (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/desktop/mylock))
-      (pkgs.writeScriptBin "change-source.sh" (builtins.readFile ./scripts/desktop/change-source.sh))
-      (pkgs.writeScriptBin "nick-source.sh" (builtins.readFile ./scripts/desktop/nick-source.sh))
-      (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/desktop/notify))
-      (pkgs.writeScriptBin "rofi_powermenu" (builtins.readFile ./scripts/desktop/rofi_powermenu))
-      (pkgs.writeScriptBin "wacom.sh" (builtins.readFile ./scripts/desktop/wacom.sh))
     ]);
 
     file = {
-      ".config/bspwm/bspwmrc".source = ./files/bspwmrc;
-      ".config/bspwm/bspwmrc".executable = true;
-
-      ".config/sxhkd/sxhkdrc".source = ./files/sxhkdrc;
-      ".config/sxhkd/sxhkdrc".executable = true;
-
       ".config/rofi/config.rasi".source = ./files/config.rasi;
       ".local/share/rofi/themes".source = pkgs.fetchFromGitHub
         {
@@ -136,8 +119,6 @@ in
           rev = "5350da41a11814f950c3354f090b90d4674a95ce";
           hash = "sha256-DNorfyl3C4RBclF2KDgwvQQwixpTwSRu7fIvihPN8JY=";
         } + "/basic/.local/share/rofi/themes";
-
-      ".config/dunst/dunstrc".source = ./files/dunstrc;
 
       ".config/wofi/config".source = ./files/woficonfig;
       ".config/wofi/style.css".source = ./files/wofi.css;
@@ -270,22 +251,6 @@ in
     nextcloud-client = {
       enable = true;
       startInBackground = true;
-    };
-
-    picom = lib.mkIf desktop {
-      enable = true;
-      backend = "glx";
-      settings = {
-        corner.radius = 8;
-        round.borders = 1;
-        blur = {
-          background = true;
-          kern = "3x3box";
-          method = "dual_kawase";
-          strength = 3.4;
-        };
-        refresh.rate = 144;
-      };
     };
   };
 

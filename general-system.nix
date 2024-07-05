@@ -121,8 +121,8 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     enable = true;
     package = pkgs.kdePackages.sddm;
     catppuccin = {
-        background = ./sakuraflower.png;
-        font = "DokiDokiMono Nerd Font";
+      background = ./sakuraflower.png;
+      font = "DokiDokiMono Nerd Font";
     };
   };
 
