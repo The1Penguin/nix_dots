@@ -20,8 +20,8 @@
     enable = true;
     alwaysResetDesktops = true;
     monitors = {
-      DP-4 = map toString [ 1 2 3 4 5 ];
-      DP-0 = map toString [ 6 7 8 9 10 ];
+      DP-4 = map toString lib.list.range 1 5;
+      DP-0 = map toString lib.list.range 6 10;
     };
     settings = {
       click_to_focus = "button1";
