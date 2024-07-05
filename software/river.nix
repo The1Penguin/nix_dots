@@ -45,7 +45,59 @@
 
     kanshi = {
       enable = true;
-      extraConfig = builtins.readFile ../files/kanshiconfig;
+      settings = [
+        {
+          profile.name = "undocked";
+          profile.outputs = [
+            {
+              criteria = "eDP-1";
+            }
+          ];
+        }
+        {
+          profile.name = "TV";
+          profile.outputs = [
+            {
+              criteria = "eDP-1";
+              position = "0,0";
+            }
+            {
+              criteria = "Samsung Electric Company SAMSUNG 0x00000700";
+              position = "1920,0";
+              mode = "3840x2160@60Hz";
+              scale = 2.0;
+            }
+          ];
+        }
+        {
+          profile.name = "Monitor_Kumla";
+          profile.outputs = [
+            {
+              criteria = "eDP-1";
+              position = "320,1440";
+            }
+            {
+              criteria = "AOC Q32V4WG5 QHPM4HA001642";
+              position = "0,0";
+              mode = "2560x1440@59.951Hz";
+            }
+          ];
+        }
+      ];
     };
+  };
+
+  systemd.user.services.kanshi-river = {
+    Unit = {
+      Description = "Kanshi but on river";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.kanshi}/bin/kanshi";
+      Restart = "always";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }
