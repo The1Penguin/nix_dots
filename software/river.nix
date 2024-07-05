@@ -60,92 +60,95 @@
       ];
       map = {
         passthrough."Super F11" = "enter-mode normal";
-        normal = {
-          "Super F11" = "enter-mode passthrough";
-          "Super Return" = "spawn alacritty";
-          "Super Q" = "close";
-          "Super+Shift E" = "exit";
-          "Super J" = "focus-view next";
-          "Super K" = "focus-view previous";
-          "Super+Shift J" = "swap next";
-          "Super+Shift K" = "swap previous";
-          "Super Period" = "focus-output next";
-          "Super Space" = "focus-output next";
-          "Super Comma" = "focus-output previous";
-          "Super+Shift Period" = "send-to-output next";
-          "Super+Shift Space" = "send-to-output next";
-          "Super+Shift Comma" = "send-to-output previous";
-          "Super H" = "send-layout-cmd rivercarro 'main-ratio -0.05'";
-          "Super L" = "send-layout-cmd rivercarro 'main-ratio +0.05'";
-          "Super+Shift H" = "send-layout-cmd rivercarro 'main-count +1'";
-          "Super+Shift L" = "send-layout-cmd rivercarro 'main-count -1'";
-          "Super+Alt H" = "move left 100";
-          "Super+Alt J" = "move down 100";
-          "Super+Alt K" = "move up 100";
-          "Super+Alt L" = "move right 100";
-          "Super+Alt+Control H" = "snap left";
-          "Super+Alt+Control J" = "snap down";
-          "Super+Alt+Control K" = "snap up";
-          "Super+Alt+Control L" = "snap right";
-          "Super+Alt+Shift H" = "resize horizontal -100";
-          "Super+Alt+Shift J" = "resize vertical 100";
-          "Super+Alt+Shift K" = "resize vertical -100";
-          "Super+Alt+Shift L" = "resize horizontal 100";
-          "Super 0" = "set-focused-tags 2147483647";
-          "Super+Shift 0" = "set-view-tags 2147483647";
-          "Super T" = "toggle-float";
-          "Super F" = "toggle-fullscreen";
-          "Super Up" = "send-layout-cmd rivercarro 'main-location top'";
-          "Super Right" = "send-layout-cmd rivercarro 'main-location right'";
-          "Super Down" = "send-layout-cmd rivercarro 'main-location bottom'";
-          "Super Left" = "send-layout-cmd rivercarro 'main-location left'";
-          "Super M" = "send-layout-cmd rivercarro 'main-location monocle'";
-          "None XF86Eject" = "spawn 'eject -T'";
-          "None XF86AudioRaiseVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'";
-          "None XF86AudioLowerVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'";
-          "None XF86AudioMute" = "spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
-          "None XF86AudioMedia" = "spawn 'playerctl play-pause'";
-          "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
-          "None XF86AudioPrev" = "spawn 'playerctl previous'";
-          "None XF86AudioNext" = "spawn 'playerctl next'";
-          "None XF86MonBrightnessUp" = "spawn 'brightnessctl s 5+'";
-          "None XF86MonBrightnessDown" = "spawn 'brightnessctl s 5-'";
-          "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
-          "Super E" = "spawn 'emacs'";
-          "Super F1" = "spawn 'firefox'";
-          "Super F2" = "spawn 'discord'";
-          "Super F3" = "spawn 'spotify'";
-          "Alt+Shift X" = "spawn 'mylock'";
-          "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";
-          "Super Tab" = "spawn 'notify'";
-          "None Print" = "spawn 'grimshot copy area'";
-          "Super P" = "spawn 'pavucontrol'";
-          "Super U" = "spawn 'bitwarden'";
-          "Super BTN_LEFT" = "move-view";
-          "Super BTN_RIGHT" = "resize-view";
-        };
+        normal = lib.attrsets.unionOfDisjoint
+          {
+            "Super F11" = "enter-mode passthrough";
+            "Super Return" = "spawn alacritty";
+            "Super Q" = "close";
+            "Super+Shift E" = "exit";
+            "Super J" = "focus-view next";
+            "Super K" = "focus-view previous";
+            "Super+Shift J" = "swap next";
+            "Super+Shift K" = "swap previous";
+            "Super Period" = "focus-output next";
+            "Super Space" = "focus-output next";
+            "Super Comma" = "focus-output previous";
+            "Super+Shift Period" = "send-to-output next";
+            "Super+Shift Space" = "send-to-output next";
+            "Super+Shift Comma" = "send-to-output previous";
+            "Super H" = "send-layout-cmd rivercarro 'main-ratio -0.05'";
+            "Super L" = "send-layout-cmd rivercarro 'main-ratio +0.05'";
+            "Super+Shift H" = "send-layout-cmd rivercarro 'main-count +1'";
+            "Super+Shift L" = "send-layout-cmd rivercarro 'main-count -1'";
+            "Super+Alt H" = "move left 100";
+            "Super+Alt J" = "move down 100";
+            "Super+Alt K" = "move up 100";
+            "Super+Alt L" = "move right 100";
+            "Super+Alt+Control H" = "snap left";
+            "Super+Alt+Control J" = "snap down";
+            "Super+Alt+Control K" = "snap up";
+            "Super+Alt+Control L" = "snap right";
+            "Super+Alt+Shift H" = "resize horizontal -100";
+            "Super+Alt+Shift J" = "resize vertical 100";
+            "Super+Alt+Shift K" = "resize vertical -100";
+            "Super+Alt+Shift L" = "resize horizontal 100";
+            "Super 0" = "set-focused-tags 2147483647";
+            "Super+Shift 0" = "set-view-tags 2147483647";
+            "Super T" = "toggle-float";
+            "Super F" = "toggle-fullscreen";
+            "Super Up" = "send-layout-cmd rivercarro 'main-location top'";
+            "Super Right" = "send-layout-cmd rivercarro 'main-location right'";
+            "Super Down" = "send-layout-cmd rivercarro 'main-location bottom'";
+            "Super Left" = "send-layout-cmd rivercarro 'main-location left'";
+            "Super M" = "send-layout-cmd rivercarro 'main-location monocle'";
+            "None XF86Eject" = "spawn 'eject -T'";
+            "None XF86AudioRaiseVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'";
+            "None XF86AudioLowerVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'";
+            "None XF86AudioMute" = "spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+            "None XF86AudioMedia" = "spawn 'playerctl play-pause'";
+            "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
+            "None XF86AudioPrev" = "spawn 'playerctl previous'";
+            "None XF86AudioNext" = "spawn 'playerctl next'";
+            "None XF86MonBrightnessUp" = "spawn 'brightnessctl s 5+'";
+            "None XF86MonBrightnessDown" = "spawn 'brightnessctl s 5-'";
+            "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
+            "Super E" = "spawn 'emacs'";
+            "Super F1" = "spawn 'firefox'";
+            "Super F2" = "spawn 'discord'";
+            "Super F3" = "spawn 'spotify'";
+            "Alt+Shift X" = "spawn 'mylock'";
+            "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";
+            "Super Tab" = "spawn 'notify'";
+            "None Print" = "spawn 'grimshot copy area'";
+            "Super P" = "spawn 'pavucontrol'";
+            "Super U" = "spawn 'bitwarden'";
+            "Super BTN_LEFT" = "move-view";
+            "Super BTN_RIGHT" = "resize-view";
+          }
+          (builtins.listToAttrs (
+            lib.concatMap
+              (x:
+                [{
+                  name = "Super " + toString x;
+                  value = "set-focused-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                }] ++
+                [{
+                  name = "Super+Shift " + toString x;
+                  value = "set-view-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                }] ++
+                [{
+                  name = "Super+Control " + toString x;
+                  value = "toggle-focused-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                }] ++
+                [{
+                  name = "Super+Shift+Control " + toString x;
+                  value = "toggle-view-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                }]
+              )
+              (lib.range 1 9)));
       };
     };
-    extraConfig = ''
-      # To make the tags work as intended
-      for i in $(seq 1 9)
-      do
-          tags=$((1 << ($i - 1)))
-
-          # Super+[1-9] to focus tag [0-8]
-          riverctl map normal Super $i set-focused-tags $tags
-
-          # Super+Shift+[1-9] to tag focused view with tag [0-8]
-          riverctl map normal Super+Shift $i set-view-tags $tags
-
-          # Super+Ctrl+[1-9] to toggle focus of tag [0-8]
-          riverctl map normal Super+Control $i toggle-focused-tags $tags
-
-          # Super+Shift+Ctrl+[1-9] to toggle tag [0-8] of focused view
-          riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
-      done
-      exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &
-    '';
+    extraConfig = "exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
   };
 
   services = {
@@ -168,7 +171,7 @@
       markup = true;
       maxIconSize = 96;
       padding = "15,15,15";
-      progressColor="over #c6cad1";
+      progressColor = "over #c6cad1";
       textColor = "#4c4f69";
       width = 450;
     };
