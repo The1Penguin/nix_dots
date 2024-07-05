@@ -117,6 +117,15 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     };
   };
 
+  services.displayManager.sddm = {
+    enable = true;
+    package = pkgs.kdePackages.sddm;
+    catppuccin = {
+        background = ./sakuraflower.png;
+        font = "DokiDokiMono Nerd Font";
+    };
+  };
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk

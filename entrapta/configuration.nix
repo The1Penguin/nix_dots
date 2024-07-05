@@ -23,15 +23,6 @@
     accelSpeed = "0";
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    package = pkgs.kdePackages.sddm;
-    catppuccin = {
-        background = ./sakuraflower.png;
-        font = "DokiDokiMono Nerd Font";
-    };
-  };
-
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];

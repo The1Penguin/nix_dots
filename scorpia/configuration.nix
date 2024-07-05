@@ -32,15 +32,6 @@
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    wayland
-    rivercarro
-    mako
-    kanshi
-    swaybg
-    xwayland
-  ];
-
   programs.river.enable = true;
 
   # Mullvad vpn
@@ -49,18 +40,9 @@
     package = pkgs.mullvad-vpn;
   };
 
-  # Login session thingy
-  services.greetd = {
+  services.displayManager.sddm.wayland = {
     enable = true;
-    settings = {
-      default_session.command = ''
-        ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd river
-      '';
-    };
+    compositor = "kwin";
   };
 
   # Allow for brightness control

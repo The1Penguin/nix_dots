@@ -19,7 +19,9 @@ in
     ./software/fish.nix
     ./software/spotify.nix
     ./software/neovim.nix
-  ];
+  ] ++ (lib.optionals laptop [
+    ./software/river.nix
+  ]);
 
   home = {
     username = username;
@@ -109,13 +111,6 @@ in
       flameshot
       rofi-bluetooth
     ]) ++
-    (lib.optionals laptop [
-      wofi
-      brightnessctl
-      acpi
-      swaylock-effects
-      sway-contrib.grimshot
-    ]) ++
     # Own scripts
     (lib.optionals desktop [
       (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/desktop/mylock))
@@ -124,17 +119,9 @@ in
       (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/desktop/notify))
       (pkgs.writeScriptBin "rofi_powermenu" (builtins.readFile ./scripts/desktop/rofi_powermenu))
       (pkgs.writeScriptBin "wacom.sh" (builtins.readFile ./scripts/desktop/wacom.sh))
-    ]) ++
-    (lib.optionals laptop [
-      (pkgs.writeScriptBin "notify" (builtins.readFile ./scripts/laptop/notify))
-      (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ./scripts/laptop/wofi_powermenu_w))
-      (pkgs.writeScriptBin "mylock" (builtins.readFile ./scripts/laptop/mylock))
     ]);
 
     file = {
-      ".config/river/init".source = ./files/riverconfig;
-      ".config/river/init".executable = true;
-
       ".config/bspwm/bspwmrc".source = ./files/bspwmrc;
       ".config/bspwm/bspwmrc".executable = true;
 
@@ -152,19 +139,14 @@ in
 
       ".config/dunst/dunstrc".source = ./files/dunstrc;
 
-      ".config/kanshi/config".source = ./files/kanshiconfig;
-
       ".config/wofi/config".source = ./files/woficonfig;
       ".config/wofi/style.css".source = ./files/wofi.css;
       ".config/wofi/style.css".executable = true;
-
-      ".config/mako/config".source = ./files/makoconfig;
 
       ".config/doom/".source = pkgs.symlinkJoin {
         name = "doom-config";
         paths = [
           doom-dots
-
         ];
       };
 
@@ -271,28 +253,43 @@ in
     };
   };
 
-  services.gammastep = {
+  qt = {
     enable = true;
-    enableVerboseLogging = true;
-    longitude = 57.708870;
-    latitude = 11.974560;
+    style.name = "kvantum";
+    platformTheme.name = "kvantum";
   };
 
-  services.picom = lib.mkIf desktop {
-    enable = true;
-    backend = "glx";
-    settings = {
-      corner.radius = 8;
-      round.borders = 1;
-      blur = {
-        background = true;
-        kern = "3x3box";
-        method = "dual_kawase";
-        strength = 3.4;
+  services = {
+    gammastep = {
+      enable = true;
+      enableVerboseLogging = true;
+      longitude = 57.708870;
+      latitude = 11.974560;
+    };
+
+    nextcloud-client = {
+      enable = true;
+      startInBackground = true;
+    };
+
+    picom = lib.mkIf desktop {
+      enable = true;
+      backend = "glx";
+      settings = {
+        corner.radius = 8;
+        round.borders = 1;
+        blur = {
+          background = true;
+          kern = "3x3box";
+          method = "dual_kawase";
+          strength = 3.4;
+        };
+        refresh.rate = 144;
       };
-      refresh.rate = 144;
     };
   };
+
+
 
   systemd.user = lib.mkIf laptop {
     timers = {
