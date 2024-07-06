@@ -4,8 +4,19 @@ battery_stat="$(acpi --battery | head -n 1)"
 battery_greped_status="$(echo $battery_stat| cut -d',' -f1 | cut -d':' -f2 | xargs | awk '{print tolower($0)}')"
 battery_percentage_v="$(echo $battery_stat| grep -Po '(\d+%)' | grep -Po '\d+')"
 network="$(nmcli -t -f name connection show --active | sed 's/^lo$/not connected/' | head -n 1)"
+audio_mute="$(pactl get-sink-mute @DEFAULT_SINK@)"
+audio_volume="$(pactl get-sink-volume @DEFAULT_SINK@ | cut -d'/' -f2 | head -n1 | xargs)"
+
+audio=""
+if [ "$audio_mute" = "Mute: yes" ]; then
+    audio="Muted"
+else
+    audio="$audio_volume"
+fi;
+
 
 
 notify-send 'Status' "$(echo -e "Time: $TIME \n\
 Network: $network \n\
+Audio: $audio \n\
 Battery: $battery_percentage_v%, and $battery_greped_status")"

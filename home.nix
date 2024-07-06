@@ -79,7 +79,7 @@ in
           wget
           p7zip
           protontricks
-          gnome.zenity
+          pkgs.zenity
         ];
       })
       slack
