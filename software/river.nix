@@ -129,23 +129,28 @@
             lib.concatMap
               (x:
                 [{
-                  name = "Super " + toString x;
-                  value = "set-focused-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                  name = "Super " + x.name;
+                  value = "set-focused-tags " + x.power;
                 }] ++
                 [{
-                  name = "Super+Shift " + toString x;
-                  value = "set-view-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                  name = "Super+Shift " + x.name;
+                  value = "set-view-tags " + x.power;
                 }] ++
                 [{
-                  name = "Super+Control " + toString x;
-                  value = "toggle-focused-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                  name = "Super+Control " + x.name;
+                  value = "toggle-focused-tags " + x.power;
                 }] ++
                 [{
-                  name = "Super+Shift+Control " + toString x;
-                  value = "toggle-view-tags " + toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                  name = "Super+Shift+Control " + x.name;
+                  value = "toggle-view-tags " + x.power;
                 }]
               )
-              (lib.range 1 9)));
+            (map
+              (x: {
+                name = toString x;
+                power = toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+              })
+              (lib.range 1 9))));
       };
     };
     extraConfig = "exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
