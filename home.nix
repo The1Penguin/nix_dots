@@ -85,8 +85,6 @@ in
       slack
       rnote
       unzip
-      steam
-      steam-run
       networkmanagerapplet
       fallout-ce
       nurl
@@ -98,7 +96,6 @@ in
     ] ++
     (lib.optionals desktop [
       openmw
-      gamemode
       (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
         postPatch = previousAttrs.postPatch + ''
           substituteInPlace src/XIVLauncher.Core/Components/SettingsPage/Tabs/SettingsTabWine.cs \

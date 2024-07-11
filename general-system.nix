@@ -179,6 +179,17 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     setSocketVariable = true;
   };
 
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    extraPackages = with pkgs; [
+      gamemode
+    ];
+  };
+
   catppuccin = {
     enable = true;
     flavor = "latte";
