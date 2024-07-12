@@ -42,7 +42,7 @@
 
   services.displayManager.sddm.wayland = {
     enable = true;
-    compositor = "kwin";
+    compositor = "weston";
   };
 
   # Allow for brightness control
