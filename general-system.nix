@@ -115,6 +115,11 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     };
   };
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+  };
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
