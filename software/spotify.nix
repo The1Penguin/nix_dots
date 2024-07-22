@@ -1,9 +1,9 @@
 { config, lib, pkgs, spicetify-nix, ... }:
 let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
-  imports = [ spicetify-nix.homeManagerModule ];
+  imports = [ spicetify-nix.homeManagerModules.default ];
 
   programs.spicetify = {
     enable = true;
@@ -11,7 +11,7 @@ in
     colorScheme = "latte";
 
     enabledCustomApps = with spicePkgs.apps; [
-      lyrics-plus
+      lyricsPlus
     ];
 
     enabledExtensions = with spicePkgs.extensions; [

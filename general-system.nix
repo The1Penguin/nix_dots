@@ -20,7 +20,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.printing.enable = true;
 
-  sound.enable = true;
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;
