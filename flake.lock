@@ -165,6 +165,26 @@
         "url": "https://git.lix.systems/lix-project/nixos-module"
       }
     },
+    "nixos-xivlauncher-rb": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1723288179,
+        "narHash": "sha256-Q8h7UdpJTTjrWsyk/IfBPkH5pJnDic5UBjYVKl23vXg=",
+        "owner": "drakon64",
+        "repo": "nixos-xivlauncher-rb",
+        "rev": "adcaa0499abe895ae951d9c0594fb2fd595f12b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drakon64",
+        "repo": "nixos-xivlauncher-rb",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1722421184,
@@ -219,6 +239,7 @@
         "home-manager": "home-manager",
         "lix": "lix",
         "lix-module": "lix-module",
+        "nixos-xivlauncher-rb": "nixos-xivlauncher-rb",
         "nixpkgs": "nixpkgs",
         "nixpkgs-2405": "nixpkgs-2405",
         "nur": "nur",

@@ -145,12 +145,12 @@
                   value = "toggle-view-tags " + x.power;
                 }]
               )
-            (map
-              (x: {
-                name = toString x;
-                power = toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
-              })
-              (lib.range 1 9))));
+              (map
+                (x: {
+                  name = toString x;
+                  power = toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
+                })
+                (lib.range 1 9))));
       };
     };
     extraConfig = "exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";

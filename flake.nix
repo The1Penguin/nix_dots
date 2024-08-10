@@ -30,9 +30,13 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-xivlauncher-rb = {
+      url = "github:drakon64/nixos-xivlauncher-rb";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, ... }:
+  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, ... }:
     let
       system = "x86_64-linux";
       overlay-2405 = final: prev: {
@@ -79,6 +83,7 @@
           extraSpecialArgs = {
             inherit spicetify-nix;
             inherit any-nix-shell;
+            inherit nixos-xivlauncher-rb;
             desktop = false;
             laptop = true;
           };
@@ -94,6 +99,7 @@
           extraSpecialArgs = {
             inherit spicetify-nix;
             inherit any-nix-shell;
+            inherit nixos-xivlauncher-rb;
             desktop = true;
             laptop = false;
           };

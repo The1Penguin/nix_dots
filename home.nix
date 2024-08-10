@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, nur, any-nix-shell, desktop, laptop, ... }:
+{ config, lib, pkgs, spicetify-nix, nur, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -97,12 +97,9 @@ in
     ] ++
     (lib.optionals desktop [
       openmw
-      (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
-        postPatch = previousAttrs.postPatch + ''
-          substituteInPlace src/XIVLauncher.Core/Components/SettingsPage/Tabs/SettingsTabWine.cs \
-            --replace 'libgamemodeauto.so.0' '${pkgs.gamemode.lib}/lib/libgamemodeauto.so.0'
-        '';
-      }))
+      (nixos-xivlauncher-rb.packages.x86_64-linux.xivlauncher-rb.override {
+        useGameMode = true;
+      })
       (pkgs.writeScriptBin "ffxiv-backup" (builtins.readFile ./scripts/desktop/ffxiv-backup))
       (pkgs.writeScriptBin "ffxiv-update" (builtins.readFile ./scripts/desktop/ffxiv-update))
       prismlauncher
