@@ -2,6 +2,8 @@
 let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 {
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   time.timeZone = "Europe/Stockholm";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
