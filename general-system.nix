@@ -151,6 +151,10 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
         TimeoutStopSec = 10;
       };
     };
+    services = {
+      NetworkManager-wait-online.enable = lib.mkForce false;
+      systemd-networkd-wait-online.enable = lib.mkForce false;
+    };
   };
   services.dbus = {
     enable = true;
