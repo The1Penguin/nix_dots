@@ -80,6 +80,7 @@ in
           p7zip
           protontricks
           pkgs.zenity
+          gamemode
         ];
       })
       slack
@@ -93,6 +94,8 @@ in
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       cockatrice
       trayscale
+      itch
+      zoom-us
     ] ++
     (lib.optionals desktop [
       openmw
