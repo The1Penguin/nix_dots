@@ -94,6 +94,8 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     package = pkgs.bluez5-experimental;
   };
 
+  services.power-profiles-daemon.enable = lib.mkForce false;
+
   services.auto-cpufreq = {
     enable = true;
     settings = {
@@ -110,7 +112,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.kdePackages.sddm;
     catppuccin = {
       background = ./sakuraflower.png;
       font = "DokiDokiMono Nerd Font";

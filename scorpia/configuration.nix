@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -34,6 +34,14 @@
 
   programs.river.enable = true;
 
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+  ];
+
+
   # Mullvad vpn
   services.mullvad-vpn = {
     enable = true;
@@ -42,7 +50,7 @@
 
   services.displayManager.sddm.wayland = {
     enable = true;
-    compositor = "weston";
+    compositor = lib.mkForce "weston";
   };
 
   # Allow for brightness control
