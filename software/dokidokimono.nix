@@ -5,8 +5,8 @@ pkgs.stdenv.mkDerivation {
   src = ./Doki-Doki-Mono.zip;
 
   patcher = (pkgs.fetchzip {
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FontPatcher.zip";
-    sha256 = "sha256-ZJpF/Q5lfcW3srb2NbJk+/QEuwaFjdzboa+rl9L7GGE=";
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FontPatcher.zip";
+    sha256 = "sha256-3s0vcRiNA/pQrViYMwU2nnkLUNUcqXja/jTWO49x3BU=";
     stripRoot = false;
   });
 
