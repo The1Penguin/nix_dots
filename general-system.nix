@@ -112,7 +112,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.kdePackages.sddm;
+    package = lib.mkForce pkgs.kdePackages.sddm;
     catppuccin = {
       background = ./sakuraflower.png;
       font = "DokiDokiMono Nerd Font";
