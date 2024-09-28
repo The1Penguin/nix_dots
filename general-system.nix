@@ -193,7 +193,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
+    gamescopeSession.enable = false;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
