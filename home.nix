@@ -49,7 +49,9 @@ in
       gcc
       xfce.thunar
       ranger
-      agda
+      (agda.withPackages (p: with p; [
+        standard-library
+      ]))
       cmake
       gnumake
       libtool

@@ -21,6 +21,7 @@
         set fish_greeting
         export MANPAGER="bat -p"
         export PAGER="bat"
+        fish_vi_key_bindings
       '';
 
       interactiveShellInit = ''
@@ -43,7 +44,7 @@
     starship = {
       enable = true;
       settings = {
-        format = "$nix_shell$directory";
+        format = "$nix_shell$character$directory";
         right_format = "$hostname";
         add_newline = false;
 
@@ -58,6 +59,14 @@
           truncate_to_repo = false;
           read_only = " 🔒";
           style = "cyan";
+        };
+        character = {
+          success_symbol = "[❯](bold purple)";
+          error_symbol = "[❯](bold red)";
+          vimcmd_symbol = "[❮](bold green)";
+          vimcmd_replace_one_symbol = "[❯](bold blue)";
+          vimcmd_replace_symbol = "[❯](bold blue)";
+          vimcmd_visual_symbol = "[❮](bold yellow)";
         };
         nix_shell = {
           symbol = " ";
