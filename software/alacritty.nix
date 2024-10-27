@@ -38,9 +38,7 @@
         size = 16.0;
       };
 
-      shell = {
-        program = "fish";
-      };
+      terminal.shell.program = "fish";
     };
   };
 }
