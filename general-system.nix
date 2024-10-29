@@ -75,14 +75,19 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.kanata = {
     enable = true;
+    package = pkgs.kanata-with-cmd;
     keyboards.main = {
       extraDefCfg = "process-unmapped-keys yes";
       config = ''
+        (defvar
+          tap-time 150
+          hold-time 150)
+
         (defsrc
           caps)
 
         (defalias
-          escctrl (tap-hold 150 150 esc lctrl))
+          escctrl (tap-hold $tap-time $hold-time esc lctrl))
 
         (deflayer base
           @escctrl)
