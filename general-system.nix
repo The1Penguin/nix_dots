@@ -61,7 +61,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   ];
 
   services.xserver.xkb = {
-    options = "ctrl:nocaps";
     layout = "sebrackets";
     extraLayouts.sebrackets = {
       description = "SE with better brackets added";
@@ -73,6 +72,23 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   services.xserver.wacom.enable = true;
 
   services.joycond.enable = true;
+
+  services.kanata = {
+    enable = true;
+    keyboards.main = {
+      extraDefCfg = "process-unmapped-keys yes";
+      config = ''
+        (defsrc
+          caps)
+
+        (defalias
+          escctrl (tap-hold 150 150 esc lctrl))
+
+        (deflayer base
+          @escctrl)
+      '';
+    };
+  };
 
   hardware.graphics = {
     enable = true;
@@ -181,7 +197,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   users.users.pingu = {
     isNormalUser = true;
     description = "pingu";
-    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" "uinput" ];
     shell = pkgs.fish;
   };
   programs.adb.enable = true;
