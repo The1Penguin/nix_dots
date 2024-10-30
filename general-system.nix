@@ -2,6 +2,10 @@
 let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 {
 
+  imports = [
+    ./software/kanata.nix
+  ];
+
   # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   time.timeZone = "Europe/Stockholm";
@@ -60,40 +64,12 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     cachix
   ];
 
-  services.xserver.xkb = {
-    layout = "sebrackets";
-    extraLayouts.sebrackets = {
-      description = "SE with better brackets added";
-      languages = [ "swe" ];
-      symbolsFile = ./files/selayout;
-    };
-  };
+  services.xserver.xkb.layout = "se";
 
   services.xserver.wacom.enable = true;
 
   services.joycond.enable = true;
 
-  services.kanata = {
-    enable = true;
-    package = pkgs.kanata-with-cmd;
-    keyboards.main = {
-      extraDefCfg = "process-unmapped-keys yes";
-      config = ''
-        (defvar
-          tap-time 150
-          hold-time 150)
-
-        (defsrc
-          caps)
-
-        (defalias
-          escctrl (tap-hold $tap-time $hold-time esc lctrl))
-
-        (deflayer base
-          @escctrl)
-      '';
-    };
-  };
 
   hardware.graphics = {
     enable = true;
