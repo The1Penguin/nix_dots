@@ -40,6 +40,8 @@
           ä    (tap-hold $tap-time $hold-time S-<  ä)
           å    (tap-hold $tap-time $hold-time RA-< å)
           ¨    (tap-hold $tap-time $hold-time S-.  S-,)
+          +    (tap-hold $tap-time $hold-time RA-+ +)
+          '    (tap-hold $tap-time $hold-time S-0  ')
           a    (tap-hold $tap-time $hold-time a    S-8)
           s    (tap-hold $tap-time $hold-time s    S-9)
           q    (tap-hold $tap-time $hold-time q    RA-7)
@@ -69,6 +71,8 @@
           ä @ä
           å @å
           ¨ @¨
+          + @+
+          ' @'
           ´ @base
         )
 
