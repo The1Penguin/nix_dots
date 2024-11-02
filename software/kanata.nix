@@ -36,46 +36,11 @@
 
         (defalias
           ectl (tap-hold $tap-time $hold-time esc lctrl)
-          ö    (tap-hold $tap-time $hold-time <    ö)
-          ä    (tap-hold $tap-time $hold-time S-<  ä)
-          å    (tap-hold $tap-time $hold-time RA-< å)
-          ¨    (tap-hold $tap-time $hold-time S-.  S-,)
-          +    (tap-hold $tap-time $hold-time RA-+ +)
-          '    (tap-hold $tap-time $hold-time S-0  ')
-          a    (tap-hold $tap-time $hold-time a    S-8)
-          s    (tap-hold $tap-time $hold-time s    S-9)
-          q    (tap-hold $tap-time $hold-time q    RA-7)
-          w    (tap-hold $tap-time $hold-time w    RA-8)
-          e    (tap-hold $tap-time $hold-time e    RA-9)
-          r    (tap-hold $tap-time $hold-time r    RA-0)
-          base (tap-hold $tap-time $hold-time ´    (layer-switch base))
-          prog (tap-hold $tap-time $hold-time ´    (layer-switch prog))
-
         )
-
 
         (deflayermap (base)
           caps @ectl
-          ´ @prog
         )
-
-        (deflayermap (prog)
-          caps @ectl
-          a @a
-          s @s
-          q @q
-          w @w
-          e @e
-          r @r
-          ö @ö
-          ä @ä
-          å @å
-          ¨ @¨
-          + @+
-          ' @'
-          ´ @base
-        )
-
       '';
     };
   };

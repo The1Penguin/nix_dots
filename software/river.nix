@@ -46,7 +46,7 @@
       border-color = "0xeff1f5";
       border-color-focused = "0xea76cb";
       border-color-unfocused = "0x9ca0b0";
-      keyboard-layout = "se";
+      keyboard-layout = "sebrackets";
       input = {
         "pointer-1267-12608-ELAN0001:00_04F3:3140_Touchpad" = {
           events = true;

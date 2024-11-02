@@ -64,7 +64,14 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     cachix
   ];
 
-  services.xserver.xkb.layout = "se";
+  services.xserver.xkb = {
+    layout = "sebrackets";
+    extraLayouts.sebrackets = {
+      description = "SE with better brackets added";
+      languages = [ "swe" ];
+      symbolsFile = ./files/selayout;
+    };
+  };
 
   services.xserver.wacom.enable = true;
 
