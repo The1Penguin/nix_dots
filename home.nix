@@ -61,7 +61,7 @@ in
       qview
       krdc
       remmina
-      stable.kotatogram-desktop
+      kotatogram-desktop
       nixpkgs-fmt
       speedtest-rs
       # any-nix-shell
