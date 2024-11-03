@@ -50,7 +50,7 @@
 
   services.displayManager.sddm.wayland = {
     enable = true;
-    compositor = lib.mkForce "weston";
+    compositor = lib.mkForce "kwin";
   };
 
   # Allow for brightness control
