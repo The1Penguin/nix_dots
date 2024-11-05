@@ -114,7 +114,7 @@
             "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
             "Super E" = "spawn 'emacs'";
             "Super F1" = "spawn 'firefox'";
-            "Super F2" = "spawn 'discord'";
+            "Super F2" = "spawn 'discord --enable-gpu-rasterization'";
             "Super F3" = "spawn 'spotify'";
             "Alt+Shift X" = "spawn 'mylock'";
             "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";
