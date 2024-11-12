@@ -19,6 +19,7 @@ in
     ./software/fish.nix
     ./software/spotify.nix
     ./software/neovim.nix
+    ./software/thunderbird.nix
   ] ++ (lib.optionals laptop [
     ./software/river.nix
   ]) ++ (lib.optionals desktop [
@@ -96,7 +97,6 @@ in
       cockatrice
       trayscale
       itch
-      zoom-us
     ] ++
     (lib.optionals desktop [
       openmw
