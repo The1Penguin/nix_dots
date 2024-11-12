@@ -109,12 +109,12 @@
             "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
             "None XF86AudioPrev" = "spawn 'playerctl previous'";
             "None XF86AudioNext" = "spawn 'playerctl next'";
-            "None XF86MonBrightnessUp" = "spawn 'brightnessctl s 5+'";
-            "None XF86MonBrightnessDown" = "spawn 'brightnessctl s 5-'";
+            "None XF86MonBrightnessUp" = "spawn 'brightnessctl s 17+'";
+            "None XF86MonBrightnessDown" = "spawn 'brightnessctl s 17-'";
             "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
             "Super E" = "spawn 'emacs'";
             "Super F1" = "spawn 'firefox'";
-            "Super F2" = "spawn 'discord --enable-gpu-rasterization'";
+            "Super F2" = "spawn 'vesktop --enable-gpu-rasterization'";
             "Super F3" = "spawn 'spotify'";
             "Alt+Shift X" = "spawn 'mylock'";
             "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";

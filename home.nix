@@ -36,9 +36,8 @@ in
       nextcloud-client
       kate
       pavucontrol
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
+      (vesktop.override {
+        withMiddleClickScroll = true;
       })
       ranger
       eza

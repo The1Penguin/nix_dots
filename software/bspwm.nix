@@ -76,7 +76,7 @@
         "super + {F9, F10, F11}" = "playerctl {previous,play-pause,next}";
         "{XF86AudioPause,XF86AudioNext,XF86AudioPrev}" = "playerctl {play-pause,next,previous}";
         "super + F1" = "firefox";
-        "super + F2" = "discord --no-sandbox";
+        "super + F2" = "vesktop --no-sandbox";
         "super + F3" = "exec spotify";
         "super + F4" = "lutris";
         "super + F5" = "XIVLauncher.Core";
