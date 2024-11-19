@@ -11,7 +11,7 @@
         # clickbait-remover-for-youtube
         darkreader
         duckduckgo-privacy-essentials
-        enhancer-for-youtube
+        # enhancer-for-youtube
         firefox-color
         foxyproxy-standard
         # jiffy-reader
