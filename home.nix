@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "3a9019ca7341f01ec7ae06fec67ff2ff3da69db9";
-    hash = "sha256-5kEImuGZyh1MxlWGqIYdC25NuD8fA/p6CJ6XlD4tmSI=";
+    rev = "ab1d8027615c91471061443ca4562beef93a6b9e";
+    hash = "sha256-YyXVAq22tOtz16PLwzuadVgjn399zRECnAGpvyaeWGI=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -34,6 +34,8 @@ in
     packages = with pkgs; [
       htop
       emacs-gtk
+      (python3.withPackages (p: with p; [ epc orjson sexpdata six paramiko ]))
+      fd
       nextcloud-client
       kate
       pavucontrol
@@ -65,7 +67,6 @@ in
       nixpkgs-fmt
       speedtest-rs
       # any-nix-shell
-      python3
       (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
       ripgrep
       texlive.combined.scheme-full
@@ -97,6 +98,7 @@ in
       cockatrice
       trayscale
       itch
+      nixd
     ] ++
     (lib.optionals desktop [
       openmw
