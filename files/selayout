@@ -2,24 +2,25 @@ xkb_symbols "sebrackets" {
     include "latin(type2)"
     include "se(se)"
 
-    key <TLDE>	{ [   section,    onehalf,    paragraph, threequarters]	};
-    key <AD01>  { [         q,          Q,    braceleft               ] };
-    key <AD02>  { [         w,          W,  bracketleft               ] };
-    key <AD03>  { [         e,          E, bracketright               ] };
-    key <AD04>  { [         r,          R,   braceright               ] };
-    key <AE05>	{ [         5,    percent,     EuroSign,         cent ]	};
-    key <AE11>	{ [      plus,   question,    backslash, questiondown ]	};
-    key <AE12>	{ [dead_acute, dead_grave,    plusminus,      notsign ]	};
+    key <TLDE>	{ [    section,     onehalf,      paragraph, threequarters] };
+    key <AD01>  { [          q,           Q,      braceleft               ] };
+    key <AD02>  { [          w,           W,    bracketleft               ] };
+    key <AD03>  { [          e,           E,   bracketright               ] };
+    key <AD04>  { [          r,           R,     braceright               ] };
+    key <AD12>  { [ asciitilde, asciicircum, dead_diaeresis,        caron ] };
+    key <AE05>	{ [          5,     percent,       EuroSign,         cent ] };
+    key <AE11>	{ [       plus,    question,      backslash, questiondown ] };
+    key <AE12>	{ [      acute,       grave,      plusminus,      notsign ] };
 
-    key <AC01>  { [         a,          A,    parenleft               ] };
-    key <AC02>  { [         s,          S,    parenright              ] };
-    key <AC10>	{ [odiaeresis, Odiaeresis,       oslash,     Ooblique ]	};
-    key <AC11>	{ [adiaeresis, Adiaeresis,           ae,           AE ]	};
-    key <BKSL>	{ [apostrophe,   asterisk,        acute,     multiply ]	};
+    key <AC01>  { [          a,           A,      parenleft               ] };
+    key <AC02>  { [          s,           S,     parenright               ] };
+    key <AC10>	{ [ odiaeresis,  Odiaeresis,         oslash,     Ooblique ] };
+    key <AC11>	{ [ adiaeresis,  Adiaeresis,             ae,           AE ] };
+    key <BKSL>	{ [ apostrophe,    asterisk,          acute,     multiply ] };
 
-    key <LSGT>  { [      less,     greater,         bar,    brokenbar ] };
+    key <LSGT>  { [       less,     greater,            bar,    brokenbar ] };
 
-    key <SPCE>	{ [     space,      space,        space, nobreakspace ]	};
+    key <SPCE>	{ [      space,       space,          space, nobreakspace ] };
 
     include "kpdl(comma)"
 
