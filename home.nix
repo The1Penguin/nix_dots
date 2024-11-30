@@ -98,7 +98,6 @@ in
       cockatrice
       trayscale
       #itch
-      nixd
     ] ++
     (lib.optionals desktop [
       piper

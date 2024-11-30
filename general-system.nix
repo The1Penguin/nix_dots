@@ -134,7 +134,10 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     noto-fonts-emoji
     fira-code
     fira-code-symbols
-    nerdfonts
+    nerd-fonts.fira-code
+    nerd-fonts.monofur
+    nerd-fonts.zed-mono
+    nerd-fonts.symbols-only
     dokidokimono
   ];
 
