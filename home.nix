@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "ab1d8027615c91471061443ca4562beef93a6b9e";
-    hash = "sha256-YyXVAq22tOtz16PLwzuadVgjn399zRECnAGpvyaeWGI=";
+    rev = "f671a3cd243035a83f16ddb8fe9ad2f7bc82347d";
+    hash = "sha256-bAV/ciaK2hoFA3SVdqpjnMZs3GiZX2QN2mQQdyg6wEk=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -34,7 +34,7 @@ in
     packages = with pkgs; [
       htop
       emacs-gtk
-      (python3.withPackages (p: with p; [ epc orjson sexpdata six paramiko ]))
+      python3
       fd
       nextcloud-client
       kate
