@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, desktop, laptop, ... }:
 
 {
 
@@ -10,10 +10,14 @@
     sway-contrib.grimshot
     rivercarro
     swaybg
+    (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/wayland/mylock))
+    (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ../scripts/wayland/wofi_powermenu_w))
+  ] ++
+  (lib.optionals desktop [
+    (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/desktop/notify))
+  ]) ++ (lib.optionals laptop [
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/laptop/notify))
-    (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ../scripts/laptop/wofi_powermenu_w))
-    (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/laptop/mylock))
-  ];
+  ]);
 
   wayland.windowManager.river = {
     enable = true;
@@ -116,6 +120,8 @@
             "Super F1" = "spawn 'firefox'";
             "Super F2" = "spawn 'vesktop --enable-gpu-rasterization'";
             "Super F3" = "spawn 'spotify'";
+            "Super F4" = "spawn 'lutris'";
+            "Super F5" = "spawn 'XIVLauncher.Core'";
             "Alt+Shift X" = "spawn 'mylock'";
             "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";
             "Super Tab" = "spawn 'notify'";
@@ -218,6 +224,21 @@
               criteria = "AOC Q32V4WG5 QHPM4HA001642";
               position = "0,0";
               mode = "2560x1440@59.951Hz";
+            }
+          ];
+        }
+        {
+          profile.name = "Desktop";
+          profile.outputs = [
+            {
+              criteria = "Acer Technologies XV270 V 0x029144B9";
+              position = "0,0";
+              mode = "1920x1080@164.994995Hz";
+            }
+            {
+              criteria = "Acer Technologies Acer XF240H 0x6240186E";
+              position = "1920,0";
+              mode = "1920x1080@144.001007Hz";
             }
           ];
         }

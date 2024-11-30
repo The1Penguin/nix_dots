@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, nur, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, ... }:
+{ config, lib, pkgs, spicetify-nix, nur, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, wayland, x, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -20,9 +20,9 @@ in
     ./software/spotify.nix
     ./software/neovim.nix
     ./software/thunderbird.nix
-  ] ++ (lib.optionals laptop [
+  ] ++ (lib.optionals wayland [
     ./software/river.nix
-  ]) ++ (lib.optionals desktop [
+  ]) ++ (lib.optionals x [
     ./software/bspwm.nix
   ]);
 
@@ -97,10 +97,11 @@ in
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       cockatrice
       trayscale
-      itch
+      #itch
       nixd
     ] ++
     (lib.optionals desktop [
+      piper
       openmw
       (nixos-xivlauncher-rb.packages.x86_64-linux.xivlauncher-rb.override {
         useGameMode = true;

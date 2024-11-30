@@ -75,6 +75,14 @@
             catppuccin.nixosModules.catppuccin
           ];
         };
+        adora = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          modules = [
+            ./adora/configuration.nix
+            lix-module.nixosModules.default
+            catppuccin.nixosModules.catppuccin
+          ];
+        };
       };
 
       homeConfigurations = {
@@ -86,6 +94,8 @@
             inherit nixos-xivlauncher-rb;
             desktop = false;
             laptop = true;
+            wayland = true;
+            x = false;
           };
           modules = [
             nur.hmModules.nur
@@ -102,6 +112,26 @@
             inherit nixos-xivlauncher-rb;
             desktop = true;
             laptop = false;
+            wayland = true;
+            x = false;
+          };
+          modules = [
+            nur.hmModules.nur
+            ./home.nix
+            lix-module.nixosModules.default
+            catppuccin.homeManagerModules.catppuccin
+          ];
+        };
+        "adora" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit spicetify-nix;
+            inherit any-nix-shell;
+            inherit nixos-xivlauncher-rb;
+            desktop = true;
+            laptop = false;
+            wayland = false;
+            x = true;
           };
           modules = [
             nur.hmModules.nur

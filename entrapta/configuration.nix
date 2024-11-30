@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -22,37 +22,17 @@
     accelProfile = "flat";
     accelSpeed = "0";
   };
+  services.ratbagd.enable = true;
 
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
-    windowManager.bspwm.enable = true;
-    monitorSection = ''
-      # HorizSync source: edid, VertRefresh source: edid
-      VendorName     "Unknown"
-      ModelName      "Acer XF240H"
-      HorizSync       180.0 - 180.0
-      VertRefresh     48.0 - 146.0
-      Option         "DPMS"
-    '';
-    deviceSection = ''
-      Driver         "nvidia"
-      VendorName     "NVIDIA Corporation"
-      BoardName      "NVIDIA GeForce GTX 1070 Ti"
-    '';
-    screenSection = ''
-      DefaultDepth    24
-      Option         "Stereo" "0"
-      Option         "nvidiaXineramaInfoOrder" "DP-4"
-      Option         "metamodes" "DP-0: 1920x1080_144 +1920+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-4: 1920x1080_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
-      Option         "SLI" "Off"
-      Option         "MultiGPU" "Off"
-      Option         "BaseMosaic" "off"
-      SubSection     "Display"
-          Depth       24
-      EndSubSection
-    '';
-  };
+  programs.river.enable = true;
+
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+  ];
+
 
   services.openssh = {
     enable = true;
@@ -65,12 +45,18 @@
 
   hardware.enableAllFirmware = true;
 
+  services.displayManager.sddm.wayland = {
+    enable = true;
+    compositor = lib.mkForce "kwin";
+  };
+
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
