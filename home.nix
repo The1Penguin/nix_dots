@@ -102,9 +102,12 @@ in
     (lib.optionals desktop [
       piper
       openmw
-      (nixos-xivlauncher-rb.packages.x86_64-linux.xivlauncher-rb.override {
-        useGameMode = true;
-      })
+      (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
+        postPatch = previousAttrs.postPatch + ''
+          substituteInPlace src/XIVLauncher.Core/Components/SettingsPage/Tabs/SettingsTabWine.cs \
+            --replace 'libgamemodeauto.so.0' '${pkgs.gamemode.lib}/lib/libgamemodeauto.so.0'
+        '';
+      }))
       (pkgs.writeScriptBin "ffxiv-backup" (builtins.readFile ./scripts/desktop/ffxiv-backup))
       (pkgs.writeScriptBin "ffxiv-update" (builtins.readFile ./scripts/desktop/ffxiv-update))
       prismlauncher
