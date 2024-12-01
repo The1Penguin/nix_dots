@@ -43,7 +43,18 @@
     };
   };
 
-  hardware.enableAllFirmware = true;
+  hardware = {
+    enableAllFirmware = true;
+    graphics = {
+        enable = true;
+        enable32Bit = true;
+    };
+
+    amdgpu.amdvlk = {
+        enable = true;
+        support32Bit.enable = true;
+    };
+  };
 
   services.displayManager.sddm.wayland = {
     enable = true;
