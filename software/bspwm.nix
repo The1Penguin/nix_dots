@@ -1,4 +1,4 @@
-{ config, lib, pkgs, desktop, laptop ... }:
+{ config, lib, pkgs, desktop, laptop, ... }:
 
 {
 
@@ -10,11 +10,11 @@
     rofi-bluetooth
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/x/mylock))
     (pkgs.writeScriptBin "rofi_powermenu" (builtins.readFile ../scripts/x/rofi_powermenu))
+    (pkgs.writeScriptBin "wacom.sh" (builtins.readFile ../scripts/x/wacom.sh))
   ] ++ (lib.optionals desktop [
     (pkgs.writeScriptBin "change-source.sh" (builtins.readFile ../scripts/desktop/change-source.sh))
     (pkgs.writeScriptBin "nick-source.sh" (builtins.readFile ../scripts/desktop/nick-source.sh))
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/desktop/notify))
-    (pkgs.writeScriptBin "wacom.sh" (builtins.readFile ../scripts/desktop/wacom.sh))
   ]) ++ (lib.optionals laptop [
   ]);
 
