@@ -57,6 +57,9 @@
           tap = true;
           tap-button-map = "left-right-middle";
         };
+        "pointer-1133-16511-Logitech_G502" = {
+          accel-profile = "none";
+        };
       };
       declare-mode = [
         "normal"
