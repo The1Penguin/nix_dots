@@ -51,7 +51,7 @@
           allowUnfree = true;
         };
         overlays = [
-          nur.overlay
+          nur.overlays.default
           overlay-2405
         ];
       };
@@ -98,9 +98,8 @@
             x = false;
           };
           modules = [
-            nur.hmModules.nur
             ./home.nix
-            lix-module.nixosModules.default
+            lix-module.nixosModules
             catppuccin.homeManagerModules.catppuccin
           ];
         };
@@ -116,7 +115,6 @@
             x = false;
           };
           modules = [
-            nur.hmModules.nur
             ./home.nix
             lix-module.nixosModules.default
             catppuccin.homeManagerModules.catppuccin
@@ -134,7 +132,6 @@
             x = true;
           };
           modules = [
-            nur.hmModules.nur
             ./home.nix
             lix-module.nixosModules.default
             catppuccin.homeManagerModules.catppuccin

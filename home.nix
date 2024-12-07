@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, nur, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, wayland, x, ... }:
+{ config, lib, pkgs, spicetify-nix, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, wayland, x, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
