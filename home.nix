@@ -214,7 +214,6 @@ in
       };
     };
 
-
     obs-studio = lib.mkIf desktop {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
@@ -285,8 +284,6 @@ in
       startInBackground = true;
     };
   };
-
-
 
   systemd.user = lib.mkIf laptop {
     timers = {

@@ -1,4 +1,4 @@
-Copyright (c) 2023, Diefonk (https://diefonk.net); Remove empty glyphs Copyright (c) 2024, Pingu (https://acorneroftheweb.com)
+Copyright (c) 2023, Diefonk (https://diefonk.net)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
