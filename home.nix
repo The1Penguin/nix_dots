@@ -39,6 +39,7 @@ in
       nextcloud-client
       kate
       pavucontrol
+      pulsemixer
       (vesktop.override {
         withMiddleClickScroll = true;
       })
@@ -102,14 +103,9 @@ in
     (lib.optionals desktop [
       piper
       openmw
-      (xivlauncher.overrideAttrs (finalAttrs: previousAttrs: {
-        postPatch = previousAttrs.postPatch + ''
-          substituteInPlace src/XIVLauncher.Core/Components/SettingsPage/Tabs/SettingsTabWine.cs \
-            --replace 'libgamemodeauto.so.0' '${pkgs.gamemode.lib}/lib/libgamemodeauto.so.0'
-        '';
-      }))
-      vkbasalt
-      mangohud
+      (nixos-xivlauncher-rb.packages.x86_64-linux.xivlauncher-rb.override {
+        useGameMode = true;
+      })
       (pkgs.writeScriptBin "ffxiv-backup" (builtins.readFile ./scripts/desktop/ffxiv-backup))
       (pkgs.writeScriptBin "ffxiv-update" (builtins.readFile ./scripts/desktop/ffxiv-update))
       prismlauncher
@@ -203,7 +199,6 @@ in
           "shell"
           { type = "wm"; format = "{2}"; }
           "cursor"
-          "terminal"
           { type = "cpu"; format = "{1}"; }
           { type = "gpu"; format = "{1} {2}"; }
           { type = "terminal"; format = "{5}"; }
