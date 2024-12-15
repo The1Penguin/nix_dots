@@ -121,7 +121,7 @@
             "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
             "Super E" = "spawn 'emacs'";
             "Super F1" = "spawn 'firefox'";
-            "Super F2" = "spawn 'vesktop --enable-gpu-rasterization'";
+            "Super F2" = "spawn 'discord --enable-gpu-rasterization'";
             "Super F3" = "spawn 'spotify'";
             "Super F4" = "spawn 'lutris'";
             "Super F5" = "spawn 'XIVLauncher.Core'";
@@ -236,12 +236,14 @@
             {
               criteria = "Acer Technologies XV270 V 0x029144B9";
               position = "0,0";
-              mode = "1920x1080@164.994995Hz";
+              mode = "1920x1080@165Hz";
+              adaptiveSync = true;
             }
             {
               criteria = "Acer Technologies Acer XF240H 0x6240186E";
               position = "1920,0";
-              mode = "1920x1080@144.001007Hz";
+              mode = "1920x1080@144Hz";
+              adaptiveSync = true;
             }
           ];
         }

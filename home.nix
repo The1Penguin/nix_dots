@@ -40,8 +40,10 @@ in
       kate
       pavucontrol
       pulsemixer
-      (vesktop.override {
-        withMiddleClickScroll = true;
+      (discord.override {
+          withOpenASAR = true;
+          withVencord = true;
+          withTTS = false;
       })
       ranger
       eza
