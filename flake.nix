@@ -5,11 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-2405.url = "github:nixos/nixpkgs/nixos-24.05";
     lix = {
-      url = "https://git.lix.systems/lix-project/lix/archive/2.91.1.tar.gz";
+      url = "git+https://git.lix.systems/lix-project/lix";
       flake = false;
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs.lix.follows = "lix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
