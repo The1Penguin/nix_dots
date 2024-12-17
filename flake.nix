@@ -99,7 +99,7 @@
           };
           modules = [
             ./home.nix
-            lix-module.nixosModules
+            lix-module.nixosModules.default
             catppuccin.homeManagerModules.catppuccin
           ];
         };
