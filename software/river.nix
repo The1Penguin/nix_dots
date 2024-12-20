@@ -221,12 +221,17 @@
           profile.outputs = [
             {
               criteria = "eDP-1";
-              position = "320,1440";
+              position = "1920,1080";
             }
             {
-              criteria = "AOC Q32V4WG5 QHPM4HA001642";
+              criteria = "HP Inc. HP E24 G5 CNK42417YG";
               position = "0,0";
-              mode = "2560x1440@59.951Hz";
+              mode = "1920x1080@75Hz";
+            }
+            {
+              criteria = "DP-2";
+              position = "1920,0";
+              mode = "1920x1080@75Hz";
             }
           ];
         }
