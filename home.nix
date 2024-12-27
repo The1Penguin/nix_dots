@@ -100,7 +100,7 @@ in
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       cockatrice
       trayscale
-      #itch
+      itch
     ] ++
     (lib.optionals desktop [
       piper
@@ -230,12 +230,13 @@ in
     mpv.enable = true;
   };
 
+  catppuccin.gtk = {
+    size = "compact";
+    tweaks = [ "rimless" ];
+  };
+
   gtk = {
     enable = true;
-    catppuccin = {
-      size = "compact";
-      tweaks = [ "rimless" ];
-    };
     cursorTheme = {
       name = "capitaine-cursors";
       package = pkgs.capitaine-cursors;

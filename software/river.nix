@@ -80,9 +80,11 @@
             "Super Period" = "focus-output next";
             "Super Space" = "focus-output next";
             "Super Comma" = "focus-output previous";
+            "Super+Control Space" = "focus-output previous";
             "Super+Shift Period" = "send-to-output next";
             "Super+Shift Space" = "send-to-output next";
             "Super+Shift Comma" = "send-to-output previous";
+            "Super+Control+Shift Space" = "send-to-output previous";
             "Super H" = "send-layout-cmd rivercarro 'main-ratio -0.05'";
             "Super L" = "send-layout-cmd rivercarro 'main-ratio +0.05'";
             "Super+Shift H" = "send-layout-cmd rivercarro 'main-count +1'";
@@ -165,10 +167,10 @@
     extraConfig = "exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
   };
 
+  catppuccin.mako.enable = false;
   services = {
     mako = {
       enable = true;
-      catppuccin.enable = false;
       # extraConfig = builtins.readFile ../files/makoconfig;
       anchor = "top-right";
       backgroundColor = "#eff1f5";
