@@ -218,6 +218,9 @@ in
         obs-vaapi
         obs-nvfbc
         obs-vkcapture
+        wlrobs
+        obs-tuna
+        obs-scale-to-sound
       ];
     };
 
