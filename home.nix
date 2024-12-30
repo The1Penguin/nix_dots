@@ -20,6 +20,7 @@ in
     ./software/spotify.nix
     ./software/neovim.nix
     ./software/thunderbird.nix
+    ./software/mpv.nix
   ] ++ (lib.optionals wayland [
     ./software/river.nix
   ]) ++ (lib.optionals x [
@@ -41,9 +42,9 @@ in
       pavucontrol
       pulsemixer
       (discord.override {
-          withOpenASAR = true;
-          withVencord = true;
-          withTTS = false;
+        withOpenASAR = true;
+        withVencord = true;
+        withTTS = false;
       })
       ranger
       eza
@@ -229,8 +230,6 @@ in
     lazygit.enable = true;
 
     zathura.enable = true;
-
-    mpv.enable = true;
   };
 
   catppuccin.gtk = {
