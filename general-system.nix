@@ -64,6 +64,8 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     cachix
   ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   services.xserver.xkb = {
     layout = "sebrackets";
     extraLayouts.sebrackets = {
@@ -117,10 +119,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   services.displayManager.sddm = {
     enable = true;
     package = lib.mkForce pkgs.kdePackages.sddm;
-    catppuccin = {
-      background = ./sakuraflower.png;
-      font = "DokiDokiMono Nerd Font";
-    };
   };
 
   services.tailscale = {
@@ -200,8 +198,9 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   programs.steam = {
     enable = true;
+    extest.enable = true;
     protontricks.enable = true;
-    gamescopeSession.enable = false;
+    gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
@@ -214,6 +213,13 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     enable = true;
     flavor = "latte";
     accent = "pink";
+    sddm = {
+      background = ./sakuraflower.png;
+      font = "DokiDokiMono Nerd Font";
+    };
   };
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
 }
