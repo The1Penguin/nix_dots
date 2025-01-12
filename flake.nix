@@ -61,6 +61,12 @@
       nixosConfigurations = {
         scorpia = nixpkgs.lib.nixosSystem {
           inherit pkgs;
+          specialArgs = {
+            desktop = false;
+            laptop = true;
+            wayland = true;
+            x = false;
+          };
           modules = [
             ./scorpia/configuration.nix
             lix-module.nixosModules.default
@@ -69,6 +75,12 @@
         };
         entrapta = nixpkgs.lib.nixosSystem {
           inherit pkgs;
+          specialArgs = {
+            desktop = true;
+            laptop = false;
+            wayland = true;
+            x = false;
+          };
           modules = [
             ./entrapta/configuration.nix
             lix-module.nixosModules.default
@@ -77,6 +89,12 @@
         };
         adora = nixpkgs.lib.nixosSystem {
           inherit pkgs;
+          specialArgs = {
+            desktop = true;
+            laptop = false;
+            wayland = false;
+            x = true;
+          };
           modules = [
             ./adora/configuration.nix
             lix-module.nixosModules.default
@@ -86,7 +104,7 @@
       };
 
       homeConfigurations = {
-        "scorpia" = home-manager.lib.homeManagerConfiguration {
+        scorpia = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
@@ -103,7 +121,7 @@
             catppuccin.homeManagerModules.catppuccin
           ];
         };
-        "entrapta" = home-manager.lib.homeManagerConfiguration {
+        entrapta = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
@@ -120,7 +138,7 @@
             catppuccin.homeManagerModules.catppuccin
           ];
         };
-        "adora" = home-manager.lib.homeManagerConfiguration {
+        adora = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
