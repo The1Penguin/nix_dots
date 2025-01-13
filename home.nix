@@ -102,6 +102,7 @@ in
       cockatrice
       trayscale
       itch
+      git-crypt
     ] ++
     (lib.optionals desktop [
       piper
