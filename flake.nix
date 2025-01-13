@@ -56,6 +56,7 @@
         ];
       };
       lib = nixpkgs;
+      secrets = builtins.fromTOML (builtins.readFile "./secrets/secrets.toml");
     in
     {
       nixosConfigurations = {
@@ -94,6 +95,7 @@
             laptop = false;
             wayland = false;
             x = true;
+            inherit secrets;
           };
           modules = [
             ./adora/configuration.nix
