@@ -34,9 +34,14 @@
       url = "github:drakon64/nixos-xivlauncher-rb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvidia-patch = {
+      url = "github:icewind1991/nvidia-patch-nixos";  
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, ... }:
+  outputs = { nixpkgs, nixpkgs-2405, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, ... }:
     let
       system = "x86_64-linux";
       overlay-2405 = final: prev: {
@@ -53,6 +58,7 @@
         overlays = [
           nur.overlays.default
           overlay-2405
+          nvidia-patch.overlays.default
         ];
       };
       lib = nixpkgs;
@@ -91,10 +97,11 @@
         adora = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
-            desktop = true;
+            desktop = false;
             laptop = false;
+            server = true;
             wayland = false;
-            x = true;
+            x = false;
             inherit secrets;
           };
           modules = [
@@ -114,6 +121,7 @@
             inherit nixos-xivlauncher-rb;
             desktop = false;
             laptop = true;
+            server = false;
             wayland = true;
             x = false;
           };
@@ -131,6 +139,7 @@
             inherit nixos-xivlauncher-rb;
             desktop = true;
             laptop = false;
+            server = false;
             wayland = true;
             x = false;
           };
@@ -146,10 +155,11 @@
             inherit spicetify-nix;
             inherit any-nix-shell;
             inherit nixos-xivlauncher-rb;
-            desktop = true;
+            desktop = false;
             laptop = false;
+            server = true;
             wayland = false;
-            x = true;
+            x = false;
           };
           modules = [
             ./home.nix

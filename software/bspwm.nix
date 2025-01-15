@@ -118,7 +118,6 @@
 
     dunst = {
       enable = true;
-      catppuccin.enable = false;
       settings = {
         global = {
           monitor = 0;
@@ -195,4 +194,7 @@
       };
     };
   };
+
+  catppuccin.dunst.enable = false;
+
 }

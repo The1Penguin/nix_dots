@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, server, x, wayland, ... }:
 let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 {
 
@@ -24,7 +24,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   console.keyMap = "sv-latin1";
 
-  services.printing.enable = true;
+  services.printing.enable = lib.mkIf (!server) true;
 
   services.pipewire = {
     enable = true;
@@ -75,9 +75,9 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     };
   };
 
-  services.xserver.wacom.enable = true;
+  services.xserver.wacom.enable = lib.mkIf x true;
 
-  services.joycond.enable = true;
+  services.joycond.enable = lib.mkIf (!server) true;
 
 
   hardware.graphics = {
@@ -116,7 +116,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     };
   };
 
-  services.displayManager.sddm = {
+  services.displayManager.sddm = lib.mkIf (!server) {
     enable = true;
     package = lib.mkForce pkgs.kdePackages.sddm;
   };
@@ -196,7 +196,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     setSocketVariable = true;
   };
 
-  programs.steam = {
+  programs.steam = lib.mkIf (!server) {
     enable = true;
     extest.enable = true;
     protontricks.enable = true;

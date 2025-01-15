@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, wayland, x, ... }:
+{ config, lib, pkgs, spicetify-nix, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -14,14 +14,15 @@ in
 {
 
   imports = [
+    ./software/fish.nix
+    ./software/neovim.nix
+  ] ++ (lib.optionals (!server) [
     ./software/alacritty.nix
     ./software/firefox.nix
-    ./software/fish.nix
     ./software/spotify.nix
-    ./software/neovim.nix
     ./software/thunderbird.nix
     ./software/mpv.nix
-  ] ++ (lib.optionals wayland [
+  ]) ++ (lib.optionals wayland [
     ./software/river.nix
   ]) ++ (lib.optionals x [
     ./software/bspwm.nix
@@ -37,23 +38,11 @@ in
       emacs-gtk
       python3
       fd
-      nextcloud-client
-      kate
-      pavucontrol
       pulsemixer
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-        withTTS = false;
-      })
       ranger
       eza
-      bitwarden
-      playerctl
       pulseaudio
-      libnotify
       gcc
-      xfce.thunar
       ranger
       (agda.withPackages (p: with p; [
         standard-library
@@ -62,17 +51,35 @@ in
       gnumake
       libtool
       sqlite
+      nixpkgs-fmt
+      speedtest-rs
+      (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
+      ripgrep
+      unzip
+      nurl
+      killall
+      any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
+      git-crypt
+    ] ++
+    (lib.optionals (!server) [
+      nextcloud-client
+      kate
+      pavucontrol
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+        withTTS = false;
+      })
+      bitwarden
+      playerctl
+      libnotify
+      xfce.thunar
       jellyfin-media-player
       signal-desktop
       qview
       krdc
       remmina
       stable.kotatogram-desktop
-      nixpkgs-fmt
-      speedtest-rs
-      # any-nix-shell
-      (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
-      ripgrep
       texlive.combined.scheme-full
       (lutris.override {
         extraLibraries = pkgs: [
@@ -92,18 +99,13 @@ in
       })
       slack
       rnote
-      unzip
       networkmanagerapplet
       fallout-ce
-      nurl
-      killall
       feishin
-      any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       cockatrice
       trayscale
       itch
-      git-crypt
-    ] ++
+    ]) ++
     (lib.optionals desktop [
       piper
       openmw
@@ -272,7 +274,7 @@ in
     platformTheme.name = "kvantum";
   };
 
-  services = {
+  services = lib.mkIf (!server) {
     gammastep = {
       enable = true;
       enableVerboseLogging = true;

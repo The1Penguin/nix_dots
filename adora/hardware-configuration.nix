@@ -3,6 +3,8 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
+let package = config.boot.kernelPackages.nvidiaPackages.production; in
+
 {
   imports =
     [
@@ -56,6 +58,8 @@
     powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    nvidiaPersistenced = true;
+    #package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = pkgs.nvidia-patch.patch-nvenc (pkgs.nvidia-patch.patch-fbc package);
   };
 }
