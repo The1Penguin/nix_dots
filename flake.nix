@@ -71,6 +71,7 @@
           specialArgs = {
             desktop = false;
             laptop = true;
+            server = false;
             wayland = true;
             x = false;
           };
@@ -85,6 +86,7 @@
           specialArgs = {
             desktop = true;
             laptop = false;
+            server = false;
             wayland = true;
             x = false;
           };
