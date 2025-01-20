@@ -1,25 +1,40 @@
 { config, lib, pkgs, ... }:
 
-let update-website = {name, url, interval} : {
-    systemd.services."update-${name}" = {
-      wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
-      name = "update-${name}";
-      script = ''
-          cd /var/www
-          ${pkgs.git}/bin/git clone --depth 1 --recursive --shallow-submodules ${url} ${name}
-          cd ${name}
-          while true
-          do
-            git pull --recurse
-            sleep ${interval}
-          done
-      '';
+let init-website = {name, url, interval} : {
+      systemd.services."init-${name}" = {
+        wantedBy = [ "multi-user.target" ];
+        after = [ "network.target" ];
+        name = "init-${name}";
+        serviceConfig.Type = "oneshot";
+        script = ''
+            cd /var/www
+            rm ${name}
+            ${pkgs.git}/bin/git clone --depth 1 --recursive --shallow-submodules ${url} ${name}
+        '';
+      };
     };
-  }; in
+    update-website = {name, url, interval} : {
+      systemd.timers."update-${name}" = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnBootSec = "30s";
+          OnUnitActiveSec = "${interval}s";
+          Unit = "update-${name}.service";
+        };
+      };
+      systemd.services."update-${name}" = {
+        after = [ "init-${name}.service" ];
+        name = "update-${name}";
+        script = ''
+            cd /var/www/${name}
+            ${pkgs.git}/bin/git pull --recurse
+        '';
+      };
+    };
+in
 
 # List of websites to host
-builtins.listToAttrs (builtins.map update-website [
+builtins.listToAttrs (builtins.map (x: init-website x // update-website x) [
   {
     name = "homepage";
     url = "https://github.com/The1Penguin/Bento.git";
