@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "2c9995b162a512249aee7c03f551713f2dcd1a4d";
-    hash = "sha256-0068S6960I0ZwY19OhfNF1DchagftUgq/x4M1JiO5fo=";
+    rev = "76cef59ed4fdfba735a8d3b9975948d9679c3456";
+    hash = "sha256-ieRIbr9H+dSQo2UckuCltjxvNTfzWZbIDjQypJQvUHY=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -105,6 +105,7 @@ in
       cockatrice
       trayscale
       itch
+      lean4
     ]) ++
     (lib.optionals desktop [
       piper
