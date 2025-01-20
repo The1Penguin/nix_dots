@@ -2,8 +2,15 @@
 
 {
   imports = [
-    ./services/audiobookshelf.nix
+    ./services/media.nix
   ];
 
-  users.users.media.extraGroups =  [ "video" "jellyfin" ];
+  users = {
+    groups.media = {};
+    users.media = { 
+      isSystemUser = true;
+      group = "media";
+      extraGroups = [ "video" "jellyfin" ];
+    };
+  };
 }

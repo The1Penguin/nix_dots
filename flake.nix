@@ -35,7 +35,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvidia-patch = {
-      url = "github:icewind1991/nvidia-patch-nixos";  
+      url = "github:icewind1991/nvidia-patch-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -54,6 +54,10 @@
         inherit system;
         config = {
           allowUnfree = true;
+          permittedInsecurePackages = [
+            "dotnet-sdk-6.0.428"
+            "aspnetcore-runtime-6.0.36"
+          ];
         };
         overlays = [
           nur.overlays.default
@@ -108,6 +112,7 @@
           };
           modules = [
             ./adora/configuration.nix
+            ./server/default.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
           ];
