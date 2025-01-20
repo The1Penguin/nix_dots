@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let init-website = {name, url, interval} : {
+let website = {name, url, interval, subpath, domain} : {
       systemd.services."init-${name}" = {
         wantedBy = [ "multi-user.target" ];
         after = [ "network.target" ];
@@ -12,8 +12,6 @@ let init-website = {name, url, interval} : {
             ${pkgs.git}/bin/git clone --depth 1 --recursive --shallow-submodules ${url} ${name}
         '';
       };
-    };
-    update-website = {name, url, interval} : {
       systemd.timers."update-${name}" = {
         wantedBy = [ "timers.target" ];
         timerConfig = {
@@ -30,21 +28,30 @@ let init-website = {name, url, interval} : {
             ${pkgs.git}/bin/git pull --recurse
         '';
       };
+      services.nginx.virtualHosts."${domain}" = {
+        forceSSL = true;
+        enableACME = true;
+        root = "/var/www/${name}/${subpath}";
+      };
     };
 in
 
 # List of websites to host
-builtins.listToAttrs (builtins.map (x: init-website x // update-website x) [
+builtins.listToAttrs (builtins.map website [
   {
     name = "homepage";
     url = "https://github.com/The1Penguin/Bento.git";
     interval = 3600;
+    subpath = "/";
+    domain = "homepage.acorneroftheweb.com";
   }
   {
     name = "website";
     url = "https://git.acorneroftheweb.com/pingu/blog.git";
     interval = 3600;
-  } # Fix so it served on /public
+    subpath = "/public";
+    domain = "acorneroftheweb.com";
+  }
 ]) //
 {
 
