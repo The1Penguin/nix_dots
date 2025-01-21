@@ -43,16 +43,15 @@ builtins.listToAttrs
     {
       name = "homepage";
       url = "https://github.com/The1Penguin/Bento.git";
-      interval = 3600;
+      interval = 666;
       subpath = "/";
       domain = "homepage.acorneroftheweb.com";
     }
     {
       name = "website";
       url = "https://git.acorneroftheweb.com/pingu/blog.git";
-      interval = 3600;
+      interval = 666;
       subpath = "/public";
       domain = "acorneroftheweb.com";
     }
-  ]) //
-{ }
+])
