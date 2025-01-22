@@ -173,6 +173,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     enable = true;
     wlr.enable = true;
     config.common.default = "*";
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
   };
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
