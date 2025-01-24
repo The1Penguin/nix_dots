@@ -123,7 +123,7 @@
             "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
             "Super E" = "spawn 'emacs'";
             "Super F1" = "spawn 'firefox'";
-            "Super F2" = "spawn 'discord --enable-gpu-rasterization'";
+            "Super F2" = "spawn 'vesktop'";
             "Super F3" = "spawn 'spotify'";
             "Super F4" = "spawn 'lutris'";
             "Super F5" = "spawn 'XIVLauncher.Core'";

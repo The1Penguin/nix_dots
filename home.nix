@@ -65,11 +65,12 @@ in
       nextcloud-client
       kate
       pavucontrol
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-        withTTS = false;
-      })
+      vesktop
+      #(discord.override {
+      #  withOpenASAR = true;
+      #  withVencord = true;
+      #  withTTS = false;
+      #})
       bitwarden
       playerctl
       libnotify
