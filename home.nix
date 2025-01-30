@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "242699699d92366b78542d290cda081ec8cd0ff1";
-    hash = "sha256-nmLpBWK24N20HZnMD0Ral5bO02JKxv5jxXfDAk1xNXU=";
+    rev = "3000eec57a3253c5729556debb931d579bb6c447";
+    hash = "sha256-49arksgajxXy00Q//o2Kl/kXYC7dkv/7o/cD4HsKpAg=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -107,6 +107,7 @@ in
       trayscale
       itch
       teams-for-linux
+      vscodium
     ]) ++
     (lib.optionals desktop [
       piper

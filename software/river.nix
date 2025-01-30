@@ -70,7 +70,7 @@
         normal = lib.attrsets.unionOfDisjoint
           {
             "Super F11" = "enter-mode passthrough";
-            "Super Return" = "spawn alacritty";
+            "Super Return" = "spawn ${pkgs.alacritty}/bin/alacritty";
             "Super Q" = "close";
             "Super+Shift E" = "exit";
             "Super J" = "focus-view next";
@@ -111,28 +111,28 @@
             "Super Left" = "send-layout-cmd rivercarro 'main-location left'";
             "Super M" = "send-layout-cmd rivercarro 'main-location monocle'";
             "None XF86Eject" = "spawn 'eject -T'";
-            "None XF86AudioRaiseVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'";
-            "None XF86AudioLowerVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'";
-            "None XF86AudioMute" = "spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
-            "None XF86AudioMedia" = "spawn 'playerctl play-pause'";
-            "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
-            "None XF86AudioPrev" = "spawn 'playerctl previous'";
-            "None XF86AudioNext" = "spawn 'playerctl next'";
-            "None XF86MonBrightnessUp" = "spawn 'brightnessctl s 17+'";
-            "None XF86MonBrightnessDown" = "spawn 'brightnessctl s 17-'";
-            "Super D" = "spawn 'wofi --show=drun --hide-scroll'";
-            "Super E" = "spawn 'emacs'";
-            "Super F1" = "spawn 'firefox'";
-            "Super F2" = "spawn 'vesktop'";
-            "Super F3" = "spawn 'spotify'";
-            "Super F4" = "spawn 'lutris'";
+            "None XF86AudioRaiseVolume" = "spawn '${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%'";
+            "None XF86AudioLowerVolume" = "spawn '${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%'";
+            "None XF86AudioMute" = "spawn '${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+            "None XF86AudioMedia" = "spawn '${pkgs.playerctl}/bin/playerctl play-pause'";
+            "None XF86AudioPlay" = "spawn '${pkgs.playerctl}/bin/playerctl play-pause'";
+            "None XF86AudioPrev" = "spawn '${pkgs.playerctl}/bin/playerctl previous'";
+            "None XF86AudioNext" = "spawn '${pkgs.playerctl}/bin/playerctl next'";
+            "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17+'";
+            "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17-'";
+            "Super D" = "spawn '${pkgs.wofi}/bin/wofi --show=drun --hide-scroll'";
+            "Super E" = "spawn '${pkgs.emacs-gtk}/bin/emacs'";
+            "Super F1" = "spawn '${pkgs.firefox}/bin/firefox'";
+            "Super F2" = "spawn '${pkgs.vesktop}/bin/vesktop'";
+            "Super F3" = "spawn '${pkgs.spotify}/bin/spotify'";
+            "Super F4" = "spawn '${pkgs.lutris}/bin/lutris'";
             "Super F5" = "spawn 'XIVLauncher.Core'";
             "Alt+Shift X" = "spawn 'mylock'";
             "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";
             "Super Tab" = "spawn 'notify'";
-            "None Print" = "spawn 'grimshot copy area'";
-            "Super P" = "spawn 'pavucontrol'";
-            "Super U" = "spawn 'bitwarden'";
+            "None Print" = "spawn '${pkgs.sway-contrib.grimshot}/bin/grimshot copy area'";
+            "Super P" = "spawn '${pkgs.pavucontrol}/bin/pavucontrol'";
+            "Super U" = "spawn '${pkgs.bitwarden}/bin/bitwarden'";
             "Super BTN_LEFT" = "move-view";
             "Super BTN_RIGHT" = "resize-view";
           }
@@ -164,7 +164,7 @@
                 (lib.range 1 9))));
       };
     };
-    extraConfig = "exec swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
+    extraConfig = "exec ${pkgs.swaybg}/bin/swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
   };
 
   catppuccin.mako.enable = false;
