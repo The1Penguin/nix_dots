@@ -106,7 +106,6 @@ in
       cockatrice
       trayscale
       itch
-      lean4
       teams-for-linux
     ]) ++
     (lib.optionals desktop [
