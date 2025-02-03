@@ -107,7 +107,7 @@ in
       trayscale
       itch
       teams-for-linux
-      vscodium
+      feishin
     ]) ++
     (lib.optionals desktop [
       piper
