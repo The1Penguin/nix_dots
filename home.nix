@@ -65,7 +65,7 @@ in
       nextcloud-client
       kate
       pavucontrol
-      vesktop
+      stable.vesktop
       #(discord.override {
       #  withOpenASAR = true;
       #  withVencord = true;
@@ -260,16 +260,16 @@ in
           gtk-application-prefer-dark-theme=0
           gtk-dialogs-use-header=false
         '';
-      extraCss = ''
-        headerbar.default-decoration {
-          margin-bottom: 50px;
-          margin-top: -100px;
-        }
-        window.csd,             /* gtk4? */
-        window.csd decoration { /* gtk3 */
-          box-shadow: none;
-        }
-      '';
+        extraCss = ''
+          headerbar.default-decoration {
+            margin-bottom: 50px;
+            margin-top: -100px;
+          }
+          window.csd,             /* gtk4? */
+          window.csd decoration { /* gtk3 */
+            box-shadow: none;
+          }
+        '';
       };
     };
     gtk4 = {

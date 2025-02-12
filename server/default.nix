@@ -6,8 +6,8 @@
   ];
 
   users = {
-    groups.media = {};
-    users.media = { 
+    groups.media = { };
+    users.media = {
       isSystemUser = true;
       group = "media";
       extraGroups = [ "video" "jellyfin" ];

@@ -54,4 +54,4 @@ builtins.listToAttrs
       subpath = "/public";
       domain = "acorneroftheweb.com";
     }
-])
+  ])

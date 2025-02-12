@@ -123,7 +123,7 @@
             "Super D" = "spawn '${pkgs.wofi}/bin/wofi --show=drun --hide-scroll'";
             "Super E" = "spawn '${pkgs.emacs-gtk}/bin/emacs'";
             "Super F1" = "spawn '${pkgs.firefox}/bin/firefox'";
-            "Super F2" = "spawn '${pkgs.vesktop}/bin/vesktop'";
+            "Super F2" = "spawn '${pkgs.stable.vesktop}/bin/vesktop'";
             "Super F3" = "spawn '${pkgs.feishin}/bin/feishin'";
             "Super F4" = "spawn '${pkgs.lutris}/bin/lutris'";
             "Super F5" = "spawn 'XIVLauncher.Core'";
