@@ -80,7 +80,7 @@ in
       qview
       krdc
       remmina
-      stable.kotatogram-desktop
+      kotatogram-desktop
       texlive.combined.scheme-full
       (lutris.override {
         extraLibraries = pkgs: [
