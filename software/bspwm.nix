@@ -71,7 +71,7 @@
     sxhkd = {
       enable = true;
       keybindings = {
-        "super + Return" = "alacritty";
+        "super + Return" = "wezterm";
         "super + d" = "rofi -show drun";
         "super + Escape" = "pkill -USR1 -x sxhkd";
         "alt + shift + x" = "betterlockscreen -l dimblur";
