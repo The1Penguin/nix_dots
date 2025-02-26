@@ -4,7 +4,7 @@
   programs.firefox = {
     enable = true;
     profiles.pingu = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         betterttv
         # bypass-paywalls-clean
         consent-o-matic

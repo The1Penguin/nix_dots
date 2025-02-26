@@ -102,20 +102,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.power-profiles-daemon.enable = lib.mkForce false;
 
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
-  };
-
   services.displayManager.sddm = lib.mkIf (!server) {
     enable = true;
     package = lib.mkForce pkgs.kdePackages.sddm;

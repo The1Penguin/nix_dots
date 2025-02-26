@@ -41,6 +41,7 @@
     oxygen
   ];
 
+  services.tlp.enable = true;
 
   # Mullvad vpn
   services.mullvad-vpn = {
