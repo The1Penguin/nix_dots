@@ -223,7 +223,6 @@ in
       plugins = with pkgs.obs-studio-plugins; [
         obs-tuna
         obs-vaapi
-        obs-nvfbc
         obs-vkcapture
         wlrobs
         obs-tuna
