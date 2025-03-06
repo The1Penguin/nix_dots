@@ -18,7 +18,7 @@ in
     ./software/neovim.nix
   ] ++ (lib.optionals (!server) [
     ./software/wezterm.nix
-    ./software/firefox.nix
+    ./software/librewolf.nix
     ./software/spotify.nix
     ./software/thunderbird.nix
     ./software/mpv.nix

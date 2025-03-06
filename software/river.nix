@@ -42,6 +42,7 @@
       rule-add = {
         "-app-id" = {
           "'firefox'" = "ssd";
+          "'librewolf'" = "ssd";
           "'steam'" = "ssd";
         };
       };
@@ -122,7 +123,7 @@
             "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17-'";
             "Super D" = "spawn '${pkgs.wofi}/bin/wofi --show=drun --hide-scroll'";
             "Super E" = "spawn '${pkgs.emacs-gtk}/bin/emacs'";
-            "Super F1" = "spawn '${pkgs.firefox}/bin/firefox'";
+            "Super F1" = "spawn '${pkgs.librewolf}/bin/librewolf'";
             "Super F2" = "spawn '${pkgs.stable.vesktop}/bin/vesktop'";
             "Super F3" = "spawn '${pkgs.feishin}/bin/feishin'";
             "Super F4" = "spawn '${pkgs.lutris}/bin/lutris'";

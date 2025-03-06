@@ -1,22 +1,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
     profiles.pingu = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         betterttv
-        # bypass-paywalls-clean
+        bitwarden
         consent-o-matic
-        # clickbait-remover-for-youtube
-        darkreader
-        duckduckgo-privacy-essentials
-        # enhancer-for-youtube
+        dearrow
+        enhancer-for-youtube
         firefox-color
         foxyproxy-standard
-        # jiffy-reader
         new-tab-override
-        # new-xkit
         old-reddit-redirect
         privacy-badger
         reddit-enhancement-suite
@@ -27,7 +23,6 @@
         tampermonkey
         ublock-origin
         vimium
-        dearrow
       ];
       isDefault = true;
       userChrome = (builtins.readFile ../files/firefox.css);
