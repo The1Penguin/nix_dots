@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "Betterfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740523396,
+        "narHash": "sha256-5fD8ffAyIgQYJ0Z/bMEpqf17YghVQNaK+giZ1Tyk6/Q=",
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "rev": "6ef4cdbbe7bc3bb1d69a2291a25cc8841b39544a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "type": "github"
+      }
+    },
     "any-nix-shell": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -286,6 +302,7 @@
     },
     "root": {
       "inputs": {
+        "Betterfox": "Betterfox",
         "any-nix-shell": "any-nix-shell",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",

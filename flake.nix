@@ -38,10 +38,13 @@
       url = "github:icewind1991/nvidia-patch-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    Betterfox = {
+      url = "github:yokoffing/Betterfox";
+      flake = false;
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-2411, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, ... }:
+  outputs = { nixpkgs, nixpkgs-2411, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, ... }:
     let
       system = "x86_64-linux";
       overlay-2411 = final: prev: {
@@ -126,6 +129,7 @@
             inherit spicetify-nix;
             inherit any-nix-shell;
             inherit nixos-xivlauncher-rb;
+            inherit Betterfox;
             desktop = false;
             laptop = true;
             server = false;
@@ -144,6 +148,7 @@
             inherit spicetify-nix;
             inherit any-nix-shell;
             inherit nixos-xivlauncher-rb;
+            inherit Betterfox;
             desktop = true;
             laptop = false;
             server = false;
@@ -162,6 +167,7 @@
             inherit spicetify-nix;
             inherit any-nix-shell;
             inherit nixos-xivlauncher-rb;
+            inherit Betterfox;
             desktop = false;
             laptop = false;
             server = true;

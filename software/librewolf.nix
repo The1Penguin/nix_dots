@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, Betterfox, ... }:
 
 {
   programs.librewolf = {
@@ -30,6 +30,7 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
       };
+      extraConfig = (builtins.readFile "${Betterfox}/user.js");
     };
   };
 }
