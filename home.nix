@@ -63,7 +63,6 @@ in
     ] ++
     (lib.optionals (!server) [
       nextcloud-client
-      kate
       pavucontrol
       stable.vesktop
       #(discord.override {
@@ -78,7 +77,7 @@ in
       jellyfin-media-player
       signal-desktop
       qview
-      krdc
+      kdePackages.krdc
       remmina
       kotatogram-desktop
       texlive.combined.scheme-full

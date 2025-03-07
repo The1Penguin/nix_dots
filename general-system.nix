@@ -107,6 +107,14 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     package = lib.mkForce pkgs.kdePackages.sddm;
   };
 
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+    kate
+  ];
+
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "both";

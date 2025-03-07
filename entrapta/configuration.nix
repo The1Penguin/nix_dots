@@ -26,14 +26,6 @@
 
   programs.river.enable = true;
 
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    plasma-browser-integration
-    konsole
-    oxygen
-  ];
-
-
   services.openssh = {
     enable = true;
     ports = [ 69 ];
