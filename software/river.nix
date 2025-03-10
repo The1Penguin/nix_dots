@@ -239,6 +239,20 @@
           ];
         }
         {
+          profile.name = "NC";
+          profile.outputs = [
+            {
+              criteria = "eDP-1";
+              position = "0,0";
+            }
+            {
+              criteria = "Dell Inc. DELL P2422H H0T55V3";
+              position = "0,-1080";
+              mode = "1920x1080@60Hz";
+            }
+          ];
+        }
+        {
           profile.name = "Desktop";
           profile.outputs = [
             {
