@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, ... }:
+{ config, lib, pkgs, spicetify-nix, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, secrets, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -312,6 +312,20 @@ in
     nextcloud-client = {
       enable = true;
       startInBackground = true;
+    };
+
+    syncthing = {
+      enable = true;
+      settings = {
+        devices.catra = {
+          addresses = [ "tcp://sync.acorneroftheweb.com" ];
+          id = secrets.syncthing.id;
+        };
+        folders.Main = {
+          path = "${homeDir}/.syncthing";
+          devices = [ "catra" ];
+        };
+      };
     };
   };
 

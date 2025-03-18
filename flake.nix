@@ -58,8 +58,6 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
-            "dotnet-sdk-6.0.428"
-            "aspnetcore-runtime-6.0.36"
           ];
         };
         overlays = [
@@ -69,7 +67,7 @@
         ];
       };
       lib = nixpkgs;
-      secrets = builtins.fromTOML (builtins.readFile "./secrets/secrets.toml");
+      secrets = builtins.fromTOML (builtins.readFile ./secrets/secrets.toml);
     in
     {
       nixosConfigurations = {
@@ -130,6 +128,7 @@
             inherit any-nix-shell;
             inherit nixos-xivlauncher-rb;
             inherit Betterfox;
+            inherit secrets;
             desktop = false;
             laptop = true;
             server = false;
@@ -149,6 +148,7 @@
             inherit any-nix-shell;
             inherit nixos-xivlauncher-rb;
             inherit Betterfox;
+            inherit secrets;
             desktop = true;
             laptop = false;
             server = false;
