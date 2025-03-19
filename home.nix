@@ -62,7 +62,6 @@ in
       git-crypt
     ] ++
     (lib.optionals (!server) [
-      nextcloud-client
       pavucontrol
       stable.vesktop
       #(discord.override {
@@ -310,7 +309,7 @@ in
     };
 
     nextcloud-client = {
-      enable = true;
+      enable = false;
       startInBackground = true;
     };
 
@@ -323,6 +322,10 @@ in
         };
         folders.Main = {
           path = "${homeDir}/.syncthing";
+          devices = [ "catra" ];
+        };
+        folders.Pictures = {
+          path = "${homeDir}/pic";
           devices = [ "catra" ];
         };
       };
