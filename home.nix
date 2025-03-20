@@ -335,10 +335,20 @@ in
         folders.Main = {
           path = "${homeDir}/.syncthing";
           devices = [ "catra" "entrapta" "scorpia" ];
+          versioning = {
+            type = "simple";
+            params.keep = "5";
+            params.cleanoutDays = "15";
+          };
         };
         folders.Pictures = {
           path = "${homeDir}/pic";
           devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
+          versioning = {
+            type = "simple";
+            params.keep = "5";
+            params.cleanoutDays = "15";
+          };
         };
         options.localAnnounceEnabled = false;
         options.urAccepted = -1;
