@@ -318,15 +318,27 @@ in
       settings = {
         devices.catra = {
           addresses = [ "tcp://sync.acorneroftheweb.com" ];
-          id = secrets.syncthing.id;
+          id = secrets.syncthing.catra;
+        };
+        devices.entrapta = {
+          addresses = [ "dynamic" ];
+          id = secrets.syncthing.entrapta;
+        };
+        devices.scorpia = {
+          addresses = [ "dynamic" ];
+          id = secrets.syncthing.scorpia;
+        };
+        devices.glimmer = {
+          addresses = [ "dynamic" ];
+          id = secrets.syncthing.glimmer;
         };
         folders.Main = {
           path = "${homeDir}/.syncthing";
-          devices = [ "catra" ];
+          devices = [ "catra" "entrapta" "scorpia" ];
         };
         folders.Pictures = {
           path = "${homeDir}/pic";
-          devices = [ "catra" ];
+          devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
         };
       };
     };
