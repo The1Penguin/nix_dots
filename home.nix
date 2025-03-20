@@ -340,6 +340,8 @@ in
           path = "${homeDir}/pic";
           devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
         };
+        options.localAnnounceEnabled = false;
+        options.urAccepted = -1;
       };
     };
   };
