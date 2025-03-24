@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "9e31f332b6e1eee05aa0f566f5d3840a612f003e";
-    hash = "sha256-6Gv6aXrA6VvWmzDNnqdvFFgX6QRGPuhVEhMLRHgEzcw=";
+    rev = "323842a62192c46ed5dd62e8571a1a5166d89f97";
+    hash = "sha256-JdahF83H3XSq9Rd3UFX4Oz85slOX/+LMcBVxem8vp8Y=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -60,6 +60,7 @@ in
       killall
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       git-crypt
+      nixd
     ] ++
     (lib.optionals (!server) [
       pavucontrol
