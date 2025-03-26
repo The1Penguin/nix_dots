@@ -44,6 +44,7 @@
           "'firefox'" = "ssd";
           "'librewolf'" = "ssd";
           "'steam'" = "ssd";
+          "'org.pulseaudio.pavucontrol'" = "ssd";
         };
       };
       set-repeat = "40 300";
