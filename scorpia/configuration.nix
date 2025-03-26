@@ -31,6 +31,8 @@
   # Host name and enabling networkmanager
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
+  networking.networkmanager.wifi.backend = "iwd";
 
   programs.river.enable = true;
 
@@ -49,6 +51,8 @@
 
   # Allow for brightness control
   programs.light.enable = true;
+
+  services.fwupd.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

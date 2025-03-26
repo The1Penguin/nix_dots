@@ -12,6 +12,7 @@
            enable_wayland = true,
            enable_tab_bar = false,
            color_scheme = "Catppuccin Latte",
+           window_close_confirmation = "NeverPrompt",
            window_padding = {
                            left = 5,
                            right = 5,
