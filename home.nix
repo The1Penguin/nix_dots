@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "c1bcbfa1b7c98122ed3b858d15468fa4adcc0f8b";
-    hash = "sha256-ZQFhG13+H7FfJblm8JjKLxvXAVZCLt9dl3Aptd+9ox4=";
+    rev = "af1d35abb7611cec63bf24d9300ebaabed8240f2";
+    hash = "sha256-feQH6Jkbvk6dC2ynyKZedPwO8oqCBk/AnIMYC+aqm3k=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
@@ -35,7 +35,7 @@ in
 
     packages = with pkgs; [
       htop
-      emacs-gtk
+      emacs-pgtk
       python3
       fd
       pulsemixer
