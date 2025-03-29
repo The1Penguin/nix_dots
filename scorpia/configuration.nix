@@ -31,8 +31,7 @@
   # Host name and enabling networkmanager
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = false;
-  networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.wifi.powersave = true;
 
   programs.river.enable = true;
 
