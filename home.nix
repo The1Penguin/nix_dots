@@ -107,6 +107,7 @@ in
       itch
       teams-for-linux
       feishin
+      keymapp
     ]) ++
     (lib.optionals desktop [
       piper

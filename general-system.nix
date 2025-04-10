@@ -100,6 +100,8 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     package = pkgs.bluez5-experimental;
   };
 
+  hardware.keyboard.zsa.enable = true;
+
   services.power-profiles-daemon.enable = lib.mkForce false;
 
   services.displayManager.sddm = lib.mkIf (!server) {
