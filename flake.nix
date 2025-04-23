@@ -138,8 +138,8 @@
           modules = [
             ./home.nix
             lix-module.nixosModules.default
-            catppuccin.homeManagerModules.catppuccin
-          ];
+            catppuccin.homeModules.catppuccin
+            ];
         };
         entrapta = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -158,7 +158,7 @@
           modules = [
             ./home.nix
             lix-module.nixosModules.default
-            catppuccin.homeManagerModules.catppuccin
+            catppuccin.homeModules.catppuccin
           ];
         };
         adora = home-manager.lib.homeManagerConfiguration {
@@ -177,7 +177,7 @@
           modules = [
             ./home.nix
             lix-module.nixosModules.default
-            catppuccin.homeManagerModules.catppuccin
+            catppuccin.homeModules.catppuccin
           ];
         };
       };
