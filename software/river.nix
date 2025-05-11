@@ -175,24 +175,26 @@
     mako = {
       enable = true;
       # extraConfig = builtins.readFile ../files/makoconfig;
-      anchor = "top-right";
-      backgroundColor = "#eff1f5";
-      borderColor = "#ea76cb";
-      borderRadius = 15;
-      borderSize = 2;
-      defaultTimeout = 10000;
-      font = "DokiDokiMono Nerd Font 14";
-      format = "<i>%s</i>\\n%b";
-      groupBy = "summary";
-      height = 200;
-      layer = "overlay";
-      margin = "20,20,0";
-      markup = true;
-      maxIconSize = 96;
-      padding = "15,15,15";
-      progressColor = "over #c6cad1";
-      textColor = "#4c4f69";
-      width = 450;
+      settings = {
+        anchor = "top-right";
+        background-color = "#eff1f5";
+        border-color = "#ea76cb";
+        border-radius = 15;
+        border-size = 2;
+        default-timeout = 10000;
+        font = "DokiDokiMono Nerd Font 14";
+        format = "<i>%s</i>\\n%b";
+        group-by = "summary";
+        height = 200;
+        layer = "overlay";
+        margin = "20,20,0";
+        markup = true;
+        max-icon-size = 96;
+        padding = "15,15,15";
+        progress-color = "over #c6cad1";
+        text-color = "#4c4f69";
+        width = 450;
+      };
     };
 
     kanshi = {

@@ -108,6 +108,7 @@ in
       teams-for-linux
       feishin
       keymapp
+      gcr
     ]) ++
     (lib.optionals desktop [
       piper

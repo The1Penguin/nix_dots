@@ -17,14 +17,7 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable swap on luks
-  boot.initrd.luks.devices."luks-64878b92-146a-44ce-b3de-0dc1f3ccb697".device = "/dev/disk/by-uuid/64878b92-146a-44ce-b3de-0dc1f3ccb697";
-  boot.initrd.luks.devices."luks-64878b92-146a-44ce-b3de-0dc1f3ccb697".keyFile = "/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-ec893630-d23c-4bd3-b855-18be312aff5e".device = "/dev/disk/by-uuid/ec893630-d23c-4bd3-b855-18be312aff5e";
 
   # Above is auto generated
 
@@ -32,6 +25,13 @@
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = true;
+
+  hardware = {
+    amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
+  };
 
   programs.river.enable = true;
 
@@ -59,6 +59,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }

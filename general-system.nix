@@ -175,6 +175,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
   security.pam.services.river.enableGnomeKeyring = true;
+  security.pam.services.pingu.enableGnomeKeyring = true;
   security.pam.services.swaylock.text = ''
     # PAM configuration file for the swaylock screen locker. By default, it includes
     # the 'login' configuration file (see /etc/pam.d/login)
