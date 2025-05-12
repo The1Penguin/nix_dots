@@ -55,7 +55,7 @@
       border-color-unfocused = "0x9ca0b0";
       keyboard-layout = "sebrackets";
       input = {
-        "pointer-1267-12608-ELAN0001:00_04F3:3140_Touchpad" = {
+        "pointer-1739-52992-SYNA2BA6:00_06CB:CF00_Touchpad" = {
           events = true;
           tap = true;
           tap-button-map = "left-right-middle";

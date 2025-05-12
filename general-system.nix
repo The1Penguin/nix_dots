@@ -6,8 +6,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     ./software/kanata.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   time.timeZone = "Europe/Stockholm";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {

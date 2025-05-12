@@ -10,10 +10,15 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "amdgpu" "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "snd-hda-intel.model=auto" "snd-intel-dspcfg.dsp_driver=1" ]; # "snd-hda-intel.index=0"];
-  boot.blacklistedKernelModules =  [ ];
+  boot.kernelParams = [ "snd-hda-intel.model=general" "snd-hda-intel.index=0" "snd-intel-dspcfg.dsp_driver=1" ];
+  boot.kernelPatches = [
+    {
+      name = "lenovo-83J3";
+      patch = ../files/83J3.patch;
+    }
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b5b66f85-00bb-4c01-a940-ab85283c3417";

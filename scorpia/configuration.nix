@@ -21,6 +21,8 @@
 
   # Above is auto generated
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Host name and enabling networkmanager
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
