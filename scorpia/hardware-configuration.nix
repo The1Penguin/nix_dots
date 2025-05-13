@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "amdgpu" "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "snd-hda-intel.model=general" "snd-hda-intel.index=0" "snd-intel-dspcfg.dsp_driver=1" ];
+  boot.kernelParams = [ "amd_pstate=active" "snd_hda_intel.model=auto" "snd_hda_intel.index=1,0" "snd-intel-dspcfg.dsp_driver=1" ];
   boot.kernelPatches = [
     {
       name = "lenovo-83J3";
@@ -46,4 +46,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.firmware = [ pkgs.sof-firmware ];
 }

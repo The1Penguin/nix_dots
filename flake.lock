@@ -153,42 +153,36 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1746910183,
-        "narHash": "sha256-Z1SKIw1tvfXAjVr0FowkzuFgrWW/HFZjIZM9DtnBByA=",
-        "ref": "refs/heads/main",
-        "rev": "1da9c0261e9b6f9b189d32f6e344183bc15feb70",
-        "revCount": 17854,
-        "type": "git",
-        "url": "https://git.lix.systems/lix-project/lix"
+        "lastModified": 1746827285,
+        "narHash": "sha256-hsFe4Tsqqg4l+FfQWphDtjC79WzNCZbEFhHI8j2KJzw=",
+        "rev": "47aad376c87e2e65967f17099277428e4b3f8e5a",
+        "type": "tarball",
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/47aad376c87e2e65967f17099277428e4b3f8e5a.tar.gz?rev=47aad376c87e2e65967f17099277428e4b3f8e5a"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.lix.systems/lix-project/lix"
+        "type": "tarball",
+        "url": "https://git.lix.systems/lix-project/lix/archive/2.93.0.tar.gz"
       }
     },
     "lix-module": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "flakey-profile": "flakey-profile",
-        "lix": [
-          "lix"
-        ],
+        "lix": "lix",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1746839253,
-        "narHash": "sha256-pRwi8Wn8Yofj459gq+3oIRy8F3SXeEJ6mzfIAUgM9nA=",
-        "ref": "refs/heads/main",
-        "rev": "58baedd53f9da81fd728a4f3b08c378e5ba9ae58",
-        "revCount": 142,
-        "type": "git",
-        "url": "https://git.lix.systems/lix-project/nixos-module"
+        "lastModified": 1746838955,
+        "narHash": "sha256-11R4K3iAx4tLXjUs+hQ5K90JwDABD/XHhsM9nkeS5N8=",
+        "rev": "cd2a9c028df820a83ca2807dc6c6e7abc3dfa7fc",
+        "type": "tarball",
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/cd2a9c028df820a83ca2807dc6c6e7abc3dfa7fc.tar.gz?rev=cd2a9c028df820a83ca2807dc6c6e7abc3dfa7fc"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.lix.systems/lix-project/nixos-module"
+        "type": "tarball",
+        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz"
       }
     },
     "nixos-xivlauncher-rb": {
@@ -306,7 +300,6 @@
         "any-nix-shell": "any-nix-shell",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
-        "lix": "lix",
         "lix-module": "lix-module",
         "nixos-xivlauncher-rb": "nixos-xivlauncher-rb",
         "nixpkgs": "nixpkgs",

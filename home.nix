@@ -61,6 +61,7 @@ in
       any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
       git-crypt
       nixd
+      powertop
     ] ++
     (lib.optionals (!server) [
       pavucontrol

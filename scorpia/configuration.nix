@@ -37,7 +37,26 @@
 
   programs.river.enable = true;
 
-  services.tlp.enable = true;
+  services.tlp = {
+    enable = true;
+    package = pkgs.tlp.override { enableRDW = config.networking.networkmanager.enable; };
+    settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 20;
+
+        SOUND_POWER_SAVE_ON_AC = 0;
+        SOUND_POWER_SAVE_ON_BAT = 0;
+        SOUND_POWER_SAVE_CONTROLLER = "N";
+    };
+  };
 
   # Mullvad vpn
   services.mullvad-vpn = {
