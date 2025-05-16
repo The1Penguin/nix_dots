@@ -31,6 +31,17 @@
         "browser.toolbars.bookmarks.visibility" = "never";
       };
       extraConfig = (builtins.readFile "${Betterfox}/user.js");
+      search = {
+        engines = {
+          "Acorneroftheweb.com" = {
+            urls = [{
+              template = "https://search.acorneroftheweb.com/search?q={searchTerms}";
+            }];
+          };
+        };
+        default = "Acorneroftheweb.com";
+        force = true;
+      };
     };
   };
 }
