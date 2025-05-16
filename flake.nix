@@ -37,9 +37,10 @@
       url = "github:yokoffing/Betterfox";
       flake = false;
     };
+    nixos-hardware.url = "github:NixOs/nixos-hardware/master";
   };
 
-  outputs = { nixpkgs, nixpkgs-2411, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, ... }:
+  outputs = { nixpkgs, nixpkgs-2411, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
       overlay-2411 = final: prev: {
@@ -80,6 +81,7 @@
             ./scorpia/configuration.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
+            nixos-hardware.nixosModules.lenovo-ideapad-slim-5
           ];
         };
         entrapta = nixpkgs.lib.nixosSystem {

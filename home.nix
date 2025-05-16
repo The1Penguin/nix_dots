@@ -17,7 +17,7 @@ in
     ./software/fish.nix
     ./software/neovim.nix
   ] ++ (lib.optionals (!server) [
-    ./software/wezterm.nix
+    ./software/foot.nix
     ./software/librewolf.nix
     ./software/spotify.nix
     ./software/thunderbird.nix
