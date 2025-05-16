@@ -38,6 +38,14 @@
               template = "https://search.acorneroftheweb.com/search?q={searchTerms}";
             }];
           };
+
+          "Google".metaData.hidden = true;
+          "DuckDuckGo Lite".metaData.hidden = true;
+          "Meta Ger".metaData.hidden = true;
+          "Mojeek".metaData.hidden = true;
+          "SearXNG - searx.be".metaData.hidden = true;
+          "StartPage".metaData.hidden = true;
+          "Wikipedia (en)".metaData.hidden = true;
         };
         default = "Acorneroftheweb.com";
         force = true;
