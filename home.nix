@@ -5,8 +5,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "af1d35abb7611cec63bf24d9300ebaabed8240f2";
-    hash = "sha256-feQH6Jkbvk6dC2ynyKZedPwO8oqCBk/AnIMYC+aqm3k=";
+    rev = "b1e0931ee7d26cfe4fcfa9c68a12c2fbcc16dd4d";
+    hash = "sha256-pcXwCfV2rsi/6UqEI42oSGdHui1aFNRRJHQmNgI008k=";
     fetchSubmodules = true;
   };
   dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
