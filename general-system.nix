@@ -4,6 +4,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   imports = [
     ./software/kanata.nix
+    ./hardware/tkey.nix
   ];
 
   time.timeZone = "Europe/Stockholm";
@@ -179,12 +180,15 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     # the 'login' configuration file (see /etc/pam.d/login)
     auth include login
   '';
-  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-all;
+  };
 
   users.users.pingu = {
     isNormalUser = true;
     description = "pingu";
-    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" "uinput" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" "uinput" "tkey" ];
     shell = pkgs.fish;
   };
   programs.adb.enable = true;

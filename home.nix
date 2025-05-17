@@ -16,6 +16,7 @@ in
   imports = [
     ./software/fish.nix
     ./software/neovim.nix
+    ./software/tkey.nix
   ] ++ (lib.optionals (!server) [
     ./software/foot.nix
     ./software/librewolf.nix
