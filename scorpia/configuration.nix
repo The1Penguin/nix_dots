@@ -38,6 +38,7 @@
   programs.river.enable = true;
 
   services.power-profiles-daemon.enable = true;
+  services.tlp.enable = lib.mkForce false;
 
   # Mullvad vpn
   services.mullvad-vpn = {
