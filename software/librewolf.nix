@@ -39,13 +39,13 @@
             }];
           };
 
-          "Google".metaData.hidden = true;
-          "DuckDuckGo Lite".metaData.hidden = true;
-          "Meta Ger".metaData.hidden = true;
-          "Mojeek".metaData.hidden = true;
-          "SearXNG - searx.be".metaData.hidden = true;
-          "StartPage".metaData.hidden = true;
-          "Wikipedia (en)".metaData.hidden = true;
+          "google".metaData.hidden = true;
+          "duckduckgo-lite".metaData.hidden = true;
+          "meta-ger".metaData.hidden = true;
+          "mojeek".metaData.hidden = true;
+          "searxng".metaData.hidden = true;
+          "startpage".metaData.hidden = true;
+          "wikipedia".metaData.hidden = true;
         };
         default = "Acorneroftheweb.com";
         force = true;

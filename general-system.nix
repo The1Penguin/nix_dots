@@ -61,6 +61,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     bash
     xdg-utils
     cachix
+    power-profiles-daemon
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

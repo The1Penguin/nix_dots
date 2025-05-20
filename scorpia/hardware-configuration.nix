@@ -10,8 +10,8 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "amdgpu" "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "amdgpu" "kvm-amd" "acpi_call" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   boot.kernelParams = [ "amd_pstate=active" "snd_hda_intel.model=auto" "snd_hda_intel.index=1,0" "snd-intel-dspcfg.dsp_driver=1" ];
   boot.kernelPatches = [
     {
@@ -19,6 +19,7 @@
       patch = ../files/83J3.patch;
     }
   ];
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b5b66f85-00bb-4c01-a940-ab85283c3417";
