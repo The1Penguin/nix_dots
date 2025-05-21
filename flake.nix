@@ -137,7 +137,7 @@
             ./home.nix
             lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
-            ];
+          ];
         };
         entrapta = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
