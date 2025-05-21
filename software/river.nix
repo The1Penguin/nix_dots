@@ -206,7 +206,7 @@
             {
               criteria = "eDP-1";
               mode = "2560x1600@165Hz";
-              scale = 1.4;
+              scale = 1.3;
             }
           ];
         }
@@ -216,7 +216,7 @@
             {
               criteria = "eDP-1";
               mode = "2560x1600@165Hz";
-              scale = 1.4;
+              scale = 1.3;
               position = "0,0";
             }
             {
@@ -233,7 +233,7 @@
             {
               criteria = "eDP-1";
               mode = "2560x1600@165Hz";
-              scale = 1.4;
+              scale = 1.3;
               position = "1920,1080";
             }
             {
@@ -254,7 +254,7 @@
             {
               criteria = "eDP-1";
               mode = "2560x1600@165Hz";
-              scale = 1.4;
+              scale = 1.3;
               position = "0,0";
             }
             {
