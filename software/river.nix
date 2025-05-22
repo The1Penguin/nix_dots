@@ -205,8 +205,7 @@
           profile.outputs = [
             {
               criteria = "eDP-1";
-              mode = "2560x1600@165Hz";
-              scale = 1.3;
+              mode = "1920x1200";
             }
           ];
         }
@@ -215,13 +214,12 @@
           profile.outputs = [
             {
               criteria = "eDP-1";
-              mode = "2560x1600@165Hz";
-              scale = 1.3;
+              mode = "1920x1200";
               position = "0,0";
             }
             {
               criteria = "Samsung Electric Company SAMSUNG 0x00000700";
-              position = "2560,0";
+              position = "1920,0";
               mode = "3840x2160@60Hz";
               scale = 2.0;
             }
@@ -232,8 +230,7 @@
           profile.outputs = [
             {
               criteria = "eDP-1";
-              mode = "2560x1600@165Hz";
-              scale = 1.3;
+              mode = "1920x1200";
               position = "1920,1080";
             }
             {
@@ -253,13 +250,12 @@
           profile.outputs = [
             {
               criteria = "eDP-1";
-              mode = "2560x1600@165Hz";
-              scale = 1.3;
+              mode = "1920x1200";
               position = "0,0";
             }
             {
               criteria = "Dell Inc. DELL P2422H H0T55V3";
-              position = "0,-1600";
+              position = "0,-1200";
               mode = "1920x1080@60Hz";
             }
           ];
