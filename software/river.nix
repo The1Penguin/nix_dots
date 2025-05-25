@@ -165,6 +165,17 @@
                   power = toString (lib.foldr (a: b: a * b) 1 (lib.replicate (x - 1) 2));
                 })
                 (lib.range 1 9))));
+        locked =  {
+            "None XF86AudioRaiseVolume" = "spawn '${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%'";
+            "None XF86AudioLowerVolume" = "spawn '${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%'";
+            "None XF86AudioMute" = "spawn '${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+            "None XF86AudioMedia" = "spawn '${pkgs.playerctl}/bin/playerctl play-pause'";
+            "None XF86AudioPlay" = "spawn '${pkgs.playerctl}/bin/playerctl play-pause'";
+            "None XF86AudioPrev" = "spawn '${pkgs.playerctl}/bin/playerctl previous'";
+            "None XF86AudioNext" = "spawn '${pkgs.playerctl}/bin/playerctl next'";
+            "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17+'";
+            "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17-'";
+        };
       };
     };
     extraConfig = "exec ${pkgs.swaybg}/bin/swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
