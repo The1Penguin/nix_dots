@@ -40,11 +40,9 @@ in
       python3
       fd
       pulsemixer
-      ranger
       eza
       pulseaudio
       gcc
-      ranger
       (agda.withPackages (p: with p; [
         standard-library
       ]))
@@ -63,6 +61,7 @@ in
       git-crypt
       nixd
       powertop
+      dua
     ] ++
     (lib.optionals (!server) [
       pavucontrol
@@ -238,6 +237,14 @@ in
     lazygit.enable = true;
 
     zathura.enable = true;
+
+    zellij.enable = true;
+
+    yazi = {
+      enable = true;
+      enableFishIntegration = true;
+      settings.manager.sort_dir_first = true;
+    };
   };
 
   catppuccin.gtk = {
