@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,11 +40,11 @@
     nixos-hardware.url = "github:NixOs/nixos-hardware/master";
   };
 
-  outputs = { nixpkgs, nixpkgs-2411, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, ... }:
+  outputs = { nixpkgs, nixpkgs-stable, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
-      overlay-2411 = final: prev: {
-        stable = import nixpkgs-2411 {
+      overlay-stable = final: prev: {
+        stable = import nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;
         };
@@ -59,7 +59,7 @@
         };
         overlays = [
           nur.overlays.default
-          overlay-2411
+          overlay-stable
           nvidia-patch.overlays.default
         ];
       };
