@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-xivlauncher-rb = {
-      url = "github:drakon64/nixos-xivlauncher-rb";
+      url = "github:ProverbialPennance/nixos-xivlauncher-rb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvidia-patch = {
