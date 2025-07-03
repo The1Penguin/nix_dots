@@ -61,6 +61,10 @@
           nur.overlays.default
           overlay-stable
           nvidia-patch.overlays.default
+          (final: prev: {
+            any-nix-shell =
+              any-nix-shell.outputs.packages.${system}.any-nix-shell;
+          })
         ];
       };
       lib = nixpkgs;

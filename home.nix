@@ -1,4 +1,4 @@
-{ config, lib, pkgs, spicetify-nix, any-nix-shell, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, secrets, ... }:
+{ config, lib, pkgs, spicetify-nix, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, secrets, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
@@ -57,7 +57,7 @@ in
       unzip
       nurl
       killall
-      any-nix-shell.outputs.packages.x86_64-linux.any-nix-shell
+      any-nix-shell
       git-crypt
       nixd
       powertop
