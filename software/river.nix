@@ -35,7 +35,7 @@
     systemd.extraCommands = [
       "systemctl --user stop river-session.target"
       "systemctl --user start river-session.target"
-      "rivercarro -inner-gaps 3 -outer-gaps 3 -no-smart-gaps -main-ratio 0.63"
+      "rivercarro -inner-gaps 3 -outer-gaps 3 -no-smart-gaps -per-tag -main-ratio 0.63"
     ];
     settings = {
       default-layout = "rivercarro";
@@ -182,7 +182,7 @@
         };
       };
     };
-    extraConfig = "exec ${pkgs.swaybg}/bin/swaybg -i ~/pic/Wallpaper/sakuraflower.png -m fill &";
+    extraConfig = "exec ${pkgs.swaybg}/bin/swaybg -i ${../sakuraflower.png} -m fill &";
   };
 
   catppuccin.mako.enable = false;
