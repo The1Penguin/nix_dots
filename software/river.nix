@@ -68,6 +68,12 @@
         "normal"
         "passthrough"
       ];
+      map-pointer = {
+        normal = {
+          "Super BTN_LEFT" = "move-view";
+          "Super BTN_RIGHT" = "resize-view";
+        };
+      };
       map = {
         passthrough."Super F11" = "enter-mode normal";
         normal = lib.attrsets.unionOfDisjoint
@@ -136,8 +142,6 @@
             "None Print" = "spawn '${pkgs.sway-contrib.grimshot}/bin/grimshot copy area'";
             "Super P" = "spawn '${pkgs.pavucontrol}/bin/pavucontrol'";
             "Super U" = "spawn '${pkgs.bitwarden}/bin/bitwarden'";
-            "Super BTN_LEFT" = "move-view";
-            "Super BTN_RIGHT" = "resize-view";
           }
           (builtins.listToAttrs (
             lib.concatMap
