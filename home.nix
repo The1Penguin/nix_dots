@@ -367,6 +367,8 @@ in
         options.urAccepted = -1;
       };
     };
+
+    gnome-keyring.enable = true;
   };
 
   systemd.user = lib.mkIf laptop {

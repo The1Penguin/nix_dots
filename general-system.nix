@@ -104,9 +104,12 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.power-profiles-daemon.enable = lib.mkForce false;
 
-  services.displayManager.sddm = lib.mkIf (!server) {
-    enable = true;
-    package = lib.mkForce pkgs.kdePackages.sddm;
+  services.displayManager = {
+    defaultSession = "river";
+    sddm = lib.mkIf (!server) {
+      enable = true;
+      package = lib.mkForce pkgs.kdePackages.sddm;
+    };
   };
 
   services.desktopManager.plasma6.enable = true;
@@ -174,8 +177,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
-  security.pam.services.river.enableGnomeKeyring = true;
-  security.pam.services.pingu.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
   security.pam.services.swaylock.text = ''
     # PAM configuration file for the swaylock screen locker. By default, it includes
     # the 'login' configuration file (see /etc/pam.d/login)
