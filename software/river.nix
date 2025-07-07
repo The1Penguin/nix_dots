@@ -2,6 +2,8 @@
 
 {
 
+  imports = [ ./kanshi.nix ./mako.nix ];
+
   home.packages = with pkgs; [
     swaylock-effects
     wofi
@@ -185,128 +187,5 @@
     extraConfig = "exec ${pkgs.swaybg}/bin/swaybg -i ${../sakuraflower.png} -m fill &";
   };
 
-  catppuccin.mako.enable = false;
-  services = {
-    mako = {
-      enable = true;
-      # extraConfig = builtins.readFile ../files/makoconfig;
-      settings = {
-        anchor = "top-right";
-        background-color = "#eff1f5";
-        border-color = "#ea76cb";
-        border-radius = 15;
-        border-size = 2;
-        default-timeout = 10000;
-        font = "DokiDokiMono Nerd Font 14";
-        format = "<i>%s</i>\\n%b";
-        group-by = "summary";
-        height = 200;
-        layer = "overlay";
-        margin = "20,20,0";
-        markup = true;
-        max-icon-size = 96;
-        padding = "15,15,15";
-        progress-color = "over #c6cad1";
-        text-color = "#4c4f69";
-        width = 450;
-      };
-    };
-
-    kanshi = {
-      enable = true;
-      settings = [
-        {
-          profile.name = "undocked";
-          profile.outputs = [
-            {
-              criteria = "eDP-1";
-              mode = "1920x1200";
-            }
-          ];
-        }
-        {
-          profile.name = "TV";
-          profile.outputs = [
-            {
-              criteria = "eDP-1";
-              mode = "1920x1200";
-              position = "0,0";
-            }
-            {
-              criteria = "Samsung Electric Company SAMSUNG 0x00000700";
-              position = "1920,0";
-              mode = "3840x2160@60Hz";
-              scale = 2.0;
-            }
-          ];
-        }
-        {
-          profile.name = "Monitor_Kumla";
-          profile.outputs = [
-            {
-              criteria = "eDP-1";
-              mode = "1920x1200";
-              position = "1920,1080";
-            }
-            {
-              criteria = "HP Inc. HP E24 G5 CNK42417YG";
-              position = "0,0";
-              mode = "1920x1080@75Hz";
-            }
-            {
-              criteria = "DP-2";
-              position = "1920,0";
-              mode = "1920x1080@75Hz";
-            }
-          ];
-        }
-        {
-          profile.name = "NC";
-          profile.outputs = [
-            {
-              criteria = "eDP-1";
-              mode = "1920x1200";
-              position = "0,0";
-            }
-            {
-              criteria = "Dell Inc. DELL P2422H H0T55V3";
-              position = "0,-1200";
-              mode = "1920x1080@60Hz";
-            }
-          ];
-        }
-        {
-          profile.name = "Desktop";
-          profile.outputs = [
-            {
-              criteria = "Acer Technologies XV270 V 0x029144B9";
-              position = "0,0";
-              mode = "1920x1080@164.994995Hz";
-              adaptiveSync = true;
-            }
-            {
-              criteria = "Acer Technologies Acer XF240H 0x6240186E";
-              position = "1920,0";
-              mode = "1920x1080@144.001007Hz";
-              adaptiveSync = true;
-            }
-          ];
-        }
-      ];
-    };
-  };
-
-  systemd.user.services.kanshi-river = {
-    Unit = {
-      Description = "Kanshi but on river";
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.kanshi}/bin/kanshi";
-      Restart = "always";
-    };
-    Install.WantedBy = [ "graphical-session.target" ];
-  };
+  services.polkit-gnome.enable = true;
 }
