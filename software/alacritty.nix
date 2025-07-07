@@ -3,12 +3,15 @@
 {
   programs.alacritty = {
     enable = true;
+    package = pkgs.alacritty-graphics;
     settings = {
       window = {
         padding = {
           x = 5;
           y = 3;
         };
+        dynamic_padding = true;
+        blur = true;
         title = "Alacritty";
         dynamic_title = false;
         opacity = 0.93;

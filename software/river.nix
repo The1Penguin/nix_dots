@@ -81,7 +81,7 @@
         normal = lib.attrsets.unionOfDisjoint
           {
             "Super F11" = "enter-mode passthrough";
-            "Super Return" = "spawn ${pkgs.foot}/bin/foot";
+            "Super Return" = "spawn ${pkgs.alacritty-graphics}/bin/alacritty";
             "Super Q" = "close";
             "Super+Shift E" = "exit";
             "Super J" = "focus-view next";

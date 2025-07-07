@@ -19,6 +19,7 @@ in
     ./software/tkey.nix
   ] ++ (lib.optionals (!server) [
     ./software/foot.nix
+    ./software/alacritty.nix
     ./software/librewolf.nix
     ./software/spotify.nix
     ./software/thunderbird.nix
