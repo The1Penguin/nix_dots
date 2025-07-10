@@ -62,6 +62,9 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     xdg-utils
     cachix
     power-profiles-daemon
+    doas-sudo-shim
+    (writeShellScriptBin "doasedit" (builtins.readFile scripts/doasedit))
+    (writeShellScriptBin "sudoedit" (builtins.readFile scripts/doasedit))
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -194,6 +197,21 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     extraGroups = [ "networkmanager" "wheel" "video" "adbusers" "uinput" "tkey" ];
     shell = pkgs.fish;
   };
+
+  security = {
+    sudo.enable = false;
+    doas = {
+      enable = true;
+      extraRules = [{
+        runAs = "root";
+        groups = [ "wheel" ];
+        persist = true;
+        noPass = false;
+        keepEnv = true;
+      }];
+    };
+  };
+
   programs.adb.enable = true;
 
   virtualisation.docker.rootless = {
