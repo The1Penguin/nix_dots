@@ -3,6 +3,11 @@
 {
   programs.librewolf = {
     enable = true;
+    profiles.default = {
+      id = 1;
+      isDefault = false;
+      extensions.force = true;
+    };
     profiles.pingu = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         betterttv
