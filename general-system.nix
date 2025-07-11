@@ -58,6 +58,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   environment.systemPackages = with pkgs; [
     vim
     git
+    git-crypt
     bash
     xdg-utils
     cachix
