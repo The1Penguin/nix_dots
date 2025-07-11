@@ -129,8 +129,8 @@
             "None XF86AudioPlay" = "spawn '${pkgs.playerctl}/bin/playerctl play-pause'";
             "None XF86AudioPrev" = "spawn '${pkgs.playerctl}/bin/playerctl previous'";
             "None XF86AudioNext" = "spawn '${pkgs.playerctl}/bin/playerctl next'";
-            "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17+'";
-            "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17-'";
+            "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%+'";
+            "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%-'";
             "Super D" = "spawn '${pkgs.wofi}/bin/wofi --show=drun --hide-scroll'";
             "Super E" = "spawn '${pkgs.emacs-pgtk}/bin/emacs'";
             "Super F1" = "spawn '${pkgs.librewolf}/bin/librewolf'";
