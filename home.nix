@@ -17,6 +17,8 @@ in
     ./software/fish.nix
     ./software/neovim.nix
     ./software/tkey.nix
+    ./software/posture.nix
+    ./software/hydration.nix
   ] ++ (lib.optionals (!server) [
     ./software/foot.nix
     ./software/alacritty.nix
