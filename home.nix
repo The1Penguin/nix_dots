@@ -16,7 +16,6 @@ in
   imports = [
     ./software/fish.nix
     ./software/neovim.nix
-    ./software/tkey.nix
   ] ++ (lib.optionals (!server) [
     ./software/foot.nix
     ./software/alacritty.nix
@@ -24,6 +23,7 @@ in
     ./software/spotify.nix
     ./software/thunderbird.nix
     ./software/mpv.nix
+    ./software/tkey.nix
     ./software/posture.nix
     ./software/hydration.nix
   ]) ++ (lib.optionals wayland [

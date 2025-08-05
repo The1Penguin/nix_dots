@@ -3,7 +3,7 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
-let package = config.boot.kernelPackages.nvidiaPackages.production; in
+let package = config.boot.kernelPackages.nvidiaPackages.legacy_535; in
 
 {
   imports =
@@ -14,6 +14,7 @@ let package = config.boot.kernelPackages.nvidiaPackages.production; in
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [ "amd_pstate=active" "processor.max_cstate=5" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
