@@ -65,6 +65,8 @@ in
       nixd
       powertop
       dua
+      openjdk
+      languagetool
     ] ++
     (lib.optionals (!server) [
       pavucontrol
