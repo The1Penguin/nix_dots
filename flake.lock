@@ -208,11 +208,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754566075,
-        "narHash": "sha256-qLIsSmDfcRRhjcGACbrzIiabNYnMy0hHtAehGkfKJPM=",
+        "lastModified": 1754851922,
+        "narHash": "sha256-VGzpz/gH5jEA9gAFUrjbFF7VtLvO7wCs0GyG2nWbzgM=",
         "owner": "The1Penguin",
         "repo": "nixos-xivlauncher-rb",
-        "rev": "d24868d3820d6286a4eaad99a3513ff9c19de8e4",
+        "rev": "96813ee0ad94beab37882fdaaa58fd2c326f937f",
         "type": "github"
       },
       "original": {
