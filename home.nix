@@ -253,11 +253,6 @@ in
     };
   };
 
-  catppuccin.gtk = {
-    size = "compact";
-    tweaks = [ "rimless" ];
-  };
-
   gtk = {
     enable = true;
     cursorTheme = {
@@ -266,8 +261,8 @@ in
       size = 30;
     };
     iconTheme = {
-      name = "Zafiro-icons";
-      package = pkgs.zafiro-icons;
+      name = lib.mkDefault "Zafiro-icons";
+      package = lib.mkDefault pkgs.zafiro-icons;
     };
     gtk3 = {
       extraConfig = {
