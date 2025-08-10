@@ -225,7 +225,7 @@
             tabsUpdateMarkFirst = true;
             tabsReloadLimit = 5;
             tabsReloadLimitNotif = true;
-            showNewTabBtns = true;
+            showNewTabBtns = false;
             newTabBarPosition = "after_tabs";
             tabsPanelSwitchActMove = true;
             tabsPanelSwitchActMoveAuto = true;
