@@ -23,6 +23,7 @@
         privacy-badger
         reddit-enhancement-suite
         refined-github
+        shinigami-eyes
         sidebery
         sponsorblock
         stylus
