@@ -78,6 +78,25 @@
             };
           };
         };
+        "enhancerforyoutube@maximerf.addons.mozilla.org".settings = {
+          controlbar = {
+            active = false;
+            autohide = false;
+            centered = true;
+            position = "fixed";
+          };
+          controls = [ ];
+          pauseforegroundtab = false;
+          hidecardsendscreens = true;
+          miniplayer = false;
+          theatermode = true;
+          wideplayer = false;
+          hidecomments = true;
+          hidechat = true;
+          hiderelated = true;
+          hideshorts = true;
+          convertshorts = true;
+        };
         "newtaboverride@agenedia.com".settings = {
           url = "https://homepage.acorneroftheweb.com";
           focus_website = true;
