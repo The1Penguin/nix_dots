@@ -120,6 +120,22 @@
             catppuccin.nixosModules.catppuccin
           ];
         };
+        kyle = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          specialArgs = {
+            desktop = false;
+            laptop = true;
+            server = false;
+            wayland = true;
+            x = false;
+          };
+          modules = [
+            ./kyle/configuration.nix
+            lix-module.nixosModules.default
+            catppuccin.nixosModules.catppuccin
+            nixos-hardware.nixosModules.microsoft-surface-pro-intel
+	  ];
+        };
       };
 
       homeConfigurations = {
@@ -174,6 +190,26 @@
             laptop = false;
             server = true;
             wayland = false;
+            x = false;
+          };
+          modules = [
+            ./home.nix
+            lix-module.nixosModules.default
+            catppuccin.homeModules.catppuccin
+          ];
+        };
+        kyle = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit spicetify-nix;
+            inherit any-nix-shell;
+            inherit nixos-xivlauncher-rb;
+            inherit Betterfox;
+            inherit secrets;
+            desktop = false;
+            laptop = true;
+            server = false;
+            wayland = true;
             x = false;
           };
           modules = [

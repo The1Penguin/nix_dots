@@ -6,14 +6,16 @@
     enable = true;
     settings = [
       {
-        profile.name = "undocked";
+        profile.name = "kyle";
         profile.outputs = [
           {
-            criteria = "eDP-1";
-            mode = "1920x1200";
+            criteria = "LG Display 0x0555 0x100000A1";
+            mode = "2736x1824";
+            scale = 2.0;
           }
         ];
       }
+
       {
         profile.name = "TV";
         profile.outputs = [
@@ -79,6 +81,15 @@
             position = "1920,0";
             mode = "1920x1080@144.001007Hz";
             adaptiveSync = true;
+          }
+        ];
+      }
+      {
+        profile.name = "undocked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            mode = "1920x1200";
           }
         ];
       }

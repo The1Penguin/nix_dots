@@ -62,7 +62,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     bash
     xdg-utils
     cachix
-    power-profiles-daemon
     doas-sudo-shim
     (writeShellScriptBin "doasedit" (builtins.readFile scripts/doasedit))
     (writeShellScriptBin "sudoedit" (builtins.readFile scripts/doasedit))

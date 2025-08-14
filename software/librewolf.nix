@@ -15,7 +15,7 @@
         bitwarden
         consent-o-matic
         dearrow
-        enhancer-for-youtube
+        # enhancer-for-youtube
         firefox-color
         foxyproxy-standard
         new-tab-override
