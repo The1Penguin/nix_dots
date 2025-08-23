@@ -1,21 +1,17 @@
-{ config, lib, pkgs, spicetify-nix, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, secrets, ... }:
+args@{ config, lib, pkgs, spicetify-nix, nixos-xivlauncher-rb, desktop, laptop, server, wayland, x, secrets, ... }:
 let
   username = "pingu";
   homeDir = "/home/${username}";
-  doom-dots = pkgs.fetchFromGitHub {
-    owner = "The1Penguin";
-    repo = "dotemacs";
-    rev = "ad538896c7a4fd2796267f3cf47d5f240822c56e";
-    hash = "sha256-05kNN8F5Aus3UPZEsdl2CPsUAWSiQ6/+xojB/1sWIts=";
-    fetchSubmodules = true;
-  };
-  dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; };
 in
 {
 
   imports = [
     ./software/fish.nix
     ./software/neovim.nix
+    ./software/git.nix
+    ./software/hyfetch.nix
+    (import ./software/syncthing.nix (args // { homeDir = homeDir; }))
+    ./software/emacs.nix
   ] ++ (lib.optionals (!server) [
     ./software/foot.nix
     ./software/alacritty.nix
@@ -26,6 +22,11 @@ in
     ./software/tkey.nix
     ./software/posture.nix
     ./software/hydration.nix
+    ./software/gtk.nix
+  ]) ++ (lib.optionals desktop [
+    ./software/obs.nix
+  ]) ++ (lib.optionals laptop [
+    ./software/battery.nix
   ]) ++ (lib.optionals wayland [
     ./software/river.nix
   ]) ++ (lib.optionals x [
@@ -39,29 +40,19 @@ in
 
     packages = with pkgs; [
       htop
-      emacs-pgtk
       python3
       fd
       pulsemixer
       eza
       pulseaudio
       gcc
-      (agda.withPackages (p: with p; [
-        standard-library
-      ]))
-      cmake
-      gnumake
-      libtool
-      sqlite
       nixpkgs-fmt
       speedtest-rs
-      (aspellWithDicts (dicts: with dicts; [ en en-computers en-science sv ]))
       ripgrep
       unzip
       nurl
       killall
       any-nix-shell
-      git-crypt
       nixd
       powertop
       dua
@@ -71,11 +62,6 @@ in
     (lib.optionals (!server) [
       pavucontrol
       stable.vesktop
-      #(discord.override {
-      #  withOpenASAR = true;
-      #  withVencord = true;
-      #  withTTS = false;
-      #})
       bitwarden
       playerctl
       libnotify
@@ -141,12 +127,6 @@ in
       ".config/wofi/style.css".source = ./files/wofi.css;
       ".config/wofi/style.css".executable = true;
 
-      ".config/doom/".source = pkgs.symlinkJoin {
-        name = "doom-config";
-        paths = [
-          doom-dots
-        ];
-      };
 
       ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
     };
@@ -176,67 +156,6 @@ in
   };
 
   programs = {
-    git = {
-      enable = true;
-      userName = "pingu";
-      userEmail = "nor@acorneroftheweb.com";
-      difftastic = {
-        enable = true;
-        background = "light";
-      };
-      extraConfig = {
-        pull.rebase = true;
-        init.defaultBranch = "main";
-        rerere.enabled = true;
-      };
-    };
-
-    hyfetch = {
-      enable = true;
-      settings = {
-        preset = "transgender";
-        mode = "rgb";
-        color_align = {
-          mode = "horizontal";
-        };
-        backend = "fastfetch";
-      };
-    };
-
-    fastfetch = {
-      enable = true;
-      settings = {
-        modules = [
-          "title"
-          "separator"
-          "os"
-          "kernel"
-          "uptime"
-          "packages"
-          "shell"
-          { type = "wm"; format = "{2}"; }
-          "cursor"
-          { type = "cpu"; format = "{1}"; }
-          { type = "gpu"; format = "{1} {2}"; }
-          { type = "terminal"; format = "{5}"; }
-          "terminalfont"
-          "break"
-          "colors"
-        ];
-      };
-    };
-
-    obs-studio = lib.mkIf desktop {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-tuna
-        obs-vaapi
-        obs-vkcapture
-        wlrobs
-        obs-tuna
-        obs-scale-to-sound
-      ];
-    };
 
     bat.enable = true;
 
@@ -253,59 +172,6 @@ in
     };
   };
 
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "capitaine-cursors";
-      package = pkgs.capitaine-cursors;
-      size = 30;
-    };
-    iconTheme = {
-      name = lib.mkDefault "Zafiro-icons";
-      package = lib.mkDefault pkgs.zafiro-icons;
-    };
-    gtk3 = {
-      extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme=0
-          gtk-dialogs-use-header=false
-        '';
-        extraCss = ''
-          headerbar.default-decoration {
-            margin-bottom: 50px;
-            margin-top: -100px;
-          }
-          window.csd,             /* gtk4? */
-          window.csd decoration { /* gtk3 */
-            box-shadow: none;
-          }
-        '';
-      };
-    };
-    gtk4 = {
-      extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme=0
-          gtk-dialogs-use-header=false
-        '';
-      };
-      extraCss = ''
-        headerbar.default-decoration {
-          margin-bottom: 50px;
-          margin-top: -100px;
-        }
-        window.csd,             /* gtk4? */
-        window.csd decoration { /* gtk3 */
-          box-shadow: none;
-        }
-      '';
-    };
-    font = {
-      name = "DokiDokiMono Nerd Font";
-      package = dokidokimono;
-      size = 12;
-    };
-  };
 
   qt = {
     enable = true;
@@ -321,102 +187,9 @@ in
       latitude = 11.974560;
     };
 
-    nextcloud-client = {
-      enable = false;
-      startInBackground = true;
-    };
-
-    syncthing = {
-      enable = true;
-      settings = {
-        devices.catra = {
-          addresses = [ "tcp://sync.acorneroftheweb.com" ];
-          id = secrets.syncthing.catra;
-        };
-        devices.entrapta = {
-          addresses = [ "dynamic" ];
-          id = secrets.syncthing.entrapta;
-        };
-        devices.scorpia = {
-          addresses = [ "dynamic" ];
-          id = secrets.syncthing.scorpia;
-        };
-        devices.glimmer = {
-          addresses = [ "dynamic" ];
-          id = secrets.syncthing.glimmer;
-        };
-        folders.Main = {
-          path = "${homeDir}/.syncthing";
-          devices = [ "catra" "entrapta" "scorpia" ];
-          versioning = {
-            type = "simple";
-            params.keep = "5";
-            params.cleanoutDays = "15";
-          };
-        };
-        folders.Pictures = {
-          path = "${homeDir}/pic";
-          devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
-          versioning = {
-            type = "simple";
-            params.keep = "5";
-            params.cleanoutDays = "15";
-          };
-        };
-        options.localAnnounceEnabled = false;
-        options.urAccepted = -1;
-      };
-    };
-
     gnome-keyring.enable = true;
   };
 
-  systemd.user = lib.mkIf laptop {
-    timers = {
-      battery-check = {
-        Unit.Description = "Warn at low battery levels";
-        Timer = {
-          OnBootSec = "1min";
-          OnUnitActiveSec = "30s";
-          Unit = "battery-check.service";
-        };
-        Install.WantedBy = [ "graphical-session.target" ];
-      };
-    };
-    services = {
-      battery-check = {
-        Unit.Description = "Warn at low battery levels";
-        Service =
-          let
-            batMon = pkgs.writeShellScript "batMon" ''
-              PATH="$PATH:${pkgs.lib.makeBinPath [
-                pkgs.acpi
-                pkgs.libnotify
-                pkgs.gnugrep
-                pkgs.gawk
-                pkgs.systemd
-              ]}"
-              acpi -b | grep "Battery 0" | awk -F'[,:%]' '{print $2, $3}' | {
-                read -r status capacity
-                battery_stat="$(acpi --battery | head -n 1)"
-                if [ "$status" = Discharging -a "$capacity" -le 2 ]; then
-                  notify-send "Battery Critical: $capacity%\\n Hibernating"
-                  sleep 5
-                  systemctl hibernate
-                elif [ "$status" = Discharging -a "$capacity" -le 5 ]; then
-                  notify-send "Battery Critical: $capacity%"
-                elif [ "$status" = Discharging -a "$capacity" -le 20 ]; then
-                  notify-send "Battery Low: $capacity%"
-                fi
-              }
-            '';
-          in
-          {
-            ExecStart = "${batMon}";
-          };
-      };
-    };
-  };
 
   catppuccin = {
     enable = true;

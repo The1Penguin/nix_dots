@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd ~/.nextcloud/ffxivBackup/ &&
+cd ~/.syncthing/ffxivBackup/ &&
 cp -r .xlcore ~/ &&
 echo "Files placed in ~/.xlcore"
