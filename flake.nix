@@ -134,7 +134,7 @@
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
             nixos-hardware.nixosModules.microsoft-surface-pro-intel
-	  ];
+          ];
         };
       };
 
