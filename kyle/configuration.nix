@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../general-system.nix
     ];
@@ -34,7 +35,7 @@
       libvdpau-va-gl
     ];
   };
-  
+
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   programs.river.enable = true;

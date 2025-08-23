@@ -38,9 +38,13 @@
       flake = false;
     };
     nixos-hardware.url = "github:NixOs/nixos-hardware/master";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, ... }:
+  outputs = { nixpkgs, nixpkgs-stable, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, ... }:
     let
       system = "x86_64-linux";
       overlay-stable = final: prev: {
@@ -61,6 +65,7 @@
           nur.overlays.default
           overlay-stable
           nvidia-patch.overlays.default
+          niri.overlays.niri
           (final: prev: {
             any-nix-shell =
               any-nix-shell.outputs.packages.${system}.any-nix-shell;
@@ -86,6 +91,7 @@
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
             nixos-hardware.nixosModules.lenovo-ideapad-slim-5
+            niri.nixosModules.niri
           ];
         };
         entrapta = nixpkgs.lib.nixosSystem {
@@ -101,6 +107,7 @@
             ./entrapta/configuration.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
+            niri.nixosModules.niri
           ];
         };
         adora = nixpkgs.lib.nixosSystem {
@@ -134,6 +141,7 @@
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
             nixos-hardware.nixosModules.microsoft-surface-pro-intel
+            niri.nixosModules.niri
           ];
         };
       };
@@ -157,6 +165,7 @@
             ./home.nix
             lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
+            niri.homeModules.niri
           ];
         };
         entrapta = home-manager.lib.homeManagerConfiguration {
@@ -177,6 +186,7 @@
             ./home.nix
             lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
+            niri.homeModules.niri
           ];
         };
         adora = home-manager.lib.homeManagerConfiguration {
@@ -216,6 +226,7 @@
             ./home.nix
             lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
+            niri.homeModules.niri
           ];
         };
       };

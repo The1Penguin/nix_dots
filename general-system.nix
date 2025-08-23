@@ -107,6 +107,11 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.power-profiles-daemon.enable = lib.mkForce false;
 
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
+
   services.displayManager = {
     defaultSession = "river";
     sddm = lib.mkIf (!server) {

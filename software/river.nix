@@ -1,8 +1,12 @@
-{ config, lib, pkgs, desktop, laptop, ... }:
+args@{ config, lib, pkgs, desktop, laptop, ... }:
 
 {
 
-  imports = [ ./kanshi.nix ./mako.nix ];
+  imports = [
+    ./kanshi.nix
+    ./mako.nix
+    (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
+  ];
 
   home.packages = with pkgs; [
     swaylock-effects
@@ -51,7 +55,7 @@
         };
       };
       set-repeat = "40 300";
-      xcursor-theme = "capitaine-cursors 32";
+      xcursor-theme = "capitaine-cursors 30";
       border-color = "0xeff1f5";
       border-color-focused = "0xea76cb";
       border-color-unfocused = "0x9ca0b0";
@@ -179,12 +183,11 @@
           "None XF86AudioPlay" = "spawn '${pkgs.playerctl}/bin/playerctl play-pause'";
           "None XF86AudioPrev" = "spawn '${pkgs.playerctl}/bin/playerctl previous'";
           "None XF86AudioNext" = "spawn '${pkgs.playerctl}/bin/playerctl next'";
-          "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17+'";
-          "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 17-'";
+          "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%+'";
+          "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%-'";
         };
       };
     };
-    extraConfig = "exec ${pkgs.swaybg}/bin/swaybg -i ${../sakuraflower.png} -m fill &";
   };
 
   services.polkit-gnome.enable = true;

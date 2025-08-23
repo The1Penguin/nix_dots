@@ -29,6 +29,7 @@ in
     ./software/battery.nix
   ]) ++ (lib.optionals wayland [
     ./software/river.nix
+    ./software/niri.nix
   ]) ++ (lib.optionals x [
     ./software/bspwm.nix
   ]);
