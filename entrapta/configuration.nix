@@ -26,8 +26,6 @@
   };
   services.ratbagd.enable = true;
 
-  programs.river.enable = true;
-
   services.openssh = {
     enable = true;
     ports = [ 69 ];

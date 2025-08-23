@@ -107,13 +107,15 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.power-profiles-daemon.enable = lib.mkForce false;
 
-  programs.niri = {
+
+  programs.river.enable = wayland;
+  programs.niri = lib.mkIf wayland {
     enable = true;
     package = pkgs.niri;
   };
 
   services.displayManager = {
-    defaultSession = "river";
+    defaultSession = if wayland then "river" else "bspwm";
     sddm = lib.mkIf (!server) {
       enable = true;
       package = lib.mkForce pkgs.kdePackages.sddm;

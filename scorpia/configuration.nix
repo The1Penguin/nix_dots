@@ -35,8 +35,6 @@
     };
   };
 
-  programs.river.enable = true;
-
   services.upower.enable = true;
   services.auto-cpufreq = {
     enable = true;

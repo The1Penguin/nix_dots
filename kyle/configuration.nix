@@ -38,8 +38,6 @@
 
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-  programs.river.enable = true;
-
   services.upower.enable = true;
   services.auto-cpufreq = {
     enable = true;
