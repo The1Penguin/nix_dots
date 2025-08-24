@@ -139,6 +139,26 @@ in
         action = focus-window-or-workspace-down;
       };
 
+      #Mouse
+      "Mod+WheelScrollRight" = {
+        hotkey-overlay.hidden = true;
+        action = focus-column-right;
+      };
+      "Mod+WheelScrollLeft" = {
+        hotkey-overlay.hidden = true;
+        action = focus-column-left;
+      };
+      "Mod+WheelScrollUp" = {
+        hotkey-overlay.hidden = true;
+        cooldown-ms = 150;
+        action = focus-window-or-workspace-up;
+      };
+      "Mod+WheelScrollDown" = {
+        hotkey-overlay.hidden = true;
+        cooldown-ms = 150;
+        action = focus-window-or-workspace-down;
+      };
+
       # Window and column size
       "Mod+R" = {
         hotkey-overlay.title = "Switch height";
@@ -227,7 +247,7 @@ in
         hotkey-overlay.hidden = true;
         action = move-window-up-or-to-workspace-up;
       };
-      "Mod+O" = {
+      "Super+Escape" = {
         hotkey-overlay.title = "Toggle overview";
         action = toggle-overview;
       };
