@@ -111,7 +111,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   programs.river.enable = wayland;
   programs.niri = lib.mkIf wayland {
     enable = true;
-    package = pkgs.niri;
+    package = pkgs.niri-unstable;
   };
 
   services.displayManager = {

@@ -25,6 +25,7 @@ in
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/laptop/notify))
   ]);
 
+  programs.niri.package = pkgs.niri-unstable;
   programs.niri.settings = {
     # Input
     input = {
@@ -39,11 +40,12 @@ in
         natural-scroll = false;
         dwt = true;
       };
-      warp-mouse-to-focus.enable = false;
+      warp-mouse-to-focus.enable = false; # Somehow still is read as true when focusing monitor
       focus-follows-mouse.enable = false;
     };
 
-    #hotkey-overlay.hide-not-bound = true;
+    hotkey-overlay.hide-not-bound = true;
+    hotkey-overlay.skip-at-startup = true;
     binds = with config.lib.niri.actions; {
       # Common programs
       "Mod+Return" = {
