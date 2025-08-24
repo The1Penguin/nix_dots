@@ -247,7 +247,7 @@ in
         hotkey-overlay.hidden = true;
         action = move-window-up-or-to-workspace-up;
       };
-      "Super+Escape" = {
+      "Mod+Escape" = {
         hotkey-overlay.title = "Toggle overview";
         action = toggle-overview;
       };
