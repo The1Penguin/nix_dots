@@ -44,6 +44,8 @@ in
       focus-follows-mouse.enable = false;
     };
 
+    screenshot-path = "~/pic/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+
     hotkey-overlay.hide-not-bound = true;
     hotkey-overlay.skip-at-startup = true;
     binds = with config.lib.niri.actions; {
