@@ -11,7 +11,7 @@
     Service = {
       Type = "simple";
       ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ${wallpaper}";
-      Restart = "on-failure";
+      Restart = "always";
       RestartSec = 1;
     };
 

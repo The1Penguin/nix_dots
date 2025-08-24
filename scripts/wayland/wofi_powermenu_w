@@ -18,5 +18,5 @@ case $chosen in
     $option2)
         systemctl poweroff;;
     $option3)
-        mylock & systemctl hibernate;;
+        niri msg action do-screen-transition || mylock & systemctl hibernate;;
 esac

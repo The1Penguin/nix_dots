@@ -30,12 +30,12 @@ in
     input = {
       keyboard = {
         xkb.layout = "sebrackets";
-        repeat-rate = 40;
+        repeat-rate = 50;
         repeat-delay = 300;
       };
       touchpad = {
         tap = true;
-        click-method = "clickfinger";
+        click-method = "clickfinger"; #TODO: button areas as well
         natural-scroll = false;
         dwt = true;
       };
@@ -102,7 +102,7 @@ in
 
       "Alt+Shift+X" = {
         hotkey-overlay.title = "Lock";
-        action = spawn "mylock";
+        action = spawn "sh" "-c" "niri msg action do-screen-transition && mylock";
       };
 
       "Mod+Shift+Tab" = {
@@ -151,6 +151,14 @@ in
       "Mod+Shift+F" = {
         hotkey-overlay.title = "Fullscreen";
         action = fullscreen-window;
+      };
+      "Mod+N" = {
+        hotkey-overlay.title = "Reset height";
+        action = reset-window-height;
+      };
+      "Mod+M" = {
+        hotkey-overlay.title = "Maximize Column";
+        action = maximize-column;
       };
 
       #Tabs
@@ -349,7 +357,7 @@ in
 
     overview = {
       workspace-shadow.enable = false;
-      zoom = 0.5;
+      zoom = 0.4;
     };
 
     cursor.size = 30;
