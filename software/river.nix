@@ -15,7 +15,6 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     acpi
     sway-contrib.grimshot
     rivercarro
-    swaybg
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/wayland/mylock))
     (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ../scripts/wayland/wofi_powermenu_w))
   ] ++

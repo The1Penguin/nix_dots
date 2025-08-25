@@ -6,7 +6,7 @@ in
   imports = [
     ./kanshi.nix
     ./mako.nix
-    ./wofi.nix
+    ./rofi.nix
     (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
   ];
 
@@ -14,10 +14,8 @@ in
     swaylock-effects
     brightnessctl
     acpi
-    sway-contrib.grimshot
-    swaybg
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/wayland/mylock))
-    (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ../scripts/wayland/wofi_powermenu_w))
+    (pkgs.writeScriptBin "rofi_powermenu_w" (builtins.readFile ../scripts/wayland/rofi_powermenu_w))
   ] ++
   (lib.optionals desktop [
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/desktop/notify))
@@ -89,8 +87,8 @@ in
 
       # Launchers
       "Mod+D" = {
-        hotkey-overlay.title = "wofi launcher";
-        action = spawn "${pkgs.wofi}/bin/wofi" "--show=drun" "--hide-scroll";
+        hotkey-overlay.title = "rofi launcher";
+        action = spawn "rofi" "-modes" "drun" "-show" "drun";
       };
 
       # Utility and help
@@ -111,7 +109,7 @@ in
 
       "Mod+Shift+Tab" = {
         hotkey-overlay.title = "notify script";
-        action = spawn "wofi_powermenu_w";
+        action = spawn "rofi_powermenu_w";
       };
 
       "Mod+Q" = {
