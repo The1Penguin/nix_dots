@@ -82,7 +82,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.joycond.enable = lib.mkIf (!server) true;
 
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -100,13 +99,12 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
         AutoEnable = "true";
       };
     };
-    package = pkgs.bluez5-experimental;
+    package = pkgs.bluez-experimental;
   };
 
   hardware.keyboard.zsa.enable = true;
 
   services.power-profiles-daemon.enable = lib.mkForce false;
-
 
   programs.river.enable = wayland;
   programs.niri = lib.mkIf wayland {

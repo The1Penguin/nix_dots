@@ -128,7 +128,6 @@ in
       ".config/wofi/style.css".source = ./files/wofi.css;
       ".config/wofi/style.css".executable = true;
 
-
       ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
     };
 
