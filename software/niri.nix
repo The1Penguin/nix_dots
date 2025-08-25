@@ -6,12 +6,12 @@ in
   imports = [
     ./kanshi.nix
     ./mako.nix
+    ./wofi.nix
     (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
   ];
 
   home.packages = with pkgs; [
     swaylock-effects
-    wofi
     brightnessctl
     acpi
     sway-contrib.grimshot

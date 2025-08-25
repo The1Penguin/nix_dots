@@ -124,10 +124,6 @@ in
           hash = "sha256-DNorfyl3C4RBclF2KDgwvQQwixpTwSRu7fIvihPN8JY=";
         } + "/basic/.local/share/rofi/themes";
 
-      ".config/wofi/config".source = ./files/woficonfig;
-      ".config/wofi/style.css".source = ./files/wofi.css;
-      ".config/wofi/style.css".executable = true;
-
       ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
     };
 
