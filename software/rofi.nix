@@ -27,10 +27,10 @@
   home.file = {
     ".local/share/rofi/themes".source = pkgs.fetchFromGitHub
       {
-        owner = "catppuccin";
-        repo = "rofi";
-        rev = "5350da41a11814f950c3354f090b90d4674a95ce";
-        hash = "sha256-DNorfyl3C4RBclF2KDgwvQQwixpTwSRu7fIvihPN8JY=";
+        owner = "The1Penguin";
+        repo = "catpuccin-rofi";
+        rev = "78c7f8f2bffe3f1cf89b658543b8264162af5217";
+        hash = "sha256-oUIbbcHYdSjGruS36NDr2KZgsktwv4lJU5Qo//H1cWw=";
       } + "/basic/.local/share/rofi/themes";
   };
 
