@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, wayland, ... }:
 
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = if wayland then pkgs.rofi-wayland else pkgs.rofi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
     extraConfig = {
       modi = "drun";
