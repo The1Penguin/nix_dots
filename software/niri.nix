@@ -66,7 +66,7 @@ in
       };
       "Mod+F4" = {
         hotkey-overlay.title = "Run lutris";
-        action = spawn "${pkgs.lutris}/bin/lutris";
+        action = spawn "lutris";
       };
       "Mod+F5" = {
         hotkey-overlay.title = "Run ffxiv";
