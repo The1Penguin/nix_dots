@@ -60,6 +60,7 @@ in
       openjdk
       languagetool
       nix-output-monitor
+      gh
     ] ++
     (lib.optionals (!server) [
       pavucontrol
