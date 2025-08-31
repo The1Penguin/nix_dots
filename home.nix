@@ -59,6 +59,7 @@ in
       dua
       openjdk
       languagetool
+      nix-output-monitor
     ] ++
     (lib.optionals (!server) [
       pavucontrol
@@ -67,7 +68,7 @@ in
       playerctl
       libnotify
       xfce.thunar
-      jellyfin-media-player
+      #jellyfin-media-player
       signal-desktop
       qview
       kdePackages.krdc
