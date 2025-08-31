@@ -13,14 +13,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "amdgpu" "kvm-amd" "acpi_call" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-  boot.kernelParams = [ "amd_pstate=active" "snd_hda_intel.model=auto" "snd_hda_intel.index=1,0" "snd-intel-dspcfg.dsp_driver=1" "amdgpu.dcdebugmask=0x10" ];
-  boot.kernelPatches = [
-    {
-      name = "lenovo-83J3";
-      patch = ../files/83J3.patch;
-    }
-  ];
-
+  boot.kernelParams = [ "amd_pstate=active" ];
 
   fileSystems."/" =
     {
