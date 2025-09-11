@@ -5,7 +5,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
   imports = [
     ./kanshi.nix
     ./mako.nix
-    ./rofi.nix
+    ./wofi.nix
     (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
   ];
 
@@ -16,7 +16,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     sway-contrib.grimshot
     rivercarro
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/wayland/mylock))
-    (pkgs.writeScriptBin "rofi_powermenu_w" (builtins.readFile ../scripts/wayland/rofi_powermenu_w))
+    (pkgs.writeScriptBin "wofi_powermenu_w" (builtins.readFile ../scripts/wayland/wofi_powermenu_w))
   ] ++
   (lib.optionals desktop [
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/desktop/notify))
@@ -134,7 +134,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "None XF86AudioNext" = "spawn '${pkgs.playerctl}/bin/playerctl next'";
             "None XF86MonBrightnessUp" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%+'";
             "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%-'";
-            "Super D" = "spawn '${pkgs.rofi}/bin/rofi -modes drun -show drun'";
+            "Super D" = "spawn '${pkgs.wofi}/bin/wofi --show=drun --hide-scroll'";
             "Super E" = "spawn '${pkgs.emacs-pgtk}/bin/emacs'";
             "Super F1" = "spawn '${pkgs.librewolf}/bin/librewolf'";
             "Super F2" = "spawn '${pkgs.stable.vesktop}/bin/vesktop'";
@@ -142,7 +142,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "Super F4" = "spawn '${pkgs.lutris}/bin/lutris'";
             "Super F5" = "spawn 'XIVLauncher.Core'";
             "Alt+Shift X" = "spawn 'mylock'";
-            "Super+Shift Tab" = "spawn 'rofi_powermenu_w'";
+            "Super+Shift Tab" = "spawn 'wofi_powermenu_w'";
             "Super Tab" = "spawn 'notify'";
             "None Print" = "spawn '${pkgs.sway-contrib.grimshot}/bin/grimshot copy area'";
             "Super P" = "spawn '${pkgs.pavucontrol}/bin/pavucontrol'";
