@@ -184,7 +184,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   users.users.pingu = {
     isNormalUser = true;
     description = "pingu";
-    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" "uinput" "tkey" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "adbusers" "uinput" "input" "tkey" ];
     shell = pkgs.fish;
   };
 

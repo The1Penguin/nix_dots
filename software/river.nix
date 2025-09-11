@@ -190,8 +190,8 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
   };
 
   services.fusuma = {
-    enable = false; # TODO: Somehow fails directly D:
-    extraPackages = with pkgs; [ flow ];
+    enable = true;
+    extraPackages = with pkgs; [ flow coreutils-full ];
     settings = {
       threshold = {
         swipe = 0.1;
