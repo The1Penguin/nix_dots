@@ -42,9 +42,13 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flow = {
+      url = "github:The1Penguin/flow-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, ... }:
+  outputs = { nixpkgs, nixpkgs-stable, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, ... }:
     let
       system = "x86_64-linux";
       overlay-stable = final: prev: {
@@ -69,6 +73,8 @@
           (final: prev: {
             any-nix-shell =
               any-nix-shell.outputs.packages.${system}.any-nix-shell;
+            river-flow =
+              flow.outputs.packages.${system}.flow;
           })
         ];
       };

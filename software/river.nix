@@ -189,5 +189,28 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     };
   };
 
+  services.fusuma = {
+    enable = false; # TODO: Somehow fails directly D:
+    extraPackages = with pkgs; [ flow ];
+    settings = {
+      threshold = {
+        swipe = 0.1;
+      };
+      interval = {
+        swipe = 0.7;
+      };
+      swipe = {
+        "3" = {
+          left = {
+            command = "flow cycle-tags previous";
+          };
+          right = {
+            command = "flow cycle-tags next";
+          };
+        };
+      };
+    };
+  };
+
   services.polkit-gnome.enable = true;
 }

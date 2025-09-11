@@ -106,7 +106,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 
   services.power-profiles-daemon.enable = lib.mkForce false;
 
-  programs.river.enable = wayland;
+  programs.river-classic.enable = wayland;
   programs.niri = lib.mkIf wayland {
     enable = true;
     package = pkgs.niri-unstable;
