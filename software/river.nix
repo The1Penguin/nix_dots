@@ -191,16 +191,22 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
 
   services.fusuma = {
     enable = laptop;
-    extraPackages = with pkgs; [ flow coreutils-full ];
+    extraPackages = with pkgs; [ river-flow river-classic coreutils-full ];
     settings = {
       threshold = {
-        swipe = 0.1;
+        swipe = 0.25;
       };
       interval = {
-        swipe = 0.7;
+        swipe = 1;
       };
       swipe = {
         "3" = {
+          up = {
+            command = "riverctl focus-view previous";
+          };
+          down = {
+            command = "riverctl focus-view next";
+          };
           left = {
             command = "flow cycle-tags previous";
           };
