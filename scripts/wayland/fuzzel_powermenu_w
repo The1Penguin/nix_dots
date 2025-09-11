@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+# options to be displayed
+option0="logout"
+option1="reboot"
+option2="shutdown"
+option3="lock"
+
+# options passed into variable
+options="$option0\n$option1\n$option2\n$option3"
+
+chosen="$(echo -e "$options" | fuzzel -d)"
+case $chosen in
+    $option0)
+        riverctl exit || niri msg action quit -s ;;
+    $option1)
+        systemctl reboot;;
+    $option2)
+        systemctl poweroff;;
+    $option3)
+        mylock & systemctl hibernate;;
+esac
