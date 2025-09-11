@@ -190,7 +190,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
   };
 
   services.fusuma = {
-    enable = true;
+    enable = laptop;
     extraPackages = with pkgs; [ flow coreutils-full ];
     settings = {
       threshold = {
