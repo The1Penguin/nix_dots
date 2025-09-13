@@ -10,6 +10,7 @@
         layer = "overlay";
         vertical-pad = 10;
         inner-pad = 10;
+        dpi-aware="no";
       };
       border = {
         width = 2;
