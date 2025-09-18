@@ -12,6 +12,7 @@
           mode = "horizontal";
         };
         backend = "fastfetch";
+        pride_month_disable = false;
       };
     };
 
