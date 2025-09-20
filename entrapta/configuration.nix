@@ -43,12 +43,16 @@
     };
     amdgpu = {
       initrd.enable = true;
+      overdrive.ppfeaturemask = "0xffffffff";
+      overdrive.enable = true;
       amdvlk = {
         enable = true;
         support32Bit.enable = true;
       };
     };
   };
+
+  services.lact.enable = true;
 
   services.displayManager.sddm.wayland = {
     enable = true;
