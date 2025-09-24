@@ -104,6 +104,7 @@ in
       feishin
       keymapp
       gcr
+      pomodoro-gtk
     ]) ++
     (lib.optionals desktop [
       piper
