@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    package = if wayland then pkgs.rofi-wayland else pkgs.rofi;
+    package = pkgs.rofi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
     extraConfig = {
       modi = "drun";
