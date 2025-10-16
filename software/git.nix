@@ -10,7 +10,7 @@
     userEmail = "nor@acorneroftheweb.com";
     difftastic = {
       enable = true;
-      background = "light";
+      options.background = "light";
     };
     extraConfig = {
       pull.rebase = true;

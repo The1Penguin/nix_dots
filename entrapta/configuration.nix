@@ -45,10 +45,6 @@
       initrd.enable = true;
       overdrive.ppfeaturemask = "0xffffffff";
       overdrive.enable = true;
-      amdvlk = {
-        enable = true;
-        support32Bit.enable = true;
-      };
     };
   };
 

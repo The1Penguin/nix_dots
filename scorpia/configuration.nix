@@ -28,13 +28,6 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = true;
 
-  hardware = {
-    amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
-  };
-
   services.upower.enable = true;
   services.auto-cpufreq = {
     enable = true;
