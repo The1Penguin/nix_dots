@@ -61,6 +61,7 @@ in
       languagetool
       nix-output-monitor
       gh
+      ghc
     ] ++
     (lib.optionals (!server) [
       pavucontrol
@@ -104,7 +105,7 @@ in
       feishin
       keymapp
       gcr
-      pomodoro-gtk
+      gnome-pomodoro
     ]) ++
     (lib.optionals desktop [
       piper

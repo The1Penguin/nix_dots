@@ -51,7 +51,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
           "'steam'" = "ssd";
           "'org.pulseaudio.pavucontrol'" = "ssd";
           "'emacs'" = "ssd";
-          "'io.gitlab.idevecore.Pomodoro'" = "ssd";
+          "'gnome-pomodoro'" = "ssd";
         };
       };
       set-repeat = "40 300";

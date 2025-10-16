@@ -18,6 +18,9 @@ xkb_symbols "sebrackets" {
     key <AC11>	{ [ adiaeresis,  Adiaeresis,             ae,           AE ] };
     key <BKSL>	{ [ apostrophe,    asterisk,          acute,     multiply ] };
 
+	key <AB01>  { [          z,           Z,           less,         none ] };
+	key <AB02>  { [          x,           X,        greater,         none ] };
+	key <AB03>  { [          c,           C,            bar,         none ] };
     key <LSGT>  { [       less,     greater,            bar,    brokenbar ] };
 
     key <SPCE>	{ [      space,       space,          space, nobreakspace ] };
