@@ -4,6 +4,7 @@ DIC["alsa_output.pci-0000_1c_00.1.hdmi-stereo-extra1"]="speaker"
 DIC["alsa_output.pci-0000_1c_00.1.hdmi-stereo"]="speaker"
 DIC["alsa_output.pci-0000_1e_00.3.analog-stereo"]="headphones"
 DIC["bluez_output.88_C9_E8_90_8B_58.1"]="bt headphones"
+DIC["bluez_output.80_4A_F2_02_45_16.1"]="bt headphones"
 DIC["bluez_output.98_52_3D_C4_E0_C8.1"]="bt portable speaker"
 DIC["bluez_output.F4_6A_DD_B3_53_67.1"]="bt speaker"
 TIME=$(date "+%H:%M")
