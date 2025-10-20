@@ -38,6 +38,10 @@
           params.cleanoutDays = "15";
         };
       };
+      folders."Phone Pics" = {
+        path = "${homeDir}/ppics";
+        devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
+      };
       options.localAnnounceEnabled = false;
       options.urAccepted = -1;
     };
