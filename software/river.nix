@@ -52,6 +52,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
           "'org.pulseaudio.pavucontrol'" = "ssd";
           "'emacs'" = "ssd";
           "'gnome-pomodoro'" = "ssd";
+          "'org.pwmt.zathura'" = "ssd";
         };
       };
       set-repeat = "40 300";
