@@ -109,7 +109,7 @@ in
     ]) ++
     (lib.optionals desktop [
       piper
-      openmw
+      stable.openmw
       (nixos-xivlauncher-rb.packages.x86_64-linux.xivlauncher-rb.override {
         useGameMode = true;
       })

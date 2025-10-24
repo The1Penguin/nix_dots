@@ -118,10 +118,10 @@ in
       };
 
       # Screenshots, screenshot-screen is bronken so doing this until it's fixed
-      "Print" = {
-        hotkey-overlay.title = "Screenshot region";
-        action = screenshot;
-      };
+      # "Print" = {
+      #   hotkey-overlay.title = "Screenshot region";
+      #   action = screenshot;
+      # };
 
       #Touchpad
       "Mod+TouchpadScrollRight" = {

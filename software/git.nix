@@ -6,16 +6,18 @@
   ];
   programs.git = {
     enable = true;
-    userName = "pingu";
-    userEmail = "nor@acorneroftheweb.com";
-    difftastic = {
-      enable = true;
-      options.background = "light";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "pingu";
+        email = "nor@acorneroftheweb.com";
+      };
       pull.rebase = true;
       init.defaultBranch = "main";
       rerere.enabled = true;
     };
+  };
+  programs.difftastic = {
+    enable = true;
+    options.background = "light";
   };
 }
