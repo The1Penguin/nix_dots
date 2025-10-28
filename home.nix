@@ -118,6 +118,10 @@ in
       prismlauncher
     ]);
 
+    file = {
+      ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
+    };
+
     pointerCursor = {
       name = "capitaine-cursors";
       package = pkgs.capitaine-cursors;
