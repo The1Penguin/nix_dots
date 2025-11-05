@@ -74,7 +74,7 @@ in
       };
       "Mod+U" = {
         hotkey-overlay.title = "Run bitwarden";
-        action = spawn "${pkgs.bitwarden}/bin/bitwarden";
+        action = spawn "${pkgs.bitwarden-desktop}/bin/bitwarden";
       };
       "Mod+E" = {
         hotkey-overlay.title = "Run emacs";

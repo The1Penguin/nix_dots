@@ -66,7 +66,7 @@ in
     (lib.optionals (!server) [
       pavucontrol
       stable.vesktop
-      bitwarden
+      bitwarden-desktop
       playerctl
       libnotify
       xfce.thunar

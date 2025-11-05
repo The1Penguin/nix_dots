@@ -148,7 +148,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "Super Tab" = "spawn 'notify'";
             "None Print" = "spawn '${pkgs.sway-contrib.grimshot}/bin/grimshot copy area'";
             "Super P" = "spawn '${pkgs.pavucontrol}/bin/pavucontrol'";
-            "Super U" = "spawn '${pkgs.bitwarden}/bin/bitwarden'";
+            "Super U" = "spawn '${pkgs.bitwarden-desktop}/bin/bitwarden'";
           }
           (builtins.listToAttrs (
             lib.concatMap
