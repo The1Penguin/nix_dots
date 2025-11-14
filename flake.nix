@@ -62,7 +62,7 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
-            "electron-33.4.11"
+            "electron-36.9.5"
           ];
         };
         overlays = [

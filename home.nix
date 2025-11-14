@@ -106,6 +106,7 @@ in
       keymapp
       gcr
       gnome-pomodoro
+      godot
     ]) ++
     (lib.optionals desktop [
       piper
@@ -117,9 +118,9 @@ in
       (pkgs.writeScriptBin "ffxiv-update" (builtins.readFile ./scripts/desktop/ffxiv-update))
       prismlauncher
     ]);
-
     file = {
       ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
+      ".local/share/godot/export_templates/${builtins.replaceStrings [ "-bin" "-" ] [ "" "." ] pkgs.godot_4-export-templates-bin.version}".source = "${pkgs.godot_4-export-templates-bin}/share/godot/export_templates/${builtins.replaceStrings [ "-bin" "-" ] [ "" "." ] pkgs.godot_4-export-templates-bin.version}/";
     };
 
     pointerCursor = {
