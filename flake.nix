@@ -4,9 +4,14 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    lix = {
+      url = "git+https://git.lix.systems/lix-project/lix";
+      flake = false;
+    };
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.lix.follows = "lix";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -48,7 +53,7 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, ... }:
+  outputs = { nixpkgs, nixpkgs-stable, lix, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, ... }:
     let
       system = "x86_64-linux";
       overlay-stable = final: prev: {
