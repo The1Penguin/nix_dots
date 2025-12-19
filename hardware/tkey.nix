@@ -11,4 +11,6 @@
     })
   ];
 
+  users.groups.tkey = {};
+
 }
