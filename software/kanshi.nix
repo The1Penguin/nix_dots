@@ -46,7 +46,7 @@
             mode = "1920x1080@75Hz";
           }
           {
-            criteria = "DP-2";
+            criteria = "HP Inc. HP E24u G5 CN441633KH";
             position = "1920,0";
             mode = "1920x1080@75Hz";
           }
