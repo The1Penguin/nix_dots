@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     lix = {
       url = "git+https://git.lix.systems/lix-project/lix";
       flake = false;
@@ -174,7 +174,6 @@
           };
           modules = [
             ./home.nix
-            lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];
@@ -195,7 +194,6 @@
           };
           modules = [
             ./home.nix
-            lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];
@@ -215,7 +213,6 @@
           };
           modules = [
             ./home.nix
-            lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
           ];
         };
@@ -235,7 +232,6 @@
           };
           modules = [
             ./home.nix
-            lix-module.nixosModules.default
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];

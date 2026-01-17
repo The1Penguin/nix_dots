@@ -63,6 +63,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     xdg-utils
     cachix
     doas-sudo-shim
+    android-tools
     (writeShellScriptBin "doasedit" (builtins.readFile scripts/doasedit))
     (writeShellScriptBin "sudoedit" (builtins.readFile scripts/doasedit))
   ];
@@ -202,7 +203,6 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     };
   };
 
-  programs.adb.enable = true;
 
   virtualisation.docker.rootless = {
     enable = true;
