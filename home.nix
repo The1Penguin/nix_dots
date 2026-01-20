@@ -69,7 +69,7 @@ in
       bitwarden-desktop
       playerctl
       libnotify
-      xfce.thunar
+      thunar
       #jellyfin-media-player
       signal-desktop
       qview

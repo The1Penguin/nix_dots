@@ -21,12 +21,26 @@
 
   # Above is auto generated
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.stable.linuxPackages_latest;
 
   # Host name and enabling networkmanager
-  networking.hostName = "scorpia";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = true;
+  networking = {
+    hostName = "scorpia";
+    wireless.iwd.enable = true;
+    networkmanager = {
+      enable = true;
+      package = pkgs.stable.networkmanager;
+      wifi = {
+        backend = "iwd";
+        powersave = true;
+      };
+    };
+  };
+
+  environment.etc."NetworkManager/system-connections/eduroam.pem" = {
+    source = ../files/eduroam.pem;
+    mode = "0440";
+  };
 
   services.upower.enable = true;
   services.auto-cpufreq = {
