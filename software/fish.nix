@@ -24,6 +24,13 @@
       '';
 
       interactiveShellInit = ''
+        if [ "$INSIDE_EMACS" = 'vterm' ]
+          fish_config theme choose Catppuccin\ Mocha --color-theme=light
+          function clear
+            vterm_printf "51;Evterm-clear-scrollback";
+            tput clear;
+          end
+        end
         any-nix-shell fish --info-right | source
       '';
 
