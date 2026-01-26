@@ -20,10 +20,15 @@
       notification-icon-size = 64;
       notification-body-image-height = 100;
       notification-body-image-width = 200;
-      widgets = [ "title" "dnd"  "notifications" "mpris"];
+      notification-grouping = true;
+      timeout = 5;
+      timeout-low = 3;
+      timeout-critical = 5;
+      text-empty = "No Notifications";
+      widgets = [ "title" "dnd" "notifications" "mpris" ];
       widget-config.mpris = {
         autohide = true;
-        show-album-art = "always";
+        show-album-art = "when-available";
         loop-carousel = true;
       };
     };
