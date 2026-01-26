@@ -19,7 +19,7 @@
         Service =
           let
             hydration = pkgs.writeShellScript "hydration" ''
-              ${pkgs.libnotify}/bin/notify-send -u critical "Remember to hydrate!"
+              ${pkgs.libnotify}/bin/notify-send -u low "Remember to hydrate!"
             '';
           in
           {
