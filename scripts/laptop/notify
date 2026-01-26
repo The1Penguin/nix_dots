@@ -16,7 +16,7 @@ fi;
 
 
 
-notify-send 'Status' "$(echo -e "Time: $TIME \n\
+notify-send -u critical 'Status' "$(echo -e "Time: $TIME \n\
 Network: $network \n\
 Audio: $audio \n\
 Battery: $battery_percentage_v%, and $battery_greped_status")"

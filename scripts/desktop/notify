@@ -11,4 +11,4 @@ TIME=$(date "+%H:%M")
 DEFAULTSINK=$(pactl info @DEFAULT_SINK@ | grep "Default Sink:" | awk '{ print substr ($0, 15 ) }')
 
 
-notify-send 'Status' "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}")"
+notify-send -u critical 'Status' "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}")"
