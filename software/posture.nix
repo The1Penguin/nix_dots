@@ -19,7 +19,7 @@
         Service =
           let
             posture = pkgs.writeShellScript "posture" ''
-              ${pkgs.libnotify}/bin/notify-send -u low "Remember to check your posture!"
+              ${pkgs.libnotify}/bin/notify-send -a "posture" -u low "Remember to check your posture!"
             '';
           in
           {

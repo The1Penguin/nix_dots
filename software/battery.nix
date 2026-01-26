@@ -31,13 +31,13 @@
                 read -r status capacity
                 battery_stat="$(acpi --battery | head -n 1)"
                 if [ "$status" = Discharging -a "$capacity" -le 2 ]; then
-                  notify-send -u critical "Battery Critical: $capacity%\\n Hibernating"
+                  notify-send -a "batMon" -u critical "Battery Critical: $capacity%\\n Hibernating"
                   sleep 5
                   systemctl hibernate
                 elif [ "$status" = Discharging -a "$capacity" -le 5 ]; then
-                  notify-send -u critical "Battery Critical: $capacity%"
+                  notify-send -a "batMon" -u critical "Battery Critical: $capacity%"
                 elif [ "$status" = Discharging -a "$capacity" -le 20 ]; then
-                  notify-send -u critical "Battery Low: $capacity%"
+                  notify-send -a "batMon" -u critical "Battery Low: $capacity%"
                 fi
               }
             '';

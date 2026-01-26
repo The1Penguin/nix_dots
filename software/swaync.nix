@@ -20,6 +20,12 @@
       notification-icon-size = 64;
       notification-body-image-height = 100;
       notification-body-image-width = 200;
+      widgets = [ "title" "dnd"  "notifications" "mpris"];
+      widget-config.mpris = {
+        autohide = true;
+        show-album-art = "always";
+        loop-carousel = true;
+      };
     };
   };
 }
