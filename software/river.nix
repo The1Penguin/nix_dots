@@ -4,7 +4,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
 
   imports = [
     ./kanshi.nix
-    ./mako.nix
+    ./swaync.nix
     ./fuzzel.nix
     (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
   ];
@@ -149,6 +149,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "None Print" = "spawn '${pkgs.sway-contrib.grimshot}/bin/grimshot copy area'";
             "Super P" = "spawn '${pkgs.pavucontrol}/bin/pavucontrol'";
             "Super U" = "spawn '${pkgs.bitwarden-desktop}/bin/bitwarden'";
+            "Super O" = "spawn '${pkgs.swaynotificationcenter}/bin/swaync-client -t'";
           }
           (builtins.listToAttrs (
             lib.concatMap

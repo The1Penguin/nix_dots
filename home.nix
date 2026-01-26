@@ -97,6 +97,7 @@ in
       rnote
       networkmanagerapplet
       fallout-ce
+      fallout2-ce
       feishin
       cockatrice
       trayscale

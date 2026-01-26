@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./kanshi.nix
-    ./mako.nix
+    ./swaync.nix
     ./rofi.nix
     (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
   ];

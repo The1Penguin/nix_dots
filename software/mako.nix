@@ -4,6 +4,7 @@
 
   catppuccin.mako.enable = false;
   services.mako = {
+    package = pkgs.stable.mako;
     enable = true;
     settings = {
       anchor = "top-right";

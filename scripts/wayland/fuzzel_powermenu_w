@@ -5,9 +5,10 @@ option0="logout"
 option1="reboot"
 option2="shutdown"
 option3="lock"
+option4="toggle dnd"
 
 # options passed into variable
-options="$option0\n$option1\n$option2\n$option3"
+options="$option0\n$option1\n$option2\n$option3\n$option4"
 
 chosen="$(echo -e "$options" | fuzzel -d)"
 case $chosen in
@@ -19,4 +20,6 @@ case $chosen in
         systemctl poweroff;;
     $option3)
         mylock & systemctl hibernate;;
+    $option4)
+        swaync-client -d
 esac
