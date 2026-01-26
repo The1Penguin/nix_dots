@@ -70,7 +70,7 @@
           symbol = " ";
           format = "[$symbol$name]($style) ";
           style = "bright-purple bold";
-          heuristic = true;
+          heuristic = false;
         };
       };
     };
