@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769535618,
+        "lastModified": 1769535956,
         "narHash": "sha256-/PIjLUM916aZcTYXVKx14b7uYm6dnrs01Qa247nrLWA=",
         "owner": "The1Penguin",
         "repo": "catppuccin-nix",
-        "rev": "6fa4aa90e3c4f6aab1f30ee270211053a26d49a1",
+        "rev": "e0bf53d59063b5b640ef0cb50acc4d6c0be143db",
         "type": "github"
       },
       "original": {

@@ -3,7 +3,7 @@
 {
   catppuccin.swaync = {
     font = "DokiDokiMono Nerd Font";
-    fontSize = "20";
+    fontSize = "18";
   };
   services.swaync = {
     enable = true;
