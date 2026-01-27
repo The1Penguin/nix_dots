@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  catppuccin.swaync.font = "DokiDokiMono Nerd Font";
+  catppuccin.swaync = {
+    font = "DokiDokiMono Nerd Font";
+    fontSize = "20";
+  };
   services.swaync = {
     enable = true;
     settings = {

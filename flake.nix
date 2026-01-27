@@ -27,7 +27,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
-      url = "github:catppuccin/nix";
+      url = "github:The1Penguin/catppuccin-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-xivlauncher-rb = {
