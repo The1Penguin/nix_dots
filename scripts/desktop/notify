@@ -9,6 +9,11 @@ DIC["bluez_output.98_52_3D_C4_E0_C8.1"]="bt portable speaker"
 DIC["bluez_output.F4_6A_DD_B3_53_67.1"]="bt speaker"
 TIME=$(date "+%H:%M")
 DEFAULTSINK=$(pactl info @DEFAULT_SINK@ | grep "Default Sink:" | awk '{ print substr ($0, 15 ) }')
+DND=$(swaync-client -D)
+DNDMessage=""
+if [ "$DND" = true ]; then
+    DNDMessage="\nDo Not Disturb: enabled"
+fi
 
 
-notify-send -u critical -a "notify" 'Status' "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}")"
+notify-send -u critical -a "notify" 'Status' "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}$DNDMessage")"

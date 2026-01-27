@@ -28,11 +28,13 @@
       timeout-low = 5;
       timeout-critical = 8;
       text-empty = "No Notifications";
-      widgets = [ "title" "dnd" "notifications" "mpris" ];
-      widget-config.mpris = {
-        autohide = true;
-        show-album-art = "when-available";
-        loop-carousel = true;
+      widgets = [ "title" "notifications" "mpris" ];
+      widget-config = {
+        mpris = {
+          autohide = true;
+          show-album-art = "when-available";
+          loop-carousel = true;
+        };
       };
     };
   };

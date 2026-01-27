@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 TIME=$(date "+%H:%M")
 battery_stat="$(acpi --battery | head -n 1)"
 battery_greped_status="$(echo $battery_stat| cut -d',' -f1 | cut -d':' -f2 | xargs | awk '{print tolower($0)}')"
@@ -9,14 +9,19 @@ audio_volume="$(pactl get-sink-volume @DEFAULT_SINK@ | cut -d'/' -f2 | head -n1 
 
 audio=""
 if [ "$audio_mute" = "Mute: yes" ]; then
-    audio="Muted"
+    audio="muted"
 else
     audio="$audio_volume"
 fi;
 
+DND=$(swaync-client -D)
+DNDMessage=""
+if [ "$DND" = true ]; then
+    DNDMessage="\nDo Not Disturb: enabled"
+fi
 
 
 notify-send -u critical -a "notify" 'Status' "$(echo -e "Time: $TIME \n\
 Network: $network \n\
 Audio: $audio \n\
-Battery: $battery_percentage_v%, and $battery_greped_status")"
+Battery: $battery_percentage_v%, and $battery_greped_status$DNDMessage")"
