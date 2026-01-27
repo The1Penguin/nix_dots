@@ -194,7 +194,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
 
   services.fusuma = {
     enable = laptop;
-    extraPackages = with pkgs; [ river-flow river-classic coreutils-full ];
+    extraPackages = with pkgs; [ river-flow river-classic coreutils-full swaynotificationcenter ];
     settings = {
       threshold = {
         swipe = 0.25;
@@ -204,18 +204,14 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
       };
       swipe = {
         "3" = {
-          up = {
-            command = "riverctl focus-view previous";
-          };
-          down = {
-            command = "riverctl focus-view next";
-          };
-          left = {
-            command = "flow cycle-tags previous";
-          };
-          right = {
-            command = "flow cycle-tags next";
-          };
+          up.command = "riverctl focus-view previous";
+          down.command = "riverctl focus-view next";
+          left.command = "flow cycle-tags previous";
+          right.command = "flow cycle-tags next";
+        };
+        "4" = {
+          up.command = "swaync-client -op";
+          down.command = "swaync-client -cp";
         };
       };
     };

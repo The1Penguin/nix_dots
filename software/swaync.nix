@@ -21,9 +21,9 @@
       notification-body-image-height = 100;
       notification-body-image-width = 200;
       notification-grouping = true;
-      timeout = 5;
-      timeout-low = 3;
-      timeout-critical = 5;
+      timeout = 8;
+      timeout-low = 5;
+      timeout-critical = 8;
       text-empty = "No Notifications";
       widgets = [ "title" "dnd" "notifications" "mpris" ];
       widget-config.mpris = {
