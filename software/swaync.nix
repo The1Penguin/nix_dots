@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, desktop, laptop, ... }:
 
 {
   catppuccin.swaync = {
     font = "DokiDokiMono Nerd Font";
-    fontSize = "18";
+    fontSize = if desktop then "16" else if laptop then "18" else "14";
   };
   services.swaync = {
     enable = true;
