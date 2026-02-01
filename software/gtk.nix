@@ -6,6 +6,11 @@ in
 {
   gtk = {
     enable = true;
+    colorScheme = "light";
+    theme = {
+      name = "Breeze-light";
+      package = pkgs.kdePackages.breeze;
+    };
     cursorTheme = {
       name = "capitaine-cursors";
       package = pkgs.capitaine-cursors;
