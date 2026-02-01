@@ -21,7 +21,9 @@ if [ "$DND" = true ]; then
 fi
 
 
-notify-send -u critical -a "notify" 'Status' "$(echo -e "Time: $TIME \n\
-Network: $network \n\
-Audio: $audio \n\
-Battery: $battery_percentage_v%, and $battery_greped_status$DNDMessage")"
+notify-send \
+    --transient \
+    --hint boolean:SWAYNC_BYPASS_DND:true \
+    -a "notify" \
+    'Status' \
+    "$(echo -e "Time: $TIME \n Network: $network \n Audio: $audio \n Battery: $battery_percentage_v%, and $battery_greped_status$DNDMessage")"

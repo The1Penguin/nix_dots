@@ -16,4 +16,9 @@ if [ "$DND" = true ]; then
 fi
 
 
-notify-send -u critical -a "notify" 'Status' "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}$DNDMessage")"
+notify-send \
+    --transient \
+    --hint boolean:SWAYNC_BYPASS_DND:true \
+    -a "notify" \
+    'Status' \
+    "$(echo -e "Time: $TIME \nAudio source: ${DIC[$DEFAULTSINK]}$DNDMessage")"
