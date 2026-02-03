@@ -3,8 +3,8 @@ let
   doom-dots = pkgs.fetchFromGitHub {
     owner = "The1Penguin";
     repo = "dotemacs";
-    rev = "fa427b634d2c3368e45289fbda39707d44666cd1";
-    hash = "sha256-PAMFIH8MMA70TncpjHn+onsqt1cKFy6rdk8JCMejG2Q=";
+    rev = "bf005e5d88adbdb789cd2526ebb7a30923ef1e68";
+    hash = "sha256-Put4L7piL5zXPORLxE8FelJN4cZXUHWMjJy5YNVsyfM=";
     fetchSubmodules = true;
   };
 in
