@@ -1,0 +1,28 @@
+#+title: nix dots
+
+The current machines are as follows:
+
+- *scorpia*, my laptop (Ideapad 5 slim 15ARP10).
+- *entrapta*, my desktop.
+- *adora*, my to be server.
+- *kyle*, was my backup latop while my last one broke, borrowed by a friend.
+
+* Structure
+Each system has their own folder for specifics based on them.
+- =files=: which is for files used by programs that I couldn't be bothered to encode in nix.
+- =hardware=: Hardware that is used.
+- =scripts=: Scripts used for the different systems.
+- =secrets=: Git-crypt encrypted secrets.
+- =server=: Settings for services used.
+- =software=: Software used by different systems.
+- =general-system.nix=: General options for all systems.
+- =home.nix=: General options for all systems, but home-manager.
+
+* Worth of note
+Some of the options are funky, here is a short list
+** Doomemacs
+Doomemacs does not have a great nix configuration, as [[https://github.com/nix-community/nix-doom-emacs][nix-doom-emacs]] has been broken for years.
+Instead, I configure the files through nix, and then run it manually.
+
+** Server, Laptop, and Desktop flags
+These flags are added to help for some configuration, as what software are used, but also to handle system specific options.
