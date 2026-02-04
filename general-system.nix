@@ -31,6 +31,8 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
+    socketActivation = true;
   };
 
   nix = {

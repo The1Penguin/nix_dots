@@ -1,13 +1,4 @@
 { config, lib, pkgs, ... }:
-let
-  doom-dots = pkgs.fetchFromGitHub {
-    owner = "The1Penguin";
-    repo = "dotemacs";
-    rev = "bf005e5d88adbdb789cd2526ebb7a30923ef1e68";
-    hash = "sha256-Put4L7piL5zXPORLxE8FelJN4cZXUHWMjJy5YNVsyfM=";
-    fetchSubmodules = true;
-  };
-in
 {
   home = {
     packages = with pkgs; [
@@ -23,12 +14,10 @@ in
     ];
 
     file = {
-      ".config/doom/".source = pkgs.symlinkJoin {
-        name = "doom-config";
-        paths = [
-          doom-dots
-        ];
-      };
+      ".config/doom/config.el".source   = ./doom/config.el;
+      ".config/doom/init.el".source     = ./doom/init.el;
+      ".config/doom/packages.el".source = ./doom/packages.el;
+      ".config/doom/splash.svg".source  = ./doom/splash.svg;
     };
   };
 }
