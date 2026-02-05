@@ -26,7 +26,6 @@
       notification-grouping = true;
       timeout = 8;
       timeout-low = 5;
-      timeout-critical = 8;
       text-empty = "No Notifications";
       widgets = [ "title" "notifications" "mpris" ];
       widget-config = {
