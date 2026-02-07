@@ -22,7 +22,7 @@
       nvim-web-devicons
     ];
     extraConfig = (builtins.readFile ../files/nvimscript);
-    extraLuaConfig = (builtins.readFile ../files/nvimlua);
+    initLua = (builtins.readFile ../files/nvimlua);
     coc.enable = true;
   };
 }
