@@ -5,6 +5,7 @@
       emacs-pgtk
       (agda.withPackages (p: with p; [
         standard-library
+        cubical
       ]))
       cmake
       gnumake
