@@ -162,9 +162,9 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    config.common.default = [ "luminous" "wlr" "gtk" ];
+    config.common.default = [ "wlr" "gtk" ];
     config.common."org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-    extraPortals = with pkgs; [ xdg-desktop-portal-luminous xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
   };
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
