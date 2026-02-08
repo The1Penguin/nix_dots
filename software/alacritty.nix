@@ -23,22 +23,22 @@
 
       font = {
         normal = {
-          family = "DokiDokiMono Nerd Font";
+          family = "Monaspace Neon NF";
           style = "Regular";
         };
         bold = {
-          family = "DokiDokiMono Nerd Font";
+          family = "Monaspace Neon NF";
           style = "Bold";
         };
         italic = {
-          family = "DokiDokiMono Nerd Font";
+          family = "Monaspace Neon NF";
           style = "Italic";
         };
         bold_italic = {
-          family = "DokiDokiMono Nerd Font";
+          family = "Monaspace Neon NF";
           style = "Bold Italic";
         };
-        size = 16.0;
+        size = 14.0;
       };
 
       terminal.shell.program = "fish";

@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "DokiDokiMono Nerd Font:size=18";
+        font = "Monaspace Neon NF:size=16";
         icons-enabled = false;
         layer = "overlay";
         vertical-pad = 10;

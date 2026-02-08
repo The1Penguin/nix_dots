@@ -5,8 +5,8 @@
     enable = true;
     extraConfig = ''
       return {
-             font = wezterm.font("DokiDokiMono Nerd Font"),
-             font_size = 16.0,
+             font = wezterm.font("Monaspace Neon NF"),
+             font_size = 14.0,
              audible_bell = "Disabled",
              window_background_opacity = 0.93,
              enable_wayland = true,

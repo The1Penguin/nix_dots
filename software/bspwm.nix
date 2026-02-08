@@ -145,7 +145,7 @@
           separator_color = "frame";
           corner_radius = 3;
 
-          font = "DokiDokiMono Nerd Font 14";
+          font = "Monaspace Neon NF 14";
           line_height = 0;
           markup = "full";
           alignment = "left";

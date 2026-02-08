@@ -13,7 +13,7 @@
       border-radius = 15;
       border-size = 2;
       default-timeout = 10000;
-      font = "DokiDokiMono Nerd Font 14";
+      font = "Monaspace Neon NF 14";
       format = "<i>%s</i>\\n%b";
       group-by = "summary";
       height = 200;

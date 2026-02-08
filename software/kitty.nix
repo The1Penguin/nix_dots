@@ -1,14 +1,12 @@
 { config, lib, pkgs, ... }:
 
-let dokidokimono = import ./dokidokimono.nix { inherit pkgs; }; in
-
 {
   programs.kitty = {
     enable = true;
     font = {
-      name = "family=\"DokiDokiMono Nerd Font\" wght=380";
-      package = dokidokimono;
-      size = 16;
+      name = "family=\"Monaspace Neon NF\" wght=400";
+      package = pkgs.monaspace;
+      size = 14;
     };
     shellIntegration = {
       mode = "no-title";

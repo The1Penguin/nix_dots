@@ -7,7 +7,7 @@
     terminal = "${pkgs.alacritty}/bin/alacritty";
     extraConfig = {
       modi = "drun";
-      font = "DokiDokiMono Nerd Font 16";
+      font = "Monaspace Neon NF 14";
       show-icons = false;
       fixed-num-lines = false;
       drun-display-format = "{icon} {name}";

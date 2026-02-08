@@ -1,5 +1,4 @@
 { config, lib, pkgs, server, x, wayland, ... }:
-let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
 {
 
   imports = [
@@ -137,16 +136,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
   };
 
   fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    fira-code
-    fira-code-symbols
-    nerd-fonts.fira-code
-    nerd-fonts.monofur
-    nerd-fonts.zed-mono
-    nerd-fonts.symbols-only
-    dokidokimono
+    monaspace
   ];
 
   programs.fish.enable = true;
@@ -243,7 +233,7 @@ let dokidokimono = import ./software/dokidokimono.nix { inherit pkgs; }; in
     accent = "pink";
     sddm = {
       background = ./sakuraflower.png;
-      font = "DokiDokiMono Nerd Font";
+      font = "Monaspace Neon NF";
     };
   };
 

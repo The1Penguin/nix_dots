@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "DokiDokiMono Nerd Font:size=16";
+        font = "Monaspace Neon NF:size=14";
         pad = "5x3";
       };
       colors = {

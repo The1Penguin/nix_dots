@@ -20,8 +20,8 @@
         border: 2px solid #eff1f5;
         border-radius: 0px;
         background-color: #eff1f5;
-        font-family: DokiDokiMono Nerd Font;
-        font-size: 18px;
+        font-family: Monaspace Neon NF;
+        font-size: 16px;
       }
 
       #input {

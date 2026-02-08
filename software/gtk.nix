@@ -1,8 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let
-  dokidokimono = import ./dokidokimono.nix { inherit pkgs; };
-in
 {
   gtk = {
     enable = true;
@@ -57,8 +54,8 @@ in
       '';
     };
     font = {
-      name = "DokiDokiMono Nerd Font";
-      package = dokidokimono;
+      name = "Monaspace Neon NF";
+      package = pkgs.monaspace;
       size = 12;
     };
   };

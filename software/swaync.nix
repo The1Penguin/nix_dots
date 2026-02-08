@@ -2,7 +2,7 @@
 
 {
   catppuccin.swaync = {
-    font = "DokiDokiMono Nerd Font";
+    font = "Monaspace Neon NF";
     fontSize = if desktop then "16" else if laptop then "18" else "14";
   };
   services.swaync = {
