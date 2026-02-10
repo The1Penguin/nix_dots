@@ -18,6 +18,8 @@ monitor.bluez.rules = [
 
 monitor.bluez.properties = {
   bluez5.roles = [ a2dp_sink a2dp_source ]
-  bluez5.enable-msbc = false
-  bluez5.hfphsp-backend = "none"
+  bluez5.enable-msbc = true,
+  bluez5.hfphsp-backend = "none",
+  bluez5.enable-sbc-xq = true,
+  bluez5.reconnect-profiles = true
 }

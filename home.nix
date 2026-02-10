@@ -121,6 +121,7 @@ in
     ]);
     file = {
       ".config/wireplumber/wireplumber.conf.d/50-bluez.conf".source = ./files/bluez;
+      ".config/pipewire/pipewire.conf.d/bluetooth-latency.conf".source = ./files/pipewire;
       ".local/share/godot/export_templates/${builtins.replaceStrings [ "-bin" "-" ] [ "" "." ] pkgs.godot_4-export-templates-bin.version}".source = "${pkgs.godot_4-export-templates-bin}/share/godot/export_templates/${builtins.replaceStrings [ "-bin" "-" ] [ "" "." ] pkgs.godot_4-export-templates-bin.version}/";
     };
 
