@@ -84,7 +84,7 @@ in
         ];
         extraPkgs = lutrisPkgs: [
           wine64
-          wineWowPackages.waylandFull
+          wineWow64Packages.waylandFull
           winetricks
           wget
           p7zip
@@ -162,6 +162,7 @@ in
       enable = true;
       enableFishIntegration = true;
       settings.manager.sort_dir_first = true;
+      shellWrapperName = "y";
     };
   };
 
