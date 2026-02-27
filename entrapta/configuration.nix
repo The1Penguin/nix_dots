@@ -11,7 +11,7 @@
       ../general-system.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.stable.linuxPackages;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
