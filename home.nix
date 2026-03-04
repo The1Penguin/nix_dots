@@ -84,7 +84,7 @@ in
         ];
         extraPkgs = lutrisPkgs: [
           wine64
-          wineWowPackages.waylandFull
+          wineWow64Packages.waylandFull
           winetricks
           wget
           p7zip

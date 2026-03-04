@@ -45,16 +45,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1769535956,
-        "narHash": "sha256-/PIjLUM916aZcTYXVKx14b7uYm6dnrs01Qa247nrLWA=",
-        "owner": "The1Penguin",
-        "repo": "catppuccin-nix",
-        "rev": "e0bf53d59063b5b640ef0cb50acc4d6c0be143db",
+        "lastModified": 1772153824,
+        "narHash": "sha256-T65qXmlcD9qFpPTi+mOXsn4dIkO2N8Ls67nqmuzepv0=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "4b0f5b7bf7b3eeb484d49524f3c9791864ab9362",
         "type": "github"
       },
       "original": {
-        "owner": "The1Penguin",
-        "repo": "catppuccin-nix",
+        "owner": "catppuccin",
+        "repo": "nix",
         "type": "github"
       }
     },

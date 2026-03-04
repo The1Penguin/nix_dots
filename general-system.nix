@@ -142,6 +142,10 @@
     noto-fonts-color-emoji
     fira-code
     fira-code-symbols
+    nerd-fonts.fira-code
+    nerd-fonts.monofur
+    nerd-fonts.zed-mono
+    nerd-fonts.symbols-only
   ];
 
   programs.fish.enable = true;

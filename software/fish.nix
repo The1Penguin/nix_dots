@@ -25,7 +25,7 @@
 
       interactiveShellInit = ''
         if [ "$INSIDE_EMACS" = 'vterm' ]
-          fish_config theme choose Catppuccin\ Mocha --color-theme=light
+          fish_config theme choose "Catppuccin Latte"
           function clear
             vterm_printf "51;Evterm-clear-scrollback";
             tput clear;

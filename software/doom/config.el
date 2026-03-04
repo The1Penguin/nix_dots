@@ -92,3 +92,4 @@
   :init (require 'quint-mode))
 
 (set-buffer-multibyte 't)
+(setq lsp-modeline-code-actions-enable nil)
