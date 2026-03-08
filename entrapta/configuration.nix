@@ -43,7 +43,7 @@
     };
     amdgpu = {
       initrd.enable = true;
-      overdrive.ppfeaturemask = "0xffffffff";
+      overdrive.ppfeaturemask = "0xffff7fff";
       overdrive.enable = true;
     };
   };
