@@ -55,6 +55,17 @@
     compositor = lib.mkForce "kwin";
   };
 
+  # Disable wakeup-triggers from specific mouse
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "40-disable-wakeup-mouse.rules";
+      destination = "/lib/udev/rules.d/40-disable-wakeup-mouse.rules";
+      text = ''
+        ACTION=="add|change", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c539", ATTR{power/wakeup}="disabled"
+      '';
+    })
+  ];
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
