@@ -75,7 +75,7 @@ in
       qview
       kdePackages.krdc
       remmina
-      kotatogram-desktop
+      stable.kotatogram-desktop
       texlive.combined.scheme-full
       (lutris.override {
         extraLibraries = pkgs: [
@@ -107,7 +107,7 @@ in
       keymapp
       gcr
       gnome-pomodoro
-      godot
+      pympress
     ]) ++
     (lib.optionals desktop [
       piper
