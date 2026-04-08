@@ -52,6 +52,7 @@
           box-shadow: none;
         }
       '';
+      theme = config.gtk.theme;
     };
     font = {
       name = "Monaspace Neon NF";

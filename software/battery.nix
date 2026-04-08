@@ -26,6 +26,7 @@
                 pkgs.gnugrep
                 pkgs.gawk
                 pkgs.systemd
+                pkgs.coreutils
               ]}"
               acpi -b | grep "Battery 0" | awk -F'[,:%]' '{print $2, $3}' | {
                 read -r status capacity

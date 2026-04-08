@@ -15,6 +15,7 @@
       init.defaultBranch = "main";
       rerere.enabled = true;
     };
+    signing.format = "openpgp";
   };
   programs.difftastic = {
     enable = true;
