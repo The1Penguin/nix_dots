@@ -18,5 +18,5 @@ case $chosen in
     $option2)
         systemctl poweroff;;
     $option3)
-        mylock & systemctl hibernate;;
+        mylock & systemctl suspend;;
 esac

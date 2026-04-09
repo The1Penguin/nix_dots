@@ -21,12 +21,21 @@
 
   # Above is auto generated
 
-  boot.kernelPackages = pkgs.stable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Host name and enabling networkmanager
   networking.hostName = "scorpia";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = true;
+
+  hardware = {
+    enableAllFirmware = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    amdgpu.initrd.enable = true;
+  };
 
   services.upower.enable = true;
   services.auto-cpufreq = {

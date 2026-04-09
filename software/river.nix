@@ -17,6 +17,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     rivercarro
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/wayland/mylock))
     (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../scripts/wayland/fuzzel_powermenu_w))
+    (pkgs.writeScriptBin "lockandsuspend" (builtins.readFile ../scripts/wayland/lockandsuspend))
   ] ++
   (lib.optionals desktop [
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/desktop/notify))
@@ -80,6 +81,11 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
           "Super BTN_LEFT" = "move-view";
           "Super BTN_RIGHT" = "resize-view";
         };
+      };
+      map-switch = {
+        passthrough.lid.close = "spawn 'lockandsuspend'";
+        normal.lid.close = "spawn 'lockandsuspend'";
+        locked.lid.close = "spawn 'systemctl suspend'";
       };
       map = {
         passthrough."Super F11" = "enter-mode normal";
