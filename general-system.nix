@@ -167,8 +167,8 @@
     enable = true;
     wlr.enable = true;
     wlr.settings.screencast.max_fps = if laptop then 60 else if desktop then 144 else 0;
-    wlr.settings.screencast.chooser_type="dmenu";
-    wlr.settings.screencast.chooser_cmd="${pkgs.fuzzel}/bin/fuzzel -d -l 10 -p 'Select a source to share:'";
+    wlr.settings.screencast.chooser_type = "dmenu";
+    wlr.settings.screencast.chooser_cmd = "${pkgs.fuzzel}/bin/fuzzel -d -l 10 -p 'Select a source to share:'";
     config.common.default = [ "wlr" "gtk" ];
     config.common."org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
     extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];

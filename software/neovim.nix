@@ -24,5 +24,7 @@
     extraConfig = (builtins.readFile ../files/nvimscript);
     initLua = (builtins.readFile ../files/nvimlua);
     coc.enable = true;
+    withPython3 = true;
+    withRuby = false;
   };
 }

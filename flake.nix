@@ -80,6 +80,9 @@
               any-nix-shell.outputs.packages.${system}.any-nix-shell;
             river-flow =
               flow.outputs.packages.${system}.flow;
+            openldap = prev.openldap.overrideAttrs {
+              doCheck = !prev.stdenv.hostPlatform.isi686;
+            };
           })
         ];
       };

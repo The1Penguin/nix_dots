@@ -11,6 +11,6 @@
     })
   ];
 
-  users.groups.tkey = {};
+  users.groups.tkey = { };
 
 }
