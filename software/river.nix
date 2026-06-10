@@ -58,7 +58,6 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
       };
       set-repeat = "40 300";
       xcursor-theme = "capitaine-cursors 30";
-      border-color = "0xeff1f5";
       border-color-focused = "0xea76cb";
       border-color-unfocused = "0x9ca0b0";
       keyboard-layout = "sebrackets";

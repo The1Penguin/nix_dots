@@ -241,6 +241,7 @@
   };
 
   catppuccin = {
+    autoEnable = true;
     enable = true;
     flavor = "latte";
     accent = "pink";

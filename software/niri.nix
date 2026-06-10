@@ -6,7 +6,7 @@ in
   imports = [
     ./kanshi.nix
     ./swaync.nix
-    ./rofi.nix
+    ./fuzzel.nix
     (import ./swaybg.nix (args // { wallpaper = ../sakuraflower.png; }))
   ];
 
@@ -15,7 +15,7 @@ in
     brightnessctl
     acpi
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../scripts/wayland/mylock))
-    (pkgs.writeScriptBin "rofi_powermenu_w" (builtins.readFile ../scripts/wayland/rofi_powermenu_w))
+    (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../scripts/wayland/fuzzel_powermenu_w))
   ] ++
   (lib.optionals desktop [
     (pkgs.writeScriptBin "notify" (builtins.readFile ../scripts/desktop/notify))
@@ -40,6 +40,27 @@ in
       };
       warp-mouse-to-focus.enable = false; # Somehow still is read as true when focusing monitor
       focus-follows-mouse.enable = false;
+    };
+
+    outputs = {
+      "DP-1" = lib.mkIf desktop {
+        mode = {
+          width = 1920;
+          height = 1080;
+          refresh = 165.;
+        };
+        position = {
+          x=0;
+          y=0;
+        };
+      };
+      "DP-2" = lib.mkIf desktop {
+        mode = {
+          width = 1920;
+          height = 1080;
+          refresh = 144.;
+        };
+      };
     };
 
     screenshot-path = "~/pic/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
@@ -84,11 +105,15 @@ in
         hotkey-overlay.title = "Run pavucontrol";
         action = spawn "${pkgs.pavucontrol}/bin/pavucontrol";
       };
+      "Mod+O" = {
+        hotkey-overlay.title = "Open swaynotificationcenter";
+        action = spawn "${pkgs.swaynotificationcenter}/bin/swaync-client" "-t";
+      };
 
       # Launchers
       "Mod+D" = {
-        hotkey-overlay.title = "rofi launcher";
-        action = spawn "rofi" "-modes" "drun" "-show" "drun";
+        hotkey-overlay.title = "fuzzel launcher";
+        action = spawn "${pkgs.fuzzel}/bin/fuzzel";
       };
 
       # Utility and help
@@ -290,6 +315,14 @@ in
         hotkey-overlay.title = "Move window to next monitor"; # Assuming two monitors
         action = move-window-to-monitor-next;
       };
+      "Mod+Ctrl+Space" = {
+        hotkey-overlay.title = "Focus next monitor"; # Assuming two monitors
+        action = focus-monitor-previous;
+      };
+      "Mod+Ctrl+Shift+Space" = {
+        hotkey-overlay.title = "Move window to next monitor"; # Assuming two monitors
+        action = move-window-to-monitor-previous;
+      };
 
       # Dynamic screen cast
       # "Mod+M" = {
@@ -372,9 +405,6 @@ in
     ];
 
     window-rules = [
-      {
-        open-maximized = true;
-      }
     ];
 
     overview = {
