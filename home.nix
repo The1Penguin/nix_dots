@@ -25,6 +25,7 @@ in
     ./software/gtk.nix
   ]) ++ (lib.optionals desktop [
     ./software/obs.nix
+    ./software/mm.nix
   ]) ++ (lib.optionals laptop [
     ./software/battery.nix
   ]) ++ (lib.optionals wayland [
