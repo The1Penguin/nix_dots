@@ -74,13 +74,11 @@
             criteria = "Acer Technologies XV270 V 0x029144B9";
             position = "0,0";
             mode = "1920x1080@164.994995Hz";
-            adaptiveSync = true;
           }
           {
             criteria = "Acer Technologies Acer XF240H 0x6240186E";
             position = "1920,0";
             mode = "1920x1080@144.001007Hz";
-            adaptiveSync = true;
           }
         ];
       }

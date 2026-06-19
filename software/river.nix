@@ -143,7 +143,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "None XF86MonBrightnessDown" = "spawn '${pkgs.brightnessctl}/bin/brightnessctl s 5%-'";
             "Super D" = "spawn '${pkgs.fuzzel}/bin/fuzzel'";
             "Super E" = "spawn '${pkgs.emacs-pgtk}/bin/emacs'";
-            "Super F1" = "spawn '${pkgs.librewolf}/bin/librewolf'";
+            "Super F1" = "spawn '${pkgs.librewolf-bin}/bin/librewolf'";
             "Super F2" = "spawn '${pkgs.stable.vesktop}/bin/vesktop'";
             "Super F3" = "spawn '${pkgs.feishin}/bin/feishin'";
             "Super F4" = "spawn '${pkgs.lutris}/bin/lutris'";

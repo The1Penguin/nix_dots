@@ -75,7 +75,7 @@ in
       };
       "Mod+F1" = {
         hotkey-overlay.title = "Run librewolf";
-        action = spawn "${pkgs.librewolf}/bin/librewolf";
+        action = spawn "${pkgs.librewolf-bin}/bin/librewolf";
       };
       "Mod+F2" = {
         hotkey-overlay.title = "Run vesktop";

@@ -1,8 +1,7 @@
 { config, lib, pkgs, Betterfox, ... }:
 
 {
-  programs.librewolf = {
-    package = pkgs.librewolf-bin;
+  programs.firefox = {
     enable = true;
     profiles.default = {
       id = 1;

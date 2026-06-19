@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     lix = {
       url = "git+https://git.lix.systems/lix-project/lix";
       flake = false;
@@ -67,8 +67,11 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
-            # "electron-36.9.5"
             "electron-39.8.10"
+            "librewolf-151.0.2-1" # This has been fixed https://github.com/NixOS/nixpkgs/pull/533046 but not yet downstream
+            "librewolf-unwrapped-151.0.2-1"
+            "librewolf-bin-151.0.1-2"
+            "librewolf-bin-unwrapped-151.0.1-2"
           ];
         };
         overlays = [
