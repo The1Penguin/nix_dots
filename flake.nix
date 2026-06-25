@@ -149,7 +149,7 @@
             catppuccin.nixosModules.catppuccin
           ];
         };
-        dt = nixpkgs.lib.nixosSystem {
+        shadowweaver = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
             desktop = false;
@@ -159,7 +159,7 @@
             x = false;
           };
           modules = [
-            ./system/dt/configuration.nix
+            ./system/shadowweaver/configuration.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
             nixos-hardware.nixosModules.lenovo-thinkpad-x1-13th-gen
@@ -228,7 +228,7 @@
             catppuccin.homeModules.catppuccin
           ];
         };
-        dt = home-manager.lib.homeManagerConfiguration {
+        shadowweaver = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
@@ -243,7 +243,7 @@
             x = false;
           };
           modules = [
-            ./home/dt.nix
+            ./home/shadowweaver.nix
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];

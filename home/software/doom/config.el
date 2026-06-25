@@ -53,7 +53,7 @@
 
 (when (string= (system-name) "scorpia")
   (display-battery-mode 1))
-(when (string= (system-name) "dt")
+(when (string= (system-name) "shadowweaver")
   (display-battery-mode 1))
 
 (use-package pdf-view

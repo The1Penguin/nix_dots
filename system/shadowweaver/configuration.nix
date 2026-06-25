@@ -54,7 +54,7 @@ args@{ config, lib, pkgs, ... }:
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Host name and enabling networkmanager
-  networking.hostName = "dt";
+  networking.hostName = "shadowweaver";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = true;
 
