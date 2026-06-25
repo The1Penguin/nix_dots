@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.programs = [ pkgs.piper ];
+  home.packages = [ pkgs.piper ];
 }
