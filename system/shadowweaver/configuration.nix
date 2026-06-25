@@ -103,6 +103,19 @@ args@{ config, lib, pkgs, ... }:
     };
   };
 
+  # Until https://github.com/nix-community/lanzaboote/issues/591 is fixed
+  services.fwupd.package = pkgs.fwupd.overrideAttrs (old: {
+    postPatch =
+      (old.postPatch or "")
+      + ''
+        substituteInPlace meson.build \
+        --replace-fail \
+        "efi_app_location = join_paths(dependency('fwupd-efi').get_variable(pkgconfig: 'prefix'), 'libexec', 'fwupd', 'efi')" \
+        "efi_app_location = '/run/fwupd-efi'"
+      '';
+  });
+
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
