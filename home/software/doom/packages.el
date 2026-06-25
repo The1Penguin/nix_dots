@@ -12,7 +12,6 @@
 ;; (package! insert-kaomoji)
 (package! svelte-mode)
 (package! hcl-mode)
-(package! fancy-battery)
 (package! catppuccin-theme)
 (package! bnfc)
 ;; (package! astro-ts-mode)

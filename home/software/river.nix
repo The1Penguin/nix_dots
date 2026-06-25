@@ -68,6 +68,11 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
           tap = true;
           tap-button-map = "left-right-middle";
         };
+        "pointer-1739-53160-SYNA802E:00_06CB:CFA8_Touchpad" = {
+          events = true;
+          tap = true;
+          tap-button-map = "left-right-middle";
+        };
         "pointer-1133-16511-Logitech_G502" = {
           accel-profile = "none";
         };

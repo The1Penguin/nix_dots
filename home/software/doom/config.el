@@ -46,20 +46,25 @@
       evil-want-fine-undo t)
 
 (display-time-mode 1)
+(setq display-time-interval 5
+      display-time-24hr-format t
+      display-time-default-load-average nil)
+(display-time)
 
 (when (string= (system-name) "scorpia")
-  (add-hook 'after-init-hook #'fancy-battery-mode)
-  (setq fancy-battery-show-percentage t))
+  (display-battery-mode 1))
+(when (string= (system-name) "dt")
+  (display-battery-mode 1))
 
 (use-package pdf-view
   :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
   :hook (pdf-tools-enabled . hide-mode-line-mode))
 
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-loaded)
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
-(add-hook! '+doom-dashboard-functions :append)
-(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+(remove-hook '+dashboard-functions #'+dashboard-widget-shortmenu)
+(remove-hook '+dashboard-functions #'+dashboard-widget-footer)
+(remove-hook '+dashboard-functions #'+dashboard-widget-loaded)
+(add-hook! '+dashboard-functions :append)
+(setq-hook! '+dashboard-mode-hook evil-normal-state-cursor (list nil))
 (setq fancy-splash-image "~/.config/doom/splash.svg")
 
 (global-visual-line-mode t)
