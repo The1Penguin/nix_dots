@@ -1,0 +1,26 @@
+{ config, lib, pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    git-crypt
+    gh
+  ];
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "pingu";
+        email = "nor@acorneroftheweb.com";
+      };
+      pull.rebase = true;
+      init.defaultBranch = "main";
+      rerere.enabled = true;
+    };
+    signing.format = "openpgp";
+  };
+  programs.difftastic = {
+    enable = true;
+    options.background = "light";
+  };
+  programs.lazygit.enable = true;
+}

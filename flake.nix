@@ -51,9 +51,13 @@
       url = "github:The1Penguin/flow-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, lix, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, ... }:
+  outputs = { nixpkgs, nixpkgs-stable, lix, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, lanzaboote, ... }:
     let
       system = "x86_64-linux";
       overlay-stable = final: prev: {
@@ -122,7 +126,7 @@
             x = false;
           };
           modules = [
-            ./entrapta/configuration.nix
+            ./system/entrapta/configuration.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
             niri.nixosModules.niri
@@ -139,13 +143,13 @@
             inherit secrets;
           };
           modules = [
-            ./adora/configuration.nix
+            ./system/adora/configuration.nix
             ./server/default.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
           ];
         };
-        kyle = nixpkgs.lib.nixosSystem {
+        dt = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = {
             desktop = false;
@@ -155,11 +159,12 @@
             x = false;
           };
           modules = [
-            ./kyle/configuration.nix
+            ./system/dt/configuration.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
-            nixos-hardware.nixosModules.microsoft-surface-pro-intel
+            nixos-hardware.nixosModules.lenovo-thinkpad-x1-13th-gen
             niri.nixosModules.niri
+            lanzaboote.nixosModules.lanzaboote
           ];
         };
       };
@@ -180,7 +185,7 @@
             x = false;
           };
           modules = [
-            ./home.nix
+            ./home/scorpia.nix
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];
@@ -200,7 +205,7 @@
             x = false;
           };
           modules = [
-            ./home.nix
+            ./home/entrapta.nix
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];
@@ -219,11 +224,11 @@
             x = false;
           };
           modules = [
-            ./home.nix
+            ./home/adora.nix
             catppuccin.homeModules.catppuccin
           ];
         };
-        kyle = home-manager.lib.homeManagerConfiguration {
+        dt = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit spicetify-nix;
@@ -238,7 +243,7 @@
             x = false;
           };
           modules = [
-            ./home.nix
+            ./home/dt.nix
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];
