@@ -20,9 +20,13 @@
         addresses = [ "dynamic" ];
         id = secrets.syncthing.glimmer;
       };
+      devices.shadowweaver = {
+        addresses = [ "dynamic" ];
+        id = secrets.syncthing.shadowweaver;
+      };
       folders.Main = {
         path = "${homeDir}/.syncthing";
-        devices = [ "catra" "entrapta" "scorpia" ];
+        devices = [ "catra" "entrapta" "scorpia" "shadowweaver" ];
         versioning = {
           type = "simple";
           params.keep = "5";
@@ -31,7 +35,7 @@
       };
       folders.Pictures = {
         path = "${homeDir}/pic";
-        devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
+        devices = [ "catra" "entrapta" "scorpia" "glimmer" "shadowweaver" ];
         versioning = {
           type = "simple";
           params.keep = "5";
@@ -40,7 +44,16 @@
       };
       folders."Phone Pics" = {
         path = "${homeDir}/ppics";
-        devices = [ "catra" "entrapta" "scorpia" "glimmer" ];
+        devices = [ "catra" "entrapta" "scorpia" "glimmer" "shadowweaver" ];
+      };
+      folders."Work" = {
+        path = "${homeDir}/wrk";
+        devices = [ "catra" "entrapta" "scorpia" "shadowweaver" ];
+        versioning = {
+          type = "simple";
+          params.keep = "5";
+          params.cleanoutDays = "15";
+        };
       };
       options.localAnnounceEnabled = false;
       options.urAccepted = -1;

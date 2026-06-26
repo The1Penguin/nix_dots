@@ -90,6 +90,21 @@ args@{ config, lib, pkgs, ... }:
 
   services.fwupd.enable = true;
 
+  hardware.trackpoint = {
+    enable = true;
+    speed = 60;
+    emulateWheel = true;
+  };
+
+  services.fprintd = {
+    enable = true;
+    tod.enable = true;
+    tod.driver = pkgs.libfprint-2-tod1-goodix;
+  };
+
+  security.pam.services.doas.rules.auth.fprintd.settings.max-tries = 3;
+  security.pam.services.doas.rules.auth.fprintd.settings.timeout = 1; # This means that 3 failures times 1 second means 3 seconds
+
   # Secure boot
   environment.systemPackages = [ pkgs.sbctl ];
   boot.loader.systemd-boot.enable = lib.mkForce false;
