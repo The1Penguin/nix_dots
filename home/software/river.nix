@@ -152,7 +152,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "Super F1" = "spawn '${pkgs.librewolf-bin}/bin/librewolf'";
             "Super F2" = "spawn '${pkgs.stable.vesktop}/bin/vesktop'";
             "Super F3" = "spawn '${pkgs.feishin}/bin/feishin'";
-            "Super F4" = "spawn '${pkgs.lutris}/bin/lutris'";
+            "Super F4" = "spawn 'lutris'";
             "Super F5" = "spawn 'XIVLauncher.Core'";
             "Alt+Shift X" = "spawn 'mylock'";
             "Super+Shift Tab" = "spawn 'fuzzel_powermenu_w'";
