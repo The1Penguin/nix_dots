@@ -80,7 +80,7 @@ in
           };
           "Mod+F2" = {
             hotkey-overlay.title = "Run vesktop";
-            action = spawn "${pkgs.stable.vesktop}/bin/vesktop";
+            action = spawn "vesktop";
           };
           "Mod+F3" = {
             hotkey-overlay.title = "Run feishin";

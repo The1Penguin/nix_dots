@@ -72,10 +72,6 @@
           allowUnfree = true;
           permittedInsecurePackages = [
             "electron-39.8.10"
-            "librewolf-151.0.2-1" # This has been fixed https://github.com/NixOS/nixpkgs/pull/533046 but not yet downstream
-            "librewolf-unwrapped-151.0.2-1"
-            "librewolf-bin-151.0.1-2"
-            "librewolf-bin-unwrapped-151.0.1-2"
           ];
         };
         overlays = [
@@ -90,6 +86,13 @@
               flow.outputs.packages.${system}.flow;
             openldap = prev.openldap.overrideAttrs {
               doCheck = !prev.stdenv.hostPlatform.isi686;
+            };
+            signal-desktop = prev.signal-desktop.override {
+              pnpm_10_29_2 = final.pnpm_10;
+            };
+
+            vesktop = prev.vesktop.override {
+              pnpm_10_29_2 = final.pnpm_10;
             };
           })
         ];

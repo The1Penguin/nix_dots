@@ -99,5 +99,10 @@
       enable = true;
       nix-direnv.enable = true;
     };
+
+    devenv = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
 }

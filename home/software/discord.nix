@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.stable.vesktop ];
+  home.packages = [ pkgs.vesktop ];
 }
