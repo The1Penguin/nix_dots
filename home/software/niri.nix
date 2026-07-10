@@ -7,6 +7,7 @@ in
     ./kanshi.nix
     ./swaync.nix
     ./fuzzel.nix
+    ./notify.nix
     (import ./swaybg.nix (args // { wallpaper = ../../sakuraflower.png; }))
   ];
 
@@ -17,12 +18,7 @@ in
     libnotify
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../../scripts/wayland/mylock))
     (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../../scripts/wayland/fuzzel_powermenu_w))
-  ] ++
-  (lib.optionals desktop [
-    (pkgs.writeScriptBin "notify" (builtins.readFile ../../scripts/desktop/notify))
-  ]) ++ (lib.optionals laptop [
-    (pkgs.writeScriptBin "notify" (builtins.readFile ../../scripts/laptop/notify))
-  ]);
+  ];
 
   programs.niri.package = pkgs.niri-unstable;
   programs.niri.settings = {

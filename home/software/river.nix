@@ -6,6 +6,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     ./kanshi.nix
     ./swaync.nix
     ./fuzzel.nix
+    ./notify.nix
     (import ./swaybg.nix (args // { wallpaper = ../../sakuraflower.png; }))
   ];
 
@@ -19,12 +20,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     (pkgs.writeScriptBin "mylock" (builtins.readFile ../../scripts/wayland/mylock))
     (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../../scripts/wayland/fuzzel_powermenu_w))
     (pkgs.writeScriptBin "lockandsuspend" (builtins.readFile ../../scripts/wayland/lockandsuspend))
-  ] ++
-  (lib.optionals desktop [
-    (pkgs.writeScriptBin "notify" (builtins.readFile ../../scripts/desktop/notify))
-  ]) ++ (lib.optionals laptop [
-    (pkgs.writeScriptBin "notify" (builtins.readFile ../../scripts/laptop/notify))
-  ]);
+  ];
 
   wayland.windowManager.river = {
     enable = true;
