@@ -112,7 +112,7 @@
             x = false;
           };
           modules = [
-            ./scorpia/configuration.nix
+            ./system/scorpia/configuration.nix
             lix-module.nixosModules.default
             catppuccin.nixosModules.catppuccin
             nixos-hardware.nixosModules.lenovo-ideapad-slim-5
