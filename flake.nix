@@ -87,13 +87,6 @@
             openldap = prev.openldap.overrideAttrs {
               doCheck = !prev.stdenv.hostPlatform.isi686;
             };
-            signal-desktop = prev.signal-desktop.override {
-              pnpm_10_29_2 = final.pnpm_10;
-            };
-
-            vesktop = prev.vesktop.override {
-              pnpm_10_29_2 = final.pnpm_10;
-            };
           })
         ];
       };

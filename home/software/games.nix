@@ -9,5 +9,6 @@
     ./mm.nix
     ./morrowind.nix
     ./prismlauncher.nix
+    ./archipelago.nix
   ];
 }

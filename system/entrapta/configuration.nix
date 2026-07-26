@@ -100,6 +100,12 @@ args@{ config, lib, pkgs, ... }:
     })
   ];
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true; # optional: starts Sunshine automatically on login
+    capSysAdmin = true;
+    openFirewall = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
