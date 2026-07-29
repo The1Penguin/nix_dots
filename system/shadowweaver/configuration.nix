@@ -67,21 +67,17 @@ args@{ config, lib, pkgs, ... }:
   };
 
   services.upower.enable = true;
-  services.auto-cpufreq = {
+  powerManagement.powertop.enable = true;
+  services.tlp = {
     enable = true;
+    pd.enable = true;
     settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
+      TLP_PROFILE_AC="PRF";
+      TLP_PROFILE_BAT="SAV";
+      START_CHARGE_THRESH_BAT0=96;
+      STOP_CHARGE_THRESH_BAT0=100;
     };
   };
-  powerManagement.powertop.enable = true;
-  services.tlp.enable = lib.mkForce false;
 
   services.displayManager.sddm.wayland = {
     enable = true;
@@ -108,19 +104,6 @@ args@{ config, lib, pkgs, ... }:
       autoReboot = true;
     };
   };
-
-  # Until https://github.com/nix-community/lanzaboote/issues/591 is fixed
-  # services.fwupd.package = pkgs.fwupd.overrideAttrs (old: {
-  #   postPatch =
-  #     (old.postPatch or "")
-  #     + ''
-  #       substituteInPlace meson.build \
-  #       --replace-fail \
-  #       "efi_app_location = join_paths(dependency('fwupd-efi').get_variable(pkgconfig: 'prefix'), 'libexec', 'fwupd', 'efi')" \
-  #       "efi_app_location = '/run/fwupd-efi'"
-  #     '';
-  # });
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
