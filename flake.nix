@@ -163,6 +163,22 @@
             lanzaboote.nixosModules.lanzaboote
           ];
         };
+        perfuma = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          specialArgs = {
+            desktop = true;
+            laptop = false;
+            server = false;
+            wayland = true;
+            x = false;
+          };
+          modules = [
+            ./system/perfuma/configuration.nix
+            lix-module.nixosModules.default
+            catppuccin.nixosModules.catppuccin
+            niri.nixosModules.niri
+          ];
+        };
       };
 
       homeConfigurations = {
@@ -240,6 +256,26 @@
           };
           modules = [
             ./home/shadowweaver.nix
+            catppuccin.homeModules.catppuccin
+            niri.homeModules.niri
+          ];
+        };
+        perfuma = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit spicetify-nix;
+            inherit any-nix-shell;
+            inherit nixos-xivlauncher-rb;
+            inherit Betterfox;
+            inherit secrets;
+            desktop = true;
+            laptop = false;
+            server = false;
+            wayland = true;
+            x = false;
+          };
+          modules = [
+            ./home/perfuma.nix
             catppuccin.homeModules.catppuccin
             niri.homeModules.niri
           ];

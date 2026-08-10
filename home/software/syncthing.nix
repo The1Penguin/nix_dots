@@ -24,6 +24,10 @@
         addresses = [ "dynamic" ];
         id = secrets.syncthing.shadowweaver;
       };
+      devices.perfuma = {
+        addresses = [ "dynamic" ];
+        id = secrets.syncthing.perfuma;
+      };
       folders.Main = {
         path = "${homeDir}/.syncthing";
         devices = [ "catra" "entrapta" "scorpia" "shadowweaver" ];
@@ -48,7 +52,7 @@
       };
       folders."Work" = {
         path = "${homeDir}/wrk";
-        devices = [ "catra" "entrapta" "scorpia" "shadowweaver" ];
+        devices = [ "catra" "entrapta" "scorpia" "shadowweaver" "perfuma" ];
         versioning = {
           type = "simple";
           params.keep = "5";
