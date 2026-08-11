@@ -1,3 +1,7 @@
 #!/usr/bin/env sh
-mylock &
-systemctl suspend
+# TODO: Check if connect to a dock, if so, don't
+dock="$(boltctl | grep "status" | awk -F'[:]' '{print $2}' | tr -d '[:blank:]')"
+if [ "$dock" != "authorized" ]; then
+    mylock &
+    systemctl suspend
+fi

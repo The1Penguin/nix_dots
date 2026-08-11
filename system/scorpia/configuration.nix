@@ -13,6 +13,7 @@ args@{ config, lib, pkgs, ... }:
       ../software/audio.nix
       ../software/bash.nix
       ../software/bluetooth.nix
+      ../software/bolt.nix
       ../software/cachix.nix
       ../software/catppuccin.nix
       ../software/dbus.nix
