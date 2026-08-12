@@ -1,4 +1,4 @@
-{ config, lib, pkgs, homeDir, secrets, ... }:
+{ config, lib, pkgs, homeDir, secrets, hostname, ... }:
 
 {
   services.syncthing = {
@@ -28,18 +28,20 @@
         addresses = [ "dynamic" ];
         id = secrets.syncthing.perfuma;
       };
-      folders.Main = {
+      folders."Main" = {
         path = "${homeDir}/.syncthing";
         devices = [ "catra" "entrapta" "scorpia" "shadowweaver" ];
+        enable = builtins.elem hostname config.services.syncthing.settings.folders."Main".devices;
         versioning = {
           type = "simple";
           params.keep = "5";
           params.cleanoutDays = "15";
         };
       };
-      folders.Pictures = {
+      folders."Pictures" = {
         path = "${homeDir}/pic";
         devices = [ "catra" "entrapta" "scorpia" "glimmer" "shadowweaver" ];
+        enable = builtins.elem hostname config.services.syncthing.settings.folders."Pictures".devices;
         versioning = {
           type = "simple";
           params.keep = "5";
@@ -49,10 +51,12 @@
       folders."Phone Pics" = {
         path = "${homeDir}/ppics";
         devices = [ "catra" "entrapta" "scorpia" "glimmer" "shadowweaver" ];
+        enable = builtins.elem hostname config.services.syncthing.settings.folders."Phone Pics".devices;
       };
       folders."Work" = {
         path = "${homeDir}/wrk";
         devices = [ "catra" "entrapta" "scorpia" "shadowweaver" "perfuma" ];
+        enable = builtins.elem hostname config.services.syncthing.settings.folders."Work".devices;
         versioning = {
           type = "simple";
           params.keep = "5";

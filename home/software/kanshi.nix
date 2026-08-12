@@ -83,6 +83,21 @@
         ];
       }
       {
+        profile.name = "Work_Desktop";
+        profile.outputs = [
+          {
+            criteria = "Lenovo Group Limited LEN T27q-20 VNA77NKG";
+            position = "0,0";
+            mode = "2560x1440";
+          }
+          {
+            criteria = "Lenovo Group Limited LEN T27q-20 VNA77NLA";
+            position = "2560,0";
+            mode = "2560x1440";
+          }
+        ];
+      }
+      {
         profile.name = "undocked";
         profile.outputs = [
           {

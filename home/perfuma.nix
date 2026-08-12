@@ -10,7 +10,6 @@ in
     software/alacritty.nix
     software/audio.nix
     software/bat.nix
-    software/battery.nix
     software/bitwarden.nix
     software/catppuccin.nix
     software/communication.nix

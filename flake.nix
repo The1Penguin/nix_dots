@@ -195,6 +195,7 @@
             server = false;
             wayland = true;
             x = false;
+            hostname = "scorpia";
           };
           modules = [
             ./home/scorpia.nix
@@ -215,6 +216,7 @@
             server = false;
             wayland = true;
             x = false;
+            hostname = "entrapta";
           };
           modules = [
             ./home/entrapta.nix
@@ -234,6 +236,7 @@
             server = true;
             wayland = false;
             x = false;
+            hostname = "adora";
           };
           modules = [
             ./home/adora.nix
@@ -253,6 +256,7 @@
             server = false;
             wayland = true;
             x = false;
+            hostname = "shadowweaver";
           };
           modules = [
             ./home/shadowweaver.nix
@@ -273,6 +277,7 @@
             server = false;
             wayland = true;
             x = false;
+            hostname = "perfuma";
           };
           modules = [
             ./home/perfuma.nix

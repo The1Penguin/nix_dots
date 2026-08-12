@@ -65,6 +65,8 @@ args@{ config, lib, pkgs, ... }:
     };
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   services.displayManager.sddm.wayland = {
     enable = true;
     compositor = lib.mkForce "kwin";
