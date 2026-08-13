@@ -47,6 +47,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
         "-app-id" = {
           "'firefox'" = "ssd";
           "'librewolf'" = "ssd";
+          "'thunderbird'" = "ssd";
           "'steam'" = "ssd";
           "'org.pulseaudio.pavucontrol'" = "ssd";
           "'emacs'" = "ssd";
@@ -158,6 +159,8 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
             "Super P" = "spawn '${pkgs.pavucontrol}/bin/pavucontrol'";
             "Super U" = "spawn '${pkgs.bitwarden-desktop}/bin/bitwarden'";
             "Super O" = "spawn '${pkgs.swaynotificationcenter}/bin/swaync-client -t'";
+            "None XF86Tools" = "spawn '${pkgs.feishin}/bin/feishin'";
+            "None XF86Mail" = "spawn '${pkgs.thunderbird}/bin/thunderbird'";
           }
           (builtins.listToAttrs (
             lib.concatMap
