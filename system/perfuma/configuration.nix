@@ -52,6 +52,7 @@ args@{ config, lib, pkgs, ... }:
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable networking
   networking.hostName = "perfuma";
