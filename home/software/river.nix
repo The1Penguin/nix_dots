@@ -11,13 +11,12 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
   ];
 
   home.packages = with pkgs; [
-    swaylock-effects
     brightnessctl
     acpi
     sway-contrib.grimshot
     rivercarro
     libnotify
-    (pkgs.writeScriptBin "mylock" (builtins.readFile ../../scripts/wayland/mylock))
+    mylock
     (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../../scripts/wayland/fuzzel_powermenu_w))
     (pkgs.writeScriptBin "lockandsuspend" (builtins.readFile ../../scripts/wayland/lockandsuspend))
     (pkgs.writeScriptBin "lockandhibernate" (builtins.readFile ../../scripts/wayland/lockandhibernate))

@@ -44,7 +44,7 @@
     };
     nixos-hardware.url = "github:NixOs/nixos-hardware/master";
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flow = {
@@ -55,9 +55,13 @@
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, lix, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, lanzaboote, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, lix, lix-module, home-manager, spicetify-nix, nur, any-nix-shell, catppuccin, nixos-xivlauncher-rb, nvidia-patch, Betterfox, nixos-hardware, niri, flow, lanzaboote, flake-utils, ... }:
     let
       system = "x86_64-linux";
       overlay-stable = final: prev: {
@@ -71,7 +75,7 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
-            "electron-39.8.10"
+            # "electron-39.8.10"
           ];
         };
         overlays = [
@@ -87,6 +91,7 @@
             openldap = prev.openldap.overrideAttrs {
               doCheck = !prev.stdenv.hostPlatform.isi686;
             };
+            mylock = self.packages.${system}.mylock;
           })
         ];
       };
@@ -286,5 +291,23 @@
           ];
         };
       };
-    };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [
+            (final: prev: {
+              wall = self.packages.${system}.wall;
+            })
+          ];
+        };
+      in
+      {
+        packages = rec {
+          mylock = import ./pkgs/mylock.nix { inherit pkgs; };
+          wall = import ./pkgs/wall.nix { inherit pkgs; };
+        };
+      });
+
 }

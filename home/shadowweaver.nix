@@ -45,6 +45,7 @@ in
     software/rdp.nix
     software/river.nix
     software/spotify.nix
+    software/swayidle.nix
     (import software/syncthing.nix (args // { homeDir = homeDir; }))
     software/tailscale.nix
     software/thunar.nix
