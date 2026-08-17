@@ -12,11 +12,10 @@ in
   ];
 
   home.packages = with pkgs; [
-    swaylock-effects
     brightnessctl
     acpi
     libnotify
-    (pkgs.writeScriptBin "mylock" (builtins.readFile ../../scripts/wayland/mylock))
+    mylock
     (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../../scripts/wayland/fuzzel_powermenu_w))
   ];
 
