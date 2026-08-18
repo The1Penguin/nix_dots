@@ -73,10 +73,10 @@ args@{ config, lib, pkgs, ... }:
     enable = true;
     pd.enable = true;
     settings = {
-      TLP_PROFILE_AC="PRF";
-      TLP_PROFILE_BAT="SAV";
-      START_CHARGE_THRESH_BAT0=96;
-      STOP_CHARGE_THRESH_BAT0=100;
+      TLP_PROFILE_AC = "PRF";
+      TLP_PROFILE_BAT = "SAV";
+      START_CHARGE_THRESH_BAT0 = 96;
+      STOP_CHARGE_THRESH_BAT0 = 100;
     };
   };
 

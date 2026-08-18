@@ -309,5 +309,4 @@
           wall = import ./pkgs/wall.nix { inherit pkgs; };
         };
       });
-
 }
