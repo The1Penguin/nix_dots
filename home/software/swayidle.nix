@@ -5,9 +5,13 @@ let minutes = x: x * 60; in
   services.swayidle = {
     enable = true;
     extraArgs = [ "-w" ];
+    events = {
+      "before-sleep" = "${pkgs.mylock}/bin/mylock";
+      "lock" = "lock";
+    };
     timeouts = [
       { timeout = minutes 4; command = "${pkgs.mylock}/bin/mylock"; }
-      { timeout = minutes 10; command = "systemctl suspend"; }
+      { timeout = minutes 10; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 }

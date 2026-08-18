@@ -3,6 +3,7 @@
 pkgs.writeScriptBin "mylock" ''
   ${pkgs.swaylock}/bin/swaylock \
       -i ${pkgs.wall} \
+      -f \
       --indicator-radius 100 \
       --indicator-thickness 7 \
       --ring-color bb00cc \
