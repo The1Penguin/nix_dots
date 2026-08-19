@@ -98,3 +98,11 @@
 
 (set-buffer-multibyte 't)
 (setq lsp-modeline-code-actions-enable nil)
+
+(defun my/suppress-lsp-inlayhint-warnings (orig-fun type message &rest args)
+  "Suppress LSP inlayHint/refresh warnings."
+  (unless (and (eq type 'lsp-mode)
+               (string-match-p "workspace/inlayHint/refresh" message))
+    (apply orig-fun type message args)))
+
+(advice-add 'display-warning :around #'my/suppress-lsp-inlayhint-warnings)
