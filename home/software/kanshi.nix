@@ -98,12 +98,32 @@
         ];
       }
       {
+        profile.name = "docked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "Lenovo Group Limited LEN T27q-20 VNA77NKG";
+            position = "0,0";
+            mode = "2560x1440";
+          }
+          {
+            criteria = "Lenovo Group Limited LEN T27q-20 VNA77NLA";
+            position = "2560,0";
+            mode = "2560x1440";
+          }
+        ];
+      }
+      {
         profile.name = "undocked";
         profile.outputs = [
           {
             criteria = "eDP-1";
             mode = "1920x1200";
             scale = 1.0;
+            status = "enable";
           }
         ];
       }
