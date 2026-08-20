@@ -19,8 +19,8 @@
 (package! tidal)
 (package! lean4-mode
   :recipe (:host github
-           :repo "d-torrance/lean4-mode"
-           :files ("*.el" "data")))
+           :repo "leanprover-community/lean4-mode"
+           :files ("*.el" "data" "data/*.json")))
 (package! quint-mode
   :recipe (:host github
            :repo "informalsystems/quint"
