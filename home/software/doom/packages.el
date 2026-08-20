@@ -17,7 +17,10 @@
 ;; (package! astro-ts-mode)
 (package! dash)
 (package! tidal)
-(package! nael)
+(package! lean4-mode
+  :recipe (:host github
+           :repo "leanprover-community/lean4-mode"
+           :files ("*.el" "data" "data/*.json")))
 (package! quint-mode
   :recipe (:host github
            :repo "informalsystems/quint"
