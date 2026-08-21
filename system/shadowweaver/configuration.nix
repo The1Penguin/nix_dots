@@ -67,6 +67,8 @@ args@{ config, lib, pkgs, ... }:
     };
   };
 
+  services.ratbagd.enable = true;
+
   services.upower.enable = true;
   powerManagement.powertop.enable = true;
   services.tlp = {

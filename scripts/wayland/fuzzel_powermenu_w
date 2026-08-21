@@ -20,7 +20,7 @@ case $chosen in
     $option2)
         systemctl poweroff;;
     $option3)
-        lockandsuspend;;
+        mylock & systemctl suspend;;
     $option4)
         lockandhibernate;;
     $option5)

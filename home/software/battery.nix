@@ -32,7 +32,7 @@
                 read -r status capacity
                 battery_stat="$(acpi --battery | head -n 1)"
                 if [ "$status" = Discharging -a "$capacity" -le 2 ]; then
-                  notify-send -a "batMon" -u critical "Battery Critical: $capacity%\\n Suspending"
+                  notify-send -a "batMon" -u critical "Battery Critical: $capacity%\n Suspending"
                   sleep 5
                   systemctl suspend
                 elif [ "$status" = Discharging -a "$capacity" -le 5 ]; then
