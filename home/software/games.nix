@@ -10,5 +10,6 @@
     ./morrowind.nix
     ./prismlauncher.nix
     ./archipelago.nix
+    ./lumafly.nix
   ];
 }
