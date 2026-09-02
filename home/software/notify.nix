@@ -12,9 +12,9 @@
       DIC["bluez_output.98_52_3D_C4_E0_C8.1"]="bt portable speaker"
       DIC["bluez_output.F4_6A_DD_B3_53_67.1"]="bt speaker"
       TIME=$(date "+%H:%M")
-      battery_stat="$(${pkgs.acpi}/bin/acpi --battery | head -n 1)"
-      battery_greped_status="$(echo $battery_stat| cut -d',' -f1 | cut -d':' -f2 | xargs | awk '{print tolower($0)}')"
-      battery_percentage_v="$(echo $battery_stat| grep -Po '(\d+%)' | grep -Po '\d+')"
+      battery_stat="$(${pkgs.upower}/bin/upower --battery)"
+      battery_greped_status="$(echo "$battery_stat" | grep "state:" | awk -F'[,:%]' '{print $2,$3}' | tr -d '[:blank:]')"
+      battery_percentage_v="$(echo "$battery_stat" | grep "percentage:" | awk -F'[,:%]' '{print $2, $3}' | tr -d '[:blank:]')"
       network="$(${pkgs.networkmanager}/bin/nmcli -t -f name connection show --active | ${pkgs.gnused}/bin/sed 's/^lo$/not connected/' | head -n 1)"
       audio_mute="$(${pkgs.pulseaudio}/bin/pactl get-sink-mute @DEFAULT_SINK@)"
       audio_volume="$(${pkgs.pulseaudio}/bin/pactl get-sink-volume @DEFAULT_SINK@ | cut -d'/' -f2 | head -n1 | xargs)"
