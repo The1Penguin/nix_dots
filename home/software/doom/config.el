@@ -80,9 +80,13 @@
 (require 'agda-input)
 (add-hook 'evil-insert-state-entry-hook (lambda ()
                                           (if (not (or (eq major-mode 'lean4-mode)
+                                                       (eq major-mode 'nael-mode)
                                                        (eq major-mode 'latex-mode)
                                                        (eq major-mode 'LaTeX-mode)
                                                        (eq major-mode 'org-mode)
+                                                       (eq major-mode 'ess-r-mode)
+                                                       (eq major-mode 'markdown-mode)
+                                                       (eq major-mode 'poly-markdown+r-mode)
                                                        (eq major-mode 'vterm-mode)))
                                               (set-input-method "Agda"))))
 (add-hook 'evil-insert-state-exit-hook  (lambda () (set-input-method nil)))
@@ -106,3 +110,18 @@
     (apply orig-fun type message args)))
 
 (advice-add 'display-warning :around #'my/suppress-lsp-inlayhint-warnings)
+
+(add-to-list 'auto-mode-alist '("\\.qmd" . poly-markdown+r-mode))
+(setq-hook! 'inferior-ess-mode-hook
+  comint-scroll-to-bottom-on-input t
+  comint-scroll-to-bottom-on-output t
+  comint-move-point-for-output t)
+(set-evil-initial-state! 'ess-r-help-mode 'normal)
+(set-eval-handler! 'ess-help-mode #'ess-eval-region-and-go)
+(set-eval-handler! 'ess-r-help-mode #'ess-eval-region-and-go)
+
+(setq dafny-verification-backend 'cli)
+(add-to-list 'auto-mode-alist '("\\.dfy" . dafny-mode))
+
+(setq eldoc-echo-area-prefer-doc-buffer t)
+(add-hook 'nael-mode-hook (lambda () (local-set-key (kbd "C-c TAB") 'eldoc-doc-buffer)))
