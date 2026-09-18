@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+systemctl --user status swayidle.service | grep "(running)" && (systemctl --user stop swayidle.service && notify-send --hint boolean:SWAYNC_BYPASS_DND:true "disabled swayidle") || (systemctl --user start swayidle.service && notify-send --hint boolean:SWAYNC_BYPASS_DND:true "enabled swayidle")

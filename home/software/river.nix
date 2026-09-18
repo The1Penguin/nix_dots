@@ -20,6 +20,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     (pkgs.writeScriptBin "fuzzel_powermenu_w" (builtins.readFile ../../scripts/wayland/fuzzel_powermenu_w))
     (pkgs.writeScriptBin "lockandsuspend" (builtins.readFile ../../scripts/wayland/lockandsuspend))
     (pkgs.writeScriptBin "lockandhibernate" (builtins.readFile ../../scripts/wayland/lockandhibernate))
+    (pkgs.writeScriptBin "toggle_swayidle" (builtins.readFile ../../scripts/wayland/toggle_swayidle))
   ];
 
   wayland.windowManager.river = {

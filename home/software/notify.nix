@@ -41,7 +41,7 @@
           'Status' \
           "$(echo -e "${
           if laptop then
-            "Time: $TIME \\n Network: $network \\n Audio: $audio \\n Battery: $battery_percentage_v%, and $battery_greped_status$DNDMessage"
+            "Time: $TIME \\nNetwork: $network \\nAudio: $audio \\nBattery: $battery_percentage_v%, and $battery_greped_status$DNDMessage"
           else if desktop then
             "Time: $TIME \\nAudio source: \${DIC[$DEFAULTSINK]}$DNDMessage"
           else "Time: $TIME$DNDMessage" }")"
