@@ -94,7 +94,7 @@ args@{ config, lib, pkgs, ... }:
   # Mullvad vpn
   services.mullvad-vpn = {
     enable = true;
-    package = pkgs.mullvad-vpn;
+    gui.enable = true;
   };
 
   services.displayManager.sddm.wayland = {
