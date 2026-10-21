@@ -458,6 +458,7 @@
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.nova.enabled" = false;
       };
       extraConfig = (builtins.readFile "${Betterfox}/user.js");
       search = {

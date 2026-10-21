@@ -96,11 +96,6 @@
 #browser {
     position: relative;
 }
-#sidebar-box[sidebarcommand*="tabcenter"] #sidebar-header {
-    visibility: collapse;
-    display: none;
-}
-
 #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) {
     display: block;
     position: absolute;
@@ -150,21 +145,6 @@
     height: 100vh;
 }
 
-[sidebarcommand*="tabcenter"] #sidebar-header {
-    background: #0C0C0D;
-    border-bottom: none !important;
-}
-
-[sidebarcommand*="tabcenter"] ~ #sidebar-splitter {
-    border-right-color: #0C0C0D !important;
-    border-left-color: #0C0C0D !important;
-}
-
-[sidebarcommand*="tabcenter"] #sidebar-switcher-target,
-[sidebarcommand*="tabcenter"] #sidebar-close {
-    filter: invert(100%);
-}
-
 @media (max-width: 630px) {
     #urlbar-container {
         min-width: 100% !important;
@@ -185,10 +165,6 @@
 
 #main-window[titlepreface*="🦊 "] .titlebar-color {
   background-color: var(--toolbar-bgcolor);
-}
-
-#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar-header {
-  visibility: collapse;
 }
 
 /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_sidebar.css made available under Mozilla Public License v. 2.0
@@ -339,6 +315,11 @@ See the above repository for updates as well as full license text. */
     transition-delay: 0ms !important;
   }
 }
+@media -moz-pref("userchrome.autohide-sidebar.hide-main-sidebar"){
+  :is(#sidebar-main,#sidebar-container)[sidebar-panel-open]{
+    contain: strict;
+  }
+}
 
 /* Move statuspanel to the other side when sidebar is hovered so it doesn't get covered by sidebar */
 
@@ -352,3 +333,18 @@ See the above repository for updates as well as full license text. */
 
 /* Fixing font */
 * { font-family: Monaspace Neon NF !important; }}
+
+:root {
+  --content-area-shadow: none !important;
+}
+
+#sidebar {
+  @media -moz-pref("sidebar.revamp") {
+    border-radius: 0 !important;
+    outline: 0px solid transparent !important;
+  }
+}
+
+#sidebar-panel-header {
+  display: none;
+}
