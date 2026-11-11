@@ -376,7 +376,11 @@ in
         };
 
         gestures = {
-          hot-corners.enable = false;
+          hot-corners.top-left = false;
+          hot-corners.bottom-left = false;
+          hot-corners.top-right = false;
+          hot-corners.bottom-right = false;
+
         };
 
         switch-events = with config.lib.niri.actions; {

@@ -38,6 +38,7 @@ args@{ config, lib, pkgs, ... }:
       ../software/power-profiles.nix
       ../software/printer.nix
       ../software/river.nix
+      ../software/solaar.nix
       ../software/swaylock.nix
       ../software/tailscale.nix
       ../software/tkey.nix
