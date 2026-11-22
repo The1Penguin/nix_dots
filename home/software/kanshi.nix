@@ -78,7 +78,7 @@
           {
             criteria = "Acer Technologies Acer XF240H 0x6240186E";
             position = "1920,0";
-            mode = "1920x1080@144.001007Hz";
+            mode = "1920x1080@119.982002Hz";
           }
         ];
       }

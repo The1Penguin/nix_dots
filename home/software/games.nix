@@ -11,6 +11,5 @@
     ./prismlauncher.nix
     ./archipelago.nix
     ./lumafly.nix
-    ./thunderstore.nix
   ];
 }

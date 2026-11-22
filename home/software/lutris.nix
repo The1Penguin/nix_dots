@@ -5,7 +5,6 @@
     (lutris.override {
       extraLibraries = pkgs: [
         libnghttp2
-        pcre
       ];
       extraPkgs = lutrisPkgs: [
         wine64
