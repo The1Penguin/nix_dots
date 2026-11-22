@@ -21,6 +21,8 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
     (pkgs.writeScriptBin "lockandsuspend" (builtins.readFile ../../scripts/wayland/lockandsuspend))
     (pkgs.writeScriptBin "lockandhibernate" (builtins.readFile ../../scripts/wayland/lockandhibernate))
     (pkgs.writeScriptBin "toggle_swayidle" (builtins.readFile ../../scripts/wayland/toggle_swayidle))
+    (pkgs.writeScriptBin "toggle_airplane" (builtins.readFile ../../scripts/laptop/airplane_toggle))
+    
   ];
 
   wayland.windowManager.river = {
@@ -53,6 +55,7 @@ args@{ config, lib, pkgs, desktop, laptop, ... }:
           "'emacs'" = "ssd";
           "'gnome-pomodoro'" = "ssd";
           "'org.pwmt.zathura'" = "ssd";
+          "'vesktop'" = "ssd";
         };
       };
       set-repeat = "40 300";

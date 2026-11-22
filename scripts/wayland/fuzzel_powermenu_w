@@ -8,9 +8,10 @@ option3="lock"
 option4="hibernate"
 option5="toggle dnd"
 option6="toggle swayidle"
+option7="toggle airplane"
 
 # options passed into variable
-options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
+options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7"
 
 chosen="$(echo -e "$options" | fuzzel -d)"
 case $chosen in
@@ -27,5 +28,7 @@ case $chosen in
     $option5)
         swaync-client -d;;
     $option6)
-        toggle_swayidle
+        toggle_swayidle;;
+    $option7)
+        toggle_airplane
 esac

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+rfkill list | grep "Soft blocked: yes" && (rfkill unblock all && notify-send --hint boolean:SWAYNC_BYPASS_DND:true "disabled airplane mode") || (rfkill block all && notify-send --hint boolean:SWAYNC_BYPASS_DND:true "enabled airplane mode")
